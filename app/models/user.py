@@ -1,4 +1,4 @@
-from .db import db, Property
+from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -9,8 +9,8 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable=False)
-  properties = db.relationship(Property, back_populates="owner")
-
+  properties = db.relationship("Property", back_populates="user")
+  reservations = db.relationship("Reservation", back_populates="user")
 
   @property
   def password(self):
