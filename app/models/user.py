@@ -9,8 +9,8 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable=False)
-  properties = db.relationship("Property", back_populates="user")
-  reservations = db.relationship("Reservation", back_populates="user")
+  properties = db.relationship("Property")
+  reservations = db.relationship("Reservation")
 
   @property
   def password(self):

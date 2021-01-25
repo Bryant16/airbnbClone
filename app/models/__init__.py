@@ -4,3 +4,4 @@ from .properties import Property
 from .reservations import Reservation
 from .reviews import Review
 from .schools import School
+from .images import Image

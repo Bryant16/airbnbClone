@@ -14,5 +14,5 @@ class Review(db.Model):
   location = db.Column(db.Integer, nullable=False)
   overall_value = db.Column(db.Integer, nullable=False)
   review = db.Column(db.Text, nullable=False)
-  property = db.relationship("Property", back_populates="reviews")
-  user = db.relationship("User", back_populates="reviews")
+  property = db.relationship("Property")
+  user = db.relationship("User")

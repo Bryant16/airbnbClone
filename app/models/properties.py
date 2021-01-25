@@ -5,7 +5,7 @@ class Property(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-  cover_photo_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=True)
+  coverphoto_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=True)
   private = db.Column(db.Boolean, nullable=False)
   nightly_rate_usd = db.Column(db.Float, nullable=False)
   address1 = db.Column(db.String, nullable=False)               # address line 1
@@ -19,8 +19,8 @@ class Property(db.Model):
   check_in = db.Column(db.Integer, nullable=False)
   check_out = db.Column(db.Integer, nullable=False)
   guest_spots = db.Column(db.Integer, nullable=False)
-  images = db.relationship("Image", back_populates="property")
-  user = db.relationship("User", back_populates="properties")
-  reservations = db.relationship("Reservation", back_populates="property")
-  reviews = db.relationship("Review", back_populates="property")
-  schools = db.relationship("School", back_populates="properties")
+  images = db.relationship("Image")
+  user = db.relationship("User")
+  reservations = db.relationship("Reservation")
+  reviews = db.relationship("Review")
+  schools = db.relationship("School")

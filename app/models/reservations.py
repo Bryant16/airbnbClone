@@ -7,5 +7,5 @@ class Reservation(db.Model):
   guest_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   property_id = db.Column(db.Integer, db.ForeignKey("properties.id"), nullable=False)
   date = db.Column(db.DateTime, nullable=False)
-  property = db.relationship("Property", back_populates="reservations")
-  user = db.relationship("User", back_populates="reservations")
+  property = db.relationship("Property")
+  user = db.relationship("User")

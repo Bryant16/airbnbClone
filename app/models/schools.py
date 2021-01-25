@@ -8,5 +8,5 @@ class School(db.Model):
   logo_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
   longitude = db.Column(db.Float, nullable=False)
   latitude = db.Column(db.Float, nullable=False)
-  image = db.relationship("Image", back_populates="school")
-  property = db.relationship("Property", back_populates="schools")
+  image = db.relationship("Image")
+  property = db.relationship("Property")
