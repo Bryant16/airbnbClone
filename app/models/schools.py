@@ -1,4 +1,6 @@
 from .db import db
+from .schools_properties import schools_properties
+
 
 class School(db.Model):
   __tablename__ = 'schools'
@@ -9,4 +11,5 @@ class School(db.Model):
   longitude = db.Column(db.Float, nullable=False)
   latitude = db.Column(db.Float, nullable=False)
   image = db.relationship("Image")
-  property = db.relationship("Property")
+  properties = db.relationship("Property",
+  secondary=schools_properties)

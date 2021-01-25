@@ -1,4 +1,6 @@
 from .db import db
+from .schools_properties import schools_properties
+from .properties_images import properties_images
 
 class Property(db.Model):
   __tablename__ = 'properties'
@@ -19,8 +21,9 @@ class Property(db.Model):
   check_in = db.Column(db.Integer, nullable=False)
   check_out = db.Column(db.Integer, nullable=False)
   guest_spots = db.Column(db.Integer, nullable=False)
-  images = db.relationship("Image")
+  # images = db.relationship("Image")             # ??? maybe need this
   user = db.relationship("User")
   reservations = db.relationship("Reservation")
+  photos = db.relationship("Image", secondary=properties_images)
   reviews = db.relationship("Review")
-  schools = db.relationship("School")
+  schools = db.relationship("School", secondary=schools_properties)
