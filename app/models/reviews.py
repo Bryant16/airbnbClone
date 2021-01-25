@@ -12,9 +12,8 @@ class Review(db.Model):
   check_in = db.Column(db.Integer, nullable=False)
   accuracy = db.Column(db.Integer, nullable=False)
   location = db.Column(db.Integer, nullable=False)
-  value = db.Column(db.Integer, nullable=False)
+  overall_value = db.Column(db.Integer, nullable=False)
   review = db.Column(db.Text, nullable=False)
+  
   property = db.relationship(Property, back_populates="reviews")
   reviewer = db.relationship(User, back_populates="reviews")
-
-
