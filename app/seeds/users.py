@@ -10,7 +10,7 @@ def seed_users():
     admin = User(username="Admin", email="admin@aa.io",
                 password="SeptCohort2020!")
 
-    db.session.add([demo, admin])
+    db.session.bulk_save_objects([demo, admin])
 
     db.session.commit()
 

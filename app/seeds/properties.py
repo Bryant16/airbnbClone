@@ -3,24 +3,27 @@ from faker import Faker
 fake = Faker()
 
 
-def geo_date():
-        print(fake.local_latlng())
-
-geo_date()
-
 def seed_properties():
-    pass
-
-    # demo = Property(owner_id='Demo', coverphoto_id='demo@aa.io',
-    #                 private='password', nightly_rate_usd=n/a, )
-
-    # admin = Property(username="Admin", email="admin@aa.io",
-    #             password="SeptCohort2020!")
-
-    # db.session.add([])
-
-    # db.session.commit()
-
+    for i in range(1,21):
+        local = fake.local_latlng()
+        db.session.add(Property(
+            owner_id= 1 ,
+            coverphoto_id = i,
+            private = True,
+            nightly_rate_usd= 20.00 * i,
+            address1 = fake.address(),
+            city= local[2],
+            zip_code= 00000,
+            latitude=local[0],
+            longitude=local[1],
+            listing_title =fake.sentence(nb_words=10, variable_nb_words=False),
+            description= fake.sentence(nb_words=15, variable_nb_words=False),
+            check_in= 1500,
+            check_out= 0000,
+            guest_spots=i ,
+        ))
+        db.session.commit()
+ 
 
 def undo_properties():
     db.session.execute('TRUNCATE properties;')
