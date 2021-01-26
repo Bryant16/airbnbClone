@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { nanoid } from 'nanoid';
@@ -7,17 +7,15 @@ import { LogIn } from '../../store/session';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
+  const user = useSelector(state => state.session.user);
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isUser, setIsUser] = useState(false);
 
   const onLogin = (e) => {
     e.preventDefault();
     dispatch(LogIn(email, password))
-      .then(() => setIsUser(true))
       .catch(err => setErrors(err.errors || []));
   };
 
@@ -29,9 +27,7 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  useEffect(() => {}, [isUser]);
-
-  return isUser
+  return user
     ? <Redirect to='/' />
     : (
       <form onSubmit={onLogin}>
