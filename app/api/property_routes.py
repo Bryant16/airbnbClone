@@ -10,9 +10,3 @@ def soloProperty(id):
     soloProp = Property.query.get(id)
     print(soloProp)
     return jsonify(soloProp.to_dict())
-
-
-# @user_routes.route('/<int:id>')
-# def user(id):
-#     user = User.query.get(id)
-#     return user.to_dict()
