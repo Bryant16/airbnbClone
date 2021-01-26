@@ -29,7 +29,7 @@ export const LogOut = () => async dispatch => {
 };
 
 export const Restore = () => async dispatch => {
-  const restoreResponse = await window.fetch('/api/auth', {
+  const restoreResponse = await window.fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -40,7 +40,7 @@ export const Restore = () => async dispatch => {
 };
 
 export const SignUp = (username, email, password) => async dispatch => {
-  const signupResponse = await window.fetch('/api/users', {
+  const signupResponse = await window.fetch('/api/users/', {
     method: 'POST',
     body: JSON.stringify({ username, email, password })
   });
