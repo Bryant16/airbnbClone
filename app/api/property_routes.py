@@ -9,4 +9,4 @@ property_routes = Blueprint('property', __name__)
 def soloProperty(id):
     soloProp = Property.query.get(id)
     print(soloProp)
-    return jsonify(soloProp.to_dict())
+    return jsonify(soloProp.to_dict)
