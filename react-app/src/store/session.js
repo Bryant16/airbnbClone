@@ -40,11 +40,18 @@ export const Restore = () => async dispatch => {
 };
 
 export const SignUp = (username, email, password) => async dispatch => {
-  const signupResponse = await window.fetch('/api/users/', {
+  const signupResponse = await window.fetch('/api/auth/signup', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({ username, email, password })
   });
-  if (signupResponse) dispatch(constructSession(signupResponse.data.user));
+  const user = await signupResponse.json();
+  if (!user.errors) return dispatch(constructSession(signupResponse.data.user));
+  const outErr = new Error();
+  outErr.errors = [...user.errors];
+  throw outErr;
 };
 
 export default function sessionReducer (state = { user: null }, action) {

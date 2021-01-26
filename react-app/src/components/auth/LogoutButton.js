@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LogOut } from '../../store/session';
 
 const LogoutButton = () => {
-  const user = useSelector(state => state.user);
+  const user = useSelector(state => state.session.user);
 
   const dispatch = useDispatch();
   const onLogout = (e) => {

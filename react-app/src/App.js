@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -14,8 +14,6 @@ function App () {
   console.log('App?');
   const dispatch = useDispatch();
 
-  const [authenticated, setAuthenticated] = useState(false);
-
   useEffect(() => {
     dispatch(Restore());
   }, [dispatch]);
@@ -28,15 +26,15 @@ function App () {
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact authenticated={authenticated}>
+        <ProtectedRoute path='/users' exact>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact authenticated={authenticated}>
+        <ProtectedRoute path='/users/:userId' exact>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact authenticated={authenticated}>
+        <ProtectedRoute path='/' exact>
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
