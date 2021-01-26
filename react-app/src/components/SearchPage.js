@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+
+import SearchResultListing from "./SearchResultListing";
 
 const SearchPage = () => {
+  const [searchListings, setSearchListings] = useState();
   const searchResults = useSelector((state) => {
     return state.search.properties;
   });
-  console.log(searchResults);
+  useEffect(() => {
+    if (!searchListings) {
+
+    }
+  }, []);
+
   return (
     <div>
       {!searchResults && <span>searching...</span>}
       {searchResults &&
         searchResults.map((result) => {
-          return (
-            <NavLink to={`/properties/${result.id}`}>
-              <div>{result.listing_title}</div>
-            </NavLink>
-          );
+          return <SearchResultListing listing={result} />;
         })}
     </div>
   );
