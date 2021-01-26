@@ -5,13 +5,11 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { Restore } from './store/session';
 
 function App () {
-  console.log('App?');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,15 +26,15 @@ function App () {
         <Route path='/sign-up' exact>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact>
+        <Route exact path='/users'>
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact>
+        </Route>
+        <Route exact path='/users/:userId'>
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact>
+        </Route>
+        <Route path='/'>
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
