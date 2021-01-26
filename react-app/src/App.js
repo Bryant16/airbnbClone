@@ -17,7 +17,17 @@ function App() {
 
   const [authenticated, setAuthenticated] = useState(false);
 
+  // const searchResults = useSelector((state) => {
+  //   return state.search.properties;
+  // });
+
+  // const [listingResults, setListingResults] = useState();
+
   useEffect(() => {
+    // if (searchResults) {
+    //   setListingResults(searchResults);
+    //   dispatch()
+    // }
     dispatch(Restore());
   }, [dispatch]);
 

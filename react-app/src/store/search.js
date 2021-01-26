@@ -5,8 +5,10 @@ const setSearchProperties = (properties) => ({
   properties,
 });
 
-export const search = (location) => async (dispatch) => {
-  const res = await fetch(`/api/search/?location=${location}`);
+export const search = ({ searchLocation, guestNumber }) => async (dispatch) => {
+  const res = await fetch(
+    `/api/search/?location=${searchLocation}&&guests=${guestNumber}`
+  );
   const properties = await res.json();
   dispatch(setSearchProperties(properties));
 };
