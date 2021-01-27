@@ -13,3 +13,11 @@ class School(db.Model):
   image = db.relationship("Image")
   properties = db.relationship("Property",
   secondary=schools_properties)
+
+
+@property
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "name": self.name
+    }
