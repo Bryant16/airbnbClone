@@ -12,7 +12,7 @@ export const LogIn = (email, password) => async dispatch => {
     },
     body: JSON.stringify({ email, password })
   });
-  const user = await loginResponse.json();
+  const { user } = await loginResponse.json();
   if (!user.errors) return dispatch(constructSession(user));
   const outErr = new Error();
   outErr.errors = [...user.errors];
@@ -34,7 +34,7 @@ export const Restore = () => async dispatch => {
       'Content-Type': 'application/json'
     }
   });
-  const user = await restoreResponse.json();
+  const { user } = await restoreResponse.json();
   if (!user.errors) return dispatch(constructSession(user));
   return dispatch(constructSession(null));
 };
@@ -47,7 +47,7 @@ export const SignUp = (username, email, password) => async dispatch => {
     },
     body: JSON.stringify({ username, email, password })
   });
-  const user = await signupResponse.json();
+  const { user } = await signupResponse.json();
   if (!user.errors) return dispatch(constructSession(signupResponse.data.user));
   const outErr = new Error();
   outErr.errors = [...user.errors];

@@ -4,8 +4,7 @@ const lookup = user => ({ type: ENUMERATE, user });
 
 export const LookUp = userId => async dispatch => {
   const lookupResponse = await window.fetch(`/api/users/${userId}`);
-  const user = await lookupResponse.json();
-
+  const { user } = await lookupResponse.json();
 };
 
 export default function profileReducer (state = { user: null }, action) {
