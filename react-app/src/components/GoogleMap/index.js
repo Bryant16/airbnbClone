@@ -3,8 +3,12 @@ import GoogleMapReact from "google-map-react";
 import "./map.css";
 import { parseWithOptions } from "date-fns/fp";
 
-const Pin = () => {
-  return <h1>Pin</h1>;
+const Pin = ({ searchResult }) => {
+  return (
+    <div className="pin">
+      <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
+    </div>
+  );
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
@@ -22,7 +26,13 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             defaultZoom={8}
           >
             {searchResults.map((result) => {
-              return <Pin lat={result.latitude} lng={result.longitude} />;
+              return (
+                <Pin
+                  lat={result.latitude}
+                  lng={result.longitude}
+                  searchResult={result}
+                />
+              );
             })}
           </GoogleMapReact>
         </div>
