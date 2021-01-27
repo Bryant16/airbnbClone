@@ -12,5 +12,7 @@ export default function profileReducer (state = { user: null }, action) {
   switch (action.type) {
     case ENUMERATE:
       return { ...state, user: action.user };
+    default:
+      return state;
   }
 }
