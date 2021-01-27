@@ -23,7 +23,12 @@ const selectionRange = {
 function handleSelect(ranges){
   setStartDate(ranges.selection.startDate);
   setEndDate(ranges.selection.endDate);
-}
+};
+
+const handleDateButton= (e)=>{
+  e.preventDefault();
+  setShowDates(!showDates);
+};
   const handleLocation = async (e) => {
     setSearchLocation(e.target.value);
   };
@@ -35,7 +40,7 @@ function handleSelect(ranges){
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(startDate, endDate)
-    dispatch(search({ searchLocation, guestNumber }));
+    dispatch(search({ searchLocation, guestNumber, startDate, endDate }));
     history.push("/search");
   };
 
@@ -45,7 +50,7 @@ function handleSelect(ranges){
       <input type="text" onChange={handleLocation}></input>
       <label>number of guests</label>
       <input type="number" onChange={handleGuests}></input>
-      <button onClick={()=> setShowDates(!showDates)}>dates</button>
+      <button onClick={handleDateButton}>dates</button>
       <button>submit</button>
       {showDates && <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>}
     </form>
