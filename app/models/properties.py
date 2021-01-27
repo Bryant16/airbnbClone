@@ -27,3 +27,25 @@ class Property(db.Model):
   photos = db.relationship("Image", secondary=properties_images)
   reviews = db.relationship("Review")
   schools = db.relationship("School", secondary=schools_properties)
+
+  @property
+  def to_dict(self):
+    return {
+      "id":self.id,
+      "owner_id": self.owner_id,
+      "coverphoto_id": self.coverphoto_id,
+      "private": self.private,
+      "nightly_rate_usd": self.nightly_rate_usd,
+      "address1": self.address1,
+      "address2": self.address2,
+      "city": self.city,
+      "zip_code": self.zip_code,
+      "longitude": self.longitude,
+      "latitude": self.latitude,
+      "listing_title": self.listing_title,
+      "description": self.description,
+      "check_in": self.check_in,
+      "check_out": self.check_out,
+      "guest_spots": self.guest_spots,
+      "reservations": [reservation.to_dict for reservation in self.reservations],
+    }
