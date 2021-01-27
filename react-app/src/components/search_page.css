@@ -17,17 +17,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  border: 1px solid gray;
-  margin-bottom: 10px;
+  align-content: center;
+  width: 20vw;
+  padding: 20px;
+  border-bottom: 1px solid rgb(208, 208, 208);
+  margin-left: 3vw;
+  margin-bottom: 1vh;
   text-decoration: none;
   color: black;
+  width: 33vw;
 }
 .listingMapContainer_listings img {
-  width: 100px;
-  height: 100px;
+  width: 18em;
+  height: 9em;
+  border-radius: 0.2em;
 }
 .listingMapContainer__googlemap {
   display: flex;
@@ -37,4 +40,8 @@
   top: 0;
   right: 0;
   z-index: 1;
+}
+
+.button__filter {
+  width: 5em;
 }
