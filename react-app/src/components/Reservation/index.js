@@ -13,8 +13,13 @@ const Reservation = ({ property }) => {
   const {user} =  useSelector((state) => state.session);
   const history = useHistory();
   const handleSelect= (ranges)=> {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
+    if(!user){
+        history.push('/login')
+    }else{
+
+        setStartDate(ranges.selection.startDate);
+        setEndDate(ranges.selection.endDate);
+    }
   };
 
   const selectionRange = {
@@ -23,7 +28,7 @@ const Reservation = ({ property }) => {
     key: "selection",
   };
   console.log(user)
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
       e.preventDefault();
       if(!user){
           history.push('/login')
@@ -34,7 +39,19 @@ const Reservation = ({ property }) => {
             property: property,
             numGuest: numGuest
           }
-    
+          try{
+          const createReservation = await fetch('/api/reservation', {
+              method:'post',
+              headers: {
+                  "Content-type":"application/json"
+              },
+              body: JSON.stringify(newReservation)
+          });
+          const data = await createReservation.json();
+        }catch(e){
+            console.log(e)
+        }
+
           alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
           console.log(newReservation)
       }
