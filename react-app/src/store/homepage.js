@@ -7,7 +7,7 @@ const load = schools => ({
 
 export const getSchools = () => async dispatch =>{
     console.log("GETSCHOOLS IS BEING CALLED")
-    const res = await fetch("/api/")
+    const res = await fetch("/api/schools")
     console.log("res:", res)
     if (res.ok){
         const objWithSchoolsKey = await res.json()
