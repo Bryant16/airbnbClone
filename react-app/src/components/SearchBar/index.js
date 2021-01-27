@@ -10,6 +10,7 @@ const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [searchLocation, setSearchLocation] = useState("");
+  const [showDates, setShowDates] = useState(false);
   const [guestNumber, setGuestNumber] = useState(1);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,8 +45,9 @@ function handleSelect(ranges){
       <input type="text" onChange={handleLocation}></input>
       <label>number of guests</label>
       <input type="number" onChange={handleGuests}></input>
-      <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>
+      <button onClick={()=> setShowDates(!showDates)}>dates</button>
       <button>submit</button>
+      {showDates && <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>}
     </form>
   );
 };
