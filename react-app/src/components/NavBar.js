@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import LogoutButton from './auth/LogoutButton';
 import SearchBar from './SearchBar'
+import logo from '../collegeLogo.png'
 import './NavBar.css'
 
 const NavBar = () => {
@@ -12,7 +13,7 @@ const NavBar = () => {
   return (
     <nav className='navbar'>
       <div className='navbar_logo'>
-        <img src='collegeLogo.png'></img>
+        <img src={logo}></img>
       </div>
       <div className='navbar_search'>
         <SearchBar />

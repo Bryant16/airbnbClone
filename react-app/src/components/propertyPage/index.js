@@ -11,12 +11,12 @@ const PropertyPage = () => {
     useEffect(() => {
         dispatch(getPage(propertyId))
     }, [dispatch])
-
+   
     return (
         <div>
             <h1>{`${property.listing_title}`}</h1>
             <div>
-                <img src={property.coverphoto_id} alt="coverPhoto" />
+                <img src={property.coverphoto_url} alt="coverPhoto" />
             </div>
             <div>
                 <h3>{`Host: ${property.owner_id}`}</h3>
