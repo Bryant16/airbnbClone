@@ -40,8 +40,8 @@
 
 @media screen and (min-width: 799px) {
   .google-map {
-    height: 50vh;
-    width: 50vh;
+    height: 100vh;
+    width: 100vh;
   }
 
   .map-h2 {

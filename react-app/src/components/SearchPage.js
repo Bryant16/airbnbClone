@@ -10,6 +10,7 @@ const SearchPage = () => {
   const centerMapCoordinates = useSelector((state) => {
     return state.search.searchLocation;
   });
+  const [showMap, setShowMap] = useState(false);
   const [showPrivate, setShowPrivate] = useState("hello");
 
   const togglePrivate = async (e) => {
@@ -19,7 +20,10 @@ const SearchPage = () => {
       setShowPrivate(!showPrivate);
     }
   };
-
+  useEffect(() => {
+    setShowMap(!showMap);
+    setShowMap(true);
+  }, [centerMapCoordinates]);
   // const [listingResults, setListingResults] = useState();
 
   // useEffect(() => {
@@ -50,7 +54,10 @@ const SearchPage = () => {
             })}
           </div>
           <div>
-            {centerMapCoordinates && <GoogleMap locationObj={centerMapCoordinates} />}
+            <GoogleMap
+              locationObj={centerMapCoordinates}
+              searchResults={searchResults}
+            />
           </div>
         </>
       )}
