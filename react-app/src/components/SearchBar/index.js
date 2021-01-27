@@ -47,7 +47,7 @@ const handleDateButton= (e)=>{
   return (
     <form onSubmit={handleSubmit}>
       <label>location</label>
-      <input type="text" onChange={handleLocation}></input>
+      <input type="text" className='navbar_search_searchbar' onChange={handleLocation}></input>
       <label>number of guests</label>
       <input type="number" onChange={handleGuests}></input>
       <button onClick={handleDateButton}>dates</button>

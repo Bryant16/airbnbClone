@@ -4,13 +4,16 @@ import { useSelector } from 'react-redux';
 
 import LogoutButton from './auth/LogoutButton';
 import SearchBar from './SearchBar'
-
+import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
 
   return (
-    <nav>
+    <nav className='navbar'>
+      <div className='navbar_logo'>
+        <img src='collegeLogo.png'></img>
+      </div>
       <div className='navbar_search'>
         <SearchBar />
       </div>
