@@ -11,3 +11,7 @@ div {
 a {
   text-decoration: none;
 }
+
+#div__content {
+  padding-top: 2vh;
+}

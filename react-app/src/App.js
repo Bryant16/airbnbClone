@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SearchPage from "./components/SearchPage";
-import PropertyPage from "./components/propertyPage/index"
+import PropertyPage from "./components/propertyPage/index";
 import { Restore } from "./store/session";
 
 function App() {
@@ -34,33 +34,35 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Switch>
-        <Route path="/login" exact>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact>
-          <SignUpForm />
-        </Route>
-        <Route exact path="/users">
-          <UsersList />
-        </Route>
-        <Route exact path="/users/:userId">
-          <User />
-        </Route>
+      <div id="div__content">
+        <Switch>
+          <Route path="/login" exact>
+            <LoginForm />
+          </Route>
+          <Route path="/sign-up" exact>
+            <SignUpForm />
+          </Route>
+          <Route exact path="/users">
+            <UsersList />
+          </Route>
+          <Route exact path="/users/:userId">
+            <User />
+          </Route>
 
-        <Route path="/sign-up" exact>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/search" exact>
-          <SearchPage />
-        </Route>
-        <Route path="/properties/:propertyId" >
-          <PropertyPage />
-        </Route>
-      </Switch>
+          <Route path="/sign-up" exact>
+            <SignUpForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/search" exact>
+            <SearchPage />
+          </Route>
+          <Route path="/properties/:propertyId">
+            <PropertyPage />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

@@ -1,37 +1,13 @@
-/* .div__container {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.div__listings {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  flex-grow: 1;
-}
-
-.div__googlemap {
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  min-width: 60%;
-  flex-grow: 1;
-}
-
-.div__listings_property{
-  border: 1px solid black;
-} */
-
-.listingMapContainer{
+.listingMapContainer {
   display: flex;
   flex-direction: row;
+  background-color: white;
 }
 
 .listingMapContainer_listings {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   flex-grow: 1;
   width: 100px;
   /* border: 1px solid black; */
@@ -56,5 +32,9 @@
 .listingMapContainer__googlemap {
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
+  position: fixed !important;
+  width: 62vw;
+  top: 0;
+  right: 0;
+  z-index: 1;
 }

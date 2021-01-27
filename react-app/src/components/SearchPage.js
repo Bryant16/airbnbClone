@@ -36,10 +36,11 @@ const SearchPage = () => {
   return (
     <div className="div__container">
       {!searchResults && <span>searching...</span>}
-      {searchResults && <button onClick={togglePrivate}>Private</button>}
+
       {searchResults && (
-          <div className="listingMapContainer">
-            <div className='listingMapContainer_listings'>
+        <div className="listingMapContainer">
+          <button onClick={togglePrivate}>Private</button>
+          <div className="listingMapContainer_listings">
             {searchResults.map((result) => {
               if (showPrivate == "hello") {
                 return <SearchResultListing listing={result} />;
@@ -60,7 +61,7 @@ const SearchPage = () => {
               searchResults={searchResults}
             />
           </div>
-          </div>
+        </div>
       )}
     </div>
   );
