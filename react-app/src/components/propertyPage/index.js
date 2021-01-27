@@ -8,7 +8,6 @@ const PropertyPage = () => {
     const dispatch = useDispatch();
     const { propertyId } = useParams();
     const { property } = useSelector((state) => state.property);
-    console.log(property)
     useEffect(() => {
         dispatch(getPage(propertyId))
     }, [dispatch])
@@ -20,7 +19,12 @@ const PropertyPage = () => {
                 <img src={property.coverphoto_id} alt="coverPhoto" />
             </div>
             <div>
-                <h1>{`${property.description}`}</h1>
+                <h3>{`Host: ${property.owner_id}`}</h3>
+                <h3>{`${property.address1}`}</h3>
+                <h2>{`${property.description}`}</h2>
+                <h3>{`Private: ${property.private}`}</h3>
+                <h3>{`Nightly Rate: $${property.nightly_rate_usd}`}</h3>
+                <h3>{`Number of guest allowed: ${property.guest_spots}`}</h3>
             </div>
         </div>
     )
