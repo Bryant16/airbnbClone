@@ -13,30 +13,25 @@
   /* border: 1px solid black; */
   padding-top: 10px;
 }
-.div__listings_property {
+div.div__listings_property {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: start;
   align-content: center;
-  width: 20vw;
   padding: 20px;
   border-bottom: 1px solid rgb(208, 208, 208);
   margin-left: 3vw;
   margin-bottom: 1vh;
   text-decoration: none;
   color: black;
-  width: 33vw;
+  width: 35vw !important;
 }
-.listingMapContainer_listings img {
-  width: 18em;
-  height: 9em;
-  border-radius: 0.2em;
-}
+
 .listingMapContainer__googlemap {
   display: flex;
   flex-direction: column;
   position: fixed !important;
-  width: 62vw;
+  width: 55vw;
   top: 0;
   right: 0;
   z-index: 1;
@@ -44,4 +39,27 @@
 
 .button__filter {
   width: 5em;
+}
+
+.div__coverphoto {
+  /* flex-grow: 4; */
+  background-color: lavender;
+}
+.img__listing_coverphoto {
+  height: 11em;
+  border-radius: 0.7em;
+}
+
+.div__listings_info {
+
+  flex-grow: 2;
+  display: flex;
+  padding: 1em;
+  /* justify-self: flex-end; */
+  /* align-self: stretch; */
+}
+
+.span__nightly_rate {
+  align-self: flex-end;
+  justify-content: flex-end;
 }
