@@ -1,4 +1,5 @@
 from app.models import db, Property
+import random
 from faker import Faker
 fake = Faker()
 
@@ -11,7 +12,8 @@ def seed_properties():
             coverphoto_id = i,
             private = True,
             nightly_rate_usd= 20.00 * i,
-            address1 = fake.address(),
+            address1 = fake.street_address(),
+            address2 = f'{random.randrange(1,2000)} apt',
             city= local[2],
             zip_code= 00000,
             latitude=local[0],
