@@ -6,9 +6,9 @@ const load = property => ({
 });
 
 export const getPage = (id) => async dispatch => {
-    const res = await fetch (`api/property/${id}`)
+    const res = await fetch(`/api/property/${id}`)
     if (res.ok) {
-    const property = await res.json()
+        const property = await res.json()
         dispatch(load(property));
     }
 };

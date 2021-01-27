@@ -8,10 +8,11 @@ import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SearchPage from "./components/SearchPage";
+import PropertyPage from "./components/propertyPage/index"
 import { Restore } from "./store/session";
 
 function App() {
-  console.log("App?");
+  // console.log("App?");
   const dispatch = useDispatch();
 
   const [authenticated, setAuthenticated] = useState(false);
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path="/search" exact>
           <SearchPage />
+        </Route>
+        <Route path="/properties/:propertyId" >
+          <PropertyPage />
         </Route>
       </Switch>
     </BrowserRouter>
