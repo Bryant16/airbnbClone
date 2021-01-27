@@ -43,7 +43,6 @@ div.div__listings_property {
 
 .div__coverphoto {
   /* flex-grow: 4; */
-  background-color: lavender;
 }
 .img__listing_coverphoto {
   height: 11em;
@@ -51,7 +50,6 @@ div.div__listings_property {
 }
 
 .div__listings_info {
-
   flex-grow: 2;
   display: flex;
   padding: 1em;
