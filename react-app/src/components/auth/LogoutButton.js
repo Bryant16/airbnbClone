@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { LogOut } from '../../store/session';
+import { LogOut } from "../../store/session";
 
 const LogoutButton = () => {
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
   const onLogout = (e) => {
