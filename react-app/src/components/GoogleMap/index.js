@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import "./map.css";
+import { NavLink } from "react-router-dom";
 import { parseWithOptions } from "date-fns/fp";
 
 const Pin = ({ searchResult }) => {
   return (
-    <div className="pin">
-      <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
-    </div>
+    <NavLink to={`/properties/${searchResult.id}`}>
+      <div className="pin">
+        <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
+      </div>
+    </NavLink>
   );
 };
 
