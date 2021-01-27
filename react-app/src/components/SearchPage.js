@@ -38,8 +38,8 @@ const SearchPage = () => {
       {!searchResults && <span>searching...</span>}
       {searchResults && <button onClick={togglePrivate}>Private</button>}
       {searchResults && (
-        <>
-          <div className="div__listings">
+          <div className="listingMapContainer">
+            <div className='listingMapContainer_listings'>
             {searchResults.map((result) => {
               if (showPrivate == "hello") {
                 return <SearchResultListing listing={result} />;
@@ -54,13 +54,13 @@ const SearchPage = () => {
               }
             })}
           </div>
-          <div className="div__googlemap">
+          <div className="listingMapContainer__googlemap">
             <GoogleMap
               locationObj={centerMapCoordinates}
               searchResults={searchResults}
             />
           </div>
-        </>
+          </div>
       )}
     </div>
   );

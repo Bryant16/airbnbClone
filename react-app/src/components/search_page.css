@@ -1,14 +1,60 @@
-.div__container {
+/* .div__container {
   display: flex;
-  width: 100%;
+  flex-direction: column;
   align-items: stretch;
 }
 
 .div__listings {
-  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  flex-grow: 1;
 }
 
 .div__googlemap {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
   min-width: 60%;
-  /* flex-grow: 1; */
+  flex-grow: 1;
+}
+
+.div__listings_property{
+  border: 1px solid black;
+} */
+
+.listingMapContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.listingMapContainer_listings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100px;
+  /* border: 1px solid black; */
+  padding-top: 10px;
+}
+.div__listings_property {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+}
+.listingMapContainer_listings img {
+  width: 100px;
+  height: 100px;
+}
+.listingMapContainer__googlemap {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
 }
