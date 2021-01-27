@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSchools } from "../../store/homepage"
+import { getSchools } from "../../store/homepage";
+import "./homePage.css"
 
 
 const SchoolListings = () => {
@@ -16,7 +17,10 @@ const SchoolListings = () => {
         <div>
             {schools.map(school => {
                 return(
-                    <h1>{school.name}</h1>
+                    <div>
+                        <img className="schoolLogoImage" src={school.logo_url} alt="schoolImage"/>
+                        <h2 key="name">{school.name}</h2>
+                    </div>
                 )
             })}
         </div>
