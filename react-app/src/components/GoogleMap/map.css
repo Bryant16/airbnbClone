@@ -1,0 +1,59 @@
+.map-h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 20px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.google-map {
+  width: 20vh;
+}
+
+#div__circle {
+  position: relative;
+  right: 40px;
+  bottom: 30px;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgb(0, 169, 128);
+  border-radius: 90%;
+  background-color: rgb(0, 169, 128);
+  opacity: 0.5;
+  z-index: 4;
+}
+
+.pin {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  color: var(--main-blue);
+}
+
+.pin-icon {
+  font-size: 4rem;
+}
+
+.pin-text {
+  font-size: 1.3em;
+}
+
+@media screen and (min-width: 799px) {
+  .google-map {
+    height: 50vh;
+    width: 50vh;
+  }
+
+  .map-h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .pin {
+    width: 10vw;
+  }
+
+  .pin-icon {
+    font-size: 10vw;
+  }
+}
