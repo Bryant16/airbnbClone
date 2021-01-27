@@ -1,4 +1,5 @@
 from .db import db
+from .images import Image
 from .schools_properties import schools_properties
 
 
@@ -20,7 +21,9 @@ class School(db.Model):
     return {
       "id": self.id,
       "name": self.name,
-      "logo_id": self.logo_id,
+      "logo_url": Image.query.get(self.logo_id).URL,
       "longitude": self.longitude,
       "latitude": self.latitude
     }
+
+# "coverphoto_url": Image.query.get(self.coverphoto_id).URL,
