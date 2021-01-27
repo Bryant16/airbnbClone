@@ -33,3 +33,9 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "email": self.email
     }
+
+  def to_owner(self):
+    return {
+      **self.to_dict(),
+      "properties": [prop.to_dict for prop in self.properties]
+    }

@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import ProfilePage from './components/ProfilePage';
 import SearchPage from './components/SearchPage';
 import PropertyPage from './components/propertyPage/index';
+import LocationPage from './components/LocationPage';
 import { Restore } from './store/session';
 
 function App () {
@@ -47,7 +48,6 @@ function App () {
         <Route exact path='/users/:userId'>
           <ProfilePage />
         </Route>
-
         <Route path='/sign-up' exact>
           <SignUpForm
             authenticated={authenticated}
@@ -59,6 +59,9 @@ function App () {
         </Route>
         <Route path='/properties/:propertyId'>
           <PropertyPage />
+        </Route>
+        <Route exact path='/locations/:location'>
+          <LocationPage />
         </Route>
       </Switch>
     </BrowserRouter>

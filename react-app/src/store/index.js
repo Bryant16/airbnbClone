@@ -4,12 +4,14 @@ import sessionReducer from './session';
 import propertyPageReducer from './propertyPage';
 import searchReducer from './search';
 import profilePageReducer from './profilePage';
+import reelReducer from './reel';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   property: propertyPageReducer,
   search: searchReducer,
-  profile: profilePageReducer
+  profile: profilePageReducer,
+  reel: reelReducer
 });
 
 let enhancer;

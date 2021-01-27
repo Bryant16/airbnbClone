@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 function UsersList () {
+  const loggedInUser = useSelector(state => state.session.user);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -13,13 +15,15 @@ function UsersList () {
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
-    return (
-      <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-      </li>
-    );
-  });
+  const userComponents = loggedInUser
+    ? users.map((user) => {
+        return (
+          <li key={user.id}>
+            <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+          </li>
+        );
+      })
+    : null;
 
   return (
     <>
