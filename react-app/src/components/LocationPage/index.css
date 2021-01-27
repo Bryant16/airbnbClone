@@ -1,0 +1,5 @@
+.location-page-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
