@@ -8,11 +8,9 @@ import "./homePage.css"
 const SchoolListings = () => {
     const dispatch = useDispatch();
     const schools = useSelector((state) => state.schools);
-    console.log("before useEffect")
     useEffect(() => {
         dispatch(getSchools())
     }, [dispatch])
-    console.log(schools)
     return (
         <div>
             {schools.map(school => {
