@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import GoogleMap from "./GoogleMap";
 import SearchResultListing from "./SearchResultListing";
+import "./search_page.css";
 
 const SearchPage = () => {
   const searchResults = useSelector((state) => {
@@ -33,12 +34,12 @@ const SearchPage = () => {
   // }, [searchResults]);
 
   return (
-    <div>
+    <div className="div__container">
       {!searchResults && <span>searching...</span>}
       {searchResults && <button onClick={togglePrivate}>Private</button>}
       {searchResults && (
         <>
-          <div>
+          <div className="div__listings">
             {searchResults.map((result) => {
               if (showPrivate == "hello") {
                 return <SearchResultListing listing={result} />;
@@ -53,7 +54,7 @@ const SearchPage = () => {
               }
             })}
           </div>
-          <div>
+          <div className="div__googlemap">
             <GoogleMap
               locationObj={centerMapCoordinates}
               searchResults={searchResults}
