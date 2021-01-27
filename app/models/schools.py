@@ -25,5 +25,3 @@ class School(db.Model):
       "longitude": self.longitude,
       "latitude": self.latitude
     }
-
-# "coverphoto_url": Image.query.get(self.coverphoto_id).URL,

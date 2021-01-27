@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SearchPage from "./components/SearchPage";
 import PropertyPage from "./components/propertyPage/index"
+import SchoolListings from "./components/HomePage/index"
 import { Restore } from "./store/session";
 
 function App() {
@@ -59,6 +60,9 @@ function App() {
         </Route>
         <Route path="/properties/:propertyId" >
           <PropertyPage />
+        </Route>
+        <Route path="/" exact >
+          <SchoolListings />
         </Route>
       </Switch>
     </BrowserRouter>

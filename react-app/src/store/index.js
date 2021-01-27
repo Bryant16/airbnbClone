@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import propertyPageReducer from "./propertyPage";
 import searchReducer from "./search";
+import schoolsReducer from "./homepage"
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   property: propertyPageReducer,
   search: searchReducer,
+  schools: schoolsReducer,
 });
 
 let enhancer;

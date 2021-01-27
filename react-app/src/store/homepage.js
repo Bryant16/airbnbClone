@@ -1,26 +1,28 @@
-const LOAD = "schools/LOAD"
+const LOAD = "HomePage/LOAD"
 
 const load = schools => ({
-    type: LOAD,
-    schools
+    type: LOAD, //{schools:{schools:[]}} => {type: LOAD, schools:[]}
+    schools: schools
 })
 
-export const getSchools = () => {
-    const res = fetch("/api/")
+export const getSchools = () => async dispatch =>{
+    console.log("GETSCHOOLS IS BEING CALLED")
+    const res = await fetch("/api/")
+    console.log("res:", res)
     if (res.ok){
-        const listings = await res.json()
-        dispatch(load(listings));
+        const objWithSchoolsKey = await res.json()
+        dispatch(load(objWithSchoolsKey.schools));
+    }else {
+        console.log("failed res")
     }
 }
 
-const initialState = {
-    schools: {}
-}
 
-const schoolsReducer = (state = initialState, action) => {
+
+const schoolsReducer = (state = [], action) => {
     switch(action.type) {
         case LOAD: {
-            return {...state, schools: action.schools}
+            return action.schools
         }
         default:
             return state;
