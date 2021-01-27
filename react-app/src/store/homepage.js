@@ -1,11 +1,11 @@
-const LOAD = "properties/LOAD"
+const LOAD = "schools/LOAD"
 
-const load = properites => ({
+const load = schools => ({
     type: LOAD,
-    properites
+    schools
 })
 
-export const getProduct = () => {
+export const getSchools = () => {
     const res = fetch("/api/")
     if (res.ok){
         const listings = await res.json()
@@ -14,13 +14,13 @@ export const getProduct = () => {
 }
 
 const initialState = {
-    properites: {}
+    schools: {}
 }
 
-const properitesReducer = (state = initialState, action) => {
+const schoolsReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
-            return {...state, property: action.property}
+            return {...state, schools: action.schools}
         }
         default:
             return state;
@@ -28,4 +28,4 @@ const properitesReducer = (state = initialState, action) => {
 }
 
 
-export default properitesReducer;
+export default schoolsReducer;
