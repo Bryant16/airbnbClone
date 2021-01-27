@@ -15,9 +15,12 @@ class School(db.Model):
   secondary=schools_properties)
 
 
-@property
+  @property
   def to_dict(self):
     return {
       "id": self.id,
-      "name": self.name
+      "name": self.name,
+      "logo_id": self.logo_id,
+      "longitude": self.longitude,
+      "latitude": self.latitude
     }
