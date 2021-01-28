@@ -1,5 +1,9 @@
 .schoolLogoImage{
-    display: flex;
     height: 100px;
     width: auto;
+}
+
+.schoolName{
+    font-size: 20px;
+    color: black;
 }
