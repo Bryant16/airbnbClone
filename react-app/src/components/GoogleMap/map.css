@@ -22,10 +22,10 @@ div.pin {
   display: flex;
   height: 28px;
   justify-content: center;
-  padding: 8px;
+  padding: 3px;
   position: relative;
   white-space: nowrap;
-  max-width: 5vw;
+  max-width: 4vw;
 }
 
 @media screen and (min-width: 799px) {
