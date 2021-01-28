@@ -5,9 +5,11 @@
   align-items: center;
   position: sticky;
   top: 0;
+  padding-top: 3vh;
   background-color: white;
   z-index: 100;
   width: 100%;
+  min-height: 10vh;
   box-shadow: 0em 1em 1em rgba(155, 155, 155, 0.2);
   padding-bottom: 2vh;
 }
@@ -19,12 +21,14 @@
 
 .navbar_search {
   display: flex;
-  flex-grow: 1;
   align-items: center;
 }
-.navbar_search_searchbar {
-}
+
 .navbar_links {
   display: flex;
   align-items: center;
+}
+
+.navbar_links li {
+  display: inline-block;
 }

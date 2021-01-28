@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../../store/search";
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import { DateRangePicker } from 'react-date-range';
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRangePicker } from "react-date-range";
+import "./search_bar.css";
+import { FaSearch } from "react-icons/fa";
 
 const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -15,20 +17,20 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-const selectionRange = {
-  startDate: startDate,
-  endDate: endDate,
-  key: "selection",
-};
-function handleSelect(ranges){
-  setStartDate(ranges.selection.startDate);
-  setEndDate(ranges.selection.endDate);
-};
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
+  function handleSelect(ranges) {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+  }
 
-const handleDateButton= (e)=>{
-  e.preventDefault();
-  setShowDates(!showDates);
-};
+  const handleDateButton = (e) => {
+    e.preventDefault();
+    setShowDates(!showDates);
+  };
   const handleLocation = async (e) => {
     setSearchLocation(e.target.value);
   };
@@ -39,21 +41,44 @@ const handleDateButton= (e)=>{
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(startDate, endDate)
+    console.log(startDate, endDate);
     dispatch(search({ searchLocation, guestNumber, startDate, endDate }));
     history.push("/search");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>location</label>
-      <input type="text" className='navbar_search_searchbar' onChange={handleLocation}></input>
-      <label>number of guests</label>
-      <input type="number" onChange={handleGuests}></input>
-      <button onClick={handleDateButton}>dates</button>
-      <button>submit</button>
-      {showDates && <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>}
-    </form>
+    <div id="div__search_bar">
+      <form onSubmit={handleSubmit}>
+        <div className="div__search_section">
+          <label>Location</label>
+          <br />
+          <input
+            type="text"
+            className="navbar_search_searchbar"
+            onChange={handleLocation}
+            placeholder="Where are you going?"
+          ></input>
+        </div>
+        <div className="div__search_section">
+          <label>Dates</label>
+          <br />
+          <button onClick={handleDateButton}>Add Dates</button>
+        </div>
+        <div className="div__search_section">
+          <label>Guests</label>
+          <br />
+          <input type="number" min="1" onChange={handleGuests}></input>
+        </div>
+        <div className="div__search_section">
+          <button>
+            <FaSearch />
+          </button>
+        </div>
+        {showDates && (
+          <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+        )}
+      </form>
+    </div>
   );
 };
 
