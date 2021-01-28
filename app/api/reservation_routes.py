@@ -12,6 +12,7 @@ def search():
     startDate = data["startDate"]
     endDate = data["endDate"]
     guest_id = data["user"]
+    num_guest = data["numGuest"]
     property_id = data["property"]
     date = data["startDate"]
     date_format = "%Y-%m-%d"
@@ -25,8 +26,7 @@ def search():
         # a = timedelta(days=1)
         increase = a + timedelta(days=i)
         newReservation = Reservation(
-        guest_id=guest_id, property_id=property_id, date=increase)
+        guest_id=guest_id, property_id=property_id, date=increase, numGuests=num_guest)
         db.session.add(newReservation)
         db.session.commit()
-    print('NUM DAYS', delta.days)
     return jsonify(data)
