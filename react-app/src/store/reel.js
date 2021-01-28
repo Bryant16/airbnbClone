@@ -2,7 +2,7 @@ const ENUMERATE = 'reel/ENUMERATE';
 
 const populate = list => ({ type: ENUMERATE, list });
 
-export const Populate = whereAmI => async dispatch => {
+export const PopulateProperties = whereAmI => async dispatch => {
   const propertyResponse = await window.fetch(`/api${whereAmI}/properties`);
   const { list } = await propertyResponse.json();
   return dispatch(populate(list));

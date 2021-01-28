@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Populate } from '../../store/reel';
+import { PopulateProperties } from '../../store/reel';
 import PropertySummary from './PropertySummary';
 
 import './index.css';
@@ -15,7 +15,7 @@ export default function PropertyReel () {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(Populate(whereAmI))
+    dispatch(PopulateProperties(whereAmI))
       .then(() => setLoaded(true));
   }, [dispatch, whereAmI]);
 
