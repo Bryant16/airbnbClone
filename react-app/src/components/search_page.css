@@ -45,19 +45,31 @@ div.div__listings_property {
   /* flex-grow: 4; */
 }
 .img__listing_coverphoto {
-  height: 11em;
+  width: 15em;
+  height: 10em;
   border-radius: 0.7em;
 }
 
-.div__listings_info {
+div.div__listings_info {
+  font-family: Roboto, Arial;
+  font-weight: 300;
   flex-grow: 2;
   display: flex;
+  flex-direction: column;
   padding: 1em;
-  /* justify-self: flex-end; */
-  /* align-self: stretch; */
+  justify-self: flex-end;
+  width: 100%;
 }
 
-.span__nightly_rate {
+.div__description {
+  height: 100%;
+}
+
+.div__nightly_rate {
   align-self: flex-end;
-  justify-content: flex-end;
+}
+
+span.span__night_rate-bold {
+  font-size: 1.4em;
+  font-weight: 700;
 }

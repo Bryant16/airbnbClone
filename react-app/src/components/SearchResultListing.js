@@ -12,10 +12,15 @@ const SearchResultListing = ({ listing }) => {
           />
         </div>
         <div className="div__listings_info">
-          <p>{listing.city}</p>
-          <span className="span__nightly_rate">
-            $ {listing.nightly_rate_usd}
-          </span>
+          <div className="div__description">
+            <p>{listing.city}</p>
+          </div>
+          <div className="div__nightly_rate">
+            <span className="span__night_rate-bold">
+              $ {listing.nightly_rate_usd}{" "}
+            </span>
+            / night
+          </div>
         </div>
       </div>
     </NavLink>
