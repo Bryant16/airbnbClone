@@ -54,9 +54,9 @@ div.div__listings_info {
   font-weight: 300;
   flex-grow: 2;
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
   padding: 1em;
-  justify-self: flex-end;
   width: 100%;
 }
 
@@ -64,6 +64,7 @@ div.div__listings_info h2 {
   font-size: 1.4em;
   text-decoration: none;
   font-weight: 200;
+  margin: 0;
 }
 
 .div__description {
@@ -86,7 +87,8 @@ hr {
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
-  margin-bottom: 8px;
+  margin: 8px 0 8px 0;
+  align-self: flex-start;
   /* border-bottom: 0; */
   /* border: 1px solid rgba(208, 208, 208) !important; */
 }
