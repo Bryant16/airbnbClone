@@ -13,7 +13,9 @@ const SearchResultListing = ({ listing }) => {
         </div>
         <div className="div__listings_info">
           <div className="div__description">
-            <h2>{listing.city}</h2>
+            <h2>{listing.listing_title}</h2>
+            <hr />
+            <span className="span__details">{listing.guest_spots} guests</span>
           </div>
           <div className="div__nightly_rate">
             <span className="span__night_rate-bold">

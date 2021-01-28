@@ -61,7 +61,7 @@ div.div__listings_info {
 }
 
 div.div__listings_info h2 {
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-decoration: none;
   font-weight: 200;
 }
@@ -77,4 +77,21 @@ div.div__listings_info h2 {
 span.span__night_rate-bold {
   font-size: 1.4em;
   font-weight: 500;
+}
+
+hr {
+  margin-top: 10px;
+  width: 4vw;
+  border-top: 1px solid rgba(208, 208, 208);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  margin-bottom: 8px;
+  /* border-bottom: 0; */
+  /* border: 1px solid rgba(208, 208, 208) !important; */
+}
+
+span.span__details {
+  font-size: 0.8em;
+  color: rgb(157, 157, 157);
 }
