@@ -9,6 +9,14 @@ export default function PropertyReel () {
   const list = useSelector(state => state.reel.reservationList);
   const [loaded, setLoaded] = useState(false);
 
+  const datesSeen = new Set();
+
+  const repeatFilter = (obj) => {
+    if (datesSeen.has(obj.date_range)) return false;
+    datesSeen.add(obj.date_range);
+    return true;
+  };
+
   useEffect(() => {
     dispatch(PopulateReservations())
       .then(() => setLoaded(true));
@@ -23,7 +31,7 @@ export default function PropertyReel () {
                 Your reservations:
               </h1>
             </div>
-            {list.map(reservation => <ReservationSummary key={reservation.id} reservation={reservation} />)}
+            {list.filter(repeatFilter).map(res => <ReservationSummary key={res.id} reservation={res} />)}
           </div>
           )
         : null
