@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ReservationSummary ({ reservation }) {
   let startDate = new Date(reservation.date_range.slice(0, 10));
@@ -14,7 +15,14 @@ export default function ReservationSummary ({ reservation }) {
         <h2>{`${startDate} - ${endDate}`}</h2>
       </div>
       <div className='summary-image-container'>
-        <img src={reservation.property_photo_url} />
+        <Link to={`/properties/${reservation.property_id}`}>
+          <img src={reservation.property_photo_url} />
+        </Link>
+      </div>
+      <div className='summary-footer'>
+        <Link to={`/properties/${reservation.property_id}/reviews/new`}>
+          <h4>Leave a review!</h4>
+        </Link>
       </div>
     </div>
   );
