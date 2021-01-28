@@ -13,7 +13,7 @@ import LocationPage from './components/LocationPage';
 import { Restore } from './store/session';
 import SchoolListings from './components/HomePage/index';
 import ListingsNearSchools from './components/PropsBySchools/index';
-
+import PropertyReviewPage from './components/PropertyReviewPage';
 function App () {
   // console.log("App?");
   const dispatch = useDispatch();
@@ -53,6 +53,9 @@ function App () {
         </Route>
         <Route path='/search' exact>
           <SearchPage />
+        </Route>
+        <Route path='/properties/:propertyId/reviews/new'>
+          <PropertyReviewPage />
         </Route>
         <Route path='/properties/:propertyId'>
           <PropertyPage />
