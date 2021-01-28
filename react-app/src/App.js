@@ -13,6 +13,7 @@ import LocationPage from './components/LocationPage';
 import { Restore } from './store/session';
 import SchoolListings from './components/HomePage/index';
 import ListingsNearSchools from './components/PropsBySchools/index';
+import NewProperty from './components/NewProperty';
 
 function App () {
   // console.log("App?");
@@ -53,6 +54,9 @@ function App () {
         </Route>
         <Route path='/search' exact>
           <SearchPage />
+        </Route>
+        <Route exact path='/properties/new'>
+          <NewProperty />
         </Route>
         <Route path='/properties/:propertyId'>
           <PropertyPage />

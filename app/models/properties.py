@@ -23,7 +23,6 @@ class Property(db.Model):
   check_in = db.Column(db.Integer, nullable=False)
   check_out = db.Column(db.Integer, nullable=False)
   guest_spots = db.Column(db.Integer, nullable=False)
-  # images = db.relationship("Image")             # ??? maybe need this
   user = db.relationship("User")
   reservations = db.relationship("Reservation")
   photos = db.relationship("Image", secondary=properties_images)
