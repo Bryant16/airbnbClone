@@ -29,3 +29,8 @@ def properties(id):
 @login_required
 def my_profile():
   return jsonify({'user': current_user.to_dict()})
+
+@user_routes.route('/me/properties')
+@login_required
+def my_listings():
+  return jsonify({'list': current_user.to_owner()['properties']})

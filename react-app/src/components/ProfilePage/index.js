@@ -11,6 +11,7 @@ export default function ProfilePage () {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const profileUser = useSelector(state => state.profile.user);
+  const loggedInUser = useSelector(state => state.session.user);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,12 @@ export default function ProfilePage () {
         ? (
           <div className='user-profile-container'>
             <div className='user-profile-title-container'>
-              <h1>{profileUser ? `${profileUser.username}'s listings:` : null}</h1>
+              <h1>{profileUser && loggedInUser
+                ? `${profileUser.username === loggedInUser.username
+                  ? 'Your'
+                  : profileUser.username + 's'} listings:`
+                : null}
+              </h1>
             </div>
             <PropertyReel />
           </div>
