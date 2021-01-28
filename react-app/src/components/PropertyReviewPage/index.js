@@ -20,6 +20,7 @@ const updateReview = (e) => setReview(e.target.value);
 const handleSubmit = async(e)=>{
     e.preventDefault();
     const newReview = {
+        property_id: propertyId,
         cleanliness,
         communication,
         check_in,
@@ -28,8 +29,16 @@ const handleSubmit = async(e)=>{
         overall_value,
         review
     }
-    
-    history.push(`/properties/${propertyId}`)
+    console.log(newReview)
+    const createReviewResponse = await fetch('/api/reviews/', {
+        headers: {"Content-type": "application/json"},
+        method: "POST",
+        body: JSON.stringify(newReview)
+    });
+    if(createReviewResponse.ok){
+        const response = await createReviewResponse.json();
+        history.push(`/properties/${propertyId}`)
+    }
     }
     
 return (
