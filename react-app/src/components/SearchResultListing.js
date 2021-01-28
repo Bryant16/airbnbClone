@@ -13,11 +13,11 @@ const SearchResultListing = ({ listing }) => {
         </div>
         <div className="div__listings_info">
           <div className="div__description">
-            <p>{listing.city}</p>
+            <h2>{listing.city}</h2>
           </div>
           <div className="div__nightly_rate">
             <span className="span__night_rate-bold">
-              $ {listing.nightly_rate_usd}{" "}
+              ${listing.nightly_rate_usd}{" "}
             </span>
             / night
           </div>

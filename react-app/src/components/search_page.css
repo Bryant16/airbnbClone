@@ -16,15 +16,14 @@
 div.div__listings_property {
   display: flex;
   flex-direction: row;
-  justify-content: start;
   align-content: center;
-  padding: 20px;
+  padding: 1.8em 0 1.8em 0;
   border-bottom: 1px solid rgb(208, 208, 208);
   margin-left: 3vw;
   margin-bottom: 1vh;
   text-decoration: none;
-  color: black;
-  width: 35vw !important;
+  color: rgb(24, 24, 24);
+  width: 40vw !important;
 }
 
 .listingMapContainer__googlemap {
@@ -61,6 +60,12 @@ div.div__listings_info {
   width: 100%;
 }
 
+div.div__listings_info h2 {
+  font-size: 1.2em;
+  text-decoration: none;
+  font-weight: 200;
+}
+
 .div__description {
   height: 100%;
 }
@@ -71,5 +76,5 @@ div.div__listings_info {
 
 span.span__night_rate-bold {
   font-size: 1.4em;
-  font-weight: 700;
+  font-weight: 500;
 }
