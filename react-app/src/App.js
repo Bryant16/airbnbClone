@@ -8,7 +8,9 @@ import NavBar from "./components/NavBar";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SearchPage from "./components/SearchPage";
-import PropertyPage from "./components/propertyPage/index";
+import PropertyPage from "./components/propertyPage/index"
+import SchoolListings from "./components/HomePage/index"
+import ListingsNearSchools from "./components/PropsBySchools/index"
 import { Restore } from "./store/session";
 
 function App() {
@@ -48,7 +50,6 @@ function App() {
           <Route exact path="/users/:userId">
             <User />
           </Route>
-
           <Route path="/sign-up" exact>
             <SignUpForm
               authenticated={authenticated}
@@ -58,8 +59,14 @@ function App() {
           <Route path="/search" exact>
             <SearchPage />
           </Route>
-          <Route path="/properties/:propertyId">
+          <Route path="/properties/:propertyId" >
             <PropertyPage />
+          </Route>
+          <Route path="/" exact >
+            <SchoolListings />
+          </Route>
+          <Route path="/school/:schoolId" >
+            <ListingsNearSchools />
           </Route>
         </Switch>
       </div>
