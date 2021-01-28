@@ -1,19 +1,31 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPage } from "../../store/propertyPage";
 import Reservation from '../Reservation';
+import ReviewDisplay from '../ReviewDisplay';
+
 import './propertyPage.css';
 
 const PropertyPage = () => {
     const dispatch = useDispatch();
     const { propertyId } = useParams();
     const { property } = useSelector((state) => state.property);
+    const [rev, setRev] = useState(false)
+   
+    
+    // propertyReviews.map(rev=> console.log(rev))
     useEffect(() => {
+        const getReviews = async()=>{
+            const response = await fetch(`/api/reviews/${propertyId}`)
+            const reviews = await response.json();
+            setRev(reviews)
+        }
+        getReviews()
         dispatch(getPage(propertyId))
     }, [dispatch])
-   
+    console.log(property)
     return (
         <div className='singleproperty_container'>
             <div className='singleproperty_container_address'>
@@ -31,6 +43,18 @@ const PropertyPage = () => {
             <div className='singleproperty_container_reservation'>
                 <Reservation property={property}/>
             </div>
+            </div>
+            <div className='singleproperty_container_review_container'>
+                <h1>REVIEWS</h1>
+                <div className='review_categories'>
+                    <p>Cleanliness</p>
+                    <p>Communication</p>
+                    <p>Check-in</p>
+                    <p>Accuracy</p>
+                    <p>Location</p>
+                    <p>Value</p>
+                </div>
+                {rev && rev.map(r=> <ReviewDisplay key={r.id}review={r} />)}
             </div>
         </div>
     )

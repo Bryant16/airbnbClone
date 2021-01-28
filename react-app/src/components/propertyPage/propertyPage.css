@@ -24,12 +24,49 @@
 }
 
 .singleproperty_container_propertyInfo{
-    flex-grow: 3;
+    /* flex-grow: 3; */
     
 }
 
 .singleproperty_container_reservation{
-    flex-grow: 1;
-    border: 1px solid black;
+    /* flex-grow: 1; */
+    border: px solid black;
     width: 100%;
+}
+
+.singleproperty_container_review_container{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.singleproperty_container_single_review{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px;
+    
+}
+
+.singleproperty_review_stats{
+    display: flex;
+    flex-direction: column;
+}
+
+.review_categories{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100px;
+    width: 100px;
+}
+
+.singleproperty_review_usertext {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    border-bottom: 1px solid black;
 }
