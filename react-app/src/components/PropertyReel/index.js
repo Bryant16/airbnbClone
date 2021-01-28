@@ -9,7 +9,7 @@ import './index.css';
 
 export default function PropertyReel () {
   const dispatch = useDispatch();
-  const list = useSelector(state => state.reel.list);
+  const list = useSelector(state => state.reel.propertyList);
   const location = useLocation();
   const whereAmI = location.pathname;
   const [loaded, setLoaded] = useState(false);

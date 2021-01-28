@@ -34,3 +34,14 @@ def my_profile():
 @login_required
 def my_properties():
   return jsonify({'list': current_user.to_owner()['properties']})
+
+@user_routes.route('/me/reservations')
+@login_required
+def my_reservations():
+  print('---------------------------------------------------')
+  print('---------------------------------------------------')
+  print('---------------------------------------------------')
+  print('---------------------------------------------------')
+  print('---------------------------------------------------')
+  print('---------------------------------------------------')
+  return jsonify({'list': [res.to_summary() for res in current_user.to_guest()['reservations']]})
