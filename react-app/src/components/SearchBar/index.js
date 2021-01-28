@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../../store/search";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "./react_date_range.css";
 import { DateRangePicker } from "react-date-range";
 import "./search_bar.css";
 import { FaSearch } from "react-icons/fa";
@@ -47,38 +46,40 @@ const SearchBar = () => {
   };
 
   return (
-    <div id="div__search_bar">
-      <form onSubmit={handleSubmit}>
-        <div className="div__search_section">
-          <label>Location</label>
-          <br />
-          <input
-            type="text"
-            className="navbar_search_searchbar"
-            onChange={handleLocation}
-            placeholder="Where are you going?"
-          ></input>
-        </div>
-        <div className="div__search_section">
-          <label>Dates</label>
-          <br />
-          <button onClick={handleDateButton}>Add Dates</button>
-        </div>
-        <div className="div__search_section">
-          <label>Guests</label>
-          <br />
-          <input type="number" min="1" onChange={handleGuests}></input>
-        </div>
-        <div className="div__search_section">
-          <button>
-            <FaSearch />
-          </button>
-        </div>
-        {showDates && (
-          <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
-        )}
-      </form>
-    </div>
+    <>
+      <div id="div__search_bar">
+        <form onSubmit={handleSubmit}>
+          <div className="div__search_section">
+            <label>Location</label>
+            <br />
+            <input
+              type="text"
+              className="navbar_search_searchbar"
+              onChange={handleLocation}
+              placeholder="Where are you going?"
+            ></input>
+          </div>
+          <div className="div__search_section">
+            <label>Dates</label>
+            <br />
+            <button onClick={handleDateButton}>Add Dates</button>
+          </div>
+          <div className="div__search_section">
+            <label>Guests</label>
+            <br />
+            <input type="number" min="1" onChange={handleGuests}></input>
+          </div>
+          <div className="div__search_section">
+            <button>
+              <FaSearch />
+            </button>
+          </div>
+        </form>
+      </div>
+      {showDates && (
+        <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+      )}
+    </>
   );
 };
 
