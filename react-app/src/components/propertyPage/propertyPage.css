@@ -1,0 +1,35 @@
+.singleproperty_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+}
+
+.singleproperty_container img {
+    width: 400px;
+    height: 400px;
+}
+
+.singleproperty_container_address {
+    align-self: flex-start;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.detailReservationContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.singleproperty_container_propertyInfo{
+    flex-grow: 3;
+    
+}
+
+.singleproperty_container_reservation{
+    flex-grow: 1;
+    border: 1px solid black;
+    width: 100%;
+}

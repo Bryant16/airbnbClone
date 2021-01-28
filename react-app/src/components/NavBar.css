@@ -1,31 +1,30 @@
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top:0;
-    background-color: white;
-    z-index: 100;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  width: 100%;
+  box-shadow: 0em 1em 1em rgba(0, 0, 0, 0.2);
+  padding-bottom: 2vh;
 }
 
 .navbar_logo img {
-    object-fit: contain;
-    height: 100px;
+  object-fit: contain;
+  height: 100px;
 }
 
 .navbar_search {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
 }
 .navbar_search_searchbar {
-   
-
 }
 .navbar_links {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

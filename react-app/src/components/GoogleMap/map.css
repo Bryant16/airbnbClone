@@ -1,0 +1,49 @@
+.map-h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 20px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.google-map {
+  width: 20vh;
+}
+
+div.pin {
+  font: 14px Roboto, Arial, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 28px;
+  box-shadow: rgb(0 0 0 / 8%) 0px 0px 0px 1px, rgb(0 0 0 / 18%) 0px 1px 2px;
+  color: rgb(53, 53, 53);
+  display: flex;
+  height: 28px;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  white-space: nowrap;
+  max-width: 5vw;
+}
+
+@media screen and (min-width: 799px) {
+  .google-map {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .map-h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .pin {
+    width: 10vw;
+  }
+
+  .pin-icon {
+    font-size: 10vw;
+  }
+}

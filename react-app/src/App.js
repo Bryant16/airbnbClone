@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -11,12 +11,12 @@ import SearchPage from './components/SearchPage';
 import PropertyPage from './components/propertyPage/index';
 import LocationPage from './components/LocationPage';
 import { Restore } from './store/session';
+import SchoolListings from './components/HomePage/index';
+import ListingsNearSchools from './components/PropsBySchools/index';
 
 function App () {
   // console.log("App?");
   const dispatch = useDispatch();
-
-  const [authenticated, setAuthenticated] = useState(false);
 
   // const searchResults = useSelector((state) => {
   //   return state.search.properties;
@@ -59,6 +59,12 @@ function App () {
         </Route>
         <Route exact path='/locations/:location'>
           <LocationPage />
+        </Route>
+        <Route path='/' exact>
+          <SchoolListings />
+        </Route>
+        <Route path='/school/:schoolId'>
+          <ListingsNearSchools />
         </Route>
       </Switch>
     </BrowserRouter>

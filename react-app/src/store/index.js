@@ -5,13 +5,17 @@ import propertyPageReducer from './propertyPage';
 import searchReducer from './search';
 import profilePageReducer from './profilePage';
 import reelReducer from './reel';
+import propertiesNearSchoolsReducer from './listingsBySchools';
+import schoolsReducer from './homepage';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   property: propertyPageReducer,
   search: searchReducer,
   profile: profilePageReducer,
-  reel: reelReducer
+  reel: reelReducer,
+  schools: schoolsReducer,
+  propsNearSchools: propertiesNearSchoolsReducer
 });
 
 let enhancer;
