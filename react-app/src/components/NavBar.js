@@ -66,13 +66,6 @@ const NavBar = () => {
               </button>
             </NavLink>
           </li>
-          <li>
-            <NavLink to='/users/me/properties'>
-              <button>
-                My Properties
-              </button>
-            </NavLink>
-          </li>
         </ul>
       </div>
     </nav>
