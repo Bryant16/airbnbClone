@@ -49,10 +49,7 @@ function App () {
           <ProfilePage />
         </Route>
         <Route path='/sign-up' exact>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <SignUpForm />
         </Route>
         <Route path='/search' exact>
           <SearchPage />
