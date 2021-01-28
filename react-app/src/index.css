@@ -14,3 +14,7 @@ a {
 #div__content {
   padding-top: 2vh;
 }
+
+input:focus {
+  outline: none;
+}
