@@ -17,7 +17,12 @@ export default function PropertyReel () {
   return loaded
     ? list
         ? (
-          <div className='reservation-reel-container'>
+          <div className='reel-container'>
+            <div className='reel-title-container'>
+              <h1>
+                Your reservations:
+              </h1>
+            </div>
             {list.map(reservation => <ReservationSummary key={reservation.id} reservation={reservation} />)}
           </div>
           )

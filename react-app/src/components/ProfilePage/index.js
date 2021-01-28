@@ -17,20 +17,23 @@ export default function ProfilePage () {
 
   useEffect(() => {
     dispatch(LookUp(userId))
-      .then(() => setLoaded(true));
-  }, [dispatch, userId]);
+      .then(() => {
+        loggedInUser && setLoaded(true);
+      });
+  }, [dispatch, userId, loggedInUser]);
 
   return loaded
     ? profileUser
         ? (
           <div className='user-profile-container'>
-            <div className='user-profile-title-container'>
-              <h1>{profileUser ? `${profileUser.username}'s listings:` : null}</h1>
-            </div>
             <div className='personal-items-container'>
-              <PropertyReel />
-              {loggedInUser &&
-              (profileUser.id === loggedInUser.id)
+              <div className='property-reel-and-title-container'>
+                <PropertyReel
+                  isOwner={profileUser.id === loggedInUser.id}
+                  profileUser={profileUser}
+                />
+              </div>
+              {(profileUser.id === loggedInUser.id)
                 ? <ReservationReel />
                 : null}
             </div>

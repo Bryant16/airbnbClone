@@ -23,5 +23,7 @@ class Reservation(db.Model):
   def to_summary(self):
     return {
       **self.to_dict,
+      'date_range': self.date_range,
+      'city': self.listing.to_dict['city'],
       'property_photo_url': self.listing.to_dict['coverphoto_url']
     }

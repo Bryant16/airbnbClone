@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function PropertySummary ({ property }) {
   return (
-    <div className='user-property-listing'>
+    <div className='summary-container'>
       <div className='user-property-listing-title-container'>
         <NavLink to={`/properties/${property.id}`}>
           <h3 className='user-property-listing-title'>
@@ -11,7 +11,7 @@ export default function PropertySummary ({ property }) {
           </h3>
         </NavLink>
       </div>
-      <div className='user-property-listing-image-container'>
+      <div className='summary-image-container'>
         <img src={property.coverphoto_url} alt='' />
       </div>
       <div className='user-property-listing-description-container'>
