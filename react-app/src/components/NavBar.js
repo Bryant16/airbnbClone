@@ -53,6 +53,13 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/users/me'>
+              <button>
+                My Profile
+              </button>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to='/users/me/reservations'>
               <button>
                 My Reservations

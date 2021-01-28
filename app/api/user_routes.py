@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User
 from sqlalchemy.orm import joinedload
 
@@ -24,3 +24,8 @@ def user(id):
 def properties(id):
   user = User.query.get(id);
   return jsonify({'list': user.to_owner()['properties'] if user else None})
+
+@user_routes.route('/me')
+@login_required
+def my_profile():
+  return jsonify({'user': current_user.to_dict()})
