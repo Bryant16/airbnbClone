@@ -36,11 +36,13 @@ const Reservation = ({ property }) => {
         const newReservation = {
             startDate: startDate,
             endDate: endDate,
-            property: property,
-            numGuest: numGuest
+            property: property.id,
+            numGuest: numGuest,
+            user: user.id
           }
+          console.log(newReservation)
           try{
-          const createReservation = await fetch('/api/reservation', {
+          const createReservation = await fetch('/api/reservation/', {
               method:'post',
               headers: {
                   "Content-type":"application/json"
@@ -48,12 +50,13 @@ const Reservation = ({ property }) => {
               body: JSON.stringify(newReservation)
           });
           const data = await createReservation.json();
+          console.log(data)
         }catch(e){
             console.log(e)
         }
 
           alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
-          console.log(newReservation)
+          // console.log(newReservation)
       }
       
   }
