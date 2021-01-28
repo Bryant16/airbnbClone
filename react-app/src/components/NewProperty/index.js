@@ -5,6 +5,7 @@ export default function NewProperty () {
   const [addr1, updateAddr1] = useState('');
   const [addr2, updateAddr2] = useState('');
   const [city, updateCity] = useState('');
+  const [state, updateState] = useState('');
   const [zipCode, updateZipCode] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
   const [description, updateDescription] = useState('');
