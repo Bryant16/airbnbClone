@@ -1,0 +1,29 @@
+.user-profile-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-property-listing {
+  width: 50vw;
+  min-width: 500px;
+  max-width: 750px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.user-property-listing > .user-property-listing-image-container > img{
+  width: 100%;
+  height: auto;
+}
+
+.user-property-listing-footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

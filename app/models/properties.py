@@ -1,5 +1,6 @@
 from .db import db
 from .images import Image
+from .reviews import Review
 from .schools_properties import schools_properties
 from .properties_images import properties_images
 
@@ -30,7 +31,13 @@ class Property(db.Model):
   schools = db.relationship("School", secondary=schools_properties)
 
   @property
+  def rating(self):
+    averages = [review.average for review in self.reviews]
+    return sum(averages)/(len(averages) if averages else 1)
+
+  @property
   def to_dict(self):
+
     return {
       "id":self.id,
       "owner_id": self.owner_id,
@@ -49,4 +56,6 @@ class Property(db.Model):
       "check_out": self.check_out,
       "guest_spots": self.guest_spots,
       "reservations": [reservation.to_dict for reservation in self.reservations],
+      'reviews': [review.to_dict() for review in self.reviews],
+      "rating": self.rating
     }

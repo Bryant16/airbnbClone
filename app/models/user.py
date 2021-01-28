@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .properties import Property
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -31,4 +32,10 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email
+    }
+
+  def to_owner(self):
+    return {
+      **self.to_dict(),
+      "properties": [prop.to_dict for prop in self.properties]
     }
