@@ -1,42 +1,66 @@
 import React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPropertiesNearSchools } from "../../store/listingsBySchools";
-import {useParams} from "react-router-dom";
-import "./propsBySchool.css"
+import { useParams, Link } from "react-router-dom";
+import GoogleMap from "../GoogleMap";
+import SearchResultListing from "../SearchResultListing";
+import "./propsBySchool.css";
 
 const ListingsNearSchools = () => {
-    const dispatch = useDispatch();
-    const properties = useSelector((state) => state.propsNearSchools);
-    console.log("properties:", properties)
-    const id = useParams();
-    useEffect(() => {
-        console.log("hi",id.schoolId)
-        dispatch(getPropertiesNearSchools(id.schoolId))
-    }, [dispatch])
+  const dispatch = useDispatch();
+  const properties = useSelector((state) => state.propsNearSchools);
+  console.log("properties:", properties);
 
-    let property
-    if (properties) {
-        property = properties.map(p => {
-            return (
-                <div className="propsBySchool__container">
-                    <img className="listingBySchool__image" key={p.id} src={p.coverphoto_url} alt="propertyImage" />
-                    <h2 className="propsBySchool__text" key={p.listing_title}>{p.listing_title}</h2>
-                    <h2 className="propsBySchool__text" key={p.address1}>{`${p.address1}, ${p.address2} ${p.city} ${p.zip_code} `}</h2>
-                    <h2 className="propsBySchool__text" key={p.nightly_rate_usd}>{`$${p.nightly_rate_usd}/Night`}</h2>
-                </div>
-            )
-        })
+  const { schoolId, schoolName } = useParams();
+  const [showPrivate, setShowPrivate] = useState("hello");
+
+  const togglePrivate = async (e) => {
+    if (showPrivate == "hello") {
+      setShowPrivate(true);
     } else {
-       property = <h1>Loading...</h1>
+      setShowPrivate(!showPrivate);
     }
+  };
 
-    return(
-        <div>
-            {property}
+  useEffect(() => {
+    console.log("hi", schoolId);
+    dispatch(getPropertiesNearSchools(schoolId));
+  }, [dispatch]);
 
-        </div>
-    )
-}
+  return (
+    <div className="listingMapContainer">
+      <div className="listingMapContainer_listings">
+        {!schoolName && "not working"}
+        <h1>{schoolName && schoolName}</h1>
+        {properties &&
+          properties.map((result) => {
+            if (showPrivate == "hello") {
+              return <SearchResultListing listing={result} />;
+            } else if (showPrivate == true) {
+              return result.private ? (
+                <SearchResultListing listing={result} />
+              ) : null;
+            } else if (showPrivate == false) {
+              return !result.private ? (
+                <SearchResultListing listing={result} />
+              ) : null;
+            }
+          })}
+      </div>
+      <div className="listingMapContainer__googlemap">
+        {properties[0] && (
+          <GoogleMap
+            locationObj={{
+              lng: properties[0].longitude,
+              lat: properties[0].latitude,
+            }}
+            searchResults={properties}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
 
-export default ListingsNearSchools
+export default ListingsNearSchools;
