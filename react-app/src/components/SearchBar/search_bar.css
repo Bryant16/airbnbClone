@@ -2,15 +2,16 @@
   flex-direction: row;
   border: 1px solid rgb(203, 203, 203);
   background-color: rgb(235, 235, 235);
+  padding-top: 0.1em;
   border-radius: 5em;
   font-family: Roboto, Helvetica Neue, sans-serif;
-  box-sizing: border-box;
 }
 
 .div__search_section {
   display: inline-block;
   border-radius: 0;
   box-sizing: border-box;
+  vertical-align: center;
   padding: 0.5em 0.7em 0.5em 0.7em;
 }
 
@@ -20,14 +21,25 @@
 }
 
 .div__search_section:nth-of-type(1) {
+  /* location input styling */
   padding: 0.5em 0.2em 0.5em 2em;
   border-radius: 5em 0 0 5em;
 }
 
 .div__search_section:nth-last-of-type(1) {
-  height: 100%;
-  padding: 0.5em 2em 0.5em 0.2em;
+  /* submit input styling */
+  color: white;
+  font-size: 1em;
+  /* padding: 0.5em 0.2em 0.5em 0.2em; */
   border-radius: 0 5em 5em 0;
+  vertical-align: top;
+}
+
+.div__search_section:nth-last-of-type(1) button {
+  padding: 1em;
+  background-color: #ff3a5c;
+  color: white;
+  border-radius: 5em;
 }
 
 .div__search_section label {

@@ -6,6 +6,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import "./search_bar.css";
+import { FaSearch } from "react-icons/fa";
 
 const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -69,9 +70,9 @@ const SearchBar = () => {
           <input type="number" min="1" onChange={handleGuests}></input>
         </div>
         <div className="div__search_section">
-          <label className="label__hidden">Submit</label>
-          <br />
-          <button>Submit</button>
+          <button>
+            <FaSearch />
+          </button>
         </div>
         {showDates && (
           <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
