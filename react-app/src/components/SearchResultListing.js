@@ -15,7 +15,12 @@ const SearchResultListing = ({ listing }) => {
           <div className="div__description">
             <h2>{listing.listing_title}</h2>
             <hr />
-            <span className="span__details">{listing.guest_spots} guests</span>
+            <span className="span__details">
+              {listing.guest_spots} guests ·
+              {listing.private
+                ? " Entire place"
+                : " Private room in shared space"}
+            </span>
           </div>
           <div className="div__nightly_rate">
             <span className="span__night_rate-bold">
