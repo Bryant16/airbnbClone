@@ -32,5 +32,10 @@ def my_profile():
 
 @user_routes.route('/me/properties')
 @login_required
-def my_listings():
+def my_properties():
   return jsonify({'list': current_user.to_owner()['properties']})
+
+@user_routes.route('/me/reservations')
+@login_required
+def my_reservations():
+  return jsonify({'list': [res.to_summary() for res in current_user.to_guest()['reservations']]})

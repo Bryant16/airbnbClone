@@ -39,3 +39,9 @@ class User(db.Model, UserMixin):
       **self.to_dict(),
       "properties": [prop.to_dict for prop in self.properties]
     }
+
+  def to_guest(self):
+    return {
+      **self.to_dict(),
+      "reservations": [res for res in self.reservations]
+    }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { LookUp } from '../../store/profilePage';
 import PropertyReel from '../PropertyReel';
+import ReservationReel from '../ReservationReel';
 
 import './index.css';
 
@@ -16,22 +17,26 @@ export default function ProfilePage () {
 
   useEffect(() => {
     dispatch(LookUp(userId))
-      .then(() => setLoaded(true));
-  }, [dispatch, userId]);
+      .then(() => {
+        loggedInUser && setLoaded(true);
+      });
+  }, [dispatch, userId, loggedInUser]);
 
   return loaded
     ? profileUser
         ? (
           <div className='user-profile-container'>
-            <div className='user-profile-title-container'>
-              <h1>{profileUser && loggedInUser
-                ? `${profileUser.username === loggedInUser.username
-                  ? 'Your'
-                  : profileUser.username + 's'} listings:`
+            <div className='personal-items-container'>
+              <div className='property-reel-and-title-container'>
+                <PropertyReel
+                  isOwner={profileUser.id === loggedInUser.id}
+                  profileUser={profileUser}
+                />
+              </div>
+              {(profileUser.id === loggedInUser.id)
+                ? <ReservationReel />
                 : null}
-              </h1>
             </div>
-            <PropertyReel />
           </div>
           )
         : <h1>Sorry, it seems that page doesn't exist.</h1>

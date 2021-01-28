@@ -14,6 +14,7 @@ import { Restore } from './store/session';
 import SchoolListings from './components/HomePage/index';
 import ListingsNearSchools from './components/PropsBySchools/index';
 import NewProperty from './components/NewProperty';
+import PropertyReviewPage from './components/PropertyReviewPage';
 
 function App () {
   // console.log("App?");
@@ -57,6 +58,9 @@ function App () {
         </Route>
         <Route exact path='/properties/new'>
           <NewProperty />
+        </Route>
+        <Route path='/properties/:propertyId/reviews/new'>
+          <PropertyReviewPage />
         </Route>
         <Route path='/properties/:propertyId'>
           <PropertyPage />

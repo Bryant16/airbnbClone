@@ -2,27 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Populate } from '../../store/reel';
+import { PopulateProperties } from '../../store/reel';
 import PropertySummary from './PropertySummary';
 
 import './index.css';
 
-export default function PropertyReel () {
+export default function PropertyReel ({ isOwner, profileUser }) {
   const dispatch = useDispatch();
-  const list = useSelector(state => state.reel.list);
+  const list = useSelector(state => state.reel.propertyList);
   const location = useLocation();
   const whereAmI = location.pathname;
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(Populate(whereAmI))
+    dispatch(PopulateProperties(whereAmI))
       .then(() => setLoaded(true));
   }, [dispatch, whereAmI]);
 
   return loaded
     ? list
         ? (
-          <div className='property-reel-container'>
+          <div className='reel-container'>
+            <div className='reel-title-container'>
+              <h1>{`${isOwner ? 'Your' : profileUser.username + 's'} listings:`}
+              </h1>
+            </div>
             {list.map(prop => <PropertySummary key={prop.id} property={prop} />)}
           </div>
           )

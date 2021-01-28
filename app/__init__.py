@@ -13,6 +13,7 @@ from .api.property_routes import property_routes
 from .api.location_routes import location_routes
 from .api.reservation_routes import reservation_routes
 from .api.homepage_routes import homepage_routes
+from .api.review_routes import review_routes
 
 from .seeds import seed_commands
 
@@ -41,6 +42,7 @@ app.register_blueprint(property_routes, url_prefix='/api/property')
 app.register_blueprint(location_routes, url_prefix='/api/locations')
 app.register_blueprint(reservation_routes, url_prefix='/api/reservation')
 app.register_blueprint(homepage_routes, url_prefix='/api/schools')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 db.init_app(app)
 Migrate(app, db)
 

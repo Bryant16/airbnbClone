@@ -1,0 +1,50 @@
+.reviewForm {
+    display:flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    box-shadow:-1px -1px 10px 0px #CECECE ;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.reviewForm button {
+    align-self: center;
+    border: none;
+    margin-top: 8px;
+    background-color: red;
+    padding: 10px;
+    border-radius:4px;
+}
+
+.reviewForm textarea {
+    border: none;
+    box-shadow:-1px -1px 10px 0px #CECECE ;
+    margin-top: 10px;
+    padding: 5px;
+    outline:none;
+    width: 80%;
+    align-self: center;
+    border-radius: 4px;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+}
+
+.inputContainer [type=radio] {
+    text-align: center;
+    margin-right: 15px;
+    /* background-image: url('../../images/needASpot.png'); */
+}
+
+.reviewContainers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

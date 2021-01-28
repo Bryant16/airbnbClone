@@ -16,15 +16,14 @@
 div.div__listings_property {
   display: flex;
   flex-direction: row;
-  justify-content: start;
   align-content: center;
-  padding: 20px;
+  padding: 1.8em 0 1.8em 0;
   border-bottom: 1px solid rgb(208, 208, 208);
   margin-left: 3vw;
   margin-bottom: 1vh;
   text-decoration: none;
-  color: black;
-  width: 35vw !important;
+  color: rgb(24, 24, 24);
+  width: 40vw !important;
 }
 
 .listingMapContainer__googlemap {
@@ -45,19 +44,56 @@ div.div__listings_property {
   /* flex-grow: 4; */
 }
 .img__listing_coverphoto {
-  height: 11em;
+  width: 15em;
+  height: 10em;
   border-radius: 0.7em;
 }
 
-.div__listings_info {
+div.div__listings_info {
+  font-family: Roboto, Arial;
+  font-weight: 300;
   flex-grow: 2;
   display: flex;
+  align-items: flex-start;
+  flex-direction: column;
   padding: 1em;
-  /* justify-self: flex-end; */
-  /* align-self: stretch; */
+  width: 100%;
 }
 
-.span__nightly_rate {
+div.div__listings_info h2 {
+  font-size: 1.4em;
+  text-decoration: none;
+  font-weight: 200;
+  margin: 0;
+}
+
+.div__description {
+  height: 100%;
+}
+
+.div__nightly_rate {
   align-self: flex-end;
-  justify-content: flex-end;
+}
+
+span.span__night_rate-bold {
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+hr {
+  margin-top: 10px;
+  width: 4vw;
+  border-top: 1px solid rgba(208, 208, 208);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  margin: 8px 0 8px 0;
+  align-self: flex-start;
+  /* border-bottom: 0; */
+  /* border: 1px solid rgba(208, 208, 208) !important; */
+}
+
+span.span__details {
+  font-size: 0.8em;
+  color: rgb(157, 157, 157);
 }
