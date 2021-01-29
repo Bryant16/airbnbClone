@@ -6,8 +6,6 @@ import SearchResultListing from "./SearchResultListing";
 import "./search_page.css";
 
 const SearchPage = () => {
-  let { location } = useParams();
-
   const searchResults = useSelector((state) => {
     return state.search.properties;
   });
@@ -43,7 +41,15 @@ const SearchPage = () => {
       {searchResults && (
         <div className="listingMapContainer">
           <div className="listingMapContainer_listings">
-            <button className="button__filter" onClick={togglePrivate}>
+            <button
+              className="button__filter"
+              onClick={togglePrivate}
+              style={
+                showPrivate === true
+                  ? { backgroundColor: "lightgrey" }
+                  : { backgroundColor: "white" }
+              }
+            >
               Private
             </button>
             {searchResults.map((result) => {

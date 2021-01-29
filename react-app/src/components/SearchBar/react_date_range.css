@@ -630,7 +630,7 @@
   border-radius: 30px;
   position: absolute;
   border: 1px solid lightgrey;
-  top: 135px;
+  top: 120px;
   filter: drop-shadow(3px 3px 7px rgb(220, 220, 220));
   display: -webkit-inline-box;
   display: inline-block;

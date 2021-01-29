@@ -6,6 +6,7 @@ import { useParams, Link } from "react-router-dom";
 import GoogleMap from "../GoogleMap";
 import SearchResultListing from "../SearchResultListing";
 import "./propsBySchool.css";
+import { Helmet } from "react-helmet";
 
 const ListingsNearSchools = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,11 @@ const ListingsNearSchools = () => {
 
   return (
     <div className="listingMapContainer">
+      {schoolName && (
+        <Helmet>
+          <title>{schoolName}</title>
+        </Helmet>
+      )}
       <div className="listingMapContainer_listings">
         {!schoolName && "not working"}
         <h1>{schoolName && schoolName}</h1>

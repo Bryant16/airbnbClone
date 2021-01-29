@@ -63,9 +63,11 @@
   border: none;
 }
 
-.div__user_button button:hover {
+.div__user_button button:hover,
+.div__user_button button:focus {
   color: grey;
   cursor: pointer;
+  outline: none;
 }
 
 .div__user_button:hover .navbar_links {

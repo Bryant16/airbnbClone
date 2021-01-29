@@ -7,11 +7,10 @@
 .listingMapContainer_listings {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   flex-grow: 1;
   width: 100px;
-  /* border: 1px solid black; */
-  padding-top: 10px;
+  padding-top: 5vh;
+  margin-left: 3vw;
 }
 div.div__listings_property {
   display: flex;
@@ -19,7 +18,7 @@ div.div__listings_property {
   align-content: center;
   padding: 1.8em 0 1.8em 0;
   border-bottom: 1px solid rgb(208, 208, 208);
-  margin-left: 3vw;
+
   margin-bottom: 1vh;
   text-decoration: none;
   color: rgb(24, 24, 24);

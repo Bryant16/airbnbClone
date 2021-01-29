@@ -9,15 +9,41 @@
 
 .div__search_section {
   display: inline-block;
+  /* flex-direction: row; */
   border-radius: 0;
   box-sizing: border-box;
   vertical-align: center;
   padding: 0.5em 0.7em 0.5em 0.7em;
 }
 
+@media screen and (max-width: 740px) {
+  #div__search_bar {
+    flex-direction: column;
+    border-radius: 2em;
+    text-align: center;
+  }
+  .div__search_section {
+    display: block;
+  }
+  div.div__search_section:hover {
+    background-color: rgba(255, 255, 255, 0);
+    filter: none;
+  }
+
+  div.rdrDateRangePickerWrapper {
+    transform: scale(0.9);
+    top: 5vh;
+    left: 5vw;
+  }
+}
+
+.div__search_section button:focus {
+  outline: none;
+}
+
 .div__search_section:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-  filter: drop-shadow(0 0 0.5rem rgb(220, 220, 220));
+  background-color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 1em 0.5em rgb(220, 220, 220));
 }
 
 .div__search_section:nth-of-type(1) {
@@ -64,6 +90,20 @@
 
 .label__hidden {
   display: none;
+}
+
+.button__filter {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+}
+
+.button__filter:active,
+.button__filter:focus {
+  outline: none;
 }
 
 /* #div__search_bar label::after {
