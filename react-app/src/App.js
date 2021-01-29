@@ -25,7 +25,7 @@ function App () {
   // });
 
   // const [listingResults, setListingResults] = useState();
-
+  
   useEffect(() => {
     // if (searchResults) {
     //   setListingResults(searchResults);
