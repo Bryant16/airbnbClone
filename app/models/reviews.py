@@ -19,14 +19,14 @@ class Review(db.Model):
 
   @property
   def average(self):
-    ratings = [self.cleanliness, self.communication, self.check_in, self.accuracy, self.location, self.overall_value];
+    ratings = [self.cleanliness, self.communication, self.check_in, self.accuracy, self.location, self.overall_value]
     return sum(ratings)/len(ratings)
 
   def to_dict(self):
     return {
       'id': self.id,
       'property_id': self.property_id,
-      'reviewer_id': self.reviewer_id,
+      'reviewer_id': self.user.username,
       'cleanliness': self.cleanliness,
       'communication': self.communication,
       'check_in': self.check_in,

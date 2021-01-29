@@ -1,19 +1,31 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPage } from "../../store/propertyPage";
 import Reservation from '../Reservation';
+import ReviewDisplay from '../ReviewDisplay';
+
 import './propertyPage.css';
 
 const PropertyPage = () => {
     const dispatch = useDispatch();
     const { propertyId } = useParams();
     const { property } = useSelector((state) => state.property);
+    const [rev, setRev] = useState(false)
+   
+    
+    // propertyReviews.map(rev=> console.log(rev))
     useEffect(() => {
+        const getReviews = async()=>{
+            const response = await fetch(`/api/reviews/${propertyId}`)
+            const reviews = await response.json();
+            setRev(reviews)
+        }
+        getReviews()
         dispatch(getPage(propertyId))
     }, [dispatch])
-   
+    console.log(property)
     return (
         <div className='singleproperty_container'>
             <div className='singleproperty_container_address'>
@@ -32,6 +44,31 @@ const PropertyPage = () => {
                 <Reservation property={property}/>
             </div>
             </div>
+            {property.rating && <div className='singleproperty_container_review_container'>
+                <h1>REVIEWS</h1>
+                <p>Stars: {property.rating.average} *</p>
+                <div className='review_categories'>
+                    <p>Cleanliness </p>
+                    <span className='bar'><span style={{width:`${property.rating.cleanliness / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.cleanliness}</span>
+                    <p>Communication</p>
+                    <span className='bar'><span style={{width:`${property.rating.communication / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.communication}</span>
+                    <p>Check-in</p>
+                    <span className='bar'><span style={{width:`${property.rating.check_in / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.check_in}</span>
+                    <p>Accuracy</p>
+                    <span className='bar'><span style={{width:`${property.rating.accuracy / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.accuracy}</span>
+                    <p>Location</p>
+                    <span className='bar'><span style={{width:`${property.rating.location / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.location}</span>
+                    <p>Value</p>
+                    <span className='bar'><span style={{width:`${property.rating.overall_value / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.overall_value}</span>
+                </div>
+                {rev && rev.map(r=> <ReviewDisplay key={r.id}review={r} />)}
+            </div>}
         </div>
     )
 }

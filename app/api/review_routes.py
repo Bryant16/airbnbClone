@@ -6,14 +6,15 @@ from app.models import Review, db
 review_routes = Blueprint('review', __name__)
 
 
+@review_routes.route('/<int:propid>')
+def get_reviews(propid):
+    reviews = Review.query.filter(Review.property_id == propid).all()
+    return jsonify([(review.to_dict(), review.average) for review in reviews])
+
+
 @review_routes.route('/', methods=['POST'])
 def search():
     data = request.get_json()
-    print('______________')
-    print('______________')
-    print('______________')
-    print('______________')
-    print(data)
     property_id = data["property_id"]
     reviewer_id = current_user.id
     cleanliness = data["cleanliness"]
