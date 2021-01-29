@@ -19,6 +19,7 @@ export default function ProfilePage () {
     dispatch(LookUp(userId))
       .then(() => {
         loggedInUser && setLoaded(true);
+        loggedInUser || setLoaded(false);
       });
   }, [dispatch, userId, loggedInUser]);
 
