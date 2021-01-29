@@ -1,17 +1,24 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   position: sticky;
   top: 0;
   padding-top: 3vh;
-  background-color: white;
   z-index: 100;
   width: 100%;
   min-height: 10vh;
   box-shadow: 0em 1em 1em rgba(155, 155, 155, 0.2);
   padding-bottom: 2vh;
+}
+
+.div__transparent_bg {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.div__white_bg {
+  background-color: white;
 }
 
 .navbar_logo img {

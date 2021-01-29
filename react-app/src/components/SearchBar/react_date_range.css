@@ -499,6 +499,7 @@
 .rdrMonths {
   display: -webkit-box;
   display: flex;
+  border-radius: 30px;
 }
 
 .rdrMonthsVertical {
@@ -544,6 +545,7 @@
 
 .rdrInfiniteMonths {
   overflow: auto;
+  border-radius: 30px;
 }
 
 .rdrDateRangeWrapper {
@@ -551,6 +553,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.rdrCalendarWrapper {
+  border-radius: 30px;
 }
 
 .rdrDateInput {
@@ -621,7 +627,6 @@
 
 .rdrDateRangePickerWrapper {
   font-family: Roboto, arial;
-  border: 2px solid white;
   border-radius: 30px;
   position: absolute;
   top: 20vh;
@@ -644,6 +649,10 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
+}
+
+.rdrStaticRanges button {
+  border-radius: 30px;
 }
 
 .rdrStaticRange {

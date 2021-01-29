@@ -12,19 +12,21 @@ const SchoolListings = () => {
     dispatch(getSchools());
   }, [dispatch]);
   return (
-    <div>
+    <div className="div__home_container">
       {schools.map((school) => {
         return (
-          <Link to={`/school/${school.id}/${school.name}`}>
-            <img
-              className="schoolLogoImage"
-              src={school.logo_url}
-              alt="schoolImage"
-            />
-            <h2 key={school.name} className="schoolName">
-              {school.name}
-            </h2>
-          </Link>
+          <div className="div__school_container">
+            <Link to={`/school/${school.id}/${school.name}`}>
+              <img
+                className="schoolLogoImage"
+                src={school.logo_url}
+                alt="schoolImage"
+              />
+              <h2 key={school.name} className="schoolName">
+                {school.name}
+              </h2>
+            </Link>
+          </div>
         );
       })}
     </div>

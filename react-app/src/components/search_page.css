@@ -31,7 +31,6 @@ div.div__listings_property {
   flex-direction: column;
   position: fixed !important;
   width: 55vw;
-  top: 0;
   right: 0;
   z-index: 1;
 }

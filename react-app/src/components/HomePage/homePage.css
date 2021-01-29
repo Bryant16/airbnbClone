@@ -1,9 +1,51 @@
-.schoolLogoImage{
-    height: 100px;
-    width: auto;
+.schoolLogoImage {
+  height: 100px;
+  width: auto;
 }
 
-.schoolName{
-    font-size: 20px;
-    color: black;
+.schoolName {
+  font-size: 20px;
+  color: black;
+}
+
+.div__home_container {
+  /* padding-top: 10vh; */
+  margin: 0 auto;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.div__home_container::after {
+  content: "";
+  background: url(campus_photo.png);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.div__school_container {
+  margin-top: 5vh;
+  font-family: Roboto, arial, sans-serif;
+  font-weight: 200;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 1.4em;
+}
+
+.div__school_container img {
+  border-radius: 20px;
+}
+
+.div__home_container h2 {
+  font-weight: 200;
 }
