@@ -97,6 +97,7 @@ footer {
   align-items: center;
   font-family: cursive;
   /* justify-content: space-around; */
+  
   border-top: 1px solid gray;
   border-radius: 3px;
   background-color: lightgray;
@@ -109,7 +110,10 @@ min-height: 100vh;
 .indy_container{
   display: flex;
   flex-direction: row;
-  
+  border-radius: 5px;
+  /* border-right:.5px solid black;
+  border-left:.5px solid black; */
+  bottom:-.5em;
 }
 
 .indy_container ul {

@@ -62,7 +62,7 @@ const SchoolListings = () => {
     </div>
     <footer>
       <div className='footer_container'>
-          <h2>Contributors</h2>
+          {/* <h2>Contributors</h2> */}
         <div className='indy_container'>
           <div>
           <ul>
