@@ -8,7 +8,7 @@ def seed_properties():
   for i in range(1,21):
     local = fake.local_latlng()
     db.session.add(Property(
-      owner_id= 1 ,
+      owner_id= 1,
       coverphoto_id = i,
       private = True,
       nightly_rate_usd= 20.00 * i,

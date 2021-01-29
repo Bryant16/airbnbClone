@@ -1,4 +1,4 @@
-from geopy.geocoders import Nominatim, GoogleV3
+from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="CollegeBnB")
 
 def find_coordinates(location):

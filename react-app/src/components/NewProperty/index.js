@@ -1,38 +1,80 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import './index.css';
 
 export default function NewProperty () {
-  const [title, updateTitle] = useState('');
-  const [addr1, updateAddr1] = useState('');
-  const [addr2, updateAddr2] = useState('');
+  const [listing_title, updateTitle] = useState('');
+  const [address1, updateAddr1] = useState('');
+  const [address2, updateAddr2] = useState('');
   const [city, updateCity] = useState('');
-  const [state, updateState] = useState('');
-  const [zipCode, updateZipCode] = useState('');
+  const [zip_code, updateZipCode] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
   const [description, updateDescription] = useState('');
-  const [checkIn, setCheckIn] = useState(1200);
-  const [checkOut, setCheckOut] = useState(1200);
-  const [maxOccupancy, updateMaxOccupancy] = useState(2);
-  const [rate, setRate] = useState(0);
+  const [check_in, setCheckIn] = useState('12:00');
+  const [check_out, setCheckOut] = useState('12:00');
+  const [guest_spots, updateMaxOccupancy] = useState(2);
+  const [nightly_rate_usd, setRate] = useState(0);
+  const [pageErrors, setPageErrors] = useState([]);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const newProperty = {
+      listing_title,
+      private: isPrivate,
+      nightly_rate_usd,
+      address1,
+      address2,
+      city,
+      zip_code,
+      description,
+      check_in: +check_in.replace(/:/g, ''),
+      check_out: +check_out.replace(/:/g, ''),
+      guest_spots
+    };
+    const response = await window.fetch('/api/property/', {
+      headers: { 'Content-type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(newProperty)
+    });
+    if (response.ok) console.log(await response.json());
+    else {
+      setPageErrors(["Sorry, it seems that address doesn't exist."]);
+    }
+  };
+
+  useEffect(() => () => setPageErrors([]), []);
 
   return (
     <div className='new-property-page-container'>
-      <form className='new-property-form'>
+      {/* {pageErrors.length
+        ? <div className='page-errors'>
+          <ul>
+            {pageErrors.map((err, idx) => <li key={idx}>{err}</li>)}
+          </ul>
+        </div>
+        : null} */}
+      <form
+        className='new-property-form'
+        onSubmit={submit}
+      >
         <input
           type='text'
           placeholder='Listing Title'
-          value={title}
+          value={listing_title}
           onChange={({ target: { value } }) => updateTitle(value)}
+          required
         />
         <input
           type='text'
           placeholder='Address Line 1'
-          value={addr1}
+          value={address1}
           onChange={({ target: { value } }) => updateAddr1(value)}
+          required
         />
         <input
           type='text'
           placeholder='Address Line 2 (optional)'
-          value={addr2}
+          value={address2}
           onChange={({ target: { value } }) => updateAddr2(value)}
         />
         <input
@@ -40,13 +82,76 @@ export default function NewProperty () {
           placeholder='City'
           value={city}
           onChange={({ target: { value } }) => updateCity(value)}
+          required
         />
+        <input
+          type='number'
+          placeholder='Zip Code'
+          value={zip_code}
+          onChange={({ target: { value } }) => updateZipCode(value)}
+          required
+        />
+        <div className='new-property-checkin-checkout'>
+          <label>
+            {'Check in time '}
+            <input
+              type='time'
+              value={check_in}
+              onChange={({ target: { value } }) => setCheckIn(value)}
+            />
+          </label>
+          <label>
+            {'Maximum Occupancy '}
+            <input
+              type='number'
+              min='2'
+              max='20'
+              value={guest_spots}
+              onChange={({ target: { value } }) => updateMaxOccupancy(value)}
+            />
+          </label>
+        </div>
+        <div className='occupancy-and-privacy'>
+          <label>
+            {'Check out time '}
+            <input
+              type='time'
+              value={check_out}
+              onChange={({ target: { value } }) => setCheckOut(value)}
+            />
+          </label>
+          <label>
+            {'Private '}
+            <input
+              type='checkbox'
+              checked={isPrivate}
+              onChange={() => setIsPrivate(value => !value)}
+            />
+          </label>
+        </div>
+        <div className='nightly-rate'>
+          <label>
+            Nightly rate
+          </label>
+          <div>
+            $
+            <input
+              type='number'
+              value={nightly_rate_usd}
+              onChange={({ target: { value } }) => setRate(value)}
+            />
+            USD
+          </div>
+        </div>
         <textarea
-          placeholder='Property Description'
+          placeholder='Listing Description'
+          value={description}
           onChange={({ target: { value } }) => updateDescription(value)}
-        >
-          {description}
-        </textarea>
+          required
+        />
+        <button>
+          Make some money!
+        </button>
       </form>
     </div>
   );
