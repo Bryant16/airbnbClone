@@ -129,7 +129,9 @@ min-height: 100vh;
 }
 
 
-
+.indy_container a {
+  color: black;
+}
 
 .indy_container li {
   font-family: cursive;

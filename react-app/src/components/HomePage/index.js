@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSchools } from "../../store/homepage";
+import Tags from "./Tags"
 import logo from "./campus_photo.png";
 import arrow from "./arrow.png"
 import "./homePage.css";
@@ -80,10 +81,7 @@ const SchoolListings = () => {
           </div>
           <div className='tags'>
           <ul>
-          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
-          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
-          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
-          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
+          <Tags />
           </ul>
           </div>
           </div>
