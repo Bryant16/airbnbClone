@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .images import seed_images, undo_images
 from .properties import seed_properties, undo_properties
 from .school import seed_schools, undo_schools
-
+from .reviews import seed_reviews, undo_reviews
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
