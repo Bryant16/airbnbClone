@@ -24,11 +24,15 @@ export default function PropertyReel ({ isOwner, profileUser }) {
         ? (
           <div className='reel-container'>
             <div className='reel-title-container'>
-              <Link to='/properties/new'>
-                <button>
-                  Create a New Listing
-                </button>
-              </Link>
+              {isOwner
+                ? (
+                  <Link to='/properties/new'>
+                    <button>
+                      Create a New Listing
+                    </button>
+                  </Link>
+                  )
+                : null}
               <h1>{`${isOwner ? 'Your' : profileUser.username + 's'} listings:`}
               </h1>
             </div>
