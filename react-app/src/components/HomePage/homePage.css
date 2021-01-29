@@ -22,8 +22,12 @@
   min-height: 100vh;
   width: auto;
   /* max-height: 90vh; */
-  background: url(campus_photo.png);
+  background: url(campus_photo.png) no-repeat center center fixed;
   background-repeat: no-repeat;
+  -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
   /* background-attachment: fixed; */
   background-position:top;
   overflow: hidden;
@@ -57,7 +61,9 @@
   flex-grow: 1;
   display: flex;
   flex-direction: row;
+  z-index: 10;
 }
+
 .div__school_container img {
   border-radius: 20px;
   width: 100px;
@@ -67,13 +73,28 @@
   background-color: white;
 }
 .schoolLogoImage:hover {
-  top: -10px;
+  margin-top: -5px;
   box-shadow: 5px 5px 15px 5px #C9C9C9;
+}
+.school_button_container_0{
+  position: fixed;
+  top: 30vh;
+  left: 10vw;
+  /* min-height: -50vh; */
 }
 
 
 .div__home_container h2 {
   font-weight: 200;
   border: 1px solid black;
+}
+footer {
+  background-color: lightgray;
+}
+.footer_container{
+  border-top: 1px solid gray;
+  border-radius: 3px;
+  background-color: lightgray;
+  padding: 0;
 }
 

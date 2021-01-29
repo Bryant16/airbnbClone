@@ -15,7 +15,7 @@ const SchoolListings = () => {
     dispatch(getSchools());
   }, [dispatch]);
   return (
-    
+    <div className='homepage_container'>
     <div className="div__home_container">
       <Helmet>
         <title>CollegeBnB</title>
@@ -39,6 +39,7 @@ const SchoolListings = () => {
           );
         })}
             </div>
+            
         <div className='school_button_container_2'>
         {schools.slice(5,10).map((school) => {
           return (
@@ -59,7 +60,18 @@ const SchoolListings = () => {
         </div>
       </div>
     </div>
-   
+    <footer>
+      <div className='footer_container'>
+        <div>
+          <h1>Contributors</h1>
+        </div>
+        <div>
+          <h1>GitHub</h1>
+        </div>
+        <div></div>
+      </div>
+    </footer>
+    </div>
     
     
   );
