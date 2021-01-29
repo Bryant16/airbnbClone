@@ -105,8 +105,3 @@
 .button__filter:focus {
   outline: none;
 }
-
-/* #div__search_bar label::after {
-  content: "\A";
-  white-space: pre;
-} */
