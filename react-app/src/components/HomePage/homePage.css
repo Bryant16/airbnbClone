@@ -110,6 +110,7 @@ min-height: 100vh;
 .indy_container{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   border-radius: 5px;
   /* border-right:.5px solid black;
   border-left:.5px solid black; */
@@ -119,7 +120,7 @@ min-height: 100vh;
 .indy_container ul {
   list-style: none;
   margin: 0;
-  
+  padding: 0;
 }
 
 .tags i{
@@ -128,9 +129,11 @@ min-height: 100vh;
 }
 
 
+
+
 .indy_container li {
   font-family: cursive;
-  font-size: 2em;
+  font-size: 1.9em;
   padding-top: .1em;
   padding-bottom: .1em;
 }
