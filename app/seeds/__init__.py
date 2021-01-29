@@ -15,6 +15,7 @@ def seed():
     seed_images()
     seed_properties()
     seed_schools()
+    seed_reviews()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -24,4 +25,5 @@ def undo():
     undo_images()
     undo_properties()
     undo_schools()
+    undo_reviews()
     # Add other undo functions here
