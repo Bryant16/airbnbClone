@@ -14,8 +14,13 @@
   display: flex;
   /* flex-wrap: wrap; */
   flex-direction: column;
+  /* overflow: hidden; */
   /* justify-content: space-around; */
 }
+/* .div__home_container::-webkit-scrollbar {
+  display: none;
+} */
+
 .banner {
   align-self: center;
   height: 55vh;
