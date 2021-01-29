@@ -32,6 +32,7 @@ div.div__listings_property {
   position: fixed !important;
   width: 55vw;
   right: 0;
+  top: 0;
   z-index: 1;
 }
 

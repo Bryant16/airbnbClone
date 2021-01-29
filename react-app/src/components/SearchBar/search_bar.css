@@ -16,8 +16,8 @@
 }
 
 .div__search_section:hover {
-  background-color: white;
-  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.2));
+  background-color: rgba(255, 255, 255, 0.6);
+  filter: drop-shadow(0 0 0.5rem rgb(220, 220, 220));
 }
 
 .div__search_section:nth-of-type(1) {

@@ -9,12 +9,13 @@
   z-index: 100;
   width: 100%;
   min-height: 10vh;
+  background-color: white;
   box-shadow: 0em 1em 1em rgba(155, 155, 155, 0.2);
   padding-bottom: 2vh;
 }
 
 .div__transparent_bg {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .div__white_bg {

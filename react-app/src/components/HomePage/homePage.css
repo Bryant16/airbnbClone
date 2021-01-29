@@ -15,7 +15,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
 }
 
 .div__home_container::after {
@@ -37,7 +36,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
   padding: 1.4em;
 }
