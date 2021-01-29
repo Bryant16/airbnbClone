@@ -14,9 +14,14 @@
   width: 80vw;
   display: flex;
   /* flex-wrap: wrap; */
-  justify-content: space-around;
+  flex-direction: column;
+  /* justify-content: space-around; */
 }
-
+.banner {
+  height: 50vh;
+  width:50%;
+  /* z-index: -1; */
+}
 /* .div__home_container::after {
   content: "";
   background: url(campus_photo.png);

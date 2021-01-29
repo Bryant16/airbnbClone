@@ -14,12 +14,12 @@ const SchoolListings = () => {
   }, [dispatch]);
   return (
     <div className="div__home_container">
+      <div className='banner'>
+        <img src={logo} />
+      </div>
       {schools.map((school) => {
         return (
           <div className="div__school_container">
-            <div className='banner'>
-              <img src={logo} />
-              </div>
             <Link to={`/school/${school.id}/${school.name}`}>
               <img
                 className="schoolLogoImage"
