@@ -14,6 +14,7 @@ class Property(db.Model):
   address1 = db.Column(db.String, nullable=False)               # address line 1
   address2 = db.Column(db.String, nullable=True)                # address line 2
   city = db.Column(db.String, nullable=False)
+  state = db.Column(db.String, nullable=True)
   zip_code = db.Column(db.Integer, nullable=False)
   longitude = db.Column(db.Float, nullable=False)
   latitude = db.Column(db.Float, nullable=False)
