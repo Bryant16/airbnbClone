@@ -70,3 +70,16 @@
     width: fit-content;
     border-bottom: 1px solid black;
 }
+
+.bar {
+    display: flex;
+    width: 50px;
+    height: 5px;
+    background-color: lightgray;
+    border: .5px solid black;
+}
+
+.bar_progress {
+    background-color: black;
+   
+}

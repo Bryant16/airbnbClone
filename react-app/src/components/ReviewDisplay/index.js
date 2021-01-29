@@ -2,6 +2,7 @@ import React from "react";
 
 
 const ReviewDisplay = ({review})=>{
+    console.log('review', review)
     return (
         <div className='singleproperty_container_single_review'>
             <div className='singleproperty_review_stats'>

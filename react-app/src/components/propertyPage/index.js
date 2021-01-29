@@ -44,18 +44,31 @@ const PropertyPage = () => {
                 <Reservation property={property}/>
             </div>
             </div>
-            <div className='singleproperty_container_review_container'>
+            {property.rating && <div className='singleproperty_container_review_container'>
                 <h1>REVIEWS</h1>
+                <p>Stars: {property.rating.average} *</p>
                 <div className='review_categories'>
-                    <p>Cleanliness</p>
+                    <p>Cleanliness </p>
+                    <span className='bar'><span style={{width:`${property.rating.cleanliness / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.cleanliness}</span>
                     <p>Communication</p>
+                    <span className='bar'><span style={{width:`${property.rating.communication / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.communication}</span>
                     <p>Check-in</p>
+                    <span className='bar'><span style={{width:`${property.rating.check_in / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.check_in}</span>
                     <p>Accuracy</p>
+                    <span className='bar'><span style={{width:`${property.rating.accuracy / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.accuracy}</span>
                     <p>Location</p>
+                    <span className='bar'><span style={{width:`${property.rating.location / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.location}</span>
                     <p>Value</p>
+                    <span className='bar'><span style={{width:`${property.rating.overall_value / 5 *100}%`}}className='bar_progress'></span></span>
+                    <span>{property.rating.overall_value}</span>
                 </div>
                 {rev && rev.map(r=> <ReviewDisplay key={r.id}review={r} />)}
-            </div>
+            </div>}
         </div>
     )
 }

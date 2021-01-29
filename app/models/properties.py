@@ -6,7 +6,6 @@ from .properties_images import properties_images
 
 class Property(db.Model):
   __tablename__ = 'properties'
-
   id = db.Column(db.Integer, primary_key=True)
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   coverphoto_id = db.Column(db.Integer, db.ForeignKey("images.id"), nullable=True)
@@ -33,11 +32,25 @@ class Property(db.Model):
   @property
   def rating(self):
     averages = [review.average for review in self.reviews]
-    return sum(averages)/(len(averages) if averages else 1)
+    cleanliness = [review.cleanliness for review in self.reviews]
+    communication = [review.communication for review in self.reviews]
+    check_in = [review.check_in for review in self.reviews]
+    accuracy = [review.accuracy for review in self.reviews]
+    location = [review.location for review in self.reviews]
+    overall_value = [review.overall_value for review in self.reviews]
 
+    return {
+      "average": "{:12.1f}".format(sum(averages)/(len(averages)) if averages else 1),
+      "cleanliness": "{:12.1f}".format(sum(cleanliness)/(len(cleanliness)) if cleanliness else 1),
+      "communication": "{:12.1f}".format(sum(communication)/(len(communication)) if communication else 1),
+      "check_in": "{:12.1f}".format(sum(check_in)/(len(check_in)) if check_in else 1),
+      "accuracy": "{:12.1f}".format(sum(accuracy)/(len(accuracy)) if accuracy else 1),
+      "location": "{:12.1f}".format(sum(location)/(len(location)) if location else 1),
+      "overall_value": "{:12.1f}".format(sum(overall_value)/(len(overall_value)) if overall_value else 1),
+      }
+  
   @property
   def to_dict(self):
-
     return {
       "id":self.id,
       "owner_id": self.owner_id,

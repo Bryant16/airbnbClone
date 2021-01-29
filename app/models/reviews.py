@@ -26,7 +26,7 @@ class Review(db.Model):
     return {
       'id': self.id,
       'property_id': self.property_id,
-      'reviewer_id': self.reviewer_id,
+      'reviewer_id': self.user.username,
       'cleanliness': self.cleanliness,
       'communication': self.communication,
       'check_in': self.check_in,
