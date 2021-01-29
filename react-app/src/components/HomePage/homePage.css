@@ -20,6 +20,8 @@
 .div__home_container::after {
   content: "";
   background: url(campus_photo.png);
+  background-attachment: fixed;
+  background-position: center;
   opacity: 0.5;
   top: 0;
   left: 0;
