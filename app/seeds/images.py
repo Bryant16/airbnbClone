@@ -45,7 +45,7 @@ def seed_images():
         URL="https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/New_Jersey_IT_seal.svg/1200px-New_Jersey_IT_seal.svg.png")
     rowan = Image(
         URL="https://www.ivyrehab.com/wp-content/uploads/2020/02/rowan-university.png")
-    jhu = Image(URL="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrand.jhu.edu%2Funiversity-logo%2F&psig=AOvVaw3FiTPdZH28WDm8g_emC5HF&ust=1611979773201000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMDC8uCiwO4CFQAAAAAdAAAAABAD")
+    jhu = Image(URL="https://brand.jhu.edu/assets/uploads/sites/5/2016/01/university.logo_.small_.vertical.white_.png")
     ut = Image(
         URL="https://www.uvu.edu/marketing/images/logos/full__0006_branding_horizontal.png")
     i = Image(URL="https://brand.iu.edu/images/resources-trident.jpg")
@@ -196,12 +196,7 @@ def seed_images():
                                   vil,
                                   bo,
                                   unc,
-                                  property21, property22, property23, property24, property25, property26, property27, property28, property29, property30, property31, property32,  property33, property34, property35, property36, property37, property38, property39, property40,
-                                  property41, property42, property43, property44, property45, property46, property47, property48, property49, property50, property51, property52, property53, property54, property55, property56, property57, property58, property59, property60,
-                                  property61, property62, property63, property64, property65, property66, property67, property68, property69, property70, property71, property72, property73, property74, property75, property76, property77, property78, property79, property80,
-                                  property81, property82, property83, property84, property85, property86, property87, property88, property89, property90, property91, property92, property93, property94, property95, property96, property97, property98, property99, property100,
-                                  property101, property102, property103, property104, property105, property106, property107, property108, property109, property110, property111, property112, property113, property114, property115, property116, property117, property118, property119,
-                                  property120, property121, property122,])
+                                  ])
 
     db.session.commit()
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from app.models import School, Property
+import random
 
 homepage_routes = Blueprint('/schools', __name__)
 
@@ -7,6 +8,7 @@ homepage_routes = Blueprint('/schools', __name__)
 @homepage_routes.route('')
 def schoolsListings():
     schools = [s.to_dict for s in School.query.all()]
+    random.shuffle(schools)
     return jsonify({"schools": schools})
 
 @homepage_routes.route('/<int:id>')
