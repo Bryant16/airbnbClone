@@ -92,9 +92,41 @@ footer {
   background-color: lightgray;
 }
 .footer_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: cursive;
+  /* justify-content: space-around; */
   border-top: 1px solid gray;
   border-radius: 3px;
   background-color: lightgray;
   padding: 0;
 }
+.homepage_container{
+min-height: 100vh;
+}
 
+.indy_container{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.indy_container ul {
+  list-style: none;
+  margin: 0;
+  
+}
+
+.tags i{
+  padding-left: .3em;
+  padding-right: .3em;
+}
+
+
+.indy_container li {
+  font-family: cursive;
+  font-size: 2em;
+  padding-top: .1em;
+  padding-bottom: .1em;
+}

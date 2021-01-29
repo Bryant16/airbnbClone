@@ -62,13 +62,25 @@ const SchoolListings = () => {
     </div>
     <footer>
       <div className='footer_container'>
-        <div>
-          <h1>Contributors</h1>
-        </div>
-        <div>
-          <h1>GitHub</h1>
-        </div>
-        <div></div>
+          <h2>Contributors</h2>
+        <div className='indy_container'>
+          <div>
+          <ul>
+            <li>Andrew</li>
+            <li>Bryant</li>
+            <li>James</li>
+            <li>JM</li>
+          </ul>
+          </div>
+          <div className='tags'>
+          <ul>
+          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
+          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
+          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
+          <li><i class="fab fa-github"></i><i class="fab fa-linkedin-in"></i><i class="far fa-envelope"></i></li>
+          </ul>
+          </div>
+          </div>
       </div>
     </footer>
     </div>
