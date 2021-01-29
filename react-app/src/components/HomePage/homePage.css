@@ -11,13 +11,23 @@
 .div__home_container {
   /* padding-top: 10vh; */
   margin: 0 auto;
-  width: 80vw;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  /* overflow: hidden; */
+  /* justify-content: space-around; */
 }
+/* .div__home_container::-webkit-scrollbar {
+  display: none;
+} */
 
-.div__home_container::after {
+.banner {
+  align-self: center;
+  height: 55vh;
+  width: 95vw;
+  /* z-index: -1; */
+}
+/* .div__home_container::after {
   content: "";
   background: url(campus_photo.png);
   background-attachment: fixed;
@@ -29,24 +39,41 @@
   right: 0;
   position: absolute;
   z-index: -1;
-}
+} */
 
 .div__school_container {
+  display:flex;
+  flex-direction: row;
   margin-top: 5vh;
   font-family: Roboto, arial, sans-serif;
   font-weight: 200;
   text-align: center;
   justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  padding: 1.4em;
+  
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
 }
-
+.school_buttons{
+  /* border:1px solid black; */
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+}
 .div__school_container img {
   border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid lightgray;
+  box-shadow: 5px 5px 15px 5px #C9C9C9;
 }
+.schoolLogoImage:hover {
+  top: -10px;
+  box-shadow: 2px 2px 10px 2px lightgray;
+}
+
 
 .div__home_container h2 {
   font-weight: 200;
+  border: 1px solid black;
 }

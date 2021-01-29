@@ -9,7 +9,8 @@ import { Redirect } from "react-router-dom";
 const Reservation = ({ property }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [numGuest, setNumGuest] = useState(1)
+  const [numGuest, setNumGuest] = useState(1);
+  const numNights = ((Math.abs(endDate-startDate)) / (1000 * 60 * 60 * 24));
   const {user} =  useSelector((state) => state.session);
   const history = useHistory();
   const handleSelect= (ranges)=> {
@@ -54,12 +55,10 @@ const Reservation = ({ property }) => {
         }catch(e){
             console.log(e)
         }
-
-          alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
-          // console.log(newReservation)
+          history.push('/users/me')
+          // alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
       }
-      
-  }
+    }
   return (
     <div>
       <form>
@@ -67,6 +66,7 @@ const Reservation = ({ property }) => {
         <DateRange  ranges={[selectionRange]} onChange={handleSelect} />
         <label>Number of Guests</label>
         <input type='integer' onChange={(e)=> setNumGuest(e.target.value)}></input>
+        {numNights != 0 && <p>Price Per Night: ${numNights*property.nightly_rate_usd}</p>}
         <button onClick={handleSubmit}>Reserve Now</button>
       </form>
     </div>

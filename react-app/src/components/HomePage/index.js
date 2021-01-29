@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSchools } from "../../store/homepage";
+import logo from "./campus_photo.png";
 import "./homePage.css";
 import { Helmet } from "react-helmet";
 
@@ -17,22 +18,25 @@ const SchoolListings = () => {
       <Helmet>
         <title>CollegeBnB</title>
       </Helmet>
-      {schools.map((school) => {
-        return (
-          <div className="div__school_container">
-            <Link to={`/school/${school.id}/${school.name}`}>
-              <img
-                className="schoolLogoImage"
-                src={school.logo_url}
-                alt="schoolImage"
-              />
-              <h2 key={school.name} className="schoolName">
+      <img className="banner" src={logo} />
+      <div className="div__school_container">
+        {schools.map((school) => {
+          return (
+            <div className="school_buttons">
+              <Link to={`/school/${school.id}/${school.name}`}>
+                <img
+                  className="schoolLogoImage"
+                  src={school.logo_url}
+                  alt="schoolImage"
+                />
+                {/* <h2 key={school.name} className="schoolName">
                 {school.name}
-              </h2>
-            </Link>
-          </div>
-        );
-      })}
+              </h2> */}
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

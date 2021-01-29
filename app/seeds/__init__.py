@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .images import seed_images, undo_images
 from .properties import seed_properties, undo_properties
 from .school import seed_schools, undo_schools
-
+from .reviews import seed_reviews, undo_reviews
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -15,6 +15,7 @@ def seed():
     seed_images()
     seed_properties()
     seed_schools()
+    seed_reviews()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -24,4 +25,5 @@ def undo():
     undo_images()
     undo_properties()
     undo_schools()
+    undo_reviews()
     # Add other undo functions here
