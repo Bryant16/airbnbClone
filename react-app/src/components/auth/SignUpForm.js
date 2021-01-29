@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-
 import { SignUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -50,7 +49,7 @@ const SignUpForm = () => {
           <div key={nanoid()}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className="userName__container">
         <label>User Name</label>
         <input
           type='text'
