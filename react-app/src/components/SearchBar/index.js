@@ -90,7 +90,9 @@ const SearchBar = () => {
           <div className="div__search_section">
             <label>Dates</label>
             <br />
-            <button onClick={handleDateButton}>Add Dates</button>
+            <button onClick={handleDateButton} style={{ paddingLeft: "2px" }}>
+              Add Dates
+            </button>
           </div>
           <div className="div__search_section">
             <label>Guests</label>

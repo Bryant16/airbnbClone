@@ -69,6 +69,7 @@
 }
 
 .div__search_section label {
+  padding-left: 2px;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
