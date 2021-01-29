@@ -33,7 +33,7 @@ const SchoolListings = () => {
       </Helmet>
       <div className="div__school_container">
         <div className='school_button_container_1'>
-        {schoolArr.slice(5,10).map((school) => {
+        {schoolArr.slice(0,5).map((school) => {
           return (
             <div className="school_buttons">
               <Link to={`/school/${school.id}/${school.name}`}>
