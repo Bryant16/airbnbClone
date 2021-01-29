@@ -71,7 +71,7 @@ function App () {
         <Route path='/' exact>
           <SchoolListings />
         </Route>
-        <Route path='/school/:schoolId'>
+        <Route path='/school/:schoolId/:schoolName'>
           <ListingsNearSchools />
         </Route>
       </Switch>

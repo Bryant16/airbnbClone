@@ -1,0 +1,29 @@
+.listingBySchool__image {
+  display: flex;
+  flex-wrap: wrap;
+  width: 22em;
+  height: 12em;
+  border-radius: 0.7em;
+}
+
+.propsBySchool__container {
+  display: inline-block;
+  flex-wrap: wrap;
+  padding-left: 50px;
+  /* padding: 5px; */
+  /* border: 2px solid black;
+    background-color: aqua; */
+}
+
+.propsBySchool__text {
+  font-size: 17px;
+  height: 2px;
+  width: auto;
+  justify-content: center;
+}
+
+.listingMapContainer_listings h1 {
+  margin-left: 3vw;
+  font-family: Roboto;
+  font-weight: 200;
+}
