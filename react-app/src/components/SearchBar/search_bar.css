@@ -106,3 +106,7 @@
 .button__filter:focus {
   outline: none;
 }
+
+.label__dates {
+  margin-left: 2px;
+}

@@ -88,9 +88,9 @@ const SearchBar = () => {
             ></input>
           </div>
           <div className="div__search_section">
-            <label>Dates</label>
+            <label className="label__dates">Dates</label>
             <br />
-            <button onClick={handleDateButton} style={{ paddingLeft: "2px" }}>
+            <button onClick={handleDateButton} style={{ marginLeft: "-2px" }}>
               Add Dates
             </button>
           </div>
