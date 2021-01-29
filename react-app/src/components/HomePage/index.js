@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSchools } from "../../store/homepage";
 import "./homePage.css";
+import { Helmet } from "react-helmet";
 
 const SchoolListings = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,9 @@ const SchoolListings = () => {
   }, [dispatch]);
   return (
     <div className="div__home_container">
+      <Helmet>
+        <title>CollegeBnB</title>
+      </Helmet>
       {schools.map((school) => {
         return (
           <div className="div__school_container">

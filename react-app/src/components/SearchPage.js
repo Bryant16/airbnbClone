@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import GoogleMap from "./GoogleMap";
 import SearchResultListing from "./SearchResultListing";
 import "./search_page.css";
 
 const SearchPage = () => {
+  let { location } = useParams();
+
   const searchResults = useSelector((state) => {
     return state.search.properties;
   });

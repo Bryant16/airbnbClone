@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../../store/search";
@@ -6,6 +6,7 @@ import "./react_date_range.css";
 import { DateRangePicker } from "react-date-range";
 import "./search_bar.css";
 import { FaSearch } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -15,6 +16,28 @@ const SearchBar = () => {
   const [guestNumber, setGuestNumber] = useState(1);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  // HANDLE CASING OF QUERIES
+  useEffect(() => {
+    if (searchLocation.length > 1 && !searchLocation.includes(" ")) {
+      const locationCasing =
+        searchLocation[0].toUpperCase() + searchLocation.slice(1);
+      return setSearchLocation(locationCasing);
+    }
+    if (searchLocation.includes(" ")) {
+      const locationCasing = searchLocation
+        .split(" ")
+        .map((word) => {
+          try {
+            return word[0].toUpperCase() + word.slice(1);
+          } catch {
+            return word;
+          }
+        })
+        .join(" ");
+      setSearchLocation(locationCasing);
+    }
+  }, [searchLocation]);
 
   const selectionRange = {
     startDate: startDate,
@@ -42,11 +65,15 @@ const SearchBar = () => {
     e.preventDefault();
     console.log(startDate, endDate);
     dispatch(search({ searchLocation, guestNumber, startDate, endDate }));
-    history.push("/search");
+
+    history.push(`/search`);
   };
 
   return (
     <>
+      <Helmet>
+        <title>{searchLocation}</title>
+      </Helmet>
       <div id="div__search_bar">
         <form onSubmit={handleSubmit}>
           <div className="div__search_section">
@@ -55,6 +82,7 @@ const SearchBar = () => {
             <input
               type="text"
               className="navbar_search_searchbar"
+              value={searchLocation}
               onChange={handleLocation}
               placeholder="Where are you going?"
             ></input>
