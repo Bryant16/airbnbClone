@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSchools } from "../../store/homepage";
 import logo from "./campus_photo.png";
+import arrow from "./arrow.png"
 import "./homePage.css";
 import { Helmet } from "react-helmet";
 
@@ -14,13 +15,14 @@ const SchoolListings = () => {
     dispatch(getSchools());
   }, [dispatch]);
   return (
+    
     <div className="div__home_container">
       <Helmet>
         <title>CollegeBnB</title>
       </Helmet>
-      <img className="banner" src={logo} />
       <div className="div__school_container">
-        {schools.map((school) => {
+        <div className='school_button_container_1'>
+        {schools.slice(0,5).map((school) => {
           return (
             <div className="school_buttons">
               <Link to={`/school/${school.id}/${school.name}`}>
@@ -36,8 +38,30 @@ const SchoolListings = () => {
             </div>
           );
         })}
+            </div>
+        <div className='school_button_container_2'>
+        {schools.slice(5,10).map((school) => {
+          return (
+            <div className="school_buttons">
+              <Link to={`/school/${school.id}/${school.name}`}>
+                <img
+                  className="schoolLogoImage"
+                  src={school.logo_url}
+                  alt="schoolImage"
+                />
+                {/* <h2 key={school.name} className="schoolName">
+                {school.name}
+              </h2> */}
+              </Link>
+            </div>
+          );
+        })}
+        </div>
       </div>
     </div>
+   
+    
+    
   );
 };
 

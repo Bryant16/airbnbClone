@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .schoolLogoImage {
   height: 100px;
   width: auto;
@@ -9,67 +12,63 @@
 }
 
 .div__home_container {
-  /* padding-top: 10vh; */
   margin: 0 auto;
   display: flex;
-  /* flex-wrap: wrap; */
-  flex-direction: column;
-  /* overflow: hidden; */
-  /* justify-content: space-around; */
-}
-/* .div__home_container::-webkit-scrollbar {
-  display: none;
-} */
-
-.banner {
-  align-self: center;
-  height: 55vh;
-  width: 95vw;
-  /* z-index: -1; */
-}
-/* .div__home_container::after {
-  content: "";
+  flex-direction: row;
+  /* justify-content: center; */
+  align-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  width: auto;
+  /* max-height: 90vh; */
   background: url(campus_photo.png);
-  background-attachment: fixed;
-  background-position: center;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-} */
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position:top;
+  overflow: hidden;
+}
+
+
+
+.banner_container{
+  display: flex;
+  flex-direction: column;
+}
 
 .div__school_container {
+  flex-grow: 1;
   display:flex;
-  flex-direction: row;
-  margin-top: 5vh;
-  font-family: Roboto, arial, sans-serif;
-  font-weight: 200;
-  text-align: center;
-  justify-content: center;
-  border-radius: 20px;
-  
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  /* height: 50%; */
+  /* width: 25%; */
+  overflow: hidden;
 }
 .school_buttons{
-  /* border:1px solid black; */
   display: flex;
   flex-direction: column;
   padding:10px;
+}
+.school_button_container_1, 
+.school_button_container_2{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
 }
 .div__school_container img {
   border-radius: 20px;
   width: 100px;
   height: 100px;
   border: 1px solid lightgray;
-  box-shadow: 5px 5px 15px 5px #C9C9C9;
+  /* box-shadow: 2px 2px 10px 2px lightgray; */
+  background-color: white;
 }
 .schoolLogoImage:hover {
   top: -10px;
-  box-shadow: 2px 2px 10px 2px lightgray;
+  box-shadow: 5px 5px 15px 5px #C9C9C9;
 }
 
 
@@ -77,3 +76,4 @@
   font-weight: 200;
   border: 1px solid black;
 }
+

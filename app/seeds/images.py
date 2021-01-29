@@ -45,7 +45,7 @@ def seed_images():
         URL="https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/New_Jersey_IT_seal.svg/1200px-New_Jersey_IT_seal.svg.png")
     rowan = Image(
         URL="https://www.ivyrehab.com/wp-content/uploads/2020/02/rowan-university.png")
-    jhu = Image(URL="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrand.jhu.edu%2Funiversity-logo%2F&psig=AOvVaw3FiTPdZH28WDm8g_emC5HF&ust=1611979773201000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMDC8uCiwO4CFQAAAAAdAAAAABAD")
+    jhu = Image(URL="https://brand.jhu.edu/assets/uploads/sites/5/2016/01/university.logo_.small_.vertical.white_.png")
     ut = Image(
         URL="https://www.uvu.edu/marketing/images/logos/full__0006_branding_horizontal.png")
     i = Image(URL="https://brand.iu.edu/images/resources-trident.jpg")
@@ -90,7 +90,8 @@ def seed_images():
                                   qu,
                                   vil,
                                   bo,
-                                  unc, ])
+                                  unc,
+                                  ])
 
     db.session.commit()
 
