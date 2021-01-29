@@ -13,11 +13,11 @@
   margin: 0 auto;
   width: 80vw;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-around;
 }
 
-.div__home_container::after {
+/* .div__home_container::after {
   content: "";
   background: url(campus_photo.png);
   opacity: 0.5;
@@ -27,7 +27,7 @@
   right: 0;
   position: absolute;
   z-index: -1;
-}
+} */
 
 .div__school_container {
   margin-top: 5vh;

@@ -66,7 +66,7 @@ const Reservation = ({ property }) => {
         <DateRange  ranges={[selectionRange]} onChange={handleSelect} />
         <label>Number of Guests</label>
         <input type='integer' onChange={(e)=> setNumGuest(e.target.value)}></input>
-        {numNights != 0 && <label>Price Per Night: ${numNights*property.nightly_rate_usd}</label>}
+        {numNights != 0 && <p>Price Per Night: ${numNights*property.nightly_rate_usd}</p>}
         <button onClick={handleSubmit}>Reserve Now</button>
       </form>
     </div>
