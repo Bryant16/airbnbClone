@@ -14,25 +14,25 @@ const SchoolListings = () => {
   }, [dispatch]);
   return (
     <div className="div__home_container">
-      <div className='banner'>
-        <img src={logo} />
-      </div>
+      <img className='banner' src={logo} />
+      <div className="div__school_container">
       {schools.map((school) => {
         return (
-          <div className="div__school_container">
+          <div className='school_buttons'>
             <Link to={`/school/${school.id}/${school.name}`}>
               <img
                 className="schoolLogoImage"
                 src={school.logo_url}
                 alt="schoolImage"
               />
-              <h2 key={school.name} className="schoolName">
+              {/* <h2 key={school.name} className="schoolName">
                 {school.name}
-              </h2>
+              </h2> */}
             </Link>
-          </div>
+            </div>
         );
       })}
+      </div>
     </div>
   );
 };
