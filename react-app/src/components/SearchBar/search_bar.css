@@ -43,7 +43,7 @@
 
 .div__search_section:hover {
   background-color: rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 1em 0.5em rgb(220, 220, 220));
+  filter: drop-shadow(0 0.4em 0.5em rgb(220, 220, 220));
 }
 
 .div__search_section:nth-of-type(1) {
