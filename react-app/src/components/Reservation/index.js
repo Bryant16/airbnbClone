@@ -54,8 +54,8 @@ const Reservation = ({ property }) => {
         }catch(e){
             console.log(e)
         }
-
-          alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
+          history.push('/users/me')
+          // alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
           // console.log(newReservation)
       }
       
