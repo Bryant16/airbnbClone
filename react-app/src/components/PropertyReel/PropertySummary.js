@@ -27,7 +27,7 @@ export default function PropertySummary ({ property }) {
         </div>
         <div className='user-property-listing-review-container'>
           {property.reviews.length
-            ? `${Math.round(property.rating * 2 + Number.EPSILON) / 2} stars across ${property.reviews.length} reviews`
+            ? `${Math.round(property.rating.average * 2 + Number.EPSILON) / 2} stars across ${property.reviews.length} reviews`
             : 'No reviews yet!'}
         </div>
       </div>
