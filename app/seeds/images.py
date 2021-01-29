@@ -25,7 +25,7 @@ def seed_images():
     montclair = Image(URL='https://montclairathletics.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2020/3/24/Primary.jpg')
     njit = Image(URL="https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/New_Jersey_IT_seal.svg/1200px-New_Jersey_IT_seal.svg.png")
     rowan = Image(URL="https://www.ivyrehab.com/wp-content/uploads/2020/02/rowan-university.png")
-
+    jhu= Image(URL="")
 
     db.session.bulk_save_objects([property1,property2,property3,property4,property5,property6,property7,property8,property9,property10,property11,property12,property13,property14,property15,property16,property17,property18,property19,property20,montclair, njit, rowan])
 
