@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { PopulateProperties } from '../../store/reel';
@@ -24,6 +24,11 @@ export default function PropertyReel ({ isOwner, profileUser }) {
         ? (
           <div className='reel-container'>
             <div className='reel-title-container'>
+              <Link to='/properties/new'>
+                <button>
+                  Create a New Listing
+                </button>
+              </Link>
               <h1>{`${isOwner ? 'Your' : profileUser.username + 's'} listings:`}
               </h1>
             </div>

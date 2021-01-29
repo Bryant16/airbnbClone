@@ -47,11 +47,13 @@ export default function NewProperty () {
   return (
     <div className='new-property-page-container'>
       {/* {pageErrors.length
-        ? <div className='page-errors'>
-          <ul>
-            {pageErrors.map((err, idx) => <li key={idx}>{err}</li>)}
-          </ul>
-        </div>
+        ? (
+          <div className='page-errors'>
+            <ul>
+              {pageErrors.map((err, idx) => <li key={idx}>{err}</li>)}
+            </ul>
+          </div>
+          )
         : null} */}
       <form
         className='new-property-form'
@@ -85,10 +87,11 @@ export default function NewProperty () {
           required
         />
         <input
-          type='number'
-          placeholder='Zip Code'
+          type='text'
+          placeholder='Zip Code (00000)'
           value={zip_code}
           onChange={({ target: { value } }) => updateZipCode(value)}
+          pattern='^\d{5}'
           required
         />
         <div className='new-property-checkin-checkout'>
@@ -104,6 +107,7 @@ export default function NewProperty () {
             {'Maximum Occupancy '}
             <input
               type='number'
+              className='occupancy'
               min='2'
               max='20'
               value={guest_spots}
@@ -121,19 +125,22 @@ export default function NewProperty () {
             />
           </label>
           <label>
-            {'Private '}
-            <input
-              type='checkbox'
-              checked={isPrivate}
-              onChange={() => setIsPrivate(value => !value)}
-            />
+            <div className='checkbox-corrector'>
+              <div>Private Space</div>
+              <input
+                type='checkbox'
+                id='private-checkbox'
+                checked={isPrivate}
+                onChange={() => setIsPrivate(value => !value)}
+              />
+            </div>
           </label>
         </div>
         <div className='nightly-rate'>
           <label>
             Nightly rate
           </label>
-          <div>
+          <div className='nightly-rate-input-container'>
             $
             <input
               type='number'
