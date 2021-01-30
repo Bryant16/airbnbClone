@@ -63,10 +63,15 @@
     filter: none;
   }
 
+  div.div__search_section:hover:not(div.div__search_section:nth-last-of-type(1)) {
+    border-bottom: 1px solid #ff3a5c;
+  }
+
   div.rdrDateRangePickerWrapper {
     transform: scale(0.75);
     top: 20vh;
     left: 0;
+    border: 0;
   }
   .label__move_over {
     margin-left: -20px;
