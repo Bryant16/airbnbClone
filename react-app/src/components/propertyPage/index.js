@@ -31,8 +31,10 @@ const PropertyPage = () => {
             <div className='singleproperty_container_address'>
             <h1>{`${property.listing_title}`}</h1>
             <p>{`${property.address1}, ${property.city}`}</p>
+            <div>
+                <img src={property.coverphoto_url} alt="coverPhoto" />
             </div>
-            <img src={property.coverphoto_url} alt="coverPhoto" />
+            </div>
             <div className='detailReservationContainer'>
             <div className='singleproperty_container_propertyInfo'>
             <h3>{`Host: ${property.owner_id}`}</h3>
