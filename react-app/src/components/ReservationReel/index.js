@@ -23,7 +23,7 @@ export default function PropertyReel () {
   }, [dispatch]);
 
   return loaded
-    ? list
+    ? list && list.length
         ? (
           <div className='reel-container'>
             <div className='reel-title-container'>
