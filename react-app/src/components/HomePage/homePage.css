@@ -12,27 +12,24 @@
 }
 
 .div__home_container {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  opacity: 0.5;
-  z-index: -1;
-  /* justify-content: center; */
-  align-content: space-around;
-  align-items: flex-end;
-  flex-wrap: wrap;
   min-height: 100vh;
-  width: auto;
-  /* max-height: 90vh; */
-  background: url(campus_photo.png) no-repeat center center fixed;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  /* background-attachment: fixed; */
+}
+
+.div__home_container::after {
+  content: "";
+  min-height: 100vh;
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  background-attachment: absolute;
+
+  background: url(campus_photo.png);
   background-position: top;
-  overflow: hidden;
+  opacity: 0.5;
+  top: 136px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  /* z-index: -1; */
 }
 
 .banner_container {
@@ -41,6 +38,7 @@
 }
 
 .div__school_container {
+  padding-top: 5vh;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -51,6 +49,7 @@
   /* width: 25%; */
   overflow: hidden;
 }
+
 .school_buttons {
   display: flex;
   flex-direction: column;
@@ -87,53 +86,19 @@
   font-weight: 200;
   border: 1px solid black;
 }
-footer {
-  background-color: lightgray;
-}
+
 .footer_container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  bottom: 0;
   align-items: center;
   font-family: cursive;
   /* justify-content: space-around; */
 
-  border-top: 1px solid gray;
   border-radius: 3px;
-  background-color: lightgray;
+
   padding: 0;
 }
 .homepage_container {
   min-height: 100vh;
-}
-
-.indy_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border-radius: 5px;
-  /* border-right:.5px solid black;
-  border-left:.5px solid black; */
-  bottom: -0.5em;
-}
-
-.indy_container ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.tags i {
-  padding-left: 0.3em;
-  padding-right: 0.3em;
-}
-
-.indy_container a {
-  color: black;
-}
-
-.indy_container li {
-  font-family: cursive;
-  font-size: 1.9em;
-  padding-top: 0.1em;
-  padding-bottom: 0.1em;
 }
