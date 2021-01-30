@@ -1,8 +1,5 @@
-footer {
-  transform: scale(0.88);
-}
-
 .tags__container {
+  transform: scale(0.88);
   display: flex;
   flex-direction: row;
   font-family: Roboto, arial, sans-serif;
