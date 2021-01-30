@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
-import GoogleMapReact from "google-map-react";
-import "./map.css";
-import { NavLink } from "react-router-dom";
-import { parseWithOptions } from "date-fns/fp";
+import React/*, { useEffect, useState } */ from 'react';
+import GoogleMapReact from 'google-map-react';
+import { NavLink } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+// import { parseWithOptions } from 'date-fns/fp';
+
+import './map.css';
 
 const Pin = ({ searchResult }) => {
   return (
     <NavLink to={`/properties/${searchResult.id}`}>
-      <div className="pin">
+      <div className='pin'>
         <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
       </div>
     </NavLink>
@@ -15,15 +17,14 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
-  console.log("locationObj", locationObj);
   return (
-    <div className="map">
-      {!locationObj && "loading...."}
+    <div className='map'>
+      {!locationObj && 'loading....'}
       {locationObj && (
-        <div className="google-map">
+        <div className='google-map'>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: "AIzaSyDT_KxxLpoLwmlk3sXLpayAvW9z9_RodME",
+              key: 'AIzaSyDT_KxxLpoLwmlk3sXLpayAvW9z9_RodME'
             }}
             center={locationObj}
             defaultZoom={8}
@@ -31,6 +32,7 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             {searchResults.map((result) => {
               return (
                 <Pin
+                  key={nanoid()}
                   lat={result.latitude}
                   lng={result.longitude}
                   searchResult={result}

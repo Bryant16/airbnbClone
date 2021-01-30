@@ -16,7 +16,7 @@ export default function ReservationSummary ({ reservation }) {
       </div>
       <div className='summary-image-container'>
         <Link to={`/properties/${reservation.property_id}`}>
-          <img src={reservation.property_photo_url} />
+          <img src={reservation.property_photo_url} alt='' />
         </Link>
       </div>
       <div className='summary-footer'>

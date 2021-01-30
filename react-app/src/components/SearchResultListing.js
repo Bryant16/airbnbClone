@@ -1,30 +1,31 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const SearchResultListing = ({ listing }) => {
   return (
     <NavLink to={`/properties/${listing.id}`}>
-      <div className="div__listings_property">
-        <div className="div__coverphoto">
+      <div className='div__listings_property'>
+        <div className='div__coverphoto'>
           <img
-            className="img__listing_coverphoto"
+            className='img__listing_coverphoto'
             src={listing.coverphoto_url}
+            alt=''
           />
         </div>
-        <div className="div__listings_info">
-          <div className="div__description">
+        <div className='div__listings_info'>
+          <div className='div__description'>
             <h2>{listing.listing_title}</h2>
             <hr />
-            <span className="span__details">
+            <span className='span__details'>
               {listing.guest_spots} guests ·
               {listing.private
-                ? " Entire place"
-                : " Private room in shared space"}
+                ? ' Entire place'
+                : ' Private room in shared space'}
             </span>
           </div>
-          <div className="div__nightly_rate">
-            <span className="span__night_rate-bold">
-              ${listing.nightly_rate_usd}{" "}
+          <div className='div__nightly_rate'>
+            <span className='span__night_rate-bold'>
+              ${listing.nightly_rate_usd}{' '}
             </span>
             / night
           </div>

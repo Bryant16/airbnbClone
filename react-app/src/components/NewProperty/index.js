@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import './index.css';
 
@@ -14,7 +14,7 @@ export default function NewProperty () {
   const [check_out, setCheckOut] = useState('12:00');
   const [guest_spots, updateMaxOccupancy] = useState(2);
   const [nightly_rate_usd, setRate] = useState(0);
-  const [pageErrors, setPageErrors] = useState([]);
+  // const [pageErrors, setPageErrors] = useState([]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -37,12 +37,12 @@ export default function NewProperty () {
       body: JSON.stringify(newProperty)
     });
     if (response.ok) console.log(await response.json());
-    else {
-      setPageErrors(["Sorry, it seems that address doesn't exist."]);
-    }
+    // else {
+    //   setPageErrors(["Sorry, it seems that address doesn't exist."]);
+    // }
   };
 
-  useEffect(() => () => setPageErrors([]), []);
+  // useEffect(() => () => setPageErrors([]), []);
 
   return (
     <div className='new-property-page-container'>
