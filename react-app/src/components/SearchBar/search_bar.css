@@ -23,10 +23,10 @@
     margin-left: -2px;
   }
   .div__search_section:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
     border-bottom: 1px dotted #ff3a5c;
     border-top: 1px dotted lightgrey;
-    filter: drop-shadow(0em 0.4em 0.2em rgb(220, 220, 220));
+    filter: drop-shadow(0em 1em 0.2em rgba(235, 235, 235, 0.4));
   }
   .div__search_section {
     border-bottom: 1px inset rgb(203, 203, 203);

@@ -74,7 +74,6 @@ const SearchBar = () => {
       <Helmet>
         <title>{searchLocation}</title>
       </Helmet>
-
       <form onSubmit={handleSubmit}>
         <div id="div__search_bar">
           <div className="div__search_section">
