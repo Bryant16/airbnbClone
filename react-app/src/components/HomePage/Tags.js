@@ -35,7 +35,7 @@ const Tags = () => {
             </a>
           </div>
           <div className="div__icons">
-            <a href="https://github.com/monaco021r">
+            <a href="https://github.com/monaco021">
               <i class="fab fa-github"></i>{" "}
             </a>{" "}
             <a href="https://www.linkedin.com/mwlite/in/james-monaco-770127175">
