@@ -5,8 +5,9 @@ import { search } from "../../store/search";
 import "./react_date_range.css";
 import { DateRangePicker } from "react-date-range";
 import "./search_bar.css";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaPlus, FaMinus } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import dateFormat from "dateformat";
 
 const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -14,6 +15,7 @@ const SearchBar = () => {
   const [searchLocation, setSearchLocation] = useState("");
   const [showDates, setShowDates] = useState(false);
   const [guestNumber, setGuestNumber] = useState(1);
+  const [datesButtonDisplay, setDatesButtonDisplay] = useState("Add Dates");
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -44,6 +46,20 @@ const SearchBar = () => {
     endDate: endDate,
     key: "selection",
   };
+
+  // Change the Dates button to display the user's selection
+  useEffect(() => {
+    if (selectionRange.startDate) {
+      const startDate = dateFormat(selectionRange.startDate, "mmm d");
+      const endDate = dateFormat(selectionRange.endDate, "mmm d");
+      if (startDate === endDate) {
+        setDatesButtonDisplay(startDate);
+      } else if (startDate !== endDate) {
+        setDatesButtonDisplay(startDate + " - " + endDate);
+      }
+    }
+  }, [selectionRange]);
+
   function handleSelect(ranges) {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
@@ -87,21 +103,26 @@ const SearchBar = () => {
               placeholder="Where are you going?"
             />
           </div>
-          <div className="div__search_section">
+          <div className="div__search_section div__dates-width">
             <label className="label__dates">Dates</label>
             <br />
             <button
               className="button__annoying_space"
               onClick={handleDateButton}
             >
-              Add Dates
+              {datesButtonDisplay}
             </button>
             <br />
           </div>
-          <div className="div__search_section">
+          <div className="div__search_section div__guests-width">
             <label>Guests</label>
             <br />
-            <input type="number" min="1" onChange={handleGuests} />
+            <input
+              className="div__guests-width"
+              type="number"
+              min="1"
+              onChange={handleGuests}
+            />
           </div>
           <div className="div__search_section">
             <button>

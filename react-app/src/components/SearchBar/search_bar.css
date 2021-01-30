@@ -15,6 +15,11 @@
   min-height: 60px;
 }
 
+.div__search_section input,
+.div__search_section button {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 740px) {
   .button__annoying_space {
     margin-left: -4px;
@@ -128,4 +133,16 @@
 
 .label__dates {
   margin-left: 2px;
+}
+
+.div__dates-width {
+  min-width: 130px;
+}
+
+.div__guests-width {
+  width: 100px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
