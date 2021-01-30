@@ -64,7 +64,7 @@
   }
 
   div.div__search_section:hover:not(div.div__search_section:nth-last-of-type(1)) {
-    border-bottom: 1px solid #ff3a5c;
+    border-bottom: 1px dotted #ff3a5c;
   }
 
   div.rdrDateRangePickerWrapper {
