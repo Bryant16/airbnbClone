@@ -44,7 +44,11 @@ const SearchBar = () => {
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
+    color: "#ff3a5c",
     key: "selection",
+    // TODO:
+    // add property disabledDates to disable selection based on unavailbilty
+    // disabledDates: ["AN ARRAY OF DATES THAT ARE DISABLED"],
   };
 
   // Change the Dates button to display the user's selection

@@ -19,7 +19,7 @@ const SearchPage = () => {
 
   return (
     <div className="div__container">
-      {!searchResults && <Redirect to="/" />}
+      {!searchResults && "searching..."}
 
       {searchResults && (
         <div className="listingMapContainer">

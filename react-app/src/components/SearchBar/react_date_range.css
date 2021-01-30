@@ -626,6 +626,7 @@
 }
 
 .rdrDateRangePickerWrapper {
+  border: 0;
   font-family: Roboto, arial;
   border-radius: 30px;
   position: absolute;
