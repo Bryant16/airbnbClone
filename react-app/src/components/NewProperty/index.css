@@ -7,11 +7,6 @@
   overflow: visible;
 }
 
-.checkbox-corrector {
-  display: flex;
-  align-items: center;
-}
-
 .checkbox-corrector > input#private-checkbox {
   width: 14px;
   height: 14px;
@@ -31,9 +26,16 @@
   box-sizing: border-box;
   height: 50px;
   font-size: 1.25em;
+}
+
+.address-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.address-inputs > input {
+  border-bottom: 1px solid lightgrey;
   margin-bottom: 10px;
-  box-shadow: 0px 2px 5px rgb(58, 58, 58);
-  border-radius: 3px;
 }
 
 .new-property-form textarea {
@@ -58,18 +60,49 @@
   width: 60px;
 }
 
-.new-property-checkin-checkout, .occupancy-and-privacy, .nightly-rate {
+.nightly-rate {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.new-property-checkin-checkout input.occupancy {
+input.occupancy {
   width: 40px;
-  text-align: center;
+  text-align: right;
 }
 
 .new-property-form button {
   width: 150px;
   margin-left: auto;
+}
+
+.nightly-rate input {
+  text-align: right;
+}
+
+input[type=time] {
+  height: 30px;
+  padding: 5px;
+}
+
+input[type=time]:focus, input[type=time]:hover {
+  box-shadow: 0px 0px 5px grey;
+}
+
+.checkin-checkout-privacy-occupancy {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkin-checkout, .occupancy-privacy {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.new-checkin, .new-checkout, .new-occupancy, .new-privacy {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: space-between;
 }

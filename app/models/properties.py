@@ -48,7 +48,7 @@ class Property(db.Model):
       "location": "{:12.1f}".format(sum(location)/(len(location)) if location else 1),
       "overall_value": "{:12.1f}".format(sum(overall_value)/(len(overall_value)) if overall_value else 1),
       }
-  
+
   @property
   def to_dict(self):
     return {
@@ -71,4 +71,15 @@ class Property(db.Model):
       "reservations": [reservation.to_dict for reservation in self.reservations],
       'reviews': [review.to_dict() for review in self.reviews],
       "rating": self.rating
+    }
+
+  @property
+  def to_summary(self):
+    return {
+      'id': self.id,
+      'review_average': self.rating['average'],
+      'total_reviews': len(self.reviews),
+      "coverphoto_url": Image.query.get(self.coverphoto_id).URL,
+      'city': self.city,
+      'listing_title': self.listing_title
     }

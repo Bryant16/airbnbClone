@@ -59,74 +59,84 @@ export default function NewProperty () {
         className='new-property-form'
         onSubmit={submit}
       >
-        <input
-          type='text'
-          placeholder='Listing Title'
-          value={listing_title}
-          onChange={({ target: { value } }) => updateTitle(value)}
-          required
-        />
-        <input
-          type='text'
-          placeholder='Address Line 1'
-          value={address1}
-          onChange={({ target: { value } }) => updateAddr1(value)}
-          required
-        />
-        <input
-          type='text'
-          placeholder='Address Line 2 (optional)'
-          value={address2}
-          onChange={({ target: { value } }) => updateAddr2(value)}
-        />
-        <input
-          type='text'
-          placeholder='City'
-          value={city}
-          onChange={({ target: { value } }) => updateCity(value)}
-          required
-        />
-        <input
-          type='text'
-          placeholder='Zip Code (00000)'
-          value={zip_code}
-          onChange={({ target: { value } }) => updateZipCode(value)}
-          pattern='^\d{5}'
-          required
-        />
-        <div className='new-property-checkin-checkout'>
-          <label>
-            {'Check in time '}
-            <input
-              type='time'
-              value={check_in}
-              onChange={({ target: { value } }) => setCheckIn(value)}
-            />
-          </label>
-          <label>
-            {'Maximum Occupancy '}
-            <input
-              type='number'
-              className='occupancy'
-              min='2'
-              max='20'
-              value={guest_spots}
-              onChange={({ target: { value } }) => updateMaxOccupancy(value)}
-            />
-          </label>
+        <div className='address-inputs'>
+          <input
+            type='text'
+            placeholder='Listing Title'
+            value={listing_title}
+            onChange={({ target: { value } }) => updateTitle(value)}
+            required
+          />
+          <input
+            type='text'
+            placeholder='Address Line 1'
+            value={address1}
+            onChange={({ target: { value } }) => updateAddr1(value)}
+            required
+          />
+          <input
+            type='text'
+            placeholder='Address Line 2 (optional)'
+            value={address2}
+            onChange={({ target: { value } }) => updateAddr2(value)}
+          />
+          <input
+            type='text'
+            placeholder='City'
+            value={city}
+            onChange={({ target: { value } }) => updateCity(value)}
+            required
+          />
+          <input
+            type='text'
+            placeholder='Zip Code (00000)'
+            value={zip_code}
+            onChange={({ target: { value } }) => updateZipCode(value)}
+            pattern='^\d{5}'
+            required
+          />
         </div>
-        <div className='occupancy-and-privacy'>
-          <label>
-            {'Check out time '}
-            <input
-              type='time'
-              value={check_out}
-              onChange={({ target: { value } }) => setCheckOut(value)}
-            />
-          </label>
-          <label>
-            <div className='checkbox-corrector'>
-              <div>Private Space</div>
+        <div className='checkin-checkout-privacy-occupancy'>
+          <div className='checkin-checkout'>
+            <div className='new-checkin'>
+              <label>
+                {'Check in: '}
+              </label>
+              <input
+                type='time'
+                value={check_in}
+                onChange={({ target: { value } }) => setCheckIn(value)}
+              />
+            </div>
+            <div className='new-checkout'>
+              <label>
+                {'Check out: '}
+              </label>
+              <input
+                type='time'
+                value={check_out}
+                onChange={({ target: { value } }) => setCheckOut(value)}
+              />
+            </div>
+          </div>
+          <div className='occupancy-privacy'>
+            <div className='new-occupancy'>
+              <label>
+                {'Maximum Occupancy '}
+              </label>
+              <input
+                type='number'
+                className='occupancy'
+                min='2'
+                max='20'
+                value={guest_spots}
+                onChange={({ target: { value } }) => updateMaxOccupancy(value)}
+              />
+            </div>
+            <div className='new-privacy'>
+              <label>
+                Private Space
+              </label>
               <input
                 type='checkbox'
                 id='private-checkbox'
@@ -134,7 +144,7 @@ export default function NewProperty () {
                 onChange={() => setIsPrivate(value => !value)}
               />
             </div>
-          </label>
+          </div>
         </div>
         <div className='nightly-rate'>
           <label>

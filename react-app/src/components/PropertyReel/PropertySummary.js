@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 export default function PropertySummary ({ property }) {
-  console.log(property.city, property.coverphoto_url);
   return (
     <div className='summary-container'>
       <div
@@ -31,10 +30,12 @@ export default function PropertySummary ({ property }) {
               {property.city}
             </NavLink>
           </div>
-          <div className='user-property-listing-review-container'>
+          <div
+            className='user-property-listing-review-container'
+          >
             <FaStar style={{ color: '#f8395c' }} />
-            {property.reviews.length
-              ? ` ${Math.round(property.rating.average * 2 + Number.EPSILON) / 2} (${property.reviews.length})`
+            {property.total_reviews
+              ? ` ${property.review_average} (${property.total_reviews})`
               : 'No reviews yet!'}
           </div>
         </div>
