@@ -1,6 +1,6 @@
 .new-property-page-container {
-  margin-top: 50px;
-  height: 83vh;
+  margin-top: 20px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,11 +21,19 @@
   flex-direction: column;
 }
 
-.new-property-form input, .new-property-form textarea {
+.new-property-form input, textarea.description {
   border: none;
   box-sizing: border-box;
   height: 50px;
   font-size: 1.25em;
+}
+
+.new-property-form input:focus, .new-property-form input:hover, textarea.description:focus, textarea.description:hover {
+  box-shadow: 0px 0px 5px grey;
+}
+
+textarea.description:focus {
+  outline: none;
 }
 
 .address-inputs {
@@ -57,28 +65,31 @@
 
 .nightly-rate input {
   height: 25px;
-  width: 60px;
-}
+  width: 80px;
+  text-align: right;
+  border: 1px solid lightgrey;
+  }
+
 
 .nightly-rate {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0px auto;
+  width: 40%;
 }
 
 input.occupancy {
-  width: 40px;
+  width: 50px;
   text-align: right;
+  height: 30px;
 }
 
-.new-property-form button {
-  width: 150px;
-  margin-left: auto;
+input.private {
+  height: 20px;
+  width: 20px;
 }
 
-.nightly-rate input {
-  text-align: right;
-}
 
 input[type=time] {
   height: 30px;
@@ -94,10 +105,19 @@ input[type=time]:focus, input[type=time]:hover {
   justify-content: space-between;
 }
 
+.checkin-checkout-privacy-occupancy input, textarea.description {
+  border: 1px solid lightgrey;
+}
+
+.checkin-checkout-privacy-occupancy input:hover {
+  cursor: pointer;
+}
+
 .checkin-checkout, .occupancy-privacy {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  width: 250px;
 }
 
 .new-checkin, .new-checkout, .new-occupancy, .new-privacy {
@@ -105,4 +125,33 @@ input[type=time]:focus, input[type=time]:hover {
   align-items: center;
   padding: 5px;
   justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+  height: 60px;
+}
+
+button.new-property-submit {
+  color: white;
+  font-weight: bolder;
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 40px;
+  background-color: #ff3a5c;
+  margin: 10px auto;
+  box-shadow: 2px 2px 5px grey;
+}
+
+button.new-property-submit:hover {
+  cursor: pointer;
+}
+
+button.new-property-submit:focus {
+  outline: none;
+}
+
+button.new-property-submit:active {
+  box-shadow: none;
+  top: 2px;
+  left: 2px;
 }

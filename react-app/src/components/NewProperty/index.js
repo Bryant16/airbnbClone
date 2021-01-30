@@ -100,7 +100,7 @@ export default function NewProperty () {
           <div className='checkin-checkout'>
             <div className='new-checkin'>
               <label>
-                {'Check in: '}
+                Check in
               </label>
               <input
                 type='time'
@@ -110,7 +110,7 @@ export default function NewProperty () {
             </div>
             <div className='new-checkout'>
               <label>
-                {'Check out: '}
+                Check out
               </label>
               <input
                 type='time'
@@ -139,6 +139,7 @@ export default function NewProperty () {
               </label>
               <input
                 type='checkbox'
+                className='private'
                 id='private-checkbox'
                 checked={isPrivate}
                 onChange={() => setIsPrivate(value => !value)}
@@ -154,6 +155,7 @@ export default function NewProperty () {
             $
             <input
               type='number'
+              min={0}
               value={nightly_rate_usd}
               onChange={({ target: { value } }) => setRate(value)}
             />
@@ -161,12 +163,14 @@ export default function NewProperty () {
           </div>
         </div>
         <textarea
+          rows={15}
           placeholder='Listing Description'
+          className='description'
           value={description}
           onChange={({ target: { value } }) => updateDescription(value)}
           required
         />
-        <button>
+        <button className='new-property-submit'>
           Make some money!
         </button>
       </form>
