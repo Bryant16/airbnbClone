@@ -114,14 +114,16 @@ const SearchBar = () => {
             </button>
             <br />
           </div>
-          <div className="div__search_section div__guests-width">
+          <div className="div__search_section">
             <label>Guests</label>
             <br />
+
             <input
               className="div__guests-width"
               type="number"
               min="1"
               onChange={handleGuests}
+              placeholder="number of guests"
             />
           </div>
           <div className="div__search_section">

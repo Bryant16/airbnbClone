@@ -140,9 +140,12 @@
 }
 
 .div__guests-width {
-  width: 100px;
+  display: flex;
+  flex-direction: row;
+  width: 135px;
+  /* font-size: 14px; */
 }
 
-input[type="number"]::-webkit-inner-spin-button {
+/* input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-}
+} */

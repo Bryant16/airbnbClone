@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import GoogleMap from "./GoogleMap";
 import SearchResultListing from "./SearchResultListing";
 import "./search_page.css";
@@ -18,7 +19,7 @@ const SearchPage = () => {
 
   return (
     <div className="div__container">
-      {!searchResults && <span>searching...</span>}
+      {!searchResults && <Redirect to="/" />}
 
       {searchResults && (
         <div className="listingMapContainer">
