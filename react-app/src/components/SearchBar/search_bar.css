@@ -2,28 +2,49 @@
   flex-direction: row;
   border: 1px solid rgb(203, 203, 203);
   background-color: rgb(235, 235, 235);
-  padding-top: 0.1em;
   border-radius: 5em;
   font-family: Roboto, Helvetica Neue, sans-serif;
 }
 
 .div__search_section {
   display: inline-block;
-  /* flex-direction: row; */
   border-radius: 0;
   box-sizing: border-box;
   vertical-align: center;
-  padding: 0.5em 0.7em 0.5em 0.7em;
+  padding: 0.5em 0.7em 0.3em 0.7em;
+  min-height: 60px;
+}
+
+@media screen and (min-width: 740px) {
+  .button__annoying_space {
+    margin-left: -4px;
+  }
+  .navbar_search_searchbar {
+    margin-left: -2px;
+  }
+  .div__search_section:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px dotted #ff3a5c;
+    border-top: 1px dotted lightgrey;
+    filter: drop-shadow(0em 0.4em 0.2em rgb(220, 220, 220));
+  }
+  .div__search_section {
+    border-bottom: 1px inset rgb(203, 203, 203);
+    border-top: 1px solid rgb(203, 203, 203);
+  }
 }
 
 @media screen and (max-width: 740px) {
   #div__search_bar {
     flex-direction: column;
     border-radius: 2em;
-    text-align: center;
+    text-align: center !important;
   }
   .div__search_section {
     display: block;
+  }
+  .div__search_section button {
+    cursor: pointer;
   }
   div.div__search_section:hover {
     background-color: rgba(255, 255, 255, 0);
@@ -31,19 +52,17 @@
   }
 
   div.rdrDateRangePickerWrapper {
-    transform: scale(0.9);
-    top: 5vh;
-    left: 5vw;
+    transform: scale(0.75);
+    top: 20vh;
+    left: 0;
+  }
+  .label__move_over {
+    margin-left: -20px;
   }
 }
 
 .div__search_section button:focus {
   outline: none;
-}
-
-.div__search_section:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 0.4em 0.5em rgb(220, 220, 220));
 }
 
 .div__search_section:nth-of-type(1) {
@@ -55,7 +74,7 @@
 .div__search_section:nth-last-of-type(1) {
   /* submit input styling */
   color: white;
-  font-size: 1em;
+  font-size: 1.2em;
   /* padding: 0.5em 0.2em 0.5em 0.2em; */
   border-radius: 0 5em 5em 0;
   vertical-align: top;
@@ -69,7 +88,7 @@
 }
 
 .div__search_section label {
-  padding-left: 2px;
+  /* padding-left: 2px; */
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;

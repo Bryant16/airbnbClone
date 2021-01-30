@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { search } from '../../store/search';
-import './react_date_range.css';
-import { DateRangePicker } from 'react-date-range';
-import './search_bar.css';
-import { FaSearch } from 'react-icons/fa';
-import { Helmet } from 'react-helmet';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { search } from "../../store/search";
+import "./react_date_range.css";
+import { DateRangePicker } from "react-date-range";
+import "./search_bar.css";
+import { FaSearch } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const SearchBar = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [searchLocation, setSearchLocation] = useState('');
+  const [searchLocation, setSearchLocation] = useState("");
   const [showDates, setShowDates] = useState(false);
   const [guestNumber, setGuestNumber] = useState(1);
   const dispatch = useDispatch();
@@ -19,14 +19,14 @@ const SearchBar = () => {
 
   // HANDLE CASING OF QUERIES
   useEffect(() => {
-    if (searchLocation.length > 1 && !searchLocation.includes(' ')) {
+    if (searchLocation.length > 1 && !searchLocation.includes(" ")) {
       const locationCasing =
         searchLocation[0].toUpperCase() + searchLocation.slice(1);
       return setSearchLocation(locationCasing);
     }
-    if (searchLocation.includes(' ')) {
+    if (searchLocation.includes(" ")) {
       const locationCasing = searchLocation
-        .split(' ')
+        .split(" ")
         .map((word) => {
           try {
             return word[0].toUpperCase() + word.slice(1);
@@ -34,7 +34,7 @@ const SearchBar = () => {
             return word;
           }
         })
-        .join(' ');
+        .join(" ");
       setSearchLocation(locationCasing);
     }
   }, [searchLocation]);
@@ -42,9 +42,9 @@ const SearchBar = () => {
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
-    key: 'selection'
+    key: "selection",
   };
-  function handleSelect (ranges) {
+  function handleSelect(ranges) {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   }
@@ -66,7 +66,7 @@ const SearchBar = () => {
     console.log(startDate, endDate);
     dispatch(search({ searchLocation, guestNumber, startDate, endDate }));
 
-    history.push('/search');
+    history.push("/search");
   };
 
   return (
@@ -74,38 +74,43 @@ const SearchBar = () => {
       <Helmet>
         <title>{searchLocation}</title>
       </Helmet>
-      <div id='div__search_bar'>
-        <form onSubmit={handleSubmit}>
-          <div className='div__search_section'>
-            <label>Location</label>
+
+      <form onSubmit={handleSubmit}>
+        <div id="div__search_bar">
+          <div className="div__search_section">
+            <label className="label__move_over">Location</label>
             <br />
             <input
-              type='text'
-              className='navbar_search_searchbar'
+              type="text"
+              className="navbar_search_searchbar"
               value={searchLocation}
               onChange={handleLocation}
-              placeholder='Where are you going?'
-             />
+              placeholder="Where are you going?"
+            />
           </div>
-          <div className='div__search_section'>
-            <label className='label__dates'>Dates</label>
+          <div className="div__search_section">
+            <label className="label__dates">Dates</label>
             <br />
-            <button onClick={handleDateButton} style={{ marginLeft: '-2px' }}>
+            <button
+              className="button__annoying_space"
+              onClick={handleDateButton}
+            >
               Add Dates
             </button>
+            <br />
           </div>
-          <div className='div__search_section'>
+          <div className="div__search_section">
             <label>Guests</label>
             <br />
-            <input type='number' min='1' onChange={handleGuests} />
+            <input type="number" min="1" onChange={handleGuests} />
           </div>
-          <div className='div__search_section'>
+          <div className="div__search_section">
             <button>
               <FaSearch />
             </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
       {showDates && (
         <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
       )}
