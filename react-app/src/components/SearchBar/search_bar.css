@@ -137,6 +137,7 @@
 
 .div__dates-width {
   min-width: 130px;
+  cursor: pointer;
 }
 
 .div__guests-width {

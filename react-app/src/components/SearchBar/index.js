@@ -103,13 +103,21 @@ const SearchBar = () => {
               placeholder="Where are you going?"
             />
           </div>
-          <div className="div__search_section div__dates-width">
+          <div
+            className="div__search_section div__dates-width"
+            style={
+              showDates
+                ? {
+                    backgroundColor: "rgba(255, 255, 255, 0.6)",
+                    borderBottom: "1px dotted #ff3a5c",
+                  }
+                : null
+            }
+            onClick={handleDateButton}
+          >
             <label className="label__dates">Dates</label>
             <br />
-            <button
-              className="button__annoying_space"
-              onClick={handleDateButton}
-            >
+            <button className="button__annoying_space">
               {datesButtonDisplay}
             </button>
             <br />
