@@ -20,8 +20,8 @@
   min-height: 100vh;
   /* background-color: rgba(255, 255, 255, 0.9); */
   background-attachment: absolute;
-
   background: url(campus_photo.png);
+  background-size: cover;
   background-position: top;
   opacity: 0.5;
   top: 136px;
