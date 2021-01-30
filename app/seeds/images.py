@@ -6,7 +6,7 @@ def seed_images():
         URL="https://a0.muscache.com/im/pictures/0ac5b610-bdbc-4d96-84bd-f7a134c18d59.jpg")
     property2 = Image(
         URL="https://a0.muscache.com/im/pictures/11a2086a-e8f3-4a12-9303-e11fb715a1d6.jpg")
-    property3 = Image(URL="https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/dn9JmbyHvw0DTUWlpE8V9Z0K4lU=/1660x934/smart/filters:no_upscale()/cloudfront-us-east-1.images.arcpublishing.com/dmn/S4ZX2DV7BZDW5HW54OMMISE4Y4.jpg")
+    property3 = Image(URL="cloudfront-us-east-1.images.arcpublishing.com/dmn/S4ZX2DV7BZDW5HW54OMMISE4Y4.jpg")
     property4 = Image(
         URL="https://cdngeneral.rentcafe.com/dmslivecafe/3/509605/Avant-Apartments-Parking-Garage-Entrance-Carmel,-Indiana_WEB.jpg?quality=85&scale=both&")
     property5 = Image(URL="https://images.squarespace-cdn.com/content/v1/5ecdab0a27eb1f230be656e6/1591749677023-LINNELBITLVLDI6QAQWR/ke17ZwdGBToddI8pDm48kFWxnDtCdRm2WA9rXcwtIYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UcTSrQkGwCGRqSxozz07hWZrYGYYH8sg4qn8Lpf9k1pYMHPsat2_S1jaQY3SwdyaXg/01-Standard+Apartments-018.jpg?format=2500w")
@@ -23,7 +23,7 @@ def seed_images():
     property11 = Image(
         URL="https://photos.zillowstatic.com/fp/52075f26c2333c8ad50cdb5ec68f5080-p_e.jpg")
     property12 = Image(
-        URL="https://cdngeneral.rentcafe.com/dmslivecafe/3/868916/Reliable_Interiors_02.jpg?crop=(0,14,300,205.25000000000028)&cropxunits=300&cropyunits=208&quality=85&scale=both&")
+        URL="https://cdngeneral.rentcafe.com/dmslivecafe/3/868916/Reliable_Interiors_02.jpg")
     property13 = Image(
         URL="https://medialibrarycdn.entrata.com/media_library/1715/5dde8ea8e02a07.07327544849.jpg")
     property14 = Image(

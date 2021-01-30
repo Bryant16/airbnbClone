@@ -7,7 +7,7 @@ import PropertySummary from './PropertySummary';
 
 import './index.css';
 
-export default function PropertyReel ({ isOwner, profileUser }) {
+export default function PropertyReel ({ isOwner, profileUser, placeName }) {
   const dispatch = useDispatch();
   const list = useSelector(state => state.reel.propertyList);
   const location = useLocation();
@@ -24,17 +24,24 @@ export default function PropertyReel ({ isOwner, profileUser }) {
         ? (
           <div className='reel-container'>
             <div className='reel-title-container'>
+              <h1>{!placeName
+                ? `${isOwner
+                  ? 'Your'
+                  : `${profileUser.username}'s`} listings:`
+                : `Crash pads near ${placeName}`}
+              </h1>
               {isOwner
                 ? (
-                  <Link to='/properties/new'>
+                  <Link
+                    to='/properties/new'
+                    className='new-listing-button'
+                  >
                     <button>
                       Create a New Listing
                     </button>
                   </Link>
                   )
                 : null}
-              <h1>{`${isOwner ? 'Your' : profileUser.username + 's'} listings:`}
-              </h1>
             </div>
             {list.map(prop => <PropertySummary key={prop.id} property={prop} />)}
           </div>
