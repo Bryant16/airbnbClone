@@ -116,6 +116,7 @@
 
 .pic_reservation_container{
     display: inline-flex;
-    height: 85vh;
+    height: 34em;
+    width: 75em;
     /* align-self:center; */
 }

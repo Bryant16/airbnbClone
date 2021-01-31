@@ -8,7 +8,7 @@
     border: 1px solid white;
     border-radius: 4px;
     margin-top: 5em;
-    width: 23vw;
+    width: 28em;
     font-style: Roboto;
 }
 .reviewForm button {
@@ -41,6 +41,7 @@
 .inputContainer [type=radio] {
     text-align: center;
     margin-right: 15px;
+    
 }
 
 .inputContainer [type=radio]:hover{
@@ -55,8 +56,11 @@
 
 #nums{
     display: inline-flex;
-    /* justify-content: space-around; */
     align-self:flex-end;
     padding-right: 3em;
+}
+
+svg:hover{
+    color:red;
 }
 

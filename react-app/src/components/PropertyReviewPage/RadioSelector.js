@@ -1,5 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import { FaStar } from "react-icons/fa";
 
 export default function RadioSelector ({ label, count, checked, onChange }) {
   const inputs = [];
