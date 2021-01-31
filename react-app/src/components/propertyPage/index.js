@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getPage } from '../../store/propertyPage';
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
-
+import Stars from '../Stars'
 import './propertyPage.css';
 
 const PropertyPage = () => {
@@ -45,29 +45,44 @@ const PropertyPage = () => {
       </div>
       {property.rating && (
         <div className='singleproperty_container_review_container'>
-          <h1>REVIEWS</h1>
-          <p>Stars: {property.rating.average} *</p>
+          <div className='stars_reviews'>
+          <Stars rating={property.rating.average}></Stars><p>{` (Reviews ${rev.length}) `}</p>
+          </div>
           <div className='review_categories'>
+            <div>
             <p>Cleanliness </p>
             <span className='bar'><span style={{ width: `${property.rating.cleanliness / 5 * 100}%` }} className='bar_progress' /></span>
             <span>{property.rating.cleanliness}</span>
-            <p>Communication</p>
-            <span className='bar'><span style={{ width: `${property.rating.communication / 5 * 100}%` }} className='bar_progress' /></span>
-            <span>{property.rating.communication}</span>
+            </div>
+            <div>
             <p>Check-in</p>
             <span className='bar'><span style={{ width: `${property.rating.check_in / 5 * 100}%` }} className='bar_progress' /></span>
             <span>{property.rating.check_in}</span>
+            </div>
+            <div>
             <p>Accuracy</p>
             <span className='bar'><span style={{ width: `${property.rating.accuracy / 5 * 100}%` }} className='bar_progress' /></span>
             <span>{property.rating.accuracy}</span>
+            </div>
+            <div>
             <p>Location</p>
             <span className='bar'><span style={{ width: `${property.rating.location / 5 * 100}%` }} className='bar_progress' /></span>
             <span>{property.rating.location}</span>
+            </div>
+            <div>
             <p>Value</p>
             <span className='bar'><span style={{ width: `${property.rating.overall_value / 5 * 100}%` }} className='bar_progress' /></span>
             <span>{property.rating.overall_value}</span>
+            </div>
+            <div>
+            <p>Communication</p>
+            <span className='bar'><span style={{ width: `${property.rating.communication / 5 * 100}%` }} className='bar_progress' /></span>
+            <span>{property.rating.communication}</span>
+            </div>
           </div>
+          <div className='review_text'>
           {rev && rev.map(r => <ReviewDisplay key={r.id} review={r} />)}
+          </div>
         </div>
       )}
     </div>

@@ -8,8 +8,8 @@ const ReviewDisplay = ({review})=>{
             <div className='singleproperty_review_stats'>
             </div>
             <div className='singleproperty_review_usertext'>
-                <p>USER: {review[0].reviewer_id}</p>
-                <p>Review: {review[0].review}</p>
+                <p><i class="far fa-user-circle"></i> {review[0].reviewer_id}</p>
+                <p>{review[0].review}</p>
             </div>
         </div>
     )
