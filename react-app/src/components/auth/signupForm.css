@@ -1,0 +1,53 @@
+.form__container_div {
+    display: grid;
+    justify-content: center;
+    width: 35vh;
+    background: rgba(255,255,255,.5);
+    border-radius: 30px;
+    padding-bottom: 20px;
+}
+
+.userName__container{
+    display: contents;
+}
+
+.userName__container label{
+    padding-top: 20px
+}
+
+.email__container{
+    display: contents;
+}
+
+.password_container{
+    display: contents;
+}
+
+.email__container label{
+    padding-top: 10px
+}
+
+.password_container label{
+    padding-top: 10px
+}
+
+.div__container_form{
+    min-height: 79vh;
+}
+
+.div__container_form{
+    width: 100%;
+    background-attachment: absolute;
+    background: url(campus.png);
+    background-size: cover;
+    background-position: top;
+    top: 136px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
