@@ -3,11 +3,14 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 25px;
+    font-family: 'Roboto';
 }
 
 .singleproperty_container img {
-    width: 400px;
-    height: 400px;
+    width: 40vw;
+    /* height: 60vh; */
+    margin-right: 3em;
+    border-radius: 1em;
 }
 
 .singleproperty_container_address {
@@ -23,31 +26,31 @@
     flex-direction: row;
 }
 
-.singleproperty_container_propertyInfo{
-    /* flex-grow: 3; */
-    
-}
-
 .singleproperty_container_reservation{
     /* flex-grow: 1; */
-    border: px solid black;
-    width: 100%;
+    /* position: fixed; */
+    /* box-sizing: border-box; */
+    display: inline-flex;
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 1em;
 }
 
 .singleproperty_container_review_container{
-    align-self: center;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    border-top: 1px solid black;
+    margin-top: 1em;
+    border-top: 1px solid lightgray;
+    padding-top: 3em;
 }
 
 .singleproperty_container_single_review{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 10px;
     
 }
 
@@ -58,23 +61,24 @@
 
 .review_categories{
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100px;
-    width: 100px;
+    flex-direction: row;
 }
-
+.review_categories div {
+    display: inline-flex;
+    flex-direction: column;
+    width: 6em;
+}
 .singleproperty_review_usertext {
     display: flex;
     flex-direction: column;
+    font-size: 2em;
     width: fit-content;
-    border-bottom: 1px solid black;
 }
 
 .bar {
     display: flex;
-    width: 50px;
-    height: 5px;
+    width: 5em;
+    height: .5em;
     background-color: lightgray;
     border: .5px solid black;
 }
@@ -82,4 +86,35 @@
 .bar_progress {
     background-color: black;
    
+}
+
+.stars_reviews{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 2em;
+}
+
+.stars_reviews p {
+    padding-left: 1em;
+}
+#review_text{
+    font-size: .5em !important;
+    margin-top: 0;
+}
+
+#show_more_button{
+    background-color:white ;
+    font-weight: bold;
+    padding: 1.3em;
+    border-radius: 1em;
+    outline:none;
+}
+#show_more_button:hover{
+    background-color: rgb(243, 240, 240);
+}
+
+.pic_reservation_container{
+    display: inline-flex;
+    /* align-self:center; */
 }

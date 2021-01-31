@@ -1,3 +1,66 @@
-/* .rdrMonthAndYearWrapper, .rdrDays,.rdrWeekDays {
-    visibility: hidden;
+/* .reservation_form {
+    border: 1px solid black;
+    display: inline-flex;
+    flex-direction: column;
 } */
+
+.reservation_form form {
+    display: inline-flex;
+    flex-direction: column;
+
+}
+
+.rate_and_test {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+}
+.guest_number_container{
+    display: inline;
+    margin-bottom: .5em;
+    align-self: center;
+}
+#guest_number{
+    width:1em;
+    /* border-radius: .5em; */
+    border: none;
+    align-self: center;
+    font-size: 1em;
+}
+.rate_and_test i {
+    color:red;
+}
+.increase_decrease{
+    background-color: white;
+    height:22px;
+    width: 22px;
+    outline:none;
+    font-weight: bold;
+    border: none;
+    font-size: 1em;
+}
+.increase_decrease:hover{
+    background-color: lightgray;
+    border-radius: 1em;
+}
+.guest_number_container > label{
+    margin-right: 1em;
+}
+
+#reserve_button{
+    border-radius: 1em;
+    padding: 1em;
+    width: 15em;
+    align-self: center;
+    font-weight: bold;
+    background-color: #ff385c;
+}
+
+#reserve_button:hover{
+    background-color: #fc1f47;
+}
+
+#price_per_night {
+    align-self: center;
+    border-bottom: 1px solid lightgray;
+}
