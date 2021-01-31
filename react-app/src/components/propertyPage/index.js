@@ -41,18 +41,17 @@ const PropertyPage = () => {
         <h1>{`${property.listing_title}`}</h1>
         <p>{`${property.address1}, ${property.city}`}</p>
       </div>
+      <div className='pic_reservation_container'>
       <img src={property.coverphoto_url} alt='coverPhoto' />
-      <div className='detailReservationContainer'>
-        <div className='singleproperty_container_propertyInfo'>
-          <h3>{`Host: ${property.owner_id}`}</h3>
-          <h2>{`${property.description}`}</h2>
-          <h3>{`Private: ${property.private}`}</h3>
-          <h3>{`Number of guest allowed: ${property.guest_spots}`}</h3>
-        </div>
-        <div className='singleproperty_container_reservation'>
+      <div className='singleproperty_container_reservation'>
           <Reservation property={property} />
         </div>
       </div>
+      <div className='detailReservationContainer'>
+        <div className='singleproperty_container_propertyInfo'>
+        </div>
+      </div>
+        
       {property.rating && (
         <div className='singleproperty_container_review_container'>
           <div className='stars_reviews'>

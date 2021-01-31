@@ -8,7 +8,8 @@
 
 .singleproperty_container img {
     width: 40vw;
-    height: 60vh;
+    /* height: 60vh; */
+    margin-right: 3em;
     border-radius: 1em;
 }
 
@@ -41,6 +42,7 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
+    margin-top: 1em;
     border-top: 1px solid lightgray;
     padding-top: 3em;
 }
@@ -110,4 +112,9 @@
 }
 #show_more_button:hover{
     background-color: rgb(243, 240, 240);
+}
+
+.pic_reservation_container{
+    display: inline-flex;
+    /* align-self:center; */
 }

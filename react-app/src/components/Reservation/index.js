@@ -75,10 +75,10 @@ const guestTrack =(e)=>{
           <DateRange ranges={[selectionRange]} onChange={handleSelect} />
           <div className='guest_number_container'>
           <label>Guests</label>
-          <button className='increase_decrease' value ={'+'} onClick={guestTrack}>+</button> <input id='guest_number' type='integer' value={guestForNight}onChange={(e) => setNumGuest(e.target.value)}></input><button className='increase_decrease' value={'-'} onClick={guestTrack}>-</button>
+          <input id='guest_number' type='integer' value={guestForNight}onChange={(e) => setNumGuest(e.target.value)}></input><button className='increase_decrease' value={'+'} onClick={guestTrack}>+</button><button className='increase_decrease' value ={'-'} onClick={guestTrack}>-</button>
           </div>
-          {numNights !== 0 && <p>Price Per Night: ${numNights * property.nightly_rate_usd}</p>}
-          <button onClick={handleSubmit}>Reserve Now</button>
+          {numNights !== 0 && <p id='price_per_night'>Price Per Night: ${numNights * property.nightly_rate_usd}</p>}
+          <button id='reserve_button' onClick={handleSubmit}>Reserve Now</button>
         </form>
       </div>
   );
