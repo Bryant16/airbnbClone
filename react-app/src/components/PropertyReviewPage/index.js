@@ -29,7 +29,6 @@ const PropertyReviewPage = () => {
       overall_value,
       review
     };
-    console.log(newReview);
     const createReviewResponse = await window.fetch('/api/reviews/', {
       headers: { 'Content-type': 'application/json' },
       method: 'POST',
@@ -43,7 +42,6 @@ const PropertyReviewPage = () => {
   return (
     <div className='reviewContainers'>
       <form className='reviewForm'>
-        <div> <p>12345</p></div>
         <RadioSelector label='Cleanliness' count={5} checked={cleanliness} onChange={setCleanliness} />
         <RadioSelector label='Communication' count={5} checked={communication} onChange={setCommunication} />
         <RadioSelector label='Check In' count={5} checked={check_in} onChange={setCheck_in} />

@@ -1,13 +1,15 @@
 .reviewForm {
     display:flex;
     flex-direction: column;
-    /* align-items: center; */
     width: 50%;
     height: 100%;
-    padding: 10px;
+    padding: 2em;
     box-shadow:-1px -1px 10px 0px #CECECE ;
     border: 1px solid white;
     border-radius: 4px;
+    margin-top: 5em;
+    width: 23vw;
+    font-style: Roboto;
 }
 .reviewForm button {
     align-self: center;
@@ -39,12 +41,22 @@
 .inputContainer [type=radio] {
     text-align: center;
     margin-right: 15px;
-    /* background-image: url('../../images/needASpot.png'); */
+}
+
+.inputContainer [type=radio]:hover{
+    background-color: lightgray;
 }
 
 .reviewContainers {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#nums{
+    display: inline-flex;
+    /* justify-content: space-around; */
+    align-self:flex-end;
+    padding-right: 3em;
 }
 
