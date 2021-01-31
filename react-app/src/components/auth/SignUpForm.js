@@ -88,7 +88,9 @@ const SignUpForm = () => {
             required
           />
         </div>
-        <button className="sub__button" type='submit'>Sign Up</button>
+        <div className="signup__btn">
+          <button className="sub__button" type='submit'>Sign Up</button>
+        </div>
       </form>
     </div>
   );

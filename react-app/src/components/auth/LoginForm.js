@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-
+import "./loginForm.css"
 import { LogIn } from '../../store/session';
 
 const LoginForm = () => {
@@ -30,34 +30,38 @@ const LoginForm = () => {
   return user
     ? <Redirect to='/' />
     : (
-      <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error) => (
-            <div key={nanoid()}>{error}</div>
-          ))}
-        </div>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-          <button type='submit'>Login</button>
-        </div>
-      </form>
+      <div className="login__div_container">
+        <form className="login__form_container" onSubmit={onLogin}>
+          <div>
+            {errors.map((error) => (
+              <div key={nanoid()}>{error}</div>
+            ))}
+          </div>
+          <div className="login__email">
+            <label htmlFor='email'>Email</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className="login_password" >
+            <label htmlFor='password'>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+            <div className="login__btn">
+              <button type='submit'>Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
       );
 };
 

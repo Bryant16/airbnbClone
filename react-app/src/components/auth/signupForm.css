@@ -2,7 +2,7 @@
     display: grid;
     justify-content: center;
     width: 35vh;
-    background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.7);
     border-radius: 30px;
     padding-bottom: 20px;
 }
@@ -12,7 +12,8 @@
 }
 
 .userName__container label{
-    padding-top: 20px
+    padding-top: 20px;
+    font-family: Roboto;
 }
 
 .email__container{
@@ -24,11 +25,13 @@
 }
 
 .email__container label{
-    padding-top: 10px
+    padding-top: 10px;
+    font-family: Roboto;
 }
 
 .password_container label{
-    padding-top: 10px
+    padding-top: 10px;
+    font-family: Roboto;
 }
 
 .div__container_form{
@@ -50,4 +53,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.signup__btn{
+    padding-top: 10px;
 }
