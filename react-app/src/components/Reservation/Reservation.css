@@ -1,3 +1,20 @@
-/* .rdrMonthAndYearWrapper, .rdrDays,.rdrWeekDays {
-    visibility: hidden;
+/* .reservation_form {
+    border: 1px solid black;
+    display: inline-flex;
+    flex-direction: column;
 } */
+
+.reservation_form form {
+    display: inline-flex;
+    flex-direction: column;
+
+}
+
+.rate_and_test {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+}
+.rate_and_test i {
+    color:red;
+}

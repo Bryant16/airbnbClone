@@ -13,6 +13,7 @@ const PropertyPage = () => {
   const { propertyId } = useParams();
   const { property } = useSelector((state) => state.property);
   const [rev, setRev] = useState(false);
+  const [numReviews, setNumReviews] = useState(5)
 
   // propertyReviews.map(rev=> console.log(rev))
   useEffect(() => {
@@ -24,7 +25,16 @@ const PropertyPage = () => {
     getReviews();
     dispatch(getPage(propertyId));
   }, [dispatch, propertyId]);
-  console.log(property);
+  const handleExpandReview= (e)=>{
+    e.preventDefault()
+    let num = rev.length
+    if(numReviews > 6){
+      setNumReviews(5)
+    }else{
+      setNumReviews(num)
+    }
+  }
+  
   return (
     <div className='singleproperty_container'>
       <div className='singleproperty_container_address'>
@@ -81,7 +91,8 @@ const PropertyPage = () => {
             </div>
           </div>
           <div className='review_text'>
-          {rev && rev.map(r => <ReviewDisplay key={r.id} review={r} />)}
+          {rev && rev.slice(0,numReviews).map(r => <ReviewDisplay key={r.id} review={r} />)}
+          {rev && <button id='show_more_button' onClick={handleExpandReview}>{numReviews===5 ? `Show All ${rev.length} Reviews`: 'show less'}</button>}
           </div>
         </div>
       )}

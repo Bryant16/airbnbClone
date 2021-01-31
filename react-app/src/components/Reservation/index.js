@@ -24,7 +24,6 @@ const Reservation = ({ property }) => {
       setEndDate(ranges.selection.endDate);
     }
   };
-
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -56,14 +55,15 @@ const Reservation = ({ property }) => {
         console.log(e);
       }
       history.push('/users/me');
-      // alert(`Your Reservation for ${numGuest}, on ${startDate} until ${endDate} was created`)
     }
   };
 
   return (
-    <div>
+    <div className='reservation_form'>
       <form>
-        <label>{`$ ${property.nightly_rate_usd} / night`}</label>
+        <div className='rate_and_test'>
+        <label>{`$ ${property.nightly_rate_usd} / night`}</label><label><i class="fas fa-star"></i>{property.rating && property.rating.average}</label>
+        </div>
         <DateRange ranges={[selectionRange]} onChange={handleSelect} />
         <label>Number of Guests</label>
         <input type='integer' onChange={(e) => setNumGuest(e.target.value)} />
