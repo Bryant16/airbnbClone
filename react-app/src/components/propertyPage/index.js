@@ -91,7 +91,7 @@ const PropertyPage = () => {
           </div>
           <div className='review_text'>
           {rev && rev.slice(0,numReviews).map(r => <ReviewDisplay key={r.id} review={r} />)}
-          {rev && <button id='show_more_button' onClick={handleExpandReview}>{numReviews===5 ? `Show All ${rev.length} Reviews`: 'show less'}</button>}
+          {rev && rev.length>5 && <button id='show_more_button' onClick={handleExpandReview}>{numReviews===5 ? `Show All ${rev.length} Reviews`: 'show less'}</button>}
           </div>
         </div>
       )}
