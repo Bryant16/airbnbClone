@@ -28,7 +28,7 @@ const PropertyPage = () => {
   const handleExpandReview= (e)=>{
     e.preventDefault()
     let num = rev.length
-    if(numReviews > 6){
+    if(numReviews >= 6){
       setNumReviews(5)
     }else{
       setNumReviews(num)
