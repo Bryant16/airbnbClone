@@ -28,10 +28,11 @@
 .singleproperty_container_reservation{
     /* flex-grow: 1; */
     /* position: fixed; */
+    /* box-sizing: border-box; */
     display: inline-flex;
     border: 1px solid black;
     border-radius: 1em;
-
+    padding: 1em;
 }
 
 .singleproperty_container_review_container{

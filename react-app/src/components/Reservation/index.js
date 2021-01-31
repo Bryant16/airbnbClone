@@ -13,6 +13,7 @@ const Reservation = ({ property }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [numGuest, setNumGuest] = useState(1);
+  const [guestForNight, setGuestForNight] = useState(1);
 
   const numNights = ((Math.abs(endDate - startDate)) / (1000 * 60 * 60 * 24));
 
@@ -29,7 +30,14 @@ const Reservation = ({ property }) => {
     endDate: endDate,
     key: 'selection'
   };
-
+const guestTrack =(e)=>{
+  e.preventDefault();
+  if(e.target.value === '+'){
+    setGuestForNight(guestForNight +1)
+  }else{
+    setGuestForNight(guestForNight -1)
+  }
+}
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -60,17 +68,19 @@ const Reservation = ({ property }) => {
 
   return (
     <div className='reservation_form'>
-      <form>
-        <div className='rate_and_test'>
-        <label>{`$ ${property.nightly_rate_usd} / night`}</label><label><i class="fas fa-star"></i>{property.rating && property.rating.average}</label>
-        </div>
-        <DateRange ranges={[selectionRange]} onChange={handleSelect} />
-        <label>Number of Guests</label>
-        <input type='integer' onChange={(e) => setNumGuest(e.target.value)} />
-        {numNights !== 0 && <p>Price Per Night: ${numNights * property.nightly_rate_usd}</p>}
-        <button onClick={handleSubmit}>Reserve Now</button>
-      </form>
-    </div>
+        <form>
+          <div className='rate_and_test'>
+          <label>{`$ ${property.nightly_rate_usd} / night`}</label><label><i class="fas fa-star"></i>{property.rating && property.rating.average}</label>
+          </div>
+          <DateRange ranges={[selectionRange]} onChange={handleSelect} />
+          <div className='guest_number_container'>
+          <label>Guests</label>
+          <button className='increase_decrease' value ={'+'} onClick={guestTrack}>+</button> <input id='guest_number' type='integer' value={guestForNight}onChange={(e) => setNumGuest(e.target.value)}></input><button className='increase_decrease' value={'-'} onClick={guestTrack}>-</button>
+          </div>
+          {numNights !== 0 && <p>Price Per Night: ${numNights * property.nightly_rate_usd}</p>}
+          <button onClick={handleSubmit}>Reserve Now</button>
+        </form>
+      </div>
   );
 };
 

@@ -15,6 +15,33 @@
     justify-content: space-around;
     padding: 1em;
 }
+.guest_number_container{
+    display: inline;
+    margin-bottom: .5em;
+}
+#guest_number{
+    width:1.5em;
+    /* border-radius: .5em; */
+    border: none;
+    align-self: center;
+    font-size: 1em;
+}
 .rate_and_test i {
     color:red;
+}
+.increase_decrease{
+    /* border: none; */
+    border: thin solid lightgray;
+    background-color: white;
+    height:22px;
+    width: 22px;
+    outline:none;
+    font-weight: bold;
+
+    /* padding: .3em; */
+    border-radius:4em;
+}
+
+.guest_number_container > label{
+    margin-right: 1em;
 }
