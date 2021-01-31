@@ -25,6 +25,18 @@ div.div__listings_property {
   width: 40vw !important;
 }
 
+@media screen and (max-width: 850px) {
+  div.div__listings_property {
+    flex-direction: column;
+  }
+  .img__listing_coverphoto {
+    transform: scale(0.9);
+  }
+  div.div__listings_info h2 {
+    font-size: 1.2em;
+  }
+}
+
 .listingMapContainer__googlemap {
   display: flex;
   flex-direction: column;
