@@ -108,3 +108,11 @@ span.span__details {
   font-size: 0.8em;
   color: rgb(157, 157, 157);
 }
+
+div.div__listing-active {
+  border-bottom: 1px dotted #ff3a5c;
+  box-shadow: 0em 0.3em 0.3em rgba(155, 155, 155, 0.2);
+  /* border-right: 1px dotted #ff3a5c; */
+}
+
+
