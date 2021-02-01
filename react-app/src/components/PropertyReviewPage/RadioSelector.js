@@ -30,7 +30,7 @@ export default function RadioSelector({label, count, checked, onChange}){
       <div>
       <label>{label}</label>
       </div>
-      <div>
+      <div className='stars_and_input'>
       {[...Array(5)].map((star,i)=>{
         let ratingValue = i+1
         return (

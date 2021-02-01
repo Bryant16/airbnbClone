@@ -15,11 +15,15 @@
     align-self: center;
     border: none;
     margin-top: 8px;
-    background-color: red;
-    padding: 10px;
+    background-color: rgb(233, 20, 20);
+    padding: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
     border-radius:4px;
 }
-
+.reviewForm button:hover{
+    background-color: tomato;
+}
 .reviewForm textarea {
     border: none;
     box-shadow:-1px -1px 10px 0px #CECECE ;
@@ -55,8 +59,16 @@
     justify-content: center;
 }
 .review_container_category_stars{
-    display: flex;
-    justify-content: space-around;
+    display: inline-flex;
+    width: 15em;
+    font-size: 1.5em;
+    /* align-self: center; */
+    justify-content: space-between;
+}
+
+.stars_and_input{
+    display: inline-flex;
+    align-self: center;
 }
 .stars_stars:hover {
     color: red;
