@@ -6,8 +6,6 @@ import { NavHashLink } from "react-router-hash-link";
 import { useDispatch, useSelector } from "react-redux";
 import { focusListing } from "../../store/search";
 
-// import { parseWithOptions } from 'date-fns/fp';
-
 import "./map.css";
 
 const Pin = ({ searchResult }) => {
