@@ -68,6 +68,7 @@
   }
 
   div.rdrDateRangePickerWrapper {
+    flex-direction: row;
     transform: scale(0.75);
     top: 20vh;
     left: 0;
