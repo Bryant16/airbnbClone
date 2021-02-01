@@ -30,6 +30,7 @@ export default function PropertyReel () {
               <h1>
                 Your reservations:
               </h1>
+              <div style={{height:'50px'}}></div>
             </div>
             {list.filter(repeatFilter)
               .map(res => <ReservationSummary key={res.id} reservation={res} />)}

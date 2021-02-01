@@ -43,7 +43,6 @@ const PropertyReviewPage = () => {
   return (
     <div className='reviewContainers'>
       <form className='reviewForm'>
-        <div> <p>12345</p></div>
         <RadioSelector
           label='Cleanliness'
           count={5}
