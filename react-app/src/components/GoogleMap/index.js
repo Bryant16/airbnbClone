@@ -42,7 +42,7 @@ const Pin = ({ searchResult }) => {
 const GoogleMap = ({ locationObj, searchResults }) => {
   const focusId = useSelector((state) => state.search.focusId);
   const searchLocation = useSelector((state) => state.search.searchLocation);
-  const searchSchool = useSelector((state) => state.propsNearSchools);
+  const propsNearSchools = useSelector((state) => state.propsNearSchools);
   const [focusZoom, setFocusZoom] = useState(locationObj);
   useEffect(() => {
     if (focusId > 0) {
@@ -61,13 +61,13 @@ const GoogleMap = ({ locationObj, searchResults }) => {
   }, [focusId]);
 
   useEffect(() => {
-    if (searchSchool[0]) {
+    if (propsNearSchools.length > 0) {
       setFocusZoom({
-        lat: searchSchool[0].latitude,
-        lng: searchSchool[0].longitude,
+        lat: propsNearSchools[0].latitude,
+        lng: propsNearSchools[0].longitude,
       });
     }
-  }, [searchSchool]);
+  }, [propsNearSchools]);
 
   useEffect(() => {
     setFocusZoom(searchLocation);
