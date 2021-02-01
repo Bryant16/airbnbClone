@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { NavHashLink } from "react-router-hash-link";
 import { useDispatch, useSelector } from "react-redux";
-import { focusListing } from "../../store/search";
+import { focusListing, search } from "../../store/search";
 
 import "./map.css";
 
@@ -40,6 +40,24 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
+  const focusId = useSelector((state) => state.search.focusId);
+  const [focusZoom, setFocusZoom] = useState(locationObj);
+  useEffect(() => {
+    if (focusId > 0) {
+      const focusMap = searchResults
+        .filter((result) => {
+          return result.id === focusId;
+        })
+        .map((result) => {
+          return {
+            lat: result.latitude,
+            lng: result.longitude,
+          };
+        });
+      setFocusZoom(focusMap[0]);
+    }
+  }, [focusId]);
+
   return (
     <div className="map">
       {!locationObj && "loading...."}
@@ -49,8 +67,8 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             bootstrapURLKeys={{
               key: "AIzaSyDT_KxxLpoLwmlk3sXLpayAvW9z9_RodME",
             }}
-            center={locationObj}
-            defaultZoom={9}
+            center={focusZoom}
+            zoom={focusId > 0 ? 11 : 9}
           >
             {searchResults.map((result) => (
               <Pin
