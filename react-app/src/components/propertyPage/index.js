@@ -9,7 +9,7 @@ import Stars from '../Stars';
 
 import './propertyPage.css';
 
-const PropertyPage = () => {
+export default function PropertyPage () {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
   const { property } = useSelector((state) => state.property);
@@ -102,6 +102,4 @@ const PropertyPage = () => {
       )}
     </div>
   );
-};
-
-export default PropertyPage;
+}

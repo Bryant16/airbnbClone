@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { FaStar } from 'react-icons/fa';
 
+// export default function RadioSelector ({ label, count, checked, onChange }) {
+//   const inputs = [];
+//   for (let i = 0; i < count; i++) {
+//     inputs.push(<input type='radio' key={nanoid()} value={i + 1} checked={checked === `${i + 1}`} onChange={({ target: { value } }) => onChange(value)} />);
+//   }
+//   return (
+//     <div className='inputContainer'>
+//       <label>
+//         {label}
+//       </label>
+//       <div>
+//         {inputs}
+//       </div>
+//     </div>
+//   );
+// }
 export default function RadioSelector ({ label, count, checked, onChange }) {
-  const inputs = [];
-  for (let i = 0; i < count; i++) {
-    inputs.push(
-      <input
-        type='radio'
-        key={nanoid()}
-        value={i + 1}
-        checked={checked === `${i + 1}`}
-        onChange={({ target: { value } }) => onChange(value)}
-      />
-    );
-  }
+  const [ratings, setRatings] = useState(null);
+  const [hover, setHover] = useState(null);
+
   return (
-    <div className='inputContainer'>
-      <label>
-        {label}
-      </label>
+    <div className='review_container_category_stars'>
       <div>
-        {inputs}
+        <label>{label}</label>
+      </div>
+      <div className='stars_and_input'>
+        {[...Array(5)].map((star, i) => {
+          return (
+            <label key={nanoid()}>
+              <input
+                type='radio'
+                value={i + 1}
+                checked={checked === `${i + 1}`}
+                onClick={({ target: { value } }) => onChange(value)}
+                onChange={({ target: { value } }) => setRatings(value)}
+              />
+              <FaStar
+                className='stars_stars'
+                onMouseEnter={() => setHover(i + 1)}
+                onMouseLeave={() => setHover(null)}
+                color={i + 1 <= (hover || ratings) ? 'yellow' : 'grey'}
+              />
+            </label>
+          );
+        })}
       </div>
     </div>
   );

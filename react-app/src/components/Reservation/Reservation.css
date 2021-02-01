@@ -58,6 +58,7 @@
 
 #reserve_button:hover{
     background-color: #fc1f47;
+    outline:none;
 }
 
 #price_per_night {
