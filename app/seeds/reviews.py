@@ -5,7 +5,7 @@ fake = Faker()
 
 
 def seed_reviews():
-    for i in range(1,300):
+    for i in range(1,600):
         db.session.add(Review(
             property_id=randint(1,102),
             reviewer_id = randint(1,8),

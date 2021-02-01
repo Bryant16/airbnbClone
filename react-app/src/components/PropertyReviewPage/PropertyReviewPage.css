@@ -38,22 +38,29 @@
     padding: 5px;
 }
 
-.inputContainer [type=radio] {
+.review_container_category_stars [type=radio] {
     text-align: center;
     margin-right: 15px;
-    
+    display:none;
 }
 
-.inputContainer [type=radio]:hover{
-    background-color: lightgray;
-}
 
 .reviewContainers {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+.review_container_stars{
+    display: inline-flex;
+    justify-content: center;
+}
+.review_container_category_stars{
+    display: flex;
+    justify-content: space-around;
+}
+.stars_stars:hover {
+    color: red;
+}
 #nums{
     display: inline-flex;
     align-self:flex-end;

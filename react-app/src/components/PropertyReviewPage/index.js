@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import RadioSelector from './RadioSelector';
+import Stars from '../Stars';
 import './PropertyReviewPage.css';
 
 const PropertyReviewPage = () => {
@@ -13,6 +14,7 @@ const PropertyReviewPage = () => {
   const [location, setLocation] = useState(5);
   const [overall_value, setOverall_value] = useState(5);
   const [review, setReview] = useState('');
+  
 
   const updateReview = (e) => setReview(e.target.value);
 
@@ -28,6 +30,7 @@ const PropertyReviewPage = () => {
       overall_value,
       review
     };
+    console.log(newReview)
     const createReviewResponse = await window.fetch('/api/reviews/', {
       headers: { 'Content-type': 'application/json' },
       method: 'POST',
