@@ -1,11 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Stars from "./Stars";
+import { useSelector } from "react-redux";
+import { FaBalanceScale } from "react-icons/fa";
 
 const SearchResultListing = ({ listing }) => {
+  const focusId = useSelector((state) => state.search.focusId);
   return (
     <NavLink to={`/properties/${listing.id}`}>
-      <div className="div__listings_property">
+      <div
+        id={`listing_${listing.id}`}
+        className={`div__listings_property ${
+          focusId === listing.id ? "div__listing-active" : null
+        }`}
+      >
         <div className="div__coverphoto">
           <img
             className="img__listing_coverphoto"
