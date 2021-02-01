@@ -1,13 +1,14 @@
-import React from "react";
-import { FaStar } from "react-icons/fa";
+import React from 'react';
+import { FaStar } from 'react-icons/fa';
 
 const Stars = ({ rating }) => {
   const averageRating = Math.round(rating);
-  const stars = [<FaStar />, <FaStar />, <FaStar />, <FaStar />, <FaStar />];
+  const stars = new Array(5);
+  stars.fill(<FaStar />);
 
   const mappedStars = stars.map((star, i) => {
     if (i < averageRating) {
-      return <FaStar style={{ color: "#f8395c" }} />;
+      return <FaStar style={{ color: '#f8395c' }} />;
     } else {
       return star;
     }
@@ -15,7 +16,7 @@ const Stars = ({ rating }) => {
 
   return (
     <span>
-      {mappedStars} {"(" + parseFloat(rating) + ")"}
+      {mappedStars} {`(${parseFloat(rating)})`}
     </span>
   );
 };

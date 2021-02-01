@@ -54,16 +54,14 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             center={locationObj}
             defaultZoom={9}
           >
-            {searchResults.map((result) => {
-              return (
-                <Pin
-                  key={nanoid()}
-                  lat={result.latitude}
-                  lng={result.longitude}
-                  searchResult={result}
-                />
-              );
-            })}
+            {searchResults.map((result) => (
+              <Pin
+                key={nanoid()}
+                lat={result.latitude}
+                lng={result.longitude}
+                searchResult={result}
+              />
+            ))}
           </GoogleMapReact>
         </div>
       )}

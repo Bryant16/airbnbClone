@@ -6,12 +6,11 @@ import { nanoid } from 'nanoid';
 
 import { getSchools } from '../../store/homepage';
 import Tags from './Tags';
-// import logo from './campus_photo.png';
-// import arrow from './arrow.png';
+
 import './homePage.css';
 import './tags.css';
 
-const SchoolListings = () => {
+export default function SchoolListings () {
   const dispatch = useDispatch();
   const schools = useSelector((state) => state.schools);
 
@@ -41,17 +40,14 @@ const SchoolListings = () => {
                         src={school.logo_url}
                         alt='schoolImage'
                       />
-                      {/* <h2 key={school.name} className="schoolName">
-                {school.name}
-              </h2> */}
                     </Link>
                   </div>
                 );
               })}
             </div>
             <div className='school_button_container_2'>
-              {schools.slice(5, 10).map((school) => {
-                return (
+              {schools.slice(5, 10)
+                .map((school) => (
                   <div
                     className='school_buttons'
                     key={nanoid()}
@@ -64,8 +60,7 @@ const SchoolListings = () => {
                       />
                     </Link>
                   </div>
-                );
-              })}
+                ))}
             </div>
           </div>
         </div>
@@ -74,25 +69,7 @@ const SchoolListings = () => {
         <div className='indy_container'>
           <Tags />
         </div>
-
-        {/* <div className="footer_container">
-          <div className="indy_container">
-            <div>
-              <ul>
-                <li>Andrew</li>
-                <li>Bryant</li>
-                <li>James</li>
-                <li>JM</li>
-              </ul>
-            </div>
-            <div className="tags">
-              <ul></ul>
-            </div>
-          </div>
-        </div> */}
       </footer>
     </>
   );
 };
-
-export default SchoolListings;

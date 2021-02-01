@@ -11,7 +11,7 @@ export default function PropertyReel () {
 
   const datesSeen = new Set();
 
-  const repeatFilter = (obj) => {
+  const repeatFilter = obj => {
     if (datesSeen.has(obj.date_range)) return false;
     datesSeen.add(obj.date_range);
     return true;
@@ -31,7 +31,8 @@ export default function PropertyReel () {
                 Your reservations:
               </h1>
             </div>
-            {list.filter(repeatFilter).map(res => <ReservationSummary key={res.id} reservation={res} />)}
+            {list.filter(repeatFilter)
+              .map(res => <ReservationSummary key={res.id} reservation={res} />)}
           </div>
           )
         : null

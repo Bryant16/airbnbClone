@@ -1,4 +1,4 @@
-import React/*, { useState, useEffect } */ from 'react';
+import React from 'react';
 import { NavLink /* Redirect */ } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
@@ -35,29 +35,25 @@ const NavBar = () => {
                 <button>Home</button>
               </NavLink>
             </div>
-            <div>
-              {user
-                ? <LogoutButton />
-                : (
-                  <NavLink to='/login' exact activeClassName='active'>
-                    <button>Login</button>
-                  </NavLink>
-                  )}
-            </div>
             {!user
-              ? (
-                <div>
-                  <NavLink to='/sign-up' exact activeClassName='active'>
-                    <button>Sign Up</button>
-                  </NavLink>
-                </div>
-                )
-              : null}
-            {user
               ? (
                 <>
                   <div>
-                    <NavLink to='/users' exact activeClassName='active'>
+                    <NavLink to='/sign-up'>
+                      <button>Sign Up</button>
+                    </NavLink>
+                  </div>
+                  <div>
+                    <NavLink to='/login'>
+                      <button>Login</button>
+                    </NavLink>
+                  </div>
+                </>
+                )
+              : (
+                <>
+                  <div>
+                    <NavLink to='/users'>
                       <button>Users</button>
                     </NavLink>
                   </div>
@@ -67,13 +63,10 @@ const NavBar = () => {
                     </NavLink>
                   </div>
                   <div>
-                    <NavLink to='/users/me/reservations'>
-                      <button>My Reservations</button>
-                    </NavLink>
+                    <LogoutButton />
                   </div>
                 </>
-                )
-              : null}
+                )}
           </div>
         </div>
       </nav>

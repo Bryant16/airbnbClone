@@ -1,52 +1,54 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import './index.css';
 
 export default function NewProperty () {
-  const [listing_title, updateTitle] = useState('');
+  const history = useHistory();
+  const [listingTitle, updateTitle] = useState('');
   const [address1, updateAddr1] = useState('');
   const [address2, updateAddr2] = useState('');
   const [city, updateCity] = useState('');
-  const [zip_code, updateZipCode] = useState('');
+  const [zipCode, updateZipCode] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
   const [description, updateDescription] = useState('');
-  const [check_in, setCheckIn] = useState('12:00');
-  const [check_out, setCheckOut] = useState('12:00');
-  const [guest_spots, updateMaxOccupancy] = useState(2);
-  const [nightly_rate_usd, setRate] = useState(0);
-  // const [pageErrors, setPageErrors] = useState([]);
+  const [checkIn, setCheckIn] = useState('12:00');
+  const [checkOut, setCheckOut] = useState('12:00');
+  const [guestSpots, updateMaxOccupancy] = useState(2);
+  const [nightlyRate, setRate] = useState(0);
+  const [pageErrors, setPageErrors] = useState([]);
 
   const submit = async (e) => {
     e.preventDefault();
+    setPageErrors([]);
     const newProperty = {
-      listing_title,
+      listingTitle,
       private: isPrivate,
-      nightly_rate_usd,
+      nightlyRate,
       address1,
       address2,
       city,
-      zip_code,
+      zipCode,
       description,
-      check_in: +check_in.replace(/:/g, ''),
-      check_out: +check_out.replace(/:/g, ''),
-      guest_spots
+      checkIn: +checkIn.replace(/:/g, ''),
+      checkOut: +checkOut.replace(/:/g, ''),
+      guestSpots
     };
     const response = await window.fetch('/api/property/', {
       headers: { 'Content-type': 'application/json' },
       method: 'POST',
       body: JSON.stringify(newProperty)
     });
-    if (response.ok) console.log(await response.json());
-    // else {
-    //   setPageErrors(["Sorry, it seems that address doesn't exist."]);
-    // }
+    const { success, id } = await response.json();
+    if (success && id) history.push(`/properties/${id}`);
+    else {
+      setPageErrors(["Sorry, our system culdn't seem to find that address."]);
+    }
   };
-
-  // useEffect(() => () => setPageErrors([]), []);
 
   return (
     <div className='new-property-page-container'>
-      {/* {pageErrors.length
+      {pageErrors.length
         ? (
           <div className='page-errors'>
             <ul>
@@ -54,7 +56,7 @@ export default function NewProperty () {
             </ul>
           </div>
           )
-        : null} */}
+        : null}
       <form
         className='new-property-form'
         onSubmit={submit}
@@ -63,7 +65,7 @@ export default function NewProperty () {
           <input
             type='text'
             placeholder='Listing Title'
-            value={listing_title}
+            value={listingTitle}
             onChange={({ target: { value } }) => updateTitle(value)}
             required
           />
@@ -90,7 +92,7 @@ export default function NewProperty () {
           <input
             type='text'
             placeholder='Zip Code (00000)'
-            value={zip_code}
+            value={zipCode}
             onChange={({ target: { value } }) => updateZipCode(value)}
             pattern='^\d{5}'
             required
@@ -104,7 +106,7 @@ export default function NewProperty () {
               </label>
               <input
                 type='time'
-                value={check_in}
+                value={checkIn}
                 onChange={({ target: { value } }) => setCheckIn(value)}
               />
             </div>
@@ -114,7 +116,7 @@ export default function NewProperty () {
               </label>
               <input
                 type='time'
-                value={check_out}
+                value={checkOut}
                 onChange={({ target: { value } }) => setCheckOut(value)}
               />
             </div>
@@ -129,7 +131,7 @@ export default function NewProperty () {
                 className='occupancy'
                 min='2'
                 max='20'
-                value={guest_spots}
+                value={guestSpots}
                 onChange={({ target: { value } }) => updateMaxOccupancy(value)}
               />
             </div>
@@ -156,7 +158,7 @@ export default function NewProperty () {
             <input
               type='number'
               min={0}
-              value={nightly_rate_usd}
+              value={nightlyRate}
               onChange={({ target: { value } }) => setRate(value)}
             />
             USD

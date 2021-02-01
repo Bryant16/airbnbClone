@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import "./loginForm.css"
+
 import { LogIn } from '../../store/session';
+
+import './loginForm.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user);
+  const { user } = useSelector(state => state.session);
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -30,14 +32,19 @@ const LoginForm = () => {
   return user
     ? <Redirect to='/' />
     : (
-      <div className="login__div_container">
-        <form className="login__form_container" onSubmit={onLogin}>
+      <div className='login__div_container'>
+        <form
+          className='login__form_container'
+          onSubmit={onLogin}
+        >
           <div>
             {errors.map((error) => (
-              <div key={nanoid()}>{error}</div>
+              <div key={nanoid()}>
+                {error}
+              </div>
             ))}
           </div>
-          <div className="login__email">
+          <div className='login__email'>
             <label htmlFor='email'>Email</label>
             <input
               name='email'
@@ -47,7 +54,7 @@ const LoginForm = () => {
               onChange={updateEmail}
             />
           </div>
-          <div className="login_password" >
+          <div className='login_password'>
             <label htmlFor='password'>Password</label>
             <input
               name='password'
@@ -56,7 +63,7 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
-            <div className="login__btn">
+            <div className='login__btn'>
               <button type='submit'>Login</button>
             </div>
           </div>

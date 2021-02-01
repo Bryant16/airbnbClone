@@ -13,9 +13,9 @@ const Reservation = ({ property }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [numGuest, setNumGuest] = useState(1);
-  const [guestForNight, setGuestForNight] = useState(1);
+  const [guestForNight, setGuestForNight] = useState(2);
 
-  const numNights = ((Math.abs(endDate - startDate)) / (1000 * 60 * 60 * 24));
+  const numNights = ((Math.abs(endDate - startDate)) / 86400000);
 
   const handleSelect = ranges => {
     if (!user) {
@@ -30,14 +30,14 @@ const Reservation = ({ property }) => {
     endDate: endDate,
     key: 'selection'
   };
-const guestTrack =(e)=>{
-  e.preventDefault();
-  if(e.target.value === '+'){
-    setGuestForNight(guestForNight +1)
-  }else{
-    setGuestForNight(guestForNight -1)
-  }
-}
+  const guestTrack = (click) => {
+    click.preventDefault();
+    if (click.target.innerText === '+') {
+      setGuestForNight(previousGuests => previousGuests + 1);
+    } else {
+      setGuestForNight(previousGuests => previousGuests - 1);
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -50,37 +50,64 @@ const guestTrack =(e)=>{
         numGuest: numGuest,
         user: user.id
       };
-      try {
-        /* const createReservation = */ await window.fetch('/api/reservation/', {
-          method: 'post',
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(newReservation)
-        });
-        // const data = await createReservation.json();
-      } catch (e) {
-        console.log(e);
-      }
-      history.push('/users/me');
+      const response = await window.fetch('/api/reservation/', {
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(newReservation)
+      });
+      if (response.ok) history.push('/users/me');
+      else window.alert('Sorry, something went wrong. Please refresh the page and try again.');
     }
   };
 
   return (
     <div className='reservation_form'>
-        <form>
-          <div className='rate_and_test'>
-          <label>{`$ ${property.nightly_rate_usd} / night`}</label><label><i class="fas fa-star"></i>{property.rating && property.rating.average}</label>
-          </div>
-          <DateRange ranges={[selectionRange]} onChange={handleSelect} />
-          <div className='guest_number_container'>
+      <form>
+        <div className='rate_and_test'>
+          <label>
+            {`$ ${property.nightly_rate_usd} / night`}
+          </label>
+          <label>
+            <i class='fas fa-star' />{property.rating && property.rating.average}
+          </label>
+        </div>
+        <DateRange ranges={[selectionRange]} onChange={handleSelect} />
+        <div className='guest_number_container'>
           <label>Guests</label>
-          <input id='guest_number' type='integer' value={guestForNight}onChange={(e) => setNumGuest(e.target.value)}></input><button className='increase_decrease' value={'+'} onClick={guestTrack}>+</button><button className='increase_decrease' value ={'-'} onClick={guestTrack}>-</button>
-          </div>
-          {numNights !== 0 && <p id='price_per_night'>Price Per Night: ${numNights * property.nightly_rate_usd}</p>}
-          <button id='reserve_button' onClick={handleSubmit}>Reserve Now</button>
-        </form>
-      </div>
+          <input
+            id='guest_number'
+            type='integer'
+            value={guestForNight}
+            onChange={(e) => setNumGuest(e.target.value)}
+          />
+          <button
+            className='increase_decrease'
+            onClick={guestTrack}
+          >
+            +
+          </button>
+          <button
+            className='increase_decrease'
+            onClick={guestTrack}
+          >
+            -
+          </button>
+        </div>
+        {numNights !== 0 && (
+          <p id='price_per_night'>
+            Total cost of your stay: ${numNights * property.nightly_rate_usd}
+          </p>
+        )}
+        <button
+          id='reserve_button'
+          onClick={handleSubmit}
+        >
+          Reserve Now
+        </button>
+      </form>
+    </div>
   );
 };
 
