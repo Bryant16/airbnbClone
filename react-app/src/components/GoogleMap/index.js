@@ -61,11 +61,12 @@ const GoogleMap = ({ locationObj, searchResults }) => {
   }, [focusId]);
 
   useEffect(() => {
-    console.log("searchSchool,", searchSchool[0]);
-    setFocusZoom({
-      lat: searchSchool[0].latitude,
-      lng: searchSchool[0].longitude,
-    });
+    if (searchSchool[0]) {
+      setFocusZoom({
+        lat: searchSchool[0].latitude,
+        lng: searchSchool[0].longitude,
+      });
+    }
   }, [searchSchool]);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const GoogleMap = ({ locationObj, searchResults }) => {
               key: "AIzaSyDT_KxxLpoLwmlk3sXLpayAvW9z9_RodME",
             }}
             center={focusZoom}
-            zoom={focusId > 0 ? 12 : 9}
+            zoom={focusId > 0 ? 12 : 10}
           >
             {searchResults.map((result) => (
               <Pin
