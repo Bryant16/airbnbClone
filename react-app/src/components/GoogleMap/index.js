@@ -61,7 +61,7 @@ const GoogleMap = ({ locationObj, searchResults }) => {
   }, [focusId]);
 
   useEffect(() => {
-    if (propsNearSchools.length > 0) {
+    if (propsNearSchools[0].latitude) {
       setFocusZoom({
         lat: propsNearSchools[0].latitude,
         lng: propsNearSchools[0].longitude,
