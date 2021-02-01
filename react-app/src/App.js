@@ -17,20 +17,9 @@ import NewProperty from './components/NewProperty';
 import PropertyReviewPage from './components/PropertyReviewPage';
 
 function App () {
-  // console.log("App?");
   const dispatch = useDispatch();
 
-  // const searchResults = useSelector((state) => {
-  //   return state.search.properties;
-  // });
-
-  // const [listingResults, setListingResults] = useState();
-  
   useEffect(() => {
-    // if (searchResults) {
-    //   setListingResults(searchResults);
-    //   dispatch()
-    // }
     dispatch(Restore());
   }, [dispatch]);
 

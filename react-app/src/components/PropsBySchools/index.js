@@ -1,27 +1,18 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPropertiesNearSchools } from '../../store/listingsBySchools';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { nanoid } from 'nanoid';
+
+import { getPropertiesNearSchools } from '../../store/listingsBySchools';
 import GoogleMap from '../GoogleMap';
 import SearchResultListing from '../SearchResultListing';
 import './propsBySchool.css';
-import { Helmet } from 'react-helmet';
 
 const ListingsNearSchools = () => {
-  const dispatch = useDispatch();
-  const properties = useSelector((state) => state.propsNearSchools);
-
   const { schoolId, schoolName } = useParams();
-  const [showPrivate/*, setShowPrivate */] = useState('hello');
-
-  // const togglePrivate = async (e) => {
-  //   if (showPrivate === 'hello') {
-  //     setShowPrivate(true);
-  //   } else {
-  //     setShowPrivate(!showPrivate);
-  //   }
-  // };
+  const dispatch = useDispatch();
+  const properties = useSelector(state => state.propsNearSchools);
 
   useEffect(() => {
     dispatch(getPropertiesNearSchools(schoolId));
@@ -38,19 +29,7 @@ const ListingsNearSchools = () => {
         {!schoolName && 'not working'}
         <h1>{schoolName && schoolName}</h1>
         {properties &&
-          properties.map((result) => {
-            if (showPrivate === 'hello') {
-              return <SearchResultListing listing={result} />;
-            } else if (showPrivate === true) {
-              return result.private
-                ? <SearchResultListing listing={result} />
-                : null;
-            } else if (showPrivate === false) {
-              return !result.private
-                ? <SearchResultListing listing={result} />
-                : null;
-            }
-          })}
+          properties.map(result => <SearchResultListing key={nanoid()} listing={result} />)}
       </div>
       <div className='listingMapContainer__googlemap'>
         {properties[0] && (

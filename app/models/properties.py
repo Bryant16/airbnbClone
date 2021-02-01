@@ -51,10 +51,11 @@ class Property(db.Model):
 
   @property
   def to_dict(self):
+    tied_image = Image.query.get(self.coverphoto_id)
     return {
       "id":self.id,
       "owner_id": self.owner_id,
-      "coverphoto_url": Image.query.get(self.coverphoto_id).URL,
+      "coverphoto_url": tied_image.URL if tied_image else None,
       "private": self.private,
       "nightly_rate_usd": self.nightly_rate_usd,
       "address1": self.address1,
@@ -75,11 +76,12 @@ class Property(db.Model):
 
   @property
   def to_summary(self):
+    tied_image = Image.query.get(self.coverphoto_id)
     return {
       'id': self.id,
       'review_average': self.rating['average'],
       'total_reviews': len(self.reviews),
-      "coverphoto_url": Image.query.get(self.coverphoto_id).URL,
+      "coverphoto_url": tied_image.URL if tied_image else None,
       'city': self.city,
       'listing_title': self.listing_title
     }

@@ -44,14 +44,46 @@ const PropertyReviewPage = () => {
     <div className='reviewContainers'>
       <form className='reviewForm'>
         <div> <p>12345</p></div>
-        <RadioSelector label='Cleanliness' count={5} checked={cleanliness} onChange={setCleanliness} />
-        <RadioSelector label='Communication' count={5} checked={communication} onChange={setCommunication} />
-        <RadioSelector label='Check In' count={5} checked={check_in} onChange={setCheck_in} />
-        <RadioSelector label='Accuracy' count={5} checked={accuracy} onChange={setAccuracy} />
-        <RadioSelector label='Location' count={5} checked={location} onChange={setLocation} />
-        <RadioSelector label='Overall Value' count={5} checked={overall_value} onChange={setOverall_value} />
+        <RadioSelector
+          label='Cleanliness'
+          count={5}
+          checked={cleanliness}
+          onChange={setCleanliness}
+        />
+        <RadioSelector
+          label='Communication'
+          count={5}
+          checked={communication}
+          onChange={setCommunication}
+        />
+        <RadioSelector
+          label='Check In'
+          count={5}
+          checked={check_in}
+          onChange={setCheck_in}
+        />
+        <RadioSelector
+          label='Accuracy'
+          count={5}
+          checked={accuracy}
+          onChange={setAccuracy}
+        />
+        <RadioSelector
+          label='Location'
+          count={5}
+          checked={location}
+          onChange={setLocation}
+        />
+        <RadioSelector
+          label='Overall Value'
+          count={5}
+          checked={overall_value}
+          onChange={setOverall_value}
+        />
         <textarea placeholder='tell us about your experience' value={review} onChange={updateReview} />
-        <button onClick={handleSubmit}>Submit Review</button>
+        <button onClick={handleSubmit}>
+          Submit Review
+        </button>
       </form>
     </div>
   );

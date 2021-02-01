@@ -15,27 +15,27 @@ def soloProperty(id):
 @property_routes.route('/', methods=['POST'])
 def create_property():
   payload = request.get_json()
-  prep = f"{payload['address1']} {payload['address2']} {payload['city']} {payload['zip_code']}"
+  prep = f"{payload['address1']} {payload['address2']} {payload['city']} {payload['zipCode']}"
   coords = find_coordinates(prep)
-  # try:
-  newProperty = Property(
-    owner_id=current_user.id,
-    private=payload['private'],
-    nightly_rate_usd=payload['nightly_rate_usd'],
-    address1=payload['address1'],
-    address2=payload['address2'],
-    city=payload['city'],
-    zip_code=payload['zip_code'],
-    latitude=coords['latitude'],
-    longitude=coords['longitude'],
-    listing_title=payload['listing_title'],
-    description=payload['description'],
-    check_in=payload['check_in'],
-    check_out=payload['check_out'],
-    guest_spots=payload['guest_spots']
-  )
-  db.session.add(newProperty)
-  db.session.commit()
-  # except:
-    # return jsonify({'success': False}), 400
-  return jsonify({'success': True})
+  try:
+    new_property = Property(
+      owner_id=current_user.id,
+      private=payload['private'],
+      nightly_rate_usd=payload['nightlyRate'],
+      address1=payload['address1'],
+      address2=payload['address2'],
+      city=payload['city'],
+      zip_code=payload['zipCode'],
+      latitude=coords['latitude'],
+      longitude=coords['longitude'],
+      listing_title=payload['listingTitle'],
+      description=payload['description'],
+      check_in=payload['checkIn'],
+      check_out=payload['checkOut'],
+      guest_spots=payload['guestSpots']
+    )
+    db.session.add(new_property)
+    db.session.commit()
+    return jsonify({'success': True, 'id': new_property.id})
+  except:
+    return jsonify({'success': False})
