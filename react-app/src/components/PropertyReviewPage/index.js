@@ -30,7 +30,6 @@ const PropertyReviewPage = () => {
       overall_value,
       review
     };
-    console.log(newReview)
     const createReviewResponse = await window.fetch('/api/reviews/', {
       headers: { 'Content-type': 'application/json' },
       method: 'POST',
