@@ -21,6 +21,11 @@ const LoginForm = () => {
       .catch(err => setErrors(err.errors || []));
   };
 
+  const demoLogin = (e) => {
+    e.preventDefault();
+    dispatch(LogIn('demo@aa.io', 'password'));
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -65,6 +70,7 @@ const LoginForm = () => {
             />
             <div className='login__btn'>
               <button type='submit'>Login</button>
+              <button type='button' onClick={demoLogin}>Demo Login</button>
             </div>
           </div>
         </form>

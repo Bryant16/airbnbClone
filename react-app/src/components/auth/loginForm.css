@@ -43,5 +43,7 @@
 }
 
 .login__btn{
-    padding-top: 10px
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
