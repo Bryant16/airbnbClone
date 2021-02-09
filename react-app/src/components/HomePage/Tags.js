@@ -45,10 +45,10 @@ export default function Tags () {
             </a>
           </div>
           <div className='div__icons'>
-            <a href='https://github.com/JType33'>
+            <a href='https://github.com/jm-alan'>
               <i class='fab fa-github' />
             </a>
-            <a href='https://www.linkedin.com/in/joshua-summers-a761b1129/'>
+            <a href='https://www.linkedin.com/in/j-alan/'>
               <i class='fab fa-linkedin-in' />
             </a>
             <a href='mailto:j.maxwell.alan@gmail.com'>
