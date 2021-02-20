@@ -12,7 +12,7 @@ import './tags.css';
 
 export default function SchoolListings () {
   const dispatch = useDispatch();
-  const schools = useSelector((state) => state.schools);
+  const schools = useSelector(state => state.schools);
 
   useEffect(() => {
     dispatch(getSchools());

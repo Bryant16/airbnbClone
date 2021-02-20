@@ -2,10 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Stars from "./Stars";
 import { useSelector } from "react-redux";
-import { FaBalanceScale } from "react-icons/fa";
 
 const SearchResultListing = ({ listing }) => {
-  const focusId = useSelector((state) => state.search.focusId);
+  const focusId = useSelector(state => state.search.focusId);
   return (
     <NavLink to={`/properties/${listing.id}`}>
       <div

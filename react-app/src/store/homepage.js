@@ -1,7 +1,7 @@
 const LOAD = "HomePage/LOAD"
 
 const load = schools => ({
-    type: LOAD, //{schools:{schools:[]}} => {type: LOAD, schools:[]}
+    type: LOAD,
     schools: schools
 })
 

@@ -9,7 +9,7 @@ import './map.css';
 
 const Pin = ({ searchResult }) => {
   const dispatch = useDispatch();
-  const focusId = useSelector((state) => state.search.focusId);
+  const focusId = useSelector(state => state.search.focusId);
 
   async function clickPinHandler (e) {
     e.preventDefault();
@@ -39,9 +39,9 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
-  const focusId = useSelector((state) => state.search.focusId);
-  const searchLocation = useSelector((state) => state.search.searchLocation);
-  const propsNearSchools = useSelector((state) => state.propsNearSchools);
+  const focusId = useSelector(state => state.search.focusId);
+  const searchLocation = useSelector(state => state.search.searchLocation);
+  const propsNearSchools = useSelector(state => state.propsNearSchools);
   const [focusZoom, setFocusZoom] = useState(locationObj);
   useEffect(() => {
     if (focusId > 0) {
@@ -79,7 +79,7 @@ const GoogleMap = ({ locationObj, searchResults }) => {
         <div className='google-map'>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: 'AIzaSyDT_KxxLpoLwmlk3sXLpayAvW9z9_RodME'
+              key: process.env.REACT_APP_API_KEY
             }}
             center={focusZoom}
             zoom={focusId > 0 ? 12 : 10}
