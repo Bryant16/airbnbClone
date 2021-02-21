@@ -9,7 +9,7 @@ import { BsGrid3X3GapFill } from 'react-icons/bs';
 import './NavBar.css';
 
 const NavBar = () => {
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector(state => state.session.user);
 
   return (
     <div className='div__transparent_bg'>

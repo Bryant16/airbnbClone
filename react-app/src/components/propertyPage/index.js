@@ -12,7 +12,7 @@ import './propertyPage.css';
 export default function PropertyPage () {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
-  const { property } = useSelector((state) => state.property);
+  const property = useSelector(state => state.property.property);
   const [rev, setRev] = useState([]);
   const [numReviews, setNumReviews] = useState(5);
 

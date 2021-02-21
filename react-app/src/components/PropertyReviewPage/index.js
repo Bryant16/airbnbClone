@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import RadioSelector from './RadioSelector';
-import Stars from '../Stars';
 import './PropertyReviewPage.css';
 
 const PropertyReviewPage = () => {
