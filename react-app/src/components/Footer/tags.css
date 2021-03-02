@@ -1,3 +1,20 @@
+.div__footer_container {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.div__project_member {
+  text-align: center;
+  margin-bottom: 5px;
+  border-right: 1px solid lightgrey;
+}
+
+.div__project_member_name {
+  padding-bottom: 5px;
+}
+
 .tags__container {
   display: flex;
   flex-direction: row;
