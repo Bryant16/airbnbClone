@@ -6,8 +6,12 @@
   text-align: center;
 }
 
+.map {
+  height: 100%;
+}
+
 .google-map {
-  width: 20vh;
+  min-height: 100%;
 }
 
 div.pin {

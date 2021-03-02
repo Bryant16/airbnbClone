@@ -80,8 +80,8 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             bootstrapURLKeys={{
               key: process.env.REACT_APP_API_KEY,
             }}
-            defaultCenter={(40.7128, -74.006)}
-            center={focusZoom}
+            // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
+            center={focusZoom || { lat: 40.7128, lng: -74.006 }}
             zoom={focusId > 0 ? 12 : 10}
           >
             {searchResults.map((result) => (
