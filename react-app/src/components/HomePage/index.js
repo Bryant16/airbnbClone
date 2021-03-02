@@ -5,10 +5,8 @@ import { Helmet } from "react-helmet";
 import { nanoid } from "nanoid";
 
 import { getSchools } from "../../store/homepage";
-import Tags from "./Tags";
 
 import "./homePage.css";
-import "./tags.css";
 
 export default function SchoolListings() {
   const dispatch = useDispatch();
@@ -58,11 +56,6 @@ export default function SchoolListings() {
           </div>
         </div>
       </div>
-      {/* <footer>
-        <div className='indy_container'>
-          <Tags />
-        </div>
-      </footer> */}
     </>
   );
 }
