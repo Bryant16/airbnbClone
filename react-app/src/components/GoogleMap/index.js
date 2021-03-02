@@ -38,7 +38,7 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
-  console.log("JIAJDFIAJSDOIFAOSDFIJA", locationObj, searchResults);
+
   const focusId = useSelector((state) => state.search.focusId);
   const searchLocation = useSelector((state) => state.search.searchLocation);
   // const propsNearSchools = useSelector((state) => state.propsNearSchools);
