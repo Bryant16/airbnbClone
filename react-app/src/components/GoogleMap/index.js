@@ -38,10 +38,12 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
+  console.log("JIAJDFIAJSDOIFAOSDFIJA", locationObj, searchResults);
   const focusId = useSelector((state) => state.search.focusId);
   const searchLocation = useSelector((state) => state.search.searchLocation);
-  const propsNearSchools = useSelector((state) => state.propsNearSchools);
+  // const propsNearSchools = useSelector((state) => state.propsNearSchools);
   const [focusZoom, setFocusZoom] = useState(locationObj);
+
   useEffect(() => {
     if (focusId > 0) {
       const focusMap = searchResults
@@ -55,17 +57,11 @@ const GoogleMap = ({ locationObj, searchResults }) => {
           };
         });
       setFocusZoom(focusMap[0]);
+    } else {
+      console.log("in else statement!!!");
+      setFocusZoom(locationObj);
     }
-  }, [focusId, searchResults]);
-
-  useEffect(() => {
-    if (propsNearSchools[0] && propsNearSchools[0].latitude) {
-      setFocusZoom({
-        lat: propsNearSchools[0].latitude,
-        lng: propsNearSchools[0].longitude,
-      });
-    }
-  }, [propsNearSchools]);
+  }, [focusId, searchResults, locationObj]);
 
   useEffect(() => {
     setFocusZoom(searchLocation);
@@ -83,15 +79,17 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
             center={focusZoom || { lat: 40.7128, lng: -74.006 }}
             zoom={focusId > 0 ? 12 : 10}
+            defaultZoom={10}
           >
-            {searchResults.map((result) => (
-              <Pin
-                key={nanoid()}
-                lat={result.latitude}
-                lng={result.longitude}
-                searchResult={result}
-              />
-            ))}
+            {searchResults &&
+              searchResults.map((result) => (
+                <Pin
+                  key={nanoid()}
+                  lat={result.latitude}
+                  lng={result.longitude}
+                  searchResult={result}
+                />
+              ))}
           </GoogleMapReact>
         </div>
       )}
