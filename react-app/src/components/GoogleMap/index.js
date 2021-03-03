@@ -38,7 +38,6 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
-
   const focusId = useSelector((state) => state.search.focusId);
   const searchLocation = useSelector((state) => state.search.searchLocation);
   // const propsNearSchools = useSelector((state) => state.propsNearSchools);
@@ -58,7 +57,6 @@ const GoogleMap = ({ locationObj, searchResults }) => {
         });
       setFocusZoom(focusMap[0]);
     } else {
-      console.log("in else statement!!!");
       setFocusZoom(locationObj);
     }
   }, [focusId, searchResults, locationObj]);
