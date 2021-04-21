@@ -5,13 +5,11 @@ const load = listings => ({
   listings
 });
 
-export const getPropertiesNearSchools = (id) => async dispatch => {
+export const getPropertiesNearSchools = id => async dispatch => {
   const res = await window.fetch(`/api/schools/${id}`);
   if (res.ok) {
     const objWithProperties = await res.json();
     dispatch(load(objWithProperties));
-  } else {
-    console.error('error, not ok');
   }
 };
 
