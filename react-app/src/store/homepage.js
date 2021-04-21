@@ -2,14 +2,14 @@ const LOAD = 'HomePage/LOAD';
 
 const load = schools => ({
   type: LOAD,
-  schools: schools
+  schools
 });
 
 export const getSchools = () => async dispatch => {
   const res = await window.fetch('/api/schools');
   if (res.ok) {
-    const objWithSchoolsKey = await res.json();
-    dispatch(load(objWithSchoolsKey.schools));
+    const { schools } = await res.json();
+    dispatch(load(schools));
   }
 };
 
