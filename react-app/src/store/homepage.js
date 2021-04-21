@@ -1,30 +1,26 @@
-const LOAD = "HomePage/LOAD"
+const LOAD = 'HomePage/LOAD';
 
 const load = schools => ({
-    type: LOAD,
-    schools: schools
-})
+  type: LOAD,
+  schools: schools
+});
 
-export const getSchools = () => async dispatch =>{
-    const res = await fetch("/api/schools")
-    if (res.ok){
-        const objWithSchoolsKey = await res.json()
-        dispatch(load(objWithSchoolsKey.schools));
-    }else {
-    }
-}
-
-
+export const getSchools = () => async dispatch => {
+  const res = await window.fetch('/api/schools');
+  if (res.ok) {
+    const objWithSchoolsKey = await res.json();
+    dispatch(load(objWithSchoolsKey.schools));
+  }
+};
 
 const schoolsReducer = (state = [], action) => {
-    switch(action.type) {
-        case LOAD: {
-            return action.schools
-        }
-        default:
-            return state;
+  switch (action.type) {
+    case LOAD: {
+      return action.schools;
     }
-}
-
+    default:
+      return state;
+  }
+};
 
 export default schoolsReducer;
