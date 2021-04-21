@@ -3,20 +3,13 @@ import { FaStar } from 'react-icons/fa';
 
 const Stars = ({ rating }) => {
   const averageRating = Math.round(rating);
-  const stars = new Array(5);
-  stars.fill(<FaStar />);
+  const stars = [];
 
-  const mappedStars = stars.map((star, i) => {
-    if (i < averageRating) {
-      return <FaStar style={{ color: '#f8395c' }} />;
-    } else {
-      return star;
-    }
-  });
+  for (let i = 0; i < 5; i++) stars.push(<FaStar key={i} style={i < averageRating && { color: '#f8395c' }} />);
 
   return (
     <span>
-      {mappedStars} {`(${parseFloat(rating)})`}
+      {stars} {`(${parseFloat(rating)})`}
     </span>
   );
 };
