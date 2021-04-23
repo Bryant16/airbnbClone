@@ -11,7 +11,7 @@ String.prototype.toTitleCase = function () {
   if (!this.match(/ /g)) return [this[0].toUpperCase(), this.slice(1)].join('');
   return this
     .split(' ')
-    .map($ => [$[0].toUpperCase(), $.slice(1)].join(''))
+    .map($ => $ && [$[0].toUpperCase(), $.slice(1)].join(''))
     .join(' ');
 };
 

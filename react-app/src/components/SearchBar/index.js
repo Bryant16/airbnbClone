@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { DateRangePicker } from 'react-date-range';
@@ -22,28 +22,6 @@ export default function SearchBar () {
 
   const dispatch = useDispatch();
   const history = useHistory();
-
-  // HANDLE CASING OF QUERIES
-  useEffect(() => {
-    if (searchLocation.length > 1 && !searchLocation.includes(' ')) {
-      const locationCasing =
-        searchLocation[0].toUpperCase() + searchLocation.slice(1);
-      return setSearchLocation(locationCasing);
-    }
-    if (searchLocation.includes(' ')) {
-      const locationCasing = searchLocation
-        .split(' ')
-        .map((word) => {
-          try {
-            return word[0].toUpperCase() + word.slice(1);
-          } catch {
-            return word;
-          }
-        })
-        .join(' ');
-      setSearchLocation(locationCasing);
-    }
-  }, [searchLocation]);
 
   const selectionRange = {
     startDate,
@@ -78,7 +56,7 @@ export default function SearchBar () {
   };
 
   const handleLocation = ({ target: { value } }) => {
-    setSearchLocation(value);
+    setSearchLocation(value ? value.toTitleCase() : value);
   };
 
   const handleGuests = ({ target: { value } }) => {
