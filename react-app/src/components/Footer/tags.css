@@ -1,4 +1,5 @@
 .div__footer_container {
+  height: 70px;
   border-top: 1px dotted lightgrey;
   position: static;
   bottom: 0;
