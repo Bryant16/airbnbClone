@@ -1,37 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { DateRangePicker } from "react-date-range";
-import { FaSearch } from "react-icons/fa";
-import { Helmet } from "react-helmet";
-import dateFormat from "dateformat";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { DateRangePicker } from 'react-date-range';
+import { FaSearch } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
+import dateFormat from 'dateformat';
 
-import { search } from "../../store/search";
+import { search } from '../../store/search';
 
-import "./react_date_range.css";
-import "./search_bar.css";
+import './react_date_range.css';
+import './search_bar.css';
 
-export default function SearchBar() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [searchLocation, setSearchLocation] = useState("");
+export default function SearchBar () {
+  const today = new Date();
+  const [startDate, setStartDate] = useState(today);
+  const [endDate, setEndDate] = useState(today);
+  const [searchLocation, setSearchLocation] = useState('');
   const [showDates, setShowDates] = useState(false);
   const [guestNumber, setGuestNumber] = useState(1);
-  const [datesButtonDisplay, setDatesButtonDisplay] = useState("Add Dates");
+  const [datesButtonDisplay, setDatesButtonDisplay] = useState('Add Dates');
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   // HANDLE CASING OF QUERIES
   useEffect(() => {
-    if (searchLocation.length > 1 && !searchLocation.includes(" ")) {
+    if (searchLocation.length > 1 && !searchLocation.includes(' ')) {
       const locationCasing =
         searchLocation[0].toUpperCase() + searchLocation.slice(1);
       return setSearchLocation(locationCasing);
     }
-    if (searchLocation.includes(" ")) {
+    if (searchLocation.includes(' ')) {
       const locationCasing = searchLocation
-        .split(" ")
+        .split(' ')
         .map((word) => {
           try {
             return word[0].toUpperCase() + word.slice(1);
@@ -39,7 +40,7 @@ export default function SearchBar() {
             return word;
           }
         })
-        .join(" ");
+        .join(' ');
       setSearchLocation(locationCasing);
     }
   }, [searchLocation]);
@@ -47,8 +48,8 @@ export default function SearchBar() {
   const selectionRange = {
     startDate,
     endDate,
-    color: "#ff3a5c",
-    key: "selection",
+    color: '#ff3a5c',
+    key: 'selection'
     // TODO:
     // add property disabledDates to disable selection based on unavailbilty
     // disabledDates: ["AN ARRAY OF DATES THAT ARE DISABLED"],
@@ -59,41 +60,37 @@ export default function SearchBar() {
   };
 
   // Change the Dates button to display the user's selection
-  useEffect(() => {
-    if (selectionRange.startDate) {
-      const startDate = dateFormat(selectionRange.startDate, "mmm d");
-      const endDate = dateFormat(selectionRange.endDate, "mmm d");
-      if (startDate === endDate) {
-        setDatesButtonDisplay(startDate);
-      } else if (startDate !== endDate) {
-        setDatesButtonDisplay(startDate + " - " + endDate);
-      }
-    }
-  }, [selectionRange]);
+  const formattedStart = dateFormat(startDate, 'mmm d');
+  const formattedEnd = dateFormat(endDate, 'mmm d');
+  const formattedRange = `${formattedStart} - ${formattedEnd}`;
+  if (
+    startDate.toString() !== endDate.toString() &&
+    datesButtonDisplay !== formattedRange
+  ) setDatesButtonDisplay(formattedRange);
 
   const handleSelect = (ranges) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
+    setStartDate(new Date(ranges.selection.startDate));
+    setEndDate(new Date(ranges.selection.endDate));
   };
 
-  const handleDateButton = (e) => {
-    e.preventDefault();
-    setShowDates(!showDates);
-  };
-  const handleLocation = async (e) => {
-    setSearchLocation(e.target.value);
+  const handleDateButton = () => {
+    setShowDates(showDates => !showDates);
   };
 
-  const handleGuests = async (e) => {
-    setGuestNumber(e.target.value);
+  const handleLocation = ({ target: { value } }) => {
+    setSearchLocation(value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleGuests = ({ target: { value } }) => {
+    setGuestNumber(value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     dispatch(search({ searchLocation, guestNumber, startDate, endDate }));
 
-    history.push("/search");
+    history.push('/search');
   };
 
   return (
@@ -102,51 +99,51 @@ export default function SearchBar() {
         <title>{searchLocation}</title>
       </Helmet>
       <form onSubmit={handleSubmit}>
-        <div id="div__search_bar">
-          <div className="div__search_section">
-            <label className="label__move_over">Location</label>
+        <div id='div__search_bar'>
+          <div className='div__search_section'>
+            <label className='label__move_over'>Location</label>
             <br />
             <input
-              type="text"
-              className="navbar_search_searchbar"
+              type='text'
+              className='navbar_search_searchbar'
               value={searchLocation}
               onChange={handleLocation}
-              placeholder="Where are you going?"
+              placeholder='Where are you going?'
             />
           </div>
           <div
-            className="div__search_section div__dates-width"
+            className='div__search_section div__dates-width'
             style={
               showDates
                 ? {
-                    backgroundColor: "rgba(255, 255, 255, 0.6)",
-                    borderBottom: "1px dotted #ff3a5c",
+                    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                    borderBottom: '1px dotted #ff3a5c'
                   }
                 : null
             }
             onClick={handleDateButton}
           >
-            <label className="label__dates">Dates</label>
+            <label className='label__dates'>Dates</label>
             <br />
-            <button className="button__annoying_space">
+            <button type='button' className='button__annoying_space'>
               {datesButtonDisplay}
             </button>
             <br />
           </div>
-          <div className="div__search_section">
+          <div className='div__search_section'>
             <label>Guests</label>
             <br />
 
             <input
-              className="div__guests-width"
-              type="number"
-              min="1"
+              className='div__guests-width'
+              type='number'
+              min='1'
               onChange={handleGuests}
-              placeholder="number of guests"
+              placeholder='number of guests'
             />
           </div>
-          <div className="div__search_section">
-            <button>
+          <div className='div__search_section'>
+            <button type='submit'>
               <FaSearch />
             </button>
           </div>
