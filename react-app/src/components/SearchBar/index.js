@@ -18,7 +18,7 @@ export default function SearchBar () {
   const [searchLocation, setSearchLocation] = useState('');
   const [showDates, setShowDates] = useState(false);
   const [guestNumber, setGuestNumber] = useState(1);
-  const [datesButtonDisplay, setDatesButtonDisplay] = useState('Add Dates');
+  const [datesButtonDisplay, setDatesButtonDisplay] = useState('When?');
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -110,7 +110,7 @@ export default function SearchBar () {
               type='number'
               min='1'
               onChange={handleGuests}
-              placeholder='number of guests'
+              placeholder='How many people?'
             />
           </div>
           <div className='div__search_section'>
