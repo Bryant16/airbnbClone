@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { getPage } from '../../store/propertyPage';
+import { getPage, unload } from '../../store/propertyPage';
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
@@ -24,13 +24,14 @@ export default function PropertyPage () {
     };
     getReviews();
     dispatch(getPage(propertyId));
+    return () => dispatch(unload());
   }, [dispatch, propertyId]);
 
   const handleExpandReview = () => numReviews > 5
     ? setNumReviews(5)
     : setNumReviews(rev.length);
 
-  return details && (
+  return (details && (
     <div className='singleproperty_container'>
       <div className='singleproperty_container_address'>
         <h1>{`${details.listing_title}`}</h1>
@@ -101,5 +102,5 @@ export default function PropertyPage () {
         </div>
       )}
     </div>
-  );
+  )) || <h1>Loading...</h1>;
 }

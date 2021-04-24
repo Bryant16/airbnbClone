@@ -1,9 +1,13 @@
 const LOAD = 'propertyPage/LOAD';
 
+const UNLOAD = 'propertyPage/UNLOAD';
+
 const load = details => ({
   type: LOAD,
   details
 });
+
+export const unload = () => ({ type: UNLOAD });
 
 export const getPage = (id) => async dispatch => {
   const res = await window.fetch(`/api/property/${id}`);
@@ -20,6 +24,8 @@ const propertyPageReducer = (
   switch (type) {
     case LOAD:
       return { details };
+    case UNLOAD:
+      return { details: null };
     default:
       return state;
   }
