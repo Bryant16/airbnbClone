@@ -15,27 +15,25 @@ export default function SearchPage () {
 
   return (
     <div className='div__container'>
-      {!searchResults && 'searching...'}
+      {!searchResults && 'Searching...'}
       {searchResults && (
         <div className='listingMapContainer'>
           <div className='listingMapContainer_listings'>
-            {searchResults.length > 0 && (
-              <button
-                className='button__filter'
-                onClick={togglePrivate}
-                style={{
-                  backgroundColor: showPrivate === true ? 'lightgrey' : 'white'
-                }}
-              >
-                Private
-              </button>
-            )}
-
-            {searchResults.length === 0 && (
-              <h1>Sorry, no listings in this area.</h1>
-            )}
+            {searchResults.length
+              ? (
+                <button
+                  className='button__filter'
+                  onClick={togglePrivate}
+                  style={{
+                    backgroundColor: showPrivate === true ? 'lightgrey' : 'white'
+                  }}
+                >
+                  Private
+                </button>
+                )
+              : <h1>Sorry, no listings in this area.</h1>}
             {searchResults
-              .filter((result) => (showPrivate ? result.private : true))
+              .filter((result) => ((showPrivate === result.private) || !showPrivate))
               .map((result, idx) => (
                 <SearchResultListing key={idx} listing={result} />
               ))}
