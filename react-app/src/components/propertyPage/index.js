@@ -12,7 +12,7 @@ import './propertyPage.css';
 export default function PropertyPage () {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
-  const property = useSelector(state => state.property.details);
+  const details = useSelector(state => state.property.details);
   const [rev, setRev] = useState([]);
   const [numReviews, setNumReviews] = useState(5);
 
@@ -30,57 +30,57 @@ export default function PropertyPage () {
     ? setNumReviews(5)
     : setNumReviews(rev.length);
 
-  return property && (
+  return details && (
     <div className='singleproperty_container'>
       <div className='singleproperty_container_address'>
-        <h1>{`${property.listing_title}`}</h1>
-        <p>{`${property.address1}, ${property.city}`}</p>
+        <h1>{`${details.listing_title}`}</h1>
+        <p>{`${details.address1}, ${details.city}`}</p>
       </div>
       <div className='pic_reservation_container'>
-        <img src={property.coverphoto_url} alt='coverPhoto' />
+        <img src={details.coverphoto_url} alt='coverPhoto' />
         <div className='singleproperty_container_reservation'>
-          <Reservation property={property} />
+          <Reservation property={details} />
         </div>
       </div>
       <div className='detailReservationContainer'>
         <div className='singleproperty_container_propertyInfo' />
       </div>
 
-      {property.rating && (
+      {details.rating && (
         <div className='singleproperty_container_review_container'>
           <div className='stars_reviews'>
-            <Stars rating={property.rating.average} /><p>{` (Reviews ${rev.length}) `}</p>
+            <Stars rating={details.rating.average} /><p>{` (Reviews ${rev.length}) `}</p>
           </div>
           <div className='review_categories'>
             <div>
               <p>Cleanliness </p>
-              <span className='bar'><span style={{ width: `${property.rating.cleanliness / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{property.rating.cleanliness}</span>
+              <span className='bar'><span style={{ width: `${details.rating.cleanliness / 5 * 100}%` }} className='bar_progress' /></span>
+              <span>{details.rating.cleanliness}</span>
             </div>
             <div>
               <p>Check-in</p>
-              <span className='bar'><span style={{ width: `${property.rating.check_in / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{property.rating.check_in}</span>
+              <span className='bar'><span style={{ width: `${details.rating.check_in / 5 * 100}%` }} className='bar_progress' /></span>
+              <span>{details.rating.check_in}</span>
             </div>
             <div>
               <p>Accuracy</p>
-              <span className='bar'><span style={{ width: `${property.rating.accuracy / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{property.rating.accuracy}</span>
+              <span className='bar'><span style={{ width: `${details.rating.accuracy / 5 * 100}%` }} className='bar_progress' /></span>
+              <span>{details.rating.accuracy}</span>
             </div>
             <div>
               <p>Location</p>
-              <span className='bar'><span style={{ width: `${property.rating.location / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{property.rating.location}</span>
+              <span className='bar'><span style={{ width: `${details.rating.location / 5 * 100}%` }} className='bar_progress' /></span>
+              <span>{details.rating.location}</span>
             </div>
             <div>
               <p>Value</p>
-              <span className='bar'><span style={{ width: `${property.rating.overall_value / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{property.rating.overall_value}</span>
+              <span className='bar'><span style={{ width: `${details.rating.overall_value / 5 * 100}%` }} className='bar_progress' /></span>
+              <span>{details.rating.overall_value}</span>
             </div>
             <div>
               <p>Communication</p>
-              <span className='bar'><span style={{ width: `${property.rating.communication / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{property.rating.communication}</span>
+              <span className='bar'><span style={{ width: `${details.rating.communication / 5 * 100}%` }} className='bar_progress' /></span>
+              <span>{details.rating.communication}</span>
             </div>
           </div>
           <div className='review_text'>
