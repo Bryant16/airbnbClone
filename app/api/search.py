@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from .geolocate import find_coordinates
 from app.models import Property
 
@@ -17,7 +17,6 @@ def search():
     latitude = response["latitude"]
     locations_in_area = Property.query.filter(Property.longitude.between(longitude - 2, longitude + 2), Property.latitude.between(latitude - 2, latitude + 2), Property.guest_spots >= num_guests).all()
     locations = [location.to_dict for location in locations_in_area]
-    json = jsonify(locations, longitude, latitude)
 
     return {
         "properties": locations,
