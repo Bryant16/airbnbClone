@@ -1,22 +1,27 @@
 const LOAD = 'PropsBySchools/LOAD';
 
-const load = listings => ({
+const load = (center, properties) => ({
   type: LOAD,
-  listings
+  center,
+  properties
 });
 
 export const getPropertiesNearSchools = id => async dispatch => {
   const res = await window.fetch(`/api/schools/${id}`);
   if (res.ok) {
-    const objWithProperties = await res.json();
-    dispatch(load(objWithProperties));
+    const { center, properties } = await res.json();
+    dispatch(load(center, properties));
   }
 };
 
-const propertiesNearSchoolsReducer = (state = [], action) => {
-  switch (action.type) {
+const propertiesNearSchoolsReducer = (
+  // eslint-disable-next-line default-param-last
+  state = { center: null, properties: [] },
+  { type, center, properties }
+) => {
+  switch (type) {
     case LOAD: {
-      return [...action.listings];
+      return { center, properties };
     }
     default:
       return state;
