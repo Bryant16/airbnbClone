@@ -1,53 +1,49 @@
-const SEARCHRESULTS = "search/SEARCHRESULTS";
-const FOCUSID = "search/FOCUSID";
+const SEARCHRESULTS = 'search/SEARCHRESULTS';
+const FOCUSID = 'search/FOCUSID';
 
-const setSearchProperties = (properties, searchLocation) => ({
+const setSearchProperties = properties => ({
   type: SEARCHRESULTS,
-  properties,
-  searchLocation,
+  properties
 });
 
-const setFocusId = (id) => ({
-  type: FOCUSID,
-  id,
-});
+const setFocusId = focusId => ({ type: FOCUSID, focusId });
 
-export const search = ({
-  searchLocation,
-  guestNumber,
-  startDate,
-  endDate,
-}) => async (dispatch) => {
+export const search = ({ searchLocation, guestNumber, startDate, endDate }) => async dispatch => {
   const res = await window.fetch(
-    `/api/search/?location=${searchLocation}&&guests=${guestNumber}&&start_date=${startDate}&&end_date=${endDate}`
+    `/api/search/?location=${
+      searchLocation
+    }&&guests=${
+      guestNumber
+    }&&start_date=${
+      startDate
+    }&&end_date=${
+      endDate
+    }`
   );
   const properties = await res.json();
-  dispatch(setSearchProperties(properties, searchLocation));
+  dispatch(setSearchProperties(properties));
 };
 
-export const focusListing = (idNumber) => async (dispatch) => {
+export const focusListing = idNumber => async dispatch => {
   dispatch(setFocusId(idNumber));
 };
 
-export default function searchReducer(
+export default function searchReducer (
+  // eslint-disable-next-line default-param-last
   state = { properties: null, searchLocation: null, focusId: null },
-  action
+  { type, properties, focusId }
 ) {
-  let newState;
-  switch (action.type) {
+  switch (type) {
     case SEARCHRESULTS: {
-      newState = { ...state };
-      newState.properties = action.properties[0];
-      newState.searchLocation = {
-        lng: action.properties[1],
-        lat: action.properties[2],
+      return {
+        ...state,
+        properties: properties[0],
+        lng: properties[1],
+        lat: properties[2]
       };
-      return newState;
     }
     case FOCUSID: {
-      newState = { ...state };
-      newState.focusId = action.id;
-      return newState;
+      return { ...state, focusId };
     }
     default:
       return state;
