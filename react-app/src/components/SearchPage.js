@@ -14,18 +14,17 @@ export default function SearchPage () {
   };
 
   return (
-    <div className="div__container">
-      {!searchResults && "searching..."}
-
+    <div className='div__container'>
+      {!searchResults && 'searching...'}
       {searchResults && (
-        <div className="listingMapContainer">
-          <div className="listingMapContainer_listings">
+        <div className='listingMapContainer'>
+          <div className='listingMapContainer_listings'>
             {searchResults.length > 0 && (
               <button
-                className="button__filter"
+                className='button__filter'
                 onClick={togglePrivate}
                 style={{
-                  backgroundColor: showPrivate === true ? "lightgrey" : "white",
+                  backgroundColor: showPrivate === true ? 'lightgrey' : 'white'
                 }}
               >
                 Private
@@ -41,12 +40,12 @@ export default function SearchPage () {
                 <SearchResultListing key={idx} listing={result} />
               ))}
           </div>
-          <div className="listingMapContainer__googlemap">
-            {searchLocation && 
-            <GoogleMap
-              locationObj={searchLocation}
-              searchResults={searchResults}
-            />}
+          <div className='listingMapContainer__googlemap'>
+            {searchLocation &&
+              <GoogleMap
+                locationObj={searchLocation}
+                searchResults={searchResults}
+              />}
           </div>
         </div>
       )}
