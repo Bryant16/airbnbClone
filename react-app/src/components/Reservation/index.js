@@ -9,7 +9,7 @@ import './Reservation.css';
 
 const Reservation = ({ property }) => {
   const history = useHistory();
-  const { user } = useSelector(state => state.session);
+  const user = useSelector(state => state.session.user);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [numGuest, setNumGuest] = useState(1);

@@ -9,7 +9,7 @@ import './loginForm.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.session);
+  const user = useSelector(state => state.session.user);
 
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');

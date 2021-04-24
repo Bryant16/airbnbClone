@@ -9,7 +9,7 @@ import './signupForm.css';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.session);
+  const user = useSelector(state => state.session.user);
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');

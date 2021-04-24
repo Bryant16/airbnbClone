@@ -12,7 +12,7 @@ import './propertyPage.css';
 export default function PropertyPage () {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
-  const property = useSelector(state => state.property.property);
+  const property = useSelector(state => state.property.details);
   const [rev, setRev] = useState([]);
   const [numReviews, setNumReviews] = useState(5);
 
@@ -30,7 +30,7 @@ export default function PropertyPage () {
     ? setNumReviews(5)
     : setNumReviews(rev.length);
 
-  return (
+  return property && (
     <div className='singleproperty_container'>
       <div className='singleproperty_container_address'>
         <h1>{`${property.listing_title}`}</h1>
