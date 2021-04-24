@@ -20,6 +20,8 @@ def search():
 
     return {
         "properties": locations,
-        "lng": longitude,
-        "lat": latitude
+        "center:" {
+            "lng": longitude,
+            "lat": latitude
+        }
     }

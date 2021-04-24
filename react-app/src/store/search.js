@@ -1,11 +1,10 @@
 const SEARCHRESULTS = 'search/SEARCHRESULTS';
 const FOCUSID = 'search/FOCUSID';
 
-const setSearch = (properties, lng, lat) => ({
+const setSearch = (properties, center) => ({
   type: SEARCHRESULTS,
   properties,
-  lng,
-  lat
+  center
 });
 
 const setFocusId = focusId => ({ type: FOCUSID, focusId });
@@ -22,8 +21,8 @@ export const search = ({ searchLocation, guestNumber, startDate, endDate }) => a
     endDate
   }`
   );
-  const { properties, lng, lat } = await res.json();
-  dispatch(setSearch(properties, lng, lat));
+  const { properties, center } = await res.json();
+  dispatch(setSearch(properties, center));
 };
 
 export const focusListing = idNumber => async dispatch => {
@@ -33,14 +32,14 @@ export const focusListing = idNumber => async dispatch => {
 export default function searchReducer (
 // eslint-disable-next-line default-param-last
   state = { properties: null, location: null, focusId: null },
-  { type, properties, lng, lat, focusId }
+  { type, properties, center, focusId }
 ) {
   switch (type) {
     case SEARCHRESULTS: {
       return {
         ...state,
         properties,
-        location: { lng, lat }
+        center
       };
     }
     case FOCUSID: {
