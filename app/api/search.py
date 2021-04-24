@@ -19,4 +19,8 @@ def search():
     locations = [location.to_dict for location in locations_in_area]
     json = jsonify(locations, longitude, latitude)
 
-    return json
+    return {
+        "properties": locations,
+        "lng": longitude,
+        "lat": latitude
+    }

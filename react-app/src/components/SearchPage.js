@@ -6,7 +6,7 @@ import './search_page.css';
 
 export default function SearchPage () {
   const searchResults = useSelector(state => state.search.properties);
-  const searchLocation = useSelector(state => state.search.searchLocation);
+  const searchLocation = useSelector(state => state.search.location);
   const [showPrivate, setShowPrivate] = useState(false);
 
   const togglePrivate = () => {
