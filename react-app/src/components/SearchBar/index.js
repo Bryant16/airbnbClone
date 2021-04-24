@@ -28,13 +28,6 @@ export default function SearchBar () {
     endDate,
     color: '#ff3a5c',
     key: 'selection'
-    // TODO:
-    // add property disabledDates to disable selection based on unavailbilty
-    // disabledDates: ["AN ARRAY OF DATES THAT ARE DISABLED"],
-
-    // ^ This probably only needs to be done on the reservation calendar, not
-    // the search calendar, unless we want to block a user from booking mulitple
-    // properties at the same time. - JM
   };
 
   // Change the Dates button to display the user's selection
