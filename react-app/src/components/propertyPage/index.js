@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { getPage, unload } from '../../store/propertyPage';
+import { getPage, getReviews, unload } from '../../store/propertyPage';
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
@@ -13,23 +13,18 @@ export default function PropertyPage () {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
   const details = useSelector(state => state.property.details);
-  const [rev, setRev] = useState([]);
+  const reviews = useSelector(state => state.property.reviews);
   const [numReviews, setNumReviews] = useState(5);
 
   useEffect(() => {
-    const getReviews = async () => {
-      const response = await window.fetch(`/api/reviews/${propertyId}`);
-      const reviews = await response.json();
-      setRev(reviews);
-    };
-    getReviews();
     dispatch(getPage(propertyId));
+    dispatch(getReviews(propertyId));
     return () => dispatch(unload());
   }, [dispatch, propertyId]);
 
   const handleExpandReview = () => numReviews > 5
     ? setNumReviews(5)
-    : setNumReviews(rev.length);
+    : setNumReviews(reviews.length);
 
   return (details && (
     <div className='singleproperty_container'>
@@ -50,7 +45,7 @@ export default function PropertyPage () {
       {details.rating && (
         <div className='singleproperty_container_review_container'>
           <div className='stars_reviews'>
-            <Stars rating={details.rating.average} /><p>{` (Reviews ${rev.length}) `}</p>
+            <Stars rating={details.rating.average} /><p>{` (Reviews ${reviews.length}) `}</p>
           </div>
           <div className='review_categories'>
             <div>
@@ -85,15 +80,17 @@ export default function PropertyPage () {
             </div>
           </div>
           <div className='review_text'>
-            {rev.length && rev.slice(0, numReviews).map(r => <ReviewDisplay key={r.id} review={r} />)}
-            {rev.length && rev.length > 5
+            {reviews.length
+              ? reviews.slice(0, numReviews).map(r => <ReviewDisplay key={r.id} review={r} />)
+              : null}
+            {(reviews.length && reviews.length > 5)
               ? (
                 <button
                   id='show_more_button'
                   onClick={handleExpandReview}
                 >
-                  {numReviews < rev.length
-                    ? `Show All ${rev.length} Reviews`
+                  {numReviews < reviews.length
+                    ? `Show All ${reviews.length} Reviews`
                     : 'show less'}
                 </button>
                 )
