@@ -2,20 +2,20 @@ import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
-import ProfilePage from './components/ProfilePage';
-import SearchPage from './components/SearchPage';
-import PropertyPage from './components/propertyPage/index';
-import LocationPage from './components/LocationPage';
-import { Restore } from './store/session';
-import SchoolListings from './components/HomePage/index';
-import ListingsNearSchools from './components/PropsBySchools/index';
-import NewProperty from './components/NewProperty';
-import PropertyReviewPage from './components/PropertyReviewPage';
-import Footer from './components/Footer';
 import Modal from './components/Modal';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import SearchPage from './components/SearchPage';
+import NewProperty from './components/NewProperty';
+import ProfilePage from './components/ProfilePage';
+import LoginForm from './components/auth/LoginForm';
+import LocationPage from './components/LocationPage';
+import SignUpForm from './components/auth/SignUpForm';
+import SchoolListings from './components/HomePage/index';
+import PropertyPage from './components/propertyPage/index';
+import PropertyReviewPage from './components/PropertyReviewPage';
+import ListingsNearSchools from './components/PropsBySchools/index';
+import { Restore } from './store/session';
 
 function App () {
   const dispatch = useDispatch();
@@ -26,13 +26,13 @@ function App () {
 
   return (
     <>
-      <NavBar />
       <Modal />
+      <NavBar />
       <Switch>
         <Route path='/login' exact>
           <LoginForm />
         </Route>
-        <Route exact path='/users/:userId'>
+        <Route path='/users/:userId' exact>
           <ProfilePage />
         </Route>
         <Route path='/sign-up' exact>
@@ -41,7 +41,7 @@ function App () {
         <Route path='/search' exact>
           <SearchPage />
         </Route>
-        <Route exact path='/properties/new'>
+        <Route path='/properties/new' exact>
           <NewProperty />
         </Route>
         <Route path='/properties/:propertyId/reviews/new'>
@@ -50,14 +50,14 @@ function App () {
         <Route path='/properties/:propertyId'>
           <PropertyPage />
         </Route>
-        <Route exact path='/locations/:location'>
+        <Route path='/locations/:location' exact>
           <LocationPage />
-        </Route>
-        <Route path='/' exact>
-          <SchoolListings />
         </Route>
         <Route path='/school/:schoolId/:schoolName'>
           <ListingsNearSchools />
+        </Route>
+        <Route path='/' exact>
+          <SchoolListings />
         </Route>
       </Switch>
       <Footer />
