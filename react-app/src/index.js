@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider, useDispatch } from 'react-redux';
 
 import './index.css';
 import App from './App';
 import createStore from './store';
+import { setMooring } from './store/modal';
 
 // eslint-disable-next-line no-extend-native
 String.prototype.toTitleCase = function () {
@@ -22,16 +24,28 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function Root () {
+  const dispatch = useDispatch();
+  const mooringRef = useRef(null);
+
+  useEffect(() => {
+    dispatch(setMooring(mooringRef.current));
+  }, [dispatch]);
+
   return (
-    <Provider store={store}>
+    <>
       <App />
-    </Provider>
+      <div ref={mooringRef} className='modalMooring' />
+    </>
   );
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <Provider store={store}>
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
