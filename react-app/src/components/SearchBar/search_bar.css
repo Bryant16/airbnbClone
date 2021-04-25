@@ -6,6 +6,14 @@
   font-family: Roboto, Helvetica Neue, sans-serif;
 }
 
+#div__search_bar :is(input, button:not([type='submit'])) {
+  padding: 0px;
+}
+
+#div__search_bar * {
+  border: none;
+}
+
 .div__search_section {
   display: inline-block;
   border-radius: 0;
@@ -21,12 +29,6 @@
 }
 
 @media screen and (min-width: 740px) {
-  .button__annoying_space {
-    margin-left: -4px;
-  }
-  .navbar_search_searchbar {
-    margin-left: -2px;
-  }
   .div__search_section:hover {
     background-color: rgba(255, 255, 255, 0.6);
     border-bottom: 1px dotted #ff3a5c;
@@ -140,10 +142,6 @@
 .button__filter:active,
 .button__filter:focus {
   outline: none;
-}
-
-.label__dates {
-  margin-left: 2px;
 }
 
 .div__dates-width {
