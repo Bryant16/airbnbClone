@@ -34,11 +34,13 @@
 }
 
 .navbar_links {
-  display: flex;
   align-items: center;
   position: absolute;
-  right: 0;
-  display: none;
+  top: 10vh;
+  background-color: white;
+  border: 1px solid lightgrey;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .div__user_button {
@@ -64,19 +66,10 @@
   border: none;
 }
 
-.div__user_button button:hover,
 .div__user_button button:focus {
-  color: grey;
-  cursor: pointer;
   outline: none;
 }
 
-.div__user_button:hover .navbar_links {
-  display: block;
-  top: 10vh;
-  right: 8vw;
-  background-color: white;
-  border: 1px solid lightgrey;
-  padding: 20px;
-  border-radius: 20px;
+.div__user_button:hover {
+  cursor: pointer;
 }

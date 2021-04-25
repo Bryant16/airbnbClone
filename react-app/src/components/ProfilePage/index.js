@@ -11,6 +11,7 @@ import './index.css';
 export default function ProfilePage () {
   const { userId } = useParams();
   const dispatch = useDispatch();
+
   const profileUser = useSelector(state => state.profile.user);
   const loggedInUser = useSelector(state => state.session.user);
   const profileLoaded = useSelector(state => state.profile.loaded);
