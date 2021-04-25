@@ -7,6 +7,7 @@ import profilePageReducer from './profilePage';
 import reelReducer from './reel';
 import propertiesNearSchoolsReducer from './listingsBySchools';
 import schoolsReducer from './homepage';
+import modal from './modal';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   profile: profilePageReducer,
   reel: reelReducer,
   schools: schoolsReducer,
-  propsNearSchools: propertiesNearSchoolsReducer
+  propsNearSchools: propertiesNearSchoolsReducer,
+  modal
 });
 
 let enhancer;
