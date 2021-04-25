@@ -1,49 +1,8 @@
-.login__div_container{
+.div__container_form.login {
+    background: center url(campus-2.png);
+}
+
+.form__container_div input {
     width: 100%;
-    background-attachment: absolute;
-    background: url(campus-2.png);
-    background-size: cover;
-    background-position: top;
-    top: 136px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.login__form_container{
-    display: grid;
-    justify-content: center;
-    width: 35vh;
-    background: rgba(255,255,255,.7);
-    border-radius: 30px;
-    padding-bottom: 20px;
-}
-
-.login__email {
-    display: contents;
-}
-
-.login__email label{
-    padding-top: 10px;
-    font-family: Roboto;
-}
-
-.login_password{
-    display: contents;
-}
-
-.login_password label{
-    padding-top: 10px;
-    font-family: Roboto;
-}
-
-.login__btn{
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
+    padding: 0 10px;
 }
