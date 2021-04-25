@@ -14,28 +14,26 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-@login_required
 def user(id):
   user = User.query.get(id)
-  return jsonify({'user': user.to_dict() if user else None})
+  return {'user': user.to_dict() if user else None}
 
 @user_routes.route('/<int:id>/properties')
-@login_required
 def properties(id):
   user = User.query.get(id);
-  return jsonify({'list': user.to_owner()['properties'] if user else None})
+  return {'list': user.to_owner()['properties'] if user else None}
 
 @user_routes.route('/me')
 @login_required
 def my_profile():
-  return jsonify({'user': current_user.to_dict()})
+  return {'user': current_user.to_dict()}
 
 @user_routes.route('/me/properties')
 @login_required
 def my_properties():
-  return jsonify({'list': current_user.to_owner()['properties']})
+  return {'list': current_user.to_owner()['properties']}
 
 @user_routes.route('/me/reservations')
 @login_required
 def my_reservations():
-  return jsonify({'list': [res.to_summary() for res in current_user.to_guest()['reservations']]})
+  return {'list': [res.to_summary() for res in current_user.to_guest()['reservations']]}

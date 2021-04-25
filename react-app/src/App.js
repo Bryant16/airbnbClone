@@ -17,7 +17,7 @@ import PropertyReviewPage from './components/PropertyReviewPage';
 import ListingsNearSchools from './components/PropsBySchools/index';
 import { Restore } from './store/session';
 
-function App () {
+export default function App () {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,5 +64,3 @@ function App () {
     </>
   );
 }
-
-export default App;
