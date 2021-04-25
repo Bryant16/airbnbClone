@@ -70,7 +70,7 @@ const Reservation = ({ property }) => {
             {`$ ${property.nightly_rate_usd} / night`}
           </label>
           <label>
-            <i class='fas fa-star' />{property.rating && property.rating.average}
+            <i className='fas fa-star' />{property.rating && property.rating.average}
           </label>
         </div>
         <DateRange ranges={[selectionRange]} onChange={handleSelect} />
