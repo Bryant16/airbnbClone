@@ -26,7 +26,7 @@ export const getPage = (id) => async dispatch => {
 
 export const getReviews = id => async dispatch => {
   const response = await window.fetch(`/api/reviews/${id}`);
-  const reviews = await response.json();
+  const { reviews } = await response.json();
   dispatch(setReviews(reviews));
 };
 
