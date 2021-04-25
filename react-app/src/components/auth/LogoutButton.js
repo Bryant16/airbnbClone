@@ -5,7 +5,7 @@ import { LogOut } from '../../store/session';
 
 export default function LogoutButton () {
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.session);
+  const user = useSelector(state => state.session.user);
 
   const onLogout = () => dispatch(LogOut());
 

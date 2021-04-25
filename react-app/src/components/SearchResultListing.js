@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Stars from "./Stars";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Stars from './Stars';
+import { useSelector } from 'react-redux';
 
 const SearchResultListing = ({ listing }) => {
   const focusId = useSelector(state => state.search.focusId);
@@ -10,10 +10,10 @@ const SearchResultListing = ({ listing }) => {
       <div
         id={`listing_${listing.id}`}
         className={`div__listings_property ${
-          focusId === listing.id ? "div__listing-active" : null
+          focusId === listing.id ? 'div__listing-active' : null
         }`}
       >
-        <div className="div__coverphoto">
+        <div className='div__coverphoto'>
           <img
             className='img__listing_coverphoto'
             src={listing.coverphoto_url}

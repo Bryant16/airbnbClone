@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint
 from app.models import School, Property
 import random
 
@@ -9,7 +9,7 @@ homepage_routes = Blueprint('/schools', __name__)
 def schoolsListings():
     schools = [s.to_dict for s in School.query.all()]
     random.shuffle(schools)
-    return jsonify({"schools": schools})
+    return { "schools": schools }
 
 @homepage_routes.route('/<int:id>')
 def propertiesNearSchool(id):
@@ -18,4 +18,10 @@ def propertiesNearSchool(id):
     school_latitude = school.latitude
     properties_near_schools = Property.query.filter(Property.longitude.between(school_longitude - 2, school_longitude + 2), Property.latitude.between(school_latitude - 2, school_latitude + 2)).all()
     property_locations = [location.to_dict for location in properties_near_schools]
-    return jsonify(property_locations)
+    return {
+      "center": {
+        "lng": school.longitude,
+        "lat": school.latitude
+      },
+      "properties": property_locations
+    }
