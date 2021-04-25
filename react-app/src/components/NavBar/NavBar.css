@@ -32,16 +32,21 @@
 }
 
 .navbar_links {
+  box-sizing: border-box;
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   position: absolute;
   background-color: white;
-  border: 1px solid lightgrey;
-  padding: 5px 20px;
+  box-shadow: 0px 0px 1px grey;
   border-radius: 20px;
-  width: 110px;
+  min-width: 110px;
+  max-width: 110px;
+  min-height: 85px;
+  max-height: 85px;
+  overflow: hidden;
 }
 
 .div__user_button {
@@ -61,15 +66,9 @@
   color: #ff3a5c;
 }
 
-.navbar_links > * {
-  margin: 5px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar_links:hover {
-  cursor: unset;
+.navbar_links a {
+  margin: 0;
+  padding: 0;
 }
 
 .navbar_links button {
@@ -87,5 +86,40 @@
 }
 
 .button-usermenu {
-  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-usermenu.outer {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.button-usermenu.inner {
+  padding: 5px 0px;
+  font-weight: 550;
+  width: 80%;
+}
+
+.button-usermenu.inner:not(.first) {
+  border-top: 1px solid #ff3a5c;
+}
+
+.button-usermenu:hover {
+  cursor: pointer;
+  background-color: #ff3a5c;
+}
+
+.button-usermenu.outer:hover .inner {
+  color: white;
+  background-color: #ff3a5c;
+}
+
+.button-usermenu.outer:hover + .outer .inner {
+  border: none;
+}
+
+.button-usermenu.outer:hover + .outer:not(.first) {
+  border-top: 1px solid #ff3a5c;
 }

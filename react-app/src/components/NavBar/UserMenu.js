@@ -36,41 +36,47 @@ export default function UserMenu ({ showMenu, buttonRef }) {
         className='navbar_links'
         style={{ left, top }}
       >
-        <Link to='/'>
-          <button className='button-usermenu'>
+        <Link className='button-usermenu outer first' to='/'>
+          <button className='button-usermenu inner first'>
             Home
           </button>
         </Link>
         {!user
           ? (
             <>
-              <button
-                onClick={showLogin}
-                className='button-usermenu'
-              >
-                Login
-              </button>
-              <button
-                onClick={showSignup}
-                className='button-usermenu'
-              >
-                Sign Up
-              </button>
+              <div className='button-usermenu outer'>
+                <button
+                  onClick={showLogin}
+                  className='button-usermenu inner'
+                >
+                  Login
+                </button>
+              </div>
+              <div className='button-usermenu outer'>
+                <button
+                  onClick={showSignup}
+                  className='button-usermenu inner'
+                >
+                  Sign Up
+                </button>
+              </div>
             </>
             )
           : (
             <>
-              <Link to='/users/me'>
-                <button className='button-usermenu'>
+              <Link className='button-usermenu outer' to='/users/me'>
+                <button className='button-usermenu inner'>
                   My Profile
                 </button>
               </Link>
-              <button
-                onClick={logout}
-                className='button-usermenu'
-              >
-                Log Out
-              </button>
+              <div className='button-usermenu outer'>
+                <button
+                  onClick={logout}
+                  className='button-usermenu inner'
+                >
+                  Log Out
+                </button>
+              </div>
             </>
             )}
       </div>
