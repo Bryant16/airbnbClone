@@ -30,7 +30,7 @@ export default function ProfilePage () {
             <div className='personal-items-container'>
               <div className='property-reel-and-title-container'>
                 <PropertyReel
-                  isOwner={profileUser.id === loggedInUser.id}
+                  isOwner={loggedInUser && (profileUser.id === loggedInUser.id)}
                   profileUser={profileUser}
                 />
               </div>
