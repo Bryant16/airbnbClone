@@ -50,6 +50,6 @@ export const Restore = () => async dispatch => {
 
 export default function sessionReducer (
   // eslint-disable-next-line default-param-last
-  state = { user: null }, { type, user }) {
-  return (type === USER) ? { user } : state;
+  state = { user: null, loaded: false }, { type, user }) {
+  return (type === USER) ? { user, loaded: true } : state;
 }
