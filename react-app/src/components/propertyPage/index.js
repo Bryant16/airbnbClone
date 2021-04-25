@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { getPage, getReviews, unload } from '../../store/propertyPage';
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
+import RatingBar from './RatingBar';
+import { getPage, getReviews, unload } from '../../store/propertyPage';
 
 import './propertyPage.css';
+
+const categories = ['Accuracy', 'Check-in', 'Cleanliness', 'Communication', 'Location', 'Value'];
 
 export default function PropertyPage () {
   const dispatch = useDispatch();
@@ -48,36 +51,9 @@ export default function PropertyPage () {
             <Stars rating={details.rating.average} /><p>{` (Reviews ${reviews.length}) `}</p>
           </div>
           <div className='review_categories'>
-            <div>
-              <p>Cleanliness </p>
-              <span className='bar'><span style={{ width: `${details.rating.cleanliness / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{details.rating.cleanliness}</span>
-            </div>
-            <div>
-              <p>Check-in</p>
-              <span className='bar'><span style={{ width: `${details.rating.check_in / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{details.rating.check_in}</span>
-            </div>
-            <div>
-              <p>Accuracy</p>
-              <span className='bar'><span style={{ width: `${details.rating.accuracy / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{details.rating.accuracy}</span>
-            </div>
-            <div>
-              <p>Location</p>
-              <span className='bar'><span style={{ width: `${details.rating.location / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{details.rating.location}</span>
-            </div>
-            <div>
-              <p>Value</p>
-              <span className='bar'><span style={{ width: `${details.rating.overall_value / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{details.rating.overall_value}</span>
-            </div>
-            <div>
-              <p>Communication</p>
-              <span className='bar'><span style={{ width: `${details.rating.communication / 5 * 100}%` }} className='bar_progress' /></span>
-              <span>{details.rating.communication}</span>
-            </div>
+            {Object.entries(details.rating)
+              .filter(r => r[0] !== 'average')
+              .map((r, idx) => <RatingBar key={idx} title={categories[idx]} rating={r[1]} />)}
           </div>
           <div className='review_text'>
             {reviews.length
