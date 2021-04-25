@@ -11,10 +11,10 @@ import './modal.css';
 export default function Modal () {
   const dispatch = useDispatch();
 
+  const user = useSelector(state => state.session.user);
+  const after = useSelector(state => state.modal.after);
   const mooring = useSelector(state => state.modal.mooring);
   const current = useSelector(state => state.modal.current);
-  const after = useSelector(state => state.modal.after);
-  const user = useSelector(state => state.session.user);
 
   const onClose = () => {
     dispatch(teardown());
