@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_login import current_user, login_required
 from app.models import Property, Reservation, db
 from datetime import datetime
 from datetime import timedelta
@@ -7,11 +8,11 @@ reservation_routes = Blueprint('reservation', __name__)
 
 
 @reservation_routes.route('/', methods=['POST'])
-def search():
+@login_required
+def reserve():
   data = request.get_json()
   startDate = data["startDate"]
   endDate = data["endDate"]
-  guest_id = data["user"]
   num_guest = data["numGuest"]
   property_id = data["property"]
   date = data["startDate"]
@@ -23,14 +24,14 @@ def search():
   delta = b-a
   numdays = delta.days
   for i in range(numdays+1):
-    # a = timedelta(days=1)
-    increase = a + timedelta(days=i)
+    date = a + timedelta(days=i)
     newReservation = Reservation(
-      guest_id=guest_id,
+      user=current_user,
       property_id=property_id,
-      date=increase,
+      date=date,
       numGuests=num_guest,
-      date_range=f'{first} - {second}')
+      date_range=f'{first} - {second}'
+    )
     db.session.add(newReservation)
     db.session.commit()
-  return jsonify(data)
+  return {"success": True}
