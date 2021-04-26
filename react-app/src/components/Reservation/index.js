@@ -1,68 +1,71 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
+
+import { createReservation } from '../../store/propertyPage';
+import { popLogin, setAfter } from '../../store/modal';
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import './Reservation.css';
 
-const Reservation = ({ property }) => {
-  const history = useHistory();
+const Reservation = () => {
+  const dispatch = useDispatch();
+  const property = useSelector(state => state.property.details);
   const user = useSelector(state => state.session.user);
+  const reservationSuccess = useSelector(state => state.property.reservationSuccess);
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [numGuest, setNumGuest] = useState(1);
-  const [guestForNight, setGuestForNight] = useState(2);
+  const [numGuest, setNumGuest] = useState(2);
 
-  const numNights = ((Math.abs(endDate - startDate)) / 86400000);
+  const numNights = Math.round(((Math.abs(endDate - startDate)) / 86400000));
 
-  const handleSelect = ranges => {
-    if (!user) {
-      history.push('/login');
-    } else {
-      setStartDate(ranges.selection.startDate);
-      setEndDate(ranges.selection.endDate);
-    }
+  const handleSelect = ({ selection: { startDate, endDate } }) => {
+    setStartDate(startDate);
+    setEndDate(endDate);
   };
+
   const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
+    startDate,
+    endDate,
     key: 'selection'
   };
-  const guestTrack = (click) => {
-    click.preventDefault();
-    if (click.target.innerText === '+') {
-      setGuestForNight(previousGuests => previousGuests + 1);
-    } else {
-      setGuestForNight(previousGuests => previousGuests - 1);
-    }
+
+  const increaseGuests = () => setNumGuest(g => g < 20 ? g + 1 : g);
+  const decreaseGuests = () => setNumGuest(g => g > 1 ? g - 1 : g);
+  const directSetGuests = ({ target: { value } }) => {
+    setNumGuest(
+      g => (value >= 1 && value <= 20)
+        ? value
+        : g
+    );
   };
+
+  const reserve = () => {
+    const newReservation = {
+      startDate,
+      endDate,
+      numGuest,
+      property: property.id
+    };
+    dispatch(createReservation(newReservation))
+      .catch(() => window.alert('Sorry, something went wrong. Please refresh the page and try again.'));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) {
-      history.push('/login');
-    } else {
-      const newReservation = {
-        startDate: startDate,
-        endDate: endDate,
-        property: property.id,
-        numGuest: numGuest,
-        user: user.id
-      };
-      const response = await window.fetch('/api/reservation/', {
-        method: 'post',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(newReservation)
-      });
-      if (response.ok) history.push('/users/me');
-      else window.alert('Sorry, something went wrong. Please refresh the page and try again.');
+    if (user) reserve();
+    else {
+      dispatch(setAfter(reserve));
+      dispatch(popLogin());
     }
   };
 
-  return (
+  if (reservationSuccess) return <Redirect to='/users/me' />;
+
+  return property && (
     <div className='reservation_form'>
       <form>
         <div className='rate_and_test'>
@@ -77,29 +80,35 @@ const Reservation = ({ property }) => {
         <div className='guest_number_container'>
           <label>Guests</label>
           <input
+            min={1}
+            max={20}
             id='guest_number'
             type='integer'
-            value={guestForNight}
-            onChange={(e) => setNumGuest(e.target.value)}
+            value={numGuest}
+            onChange={directSetGuests}
           />
           <button
+            type='button'
             className='increase_decrease'
-            onClick={guestTrack}
+            onClick={increaseGuests}
           >
             +
           </button>
           <button
+            type='button'
             className='increase_decrease'
-            onClick={guestTrack}
+            onClick={decreaseGuests}
           >
             -
           </button>
         </div>
-        {numNights !== 0 && (
-          <p id='price_per_night'>
-            Total cost of your stay: ${numNights * property.nightly_rate_usd}
-          </p>
-        )}
+        {numNights
+          ? (
+            <p id='price_per_night'>
+              Total cost of your stay: ${numNights * property.nightly_rate_usd}
+            </p>
+            )
+          : null}
         <button
           id='reserve_button'
           onClick={handleSubmit}
