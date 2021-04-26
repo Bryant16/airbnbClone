@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
-import { popLogin, teardown } from '../../store/modal';
+import { popLogin } from '../../store/modal';
 import { SignUp, LogIn } from '../../store/session';
 
 import './signupForm.css';
@@ -21,15 +21,15 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       dispatch(SignUp(username, email, password))
-        .then(() => {
-          dispatch(teardown());
-          after && after();
-        })
+        .then(() => after && after())
         .catch(err => setErrors(err.errors || []));
     } else setErrors(['Passwords must match.']);
   };
 
-  const demoLogin = () => dispatch(LogIn('demo@aa.io', 'password'));
+  const demoLogin = () => {
+    dispatch(LogIn('demo@aa.io', 'password'))
+      .then(() => after && after());
+  };
 
   const switchForm = () => dispatch(popLogin());
 

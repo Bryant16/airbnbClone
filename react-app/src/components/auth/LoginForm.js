@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
-import { popSignup, teardown } from '../../store/modal';
+import { popSignup } from '../../store/modal';
 import { LogIn } from '../../store/session';
 
 import './loginForm.css';
@@ -18,16 +18,16 @@ const LoginForm = () => {
   const onLogin = (e) => {
     e.preventDefault();
     dispatch(LogIn(email, password))
-      .then(() => {
-        dispatch(teardown());
-        after && after();
-      })
+      .then(() => after && after())
       .catch(err => setErrors(err.errors || []));
   };
 
   const switchForm = () => dispatch(popSignup());
 
-  const demoLogin = () => dispatch(LogIn('demo@aa.io', 'password'));
+  const demoLogin = () => {
+    dispatch(LogIn('demo@aa.io', 'password'))
+      .then(() => after && after());
+  };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
