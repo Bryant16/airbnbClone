@@ -20,7 +20,8 @@ export const teardown = () => ({ type: TEARDOWN });
 
 export default function reducer (
   // eslint-disable-next-line default-param-last
-  state = { mooring: null, current: null, after: null }, { type, mooring, after }
+  state = { mooring: null, current: null, after: null },
+  { type, mooring, after }
 ) {
   switch (type) {
     case LOGIN:
@@ -28,7 +29,7 @@ export default function reducer (
     case SIGNUP:
       return { ...state, current: 'signup' };
     case TEARDOWN:
-      return { ...state, current: null };
+      return { ...state, current: null, after: null };
     case AFTER:
       return { ...state, after };
     case MOORING:
