@@ -26,9 +26,9 @@ export default function UserMenu ({ showMenu, buttonRef }) {
       setLeft(x - 15);
       setTop(y + 55);
     };
-    setMenuPosition();
+    showMenu && setMenuPosition();
     window.onresize = setMenuPosition;
-  }, [buttonRef]);
+  }, [showMenu, buttonRef]);
 
   return mooring && ReactDOM.createPortal(showMenu
     ? (
