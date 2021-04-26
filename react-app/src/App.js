@@ -8,9 +8,7 @@ import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
 import NewProperty from './components/NewProperty';
 import ProfilePage from './components/ProfilePage';
-import LoginForm from './components/auth/LoginForm';
 import LocationPage from './components/LocationPage';
-import SignUpForm from './components/auth/SignUpForm';
 import SchoolListings from './components/HomePage/index';
 import PropertyPage from './components/propertyPage/index';
 import PropertyReviewPage from './components/PropertyReviewPage';
@@ -29,14 +27,8 @@ export default function App () {
       <Modal />
       <NavBar />
       <Switch>
-        <Route path='/login' exact>
-          <LoginForm />
-        </Route>
         <Route path='/users/:userId' exact>
           <ProfilePage />
-        </Route>
-        <Route path='/sign-up' exact>
-          <SignUpForm />
         </Route>
         <Route path='/search' exact>
           <SearchPage />
