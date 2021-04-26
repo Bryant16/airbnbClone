@@ -9,12 +9,12 @@ def seed_reviews():
         db.session.add(Review(
             property_id=randint(1,102),
             reviewer_id = randint(1,8),
-            cleanliness= randint(0,5),
-            communication= randint(0,5),
-            check_in= randint(0,5),
-            accuracy= randint(0,5),
-            location= randint(0,5),
-            overall_value= randint(0,5),
+            cleanliness= randint(2,5),
+            communication= randint(2,5),
+            check_in= randint(2,5),
+            accuracy= randint(2,5),
+            location= randint(2,5),
+            overall_value= randint(2,5),
             review= fake.sentence(nb_words=15, variable_nb_words=False)
         ))
         db.session.commit()

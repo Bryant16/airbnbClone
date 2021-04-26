@@ -8,10 +8,14 @@ export const LookUp = userId => async dispatch => {
   return dispatch(lookup(user));
 };
 
-export default function profileReducer (state = { user: null }, action) {
-  switch (action.type) {
+export default function profileReducer (
+  // eslint-disable-next-line default-param-last
+  state = { user: null, loaded: false },
+  { type, user }
+) {
+  switch (type) {
     case ENUMERATE:
-      return { ...state, user: action.user };
+      return { ...state, user, loaded: true };
     default:
       return state;
   }

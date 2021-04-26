@@ -1,8 +1,6 @@
 const USER = 'session/USER';
 
-const constructSession = user => ({ type: USER, user });
-
-const deconstructSession = () => ({ type: USER });
+const setSession = (user = null) => ({ type: USER, user });
 
 export const LogIn = (email, password) => async dispatch => {
   const loginResponse = await window.fetch('/api/auth/login', {
@@ -13,30 +11,12 @@ export const LogIn = (email, password) => async dispatch => {
     body: JSON.stringify({ email, password })
   });
   const { user } = await loginResponse.json();
-  if (!user.errors) return dispatch(constructSession(user));
-  const outErr = new Error();
-  outErr.errors = [...user.errors];
-  throw outErr;
-};
-
-export const LogOut = () => async dispatch => {
-  const logoutResponse = await window.fetch('/api/auth/logout', {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  if (logoutResponse.ok) return dispatch(deconstructSession());
-};
-
-export const Restore = () => async dispatch => {
-  const restoreResponse = await window.fetch('/api/auth/', {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  const { user } = await restoreResponse.json();
-  if (!user.errors) return dispatch(constructSession(user));
-  return dispatch(constructSession(null));
+  if (!user.errors) dispatch(setSession(user));
+  else {
+    const outErr = new Error();
+    outErr.errors = [...user.errors];
+    throw outErr;
+  }
 };
 
 export const SignUp = (username, email, password) => async dispatch => {
@@ -48,12 +28,28 @@ export const SignUp = (username, email, password) => async dispatch => {
     body: JSON.stringify({ username, email, password })
   });
   const { user } = await signupResponse.json();
-  if (!user.errors) return dispatch(constructSession(signupResponse.data.user));
-  const outErr = new Error();
-  outErr.errors = [...user.errors];
-  throw outErr;
+  if (!user.errors) dispatch(setSession(user));
+  else {
+    const outErr = new Error();
+    outErr.errors = [...user.errors];
+    throw outErr;
+  }
 };
 
-export default function sessionReducer (state = { user: null }, action) {
-  return (action.type === USER) ? { ...state, user: action.user } : state;
+export const LogOut = () => async dispatch => {
+  await window.fetch('/api/auth/logout');
+  dispatch(setSession());
+};
+
+export const Restore = () => async dispatch => {
+  const restoreResponse = await window.fetch('/api/auth/');
+  const { user } = await restoreResponse.json();
+  if (!user.errors) dispatch(setSession(user));
+  else dispatch(setSession(null));
+};
+
+export default function sessionReducer (
+  // eslint-disable-next-line default-param-last
+  state = { user: null, loaded: false }, { type, user }) {
+  return (type === USER) ? { user, loaded: true } : state;
 }

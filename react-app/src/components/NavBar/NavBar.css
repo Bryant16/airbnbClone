@@ -1,0 +1,125 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 145px;
+  max-height: 145px;
+  background-color: white;
+  box-shadow: 0em 1em 1em rgba(155, 155, 155, 0.2);
+}
+
+.div__transparent_bg {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.div__white_bg {
+  background-color: white;
+}
+
+.navbar_logo img {
+  object-fit: contain;
+  height: 100px;
+}
+
+.navbar_search {
+  display: flex;
+  align-items: center;
+}
+
+.navbar_links {
+  box-sizing: border-box;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 0px 1px grey;
+  border-radius: 20px;
+  min-width: 110px;
+  max-width: 110px;
+  min-height: 85px;
+  max-height: 85px;
+  overflow: hidden;
+}
+
+.div__user_button {
+  width: 80px;
+  height: 55px;
+  padding: 0.5em;
+  border-radius: 18px;
+  font-size: 1.4em;
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-icon {
+  padding-top: 2px;
+  color: #ff3a5c;
+}
+
+.navbar_links a {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar_links button {
+  font-size: 15px;
+  background-color: white;
+  border: none;
+}
+
+.navbar_links button:focus {
+  outline: none;
+}
+
+.div__user_button:hover {
+  cursor: pointer;
+}
+
+.button-usermenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-usermenu.outer {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.button-usermenu.inner {
+  padding: 5px 0px;
+  font-weight: 550;
+  width: 80%;
+}
+
+.button-usermenu.inner:not(.first) {
+  border-top: 1px solid #ff3a5c;
+}
+
+.button-usermenu:hover {
+  cursor: pointer;
+  background-color: #ff3a5c;
+}
+
+.button-usermenu.outer:hover .inner {
+  color: white;
+  background-color: #ff3a5c;
+}
+
+.button-usermenu.outer:hover + .outer .inner {
+  border: none;
+}
+
+.button-usermenu.outer:hover + .outer:not(.first) {
+  border-top: 1px solid #ff3a5c;
+}
