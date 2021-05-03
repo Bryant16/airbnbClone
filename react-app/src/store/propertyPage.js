@@ -22,7 +22,7 @@ const reserved = () => ({
 
 export const unload = () => ({ type: UNLOAD });
 
-export const getPage = (id) => async dispatch => {
+export const getPage = id => async dispatch => {
   const res = await window.fetch(`/api/property/${id}`);
   if (res.ok) {
     const details = await res.json();
