@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
@@ -37,9 +37,7 @@ const Reservation = () => {
   const decreaseGuests = () => setNumGuest(g => g > 1 ? g - 1 : g);
   const directSetGuests = ({ target: { value } }) => {
     setNumGuest(
-      g => (value >= 1 && value <= 20)
-        ? value
-        : g
+      g => (value >= 1 && value <= 20) ? value : g
     );
   };
 
