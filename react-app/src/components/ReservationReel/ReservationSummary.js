@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 
 export default function ReservationSummary ({ reservation }) {
-  let startDate = new Date(reservation.date_range.slice(0, 10));
-  let endDate = new Date(reservation.date_range.slice(12, 23));
-
-  startDate = startDate.toLocaleDateString({ dateFormat: 'short' });
-  endDate = endDate.toLocaleDateString({ dateFormat: 'short' });
+  const [startDate, endDate] = reservation.date_range
+    .split(' - ')
+    .map(d => (new Date(d)).toLocaleDateString({ dateStyle: 'short' }));
 
   return (
     <div className='summary-container'>
