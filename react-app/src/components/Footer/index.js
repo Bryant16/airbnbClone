@@ -1,82 +1,35 @@
-import React from 'react';
+import { Person } from './Person';
+
 import './tags.css';
 
 export default function Footer () {
   return (
     <footer>
       <div className='div__footer_container'>
-        <div className='div__project_member'>
-          <div className='div__project_member_name'>Andrew Dotterer</div>
-          <div>
-            <div className='div__icons'>
-              <a href='https://github.com/adotterer'>
-                <i className='fab fa-github' />
-              </a>
-
-              <a href='https://www.linkedin.com/in/andrew-dotterer-6338aa97/'>
-                <i className='fab fa-linkedin-in' />
-              </a>
-
-              <a href='mailto:adotterer@gmail.com'>
-                <i className='far fa-envelope' />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className='div__project_member'>
-          <div className='div__project_member_name'>Bryant Klein</div>
-          <div>
-            <div className='div__icons'>
-              <a href='https://github.com/Bryant16'>
-                <i className='fab fa-github' />
-              </a>
-
-              <a href='https://www.linkedin.com/in/bryant-klein-927915134/'>
-                <i className='fab fa-linkedin-in' />
-              </a>
-
-              <a href='mailto:kleinb1616@gmail.com'>
-                <i className='far fa-envelope' />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className='div__project_member'>
-          <div className='div__project_member_name'>James Monaco</div>
-          <div>
-            <div className='div__icons'>
-              <a href='https://github.com/monaco021'>
-                <i className='fab fa-github' />
-              </a>
-
-              <a href='https://www.linkedin.com/mwlite/in/james-monaco-770127175'>
-                <i className='fab fa-linkedin-in' />
-              </a>
-
-              <a href='mailto:monaco.james18@gmail.com'>
-                <i className='far fa-envelope' />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className='div__project_member'>
-          <div className='div__project_member_name'>JM Summers</div>
-          <div>
-            <div className='div__icons'>
-              <a href='https://github.com/jm-alan'>
-                <i className='fab fa-github' />
-              </a>
-
-              <a href='https://www.linkedin.com/in/j-alan/'>
-                <i className='fab fa-linkedin-in' />
-              </a>
-
-              <a href='mailto:j.maxwell.alan@gmail.com'>
-                <i className='far fa-envelope' />
-              </a>
-            </div>
-          </div>
-        </div>
+        <Person
+          name='Andrew Dotterer'
+          github='adotterer'
+          linkedin='andrew-dotterer-6338aa97'
+          email='adotterer@gmail.com'
+        />
+        <Person
+          name='Bryant Klein'
+          github='Bryant16'
+          linkedin='bryant-klein-927915134'
+          email='kleinb1616@gmail.com'
+        />
+        <Person
+          name='James Monaco'
+          github='monaco021'
+          linkedin='james-monaco-770127175'
+          email='monaco.james18@gmail.com'
+        />
+        <Person
+          name='JM Alan'
+          github='jm-alan'
+          linkedin='j-alan'
+          email='j.maxwell.alan@gmail.com'
+        />
       </div>
     </footer>
   );
