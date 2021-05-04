@@ -35,3 +35,47 @@ def reserve():
     db.session.add(newReservation)
     db.session.commit()
   return {"success": True}
+
+@reservation_routes.route('/<int:property_id>/<date_range>/')
+@login_required
+def fetch_reservation(property_id, date_range):
+  property = Property.query.get(property_id);
+  if not property:
+    return {"property": None}
+
+  reservations = list(
+    filter(
+      lambda x: (x.property_id == property_id) and (x.date_range == date_range),
+      current_user.reservations
+    )
+  )
+
+  if not len(reservations):
+    return {"property": None}
+
+  return {
+    "property": property.to_dict,
+    "dateRange": reservations[0].date_range
+  }
+
+@reservation_routes.route('/<int:property_id>/<date_range>/', methods=['PATCH'])
+@login_required
+def edit_reservation(property_id, date_range):
+  property = Property.query.get(property_id)
+  if not property:
+    return {"success": True}
+  
+  reservations = list(
+    filter(
+      lambda x: (x.property_id == property_id) and (x.date_range == date_range),
+      current_user.reservations
+    )
+  )
+
+  if not len(reservations):
+    return {"success": True}
+
+  for reservation in reservations:
+    db.session.delete(reservation)
+
+  return reserve()
