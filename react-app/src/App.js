@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -10,6 +10,7 @@ import NewProperty from './components/NewProperty';
 import ProfilePage from './components/ProfilePage';
 import LocationPage from './components/LocationPage';
 import SchoolListings from './components/HomePage/index';
+import EditReservation from './components/EditReservation';
 import PropertyPage from './components/propertyPage/index';
 import PropertyReviewPage from './components/PropertyReviewPage';
 import ListingsNearSchools from './components/PropsBySchools/index';
@@ -47,6 +48,9 @@ export default function App () {
         </Route>
         <Route path='/school/:schoolId/:schoolName'>
           <ListingsNearSchools />
+        </Route>
+        <Route path='/reservations/:propertyId/:dateRange/edit' exact>
+          <EditReservation />
         </Route>
         <Route path='/' exact>
           <SchoolListings />
