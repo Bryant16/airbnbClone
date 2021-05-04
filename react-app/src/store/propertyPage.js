@@ -50,11 +50,12 @@ export const createReservation = newReservation => async dispatch => {
 
 const propertyPageReducer = (
   // eslint-disable-next-line default-param-last
-  state = { details: null, reviews: [], reservationSuccess: false }, { type, details, reviews }
+  state = { details: null, reviews: [], reservationSuccess: false, loaded: false },
+  { type, details, reviews }
 ) => {
   switch (type) {
     case LOAD:
-      return { ...state, details };
+      return { ...state, details, loaded: true };
     case REVIEWS:
       return { ...state, reviews };
     case RESERVED:
