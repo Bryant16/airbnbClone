@@ -6,7 +6,7 @@ import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
 import RatingBar from './RatingBar';
-import { getPage, getReviews, unload } from '../../store/propertyPage';
+import { getPage, getReviews, GetBooked, unload } from '../../store/propertyPage';
 
 import './propertyPage.css';
 
@@ -22,6 +22,7 @@ export default function PropertyPage () {
   useEffect(() => {
     dispatch(getPage(propertyId));
     dispatch(getReviews(propertyId));
+    dispatch(GetBooked(propertyId));
     return () => dispatch(unload());
   }, [dispatch, propertyId]);
 
