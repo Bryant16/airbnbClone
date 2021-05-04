@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { DateRange } from 'react-date-range';
 
 import { createReservation } from '../../store/propertyPage';
 import { popLogin, setAfter } from '../../store/modal';
+import { EditReservation } from '../../store/reservation';
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -12,13 +13,18 @@ import './Reservation.css';
 
 const Reservation = () => {
   const dispatch = useDispatch();
-  const property = useSelector(state => state.property.details);
   const user = useSelector(state => state.session.user);
+  const bookedDateRange = useSelector(state => state.property.booked);
+  const extantDateRange = useSelector(state => state.reservation.dateRange);
   const reservationSuccess = useSelector(state => state.property.reservationSuccess);
+  const property = useSelector(state => state.property.details || state.reservation.property);
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [extantStartDate, extantEndDate] = (extantDateRange && extantDateRange.split(' - ')) || [null, null];
+
+  const [startDate, setStartDate] = useState((extantStartDate && new Date(extantStartDate)) || new Date());
+  const [endDate, setEndDate] = useState((extantEndDate && new Date(extantEndDate)) || new Date());
   const [numGuest, setNumGuest] = useState(2);
+  const [disabledDates, setDisabledDates] = useState([]);
 
   const numNights = Math.round(((Math.abs(endDate - startDate)) / 86400000));
 
@@ -37,7 +43,11 @@ const Reservation = () => {
   const decreaseGuests = () => setNumGuest(g => g > 1 ? g - 1 : g);
   const directSetGuests = ({ target: { value } }) => {
     setNumGuest(
-      g => (value >= 1 && value <= 20) ? value : g
+      () => (value >= 1 && value <= 20)
+        ? value
+        : value > 20
+          ? 20
+          : 1
     );
   };
 
@@ -48,8 +58,12 @@ const Reservation = () => {
       numGuest,
       property: property.id
     };
-    dispatch(createReservation(newReservation))
-      .catch(() => window.alert('Sorry, something went wrong. Please refresh the page and try again.'));
+    if (!extantDateRange) {
+      dispatch(createReservation(newReservation))
+        .catch(() => window.alert('Sorry, something went wrong. Please refresh the page and try again.'));
+    } else {
+      dispatch(EditReservation(property.id, extantDateRange, newReservation));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -60,6 +74,14 @@ const Reservation = () => {
       dispatch(popLogin());
     }
   };
+
+  useEffect(() => {
+    if (bookedDateRange) {
+      const out = [];
+      for (const date of bookedDateRange) out.push(new Date(date));
+      setDisabledDates(out);
+    }
+  }, [bookedDateRange]);
 
   if (reservationSuccess) return <Redirect to='/users/me' />;
 
@@ -74,7 +96,11 @@ const Reservation = () => {
             <i className='fas fa-star' />{property.rating && property.rating.average}
           </label>
         </div>
-        <DateRange ranges={[selectionRange]} onChange={handleSelect} />
+        <DateRange
+          ranges={[selectionRange]}
+          onChange={handleSelect}
+          disabledDates={disabledDates}
+        />
         <div className='guest_number_container'>
           <label>Guests</label>
           <input
