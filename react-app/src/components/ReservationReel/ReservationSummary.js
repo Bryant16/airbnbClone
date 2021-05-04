@@ -17,7 +17,7 @@ export default function ReservationSummary ({ reservation }) {
         </Link>
         <div className='summary-button-group'>
           {before && (
-            <Link to={`/reservations/${reservation.property_id}/edit`}>
+            <Link to={`/reservations/${reservation.property_id}/${reservation.date_range}/edit`}>
               <button className='grouped-button first'>
                 <h4>Edit Reservation</h4>
               </button>
