@@ -21,7 +21,6 @@ export const UnloadReservation = () => ({
 export const LoadReservation = (propertyId, dates) => async dispatch => {
   const res = await window.fetch(`/api/reservation/${propertyId}/${dates}/`);
   const { property, dateRange } = await res.json();
-  console.log('property', property);
   dispatch(load(property, dateRange));
 };
 
