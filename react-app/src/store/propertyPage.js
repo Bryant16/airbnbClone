@@ -4,6 +4,8 @@ const REVIEWS = 'propertyPage/REVIEWS';
 
 const UNLOAD = 'propertyPage/UNLOAD';
 
+const BOOKED = 'propertyPage/BOOKED';
+
 const RESERVED = 'propertyPage/RESERVED';
 
 const load = details => ({
@@ -14,6 +16,11 @@ const load = details => ({
 const setReviews = reviews => ({
   type: REVIEWS,
   reviews
+});
+
+const booked = booked => ({
+  type: BOOKED,
+  booked
 });
 
 const reserved = () => ({
@@ -48,10 +55,16 @@ export const createReservation = newReservation => async dispatch => {
   else throw new Error('Oops');
 };
 
+export const GetBooked = propertyId => async dispatch => {
+  const res = await window.fetch(`/api/property/${propertyId}/booked/`);
+  const { dates } = await res.json();
+  dispatch(booked(dates));
+};
+
 const propertyPageReducer = (
   // eslint-disable-next-line default-param-last
-  state = { details: null, reviews: [], reservationSuccess: false, loaded: false },
-  { type, details, reviews }
+  state = { details: null, reviews: [], reservationSuccess: false, loaded: false, booked: null },
+  { type, details, reviews, booked }
 ) => {
   switch (type) {
     case LOAD:
@@ -60,8 +73,10 @@ const propertyPageReducer = (
       return { ...state, reviews };
     case RESERVED:
       return { ...state, reservationSuccess: true };
+    case BOOKED:
+      return { ...state, booked };
     case UNLOAD:
-      return { details: null, reviews: [], reservationSuccess: false };
+      return { details: null, reviews: [], reservationSuccess: false, booked: null };
     default:
       return state;
   }
