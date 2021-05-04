@@ -38,7 +38,7 @@ export default function PropertyPage () {
       <div className='pic_reservation_container'>
         <img src={details.coverphoto_url} alt='coverPhoto' />
         <div className='singleproperty_container_reservation'>
-          <Reservation property={details} />
+          <Reservation />
         </div>
       </div>
       <div className='detailReservationContainer'>
