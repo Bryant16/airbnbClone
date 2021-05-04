@@ -1,5 +1,4 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 export default function PropertySummary ({ property }) {
@@ -13,11 +12,11 @@ export default function PropertySummary ({ property }) {
       />
       <div className='summary-text-container'>
         <div className='user-property-listing-title-container'>
-          <NavLink to={`/properties/${property.id}`}>
+          <Link to={`/properties/${property.id}`}>
             <h3 className='user-property-listing-title'>
               {property.listing_title}
             </h3>
-          </NavLink>
+          </Link>
         </div>
         <div className='user-property-listing-description-container'>
           <h5>
@@ -26,9 +25,9 @@ export default function PropertySummary ({ property }) {
         </div>
         <div className='user-property-listing-footer-container'>
           <div className='user-property-listing-location-container'>
-            <NavLink to={`/locations/${property.city}`}>
+            <Link to={`/locations/${property.city}`}>
               {property.city}
-            </NavLink>
+            </Link>
           </div>
           <div
             className='user-property-listing-review-container'

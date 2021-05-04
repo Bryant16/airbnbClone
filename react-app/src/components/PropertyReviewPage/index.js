@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import RadioSelector from './RadioSelector';
 import './PropertyReviewPage.css';
@@ -13,7 +13,6 @@ const PropertyReviewPage = () => {
   const [location, setLocation] = useState(5);
   const [overall_value, setOverall_value] = useState(5);
   const [review, setReview] = useState('');
-
 
   const updateReview = (e) => setReview(e.target.value);
 

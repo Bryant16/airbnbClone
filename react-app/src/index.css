@@ -4,6 +4,10 @@ html {
   width: 100%;
 }
 
+:root {
+  --good-pink: #ff3a5c;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
 import RatingBar from './RatingBar';
-import { getPage, getReviews, unload } from '../../store/propertyPage';
+import { getPage, getReviews, GetBooked, unload } from '../../store/propertyPage';
 
 import './propertyPage.css';
 
@@ -22,6 +22,7 @@ export default function PropertyPage () {
   useEffect(() => {
     dispatch(getPage(propertyId));
     dispatch(getReviews(propertyId));
+    dispatch(GetBooked(propertyId));
     return () => dispatch(unload());
   }, [dispatch, propertyId]);
 
@@ -38,7 +39,7 @@ export default function PropertyPage () {
       <div className='pic_reservation_container'>
         <img src={details.coverphoto_url} alt='coverPhoto' />
         <div className='singleproperty_container_reservation'>
-          <Reservation property={details} />
+          <Reservation />
         </div>
       </div>
       <div className='detailReservationContainer'>
