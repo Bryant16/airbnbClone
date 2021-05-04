@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import current_user
+from flask_login import login_required, current_user
 from app.models import Property, db
 from .geolocate import find_coordinates
 
@@ -39,3 +39,13 @@ def create_property():
     return jsonify({'success': True, 'id': new_property.id})
   except:
     return jsonify({'success': False})
+
+@property_routes.route('/<int:property_id>/booked/')
+@login_required
+def already_booked(property_id):
+  property = Property.query.get(property_id)
+
+  if not property:
+    return {"dates": None}
+
+  return {"dates": [reservation.date for reservation in list(filter(lambda x: x.property_id == property_id, current_user.reservations))]}
