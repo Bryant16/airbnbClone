@@ -1,6 +1,5 @@
 import GoogleMapReact from 'google-map-react';
 import { nanoid } from 'nanoid';
-import { NavHashLink } from 'react-router-hash-link';
 import { useDispatch, useSelector } from 'react-redux';
 import { focusListing } from '../../store/search';
 
@@ -9,18 +8,19 @@ import './map.css';
 const Pin = ({ searchResult }) => {
   const dispatch = useDispatch();
   const focusId = useSelector((state) => state.search.focusId);
+  const reelElement = useSelector(state => state.mapReel.reelElement);
 
-  async function clickPinHandler (e) {
-    e.preventDefault();
+  const clickPinHandler = () => {
     dispatch(focusListing(searchResult.id));
-  }
+    const { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
+    reelElement.scrollTo({ top, behavior: 'smooth' });
+  };
 
   return (
-    <NavHashLink smooth to={`#listing_${searchResult.id}`}>
-      <div
-        className='pin'
-        onClick={clickPinHandler}
-        style={
+    <div
+      className='pin'
+      onClick={clickPinHandler}
+      style={
           focusId === searchResult.id
             ? {
                 color: '#ff3a5c',
@@ -29,16 +29,13 @@ const Pin = ({ searchResult }) => {
               }
             : null
         }
-      >
-        <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
-      </div>
-    </NavHashLink>
+    >
+      <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
+    </div>
   );
 };
 
 const GoogleMap = ({ locationObj, searchResults }) => {
-  const focusId = useSelector((state) => state.search.focusId);
-
   return (
     <div className='map'>
       {!locationObj && 'loading....'}
@@ -50,7 +47,7 @@ const GoogleMap = ({ locationObj, searchResults }) => {
             }}
             // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
             center={locationObj}
-            zoom={focusId ? 12 : 10}
+            zoom={10}
             defaultZoom={10}
           >
             {searchResults &&
