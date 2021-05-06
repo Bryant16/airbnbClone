@@ -1,26 +1,31 @@
 import GoogleMapReact from 'google-map-react';
 import { nanoid } from 'nanoid';
-import { NavHashLink } from 'react-router-hash-link';
 import { useDispatch, useSelector } from 'react-redux';
-import { focusListing } from '../../store/search';
+
+import { setFocusId } from '../../store/search';
+import { SetMapCenter } from '../../store/mapReel';
 
 import './map.css';
 
 const Pin = ({ searchResult }) => {
   const dispatch = useDispatch();
   const focusId = useSelector((state) => state.search.focusId);
+  const reelElement = useSelector(state => state.mapReel.reelElement);
 
-  async function clickPinHandler (e) {
-    e.preventDefault();
-    dispatch(focusListing(searchResult.id));
-  }
+  const clickPinHandler = () => {
+    dispatch(setFocusId(searchResult.id));
+    let { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
+    top -= 145;
+    reelElement.scrollTo({ top, behavior: 'smooth' });
+    const pinPosition = { lng: searchResult.longitude, lat: searchResult.latitude };
+    dispatch(SetMapCenter(pinPosition));
+  };
 
   return (
-    <NavHashLink smooth to={`#listing_${searchResult.id}`}>
-      <div
-        className='pin'
-        onClick={clickPinHandler}
-        style={
+    <div
+      className='pin'
+      onClick={clickPinHandler}
+      style={
           focusId === searchResult.id
             ? {
                 color: '#ff3a5c',
@@ -29,29 +34,34 @@ const Pin = ({ searchResult }) => {
               }
             : null
         }
-      >
-        <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
-      </div>
-    </NavHashLink>
+    >
+      <div>{`$ ${searchResult.nightly_rate_usd}`}</div>
+    </div>
   );
 };
 
-const GoogleMap = ({ locationObj, searchResults }) => {
-  const focusId = useSelector((state) => state.search.focusId);
+const GoogleMap = ({ searchResults }) => {
+  const dispatch = useDispatch();
+  const center = useSelector(state => state.mapReel.mapCenter);
+
+  const handleMapChange = ({ center: newCenter }) => {
+    if (!Object.deepEq(center, newCenter)) dispatch(SetMapCenter(newCenter));
+  };
 
   return (
     <div className='map'>
-      {!locationObj && 'loading....'}
-      {locationObj && (
+      {!center && 'loading....'}
+      {center && (
         <div className='google-map'>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.REACT_APP_API_KEY
             }}
             // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
-            center={locationObj}
-            zoom={focusId ? 12 : 10}
+            center={center}
+            zoom={10}
             defaultZoom={10}
+            onChange={handleMapChange}
           >
             {searchResults &&
               searchResults.map((result) => (

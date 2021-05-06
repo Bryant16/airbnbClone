@@ -7,7 +7,7 @@ const setSearch = (properties, center) => ({
   center
 });
 
-const setFocusId = focusId => ({ type: FOCUSID, focusId });
+export const setFocusId = focusId => ({ type: FOCUSID, focusId });
 
 export const search = ({ searchLocation, guestNumber, startDate, endDate }) => async dispatch => {
   const res = await window.fetch(
@@ -23,10 +23,6 @@ export const search = ({ searchLocation, guestNumber, startDate, endDate }) => a
   );
   const { properties, center } = await res.json();
   dispatch(setSearch(properties, center));
-};
-
-export const focusListing = idNumber => async dispatch => {
-  dispatch(setFocusId(idNumber));
 };
 
 export default function searchReducer (

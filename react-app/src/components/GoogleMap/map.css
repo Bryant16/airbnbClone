@@ -6,14 +6,6 @@
   text-align: center;
 }
 
-.map {
-  height: 100%;
-}
-
-.google-map {
-  min-height: 100%;
-}
-
 div.pin {
   font: 14px Roboto, Arial, sans-serif;
   font-weight: 700;
@@ -29,7 +21,7 @@ div.pin {
   padding: 3px;
   position: relative;
   white-space: nowrap;
-  max-width: 4vw;
+  width: 60px;
 }
 
 @media screen and (min-width: 400px) {

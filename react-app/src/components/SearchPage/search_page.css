@@ -1,3 +1,26 @@
+:root {
+  --belowNavBar: calc(100vh - 145px);
+}
+
+.property-return {
+  padding: .3em;
+  position: absolute;
+  background-color: unset;
+  width: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+}
+
+.property-return:hover {
+  color: var(--good-pink);
+}
+
 .div__container {
   display: flex;
   height: stretch;
@@ -6,29 +29,50 @@
   overflow: hidden;
 }
 
-.listingMapContainer {
-  height: calc(100vh - 145px);
+.listingProperty.slider {
+  position: absolute;
   overflow: hidden;
-  width: 100%;
-  background-color: white;
   display: flex;
+  transition: all 0.5s;
+}
+
+.listingMapContainer_property {
+  position: relative;
+  width: 100%;
+  height: var(--belowNavBar);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 25px 0px;
+}
+
+.listingMapContainer {
+  position: relative;
+  display: flex;
+  height: var(--belowNavBar);
+  overflow: hidden;
+  width: 100vw;
+  background-color: white;
 }
 
 .listingMapContainer__googlemap {
-  bottom: 0;
-  left: 47vw;
-  width: 100%;
-  align-items: baseline;
+  position: absolute;
+  right: 0;
+  height: var(--belowNavBar);
+  transition: all 0.5s;
 }
 
 .listingMapContainer_listings {
-  /* border: 2px solid red; */
-  margin-right: 8px;
-  padding-top: 5vh;
-  margin-left: 2vw;
+  height: var(--belowNavBar);
+  padding: 5vh 10px 0 10px;
   min-width: 40vw;
+  max-width: 40vw;
   overflow-y: auto;
+  border-right: 1px solid darkgrey;
 }
+
 div.div__listings_property {
   display: flex;
   flex-direction: row;
@@ -41,32 +85,23 @@ div.div__listings_property {
   color: rgb(24, 24, 24);
 }
 
-@media screen and (max-width: 850px) {
+.button.map-expand {
+  display: none;
+}
+
+@media screen and (max-width: 1355px) {
   div.div__listings_property {
     flex-direction: column;
-  }
-  .img__listing_coverphoto {
-    transform: scale(0.9);
   }
   div.div__listings_info h2 {
     font-size: 1.2em;
   }
 }
 
-.listingMapContainer__googlemap {
-  /* width: 55vw; */
-  /* right: 0;
-  top: 0; */
-  z-index: 1;
-}
-
 .button__filter {
   width: 5em;
 }
 
-.div__coverphoto {
-  /* flex-grow: 4; */
-}
 .img__listing_coverphoto {
   width: 15em;
   height: 10em;
