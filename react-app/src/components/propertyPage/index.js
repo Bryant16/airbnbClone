@@ -1,43 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
 import RatingBar from './RatingBar';
-import { getPage, getReviews, GetBooked, unload } from '../../store/propertyPage';
 
 import './propertyPage.css';
 
 const categories = ['Accuracy', 'Check-in', 'Cleanliness', 'Communication', 'Location', 'Value'];
 
 export default function PropertyPage () {
-  const dispatch = useDispatch();
-  const { propertyId } = useParams();
   const details = useSelector(state => state.property.details);
   const reviews = useSelector(state => state.property.reviews);
   const [numReviews, setNumReviews] = useState(5);
-
-  useEffect(() => {
-    dispatch(getPage(propertyId));
-    dispatch(getReviews(propertyId));
-    dispatch(GetBooked(propertyId));
-    return () => dispatch(unload());
-  }, [dispatch, propertyId]);
 
   const handleExpandReview = () => numReviews > 5
     ? setNumReviews(5)
     : setNumReviews(reviews.length);
 
   return (details && (
-    <div className='singleproperty_container'>
+    <>
       <div className='singleproperty_container_address'>
         <h1>{`${details.listing_title}`}</h1>
         <p>{`${details.address1}, ${details.city}`}</p>
       </div>
       <div className='pic_reservation_container'>
-        <img src={details.coverphoto_url} alt='coverPhoto' />
+        <img id='property-page-image' src={details.coverphoto_url} alt='coverPhoto' />
         <div className='singleproperty_container_reservation'>
           <Reservation />
         </div>
@@ -75,6 +64,6 @@ export default function PropertyPage () {
           </div>
         </div>
       )}
-    </div>
+    </>
   )) || <h1>Loading...</h1>;
 }
