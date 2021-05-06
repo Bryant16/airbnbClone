@@ -44,7 +44,7 @@ export default function reducer (
 ) {
   switch (type) {
     case LOAD:
-      return { property, dateRange, loaded: true };
+      return { ...state, property, dateRange, loaded: true };
     case COMPLETE:
       return { ...state, success: true };
     case UNLOAD:
