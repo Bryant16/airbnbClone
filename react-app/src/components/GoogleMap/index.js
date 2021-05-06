@@ -14,7 +14,8 @@ const Pin = ({ searchResult }) => {
 
   const clickPinHandler = () => {
     dispatch(focusListing(searchResult.id));
-    const { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
+    let { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
+    top -= 145;
     reelElement.scrollTo({ top, behavior: 'smooth' });
     const pinPosition = { lng: searchResult.longitude, lat: searchResult.latitude };
     dispatch(SetMapCenter(pinPosition));
