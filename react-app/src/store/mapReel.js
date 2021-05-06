@@ -26,7 +26,8 @@ export const SetMapCenter = mapCenter => ({
 
 export default function reducer (
   // eslint-disable-next-line default-param-last
-  state = { mode: 'listings', reelElement: null, mapCenter: null }, { type, reelElement, mapCenter }
+  state = { mode: 'listings', reelElement: null, mapCenter: null },
+  { type, reelElement, mapCenter }
 ) {
   switch (type) {
     case LISTINGS:
