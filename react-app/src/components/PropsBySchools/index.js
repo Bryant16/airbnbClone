@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import MapReel from '../MapReel';
+import { SetMapCenter } from '../../store/mapReel';
 import { getPropertiesNearSchools } from '../../store/listingsBySchools';
+
 import './propsBySchool.css';
 
 const ListingsNearSchools = () => {
@@ -17,6 +19,10 @@ const ListingsNearSchools = () => {
     dispatch(getPropertiesNearSchools(schoolId));
   }, [dispatch, schoolId]);
 
+  useEffect(() => {
+    if (center) dispatch(SetMapCenter(center));
+  }, [dispatch, center]);
+
   return (
     <>
       {schoolName && (
@@ -26,7 +32,6 @@ const ListingsNearSchools = () => {
       )}
       {properties && center && (
         <MapReel
-          center={center}
           listings={properties}
         />
       )}

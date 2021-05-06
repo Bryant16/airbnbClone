@@ -35,18 +35,19 @@ const Pin = ({ searchResult }) => {
   );
 };
 
-const GoogleMap = ({ locationObj, searchResults }) => {
+const GoogleMap = ({ searchResults }) => {
+  const center = useSelector(state => state.mapReel.mapCenter);
   return (
     <div className='map'>
-      {!locationObj && 'loading....'}
-      {locationObj && (
+      {!center && 'loading....'}
+      {center && (
         <div className='google-map'>
           <GoogleMapReact
             bootstrapURLKeys={{
               key: process.env.REACT_APP_API_KEY
             }}
             // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
-            center={locationObj}
+            center={center}
             zoom={10}
             defaultZoom={10}
           >

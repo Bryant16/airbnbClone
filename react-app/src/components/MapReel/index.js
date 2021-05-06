@@ -5,7 +5,7 @@ import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
 import { SetReelElement } from '../../store/mapReel';
 
-export default function MapReel ({ center, listings }) {
+export default function MapReel ({ listings }) {
   const dispatch = useDispatch();
   const [showPrivate, setShowPrivate] = useState(false);
 
@@ -45,7 +45,6 @@ export default function MapReel ({ center, listings }) {
       <div className='listingMapContainer__googlemap'>
         <div className='button map-expand' />
         <GoogleMap
-          locationObj={center}
           searchResults={listings}
         />
       </div>
