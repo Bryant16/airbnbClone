@@ -9,7 +9,7 @@
 .listingMapContainer {
   height: calc(100vh - 145px);
   overflow: hidden;
-  width: 100%;
+  width: 100vw;
   background-color: white;
   display: flex;
 }

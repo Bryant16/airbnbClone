@@ -9,6 +9,7 @@ import propertiesNearSchoolsReducer from './listingsBySchools';
 import schoolsReducer from './homepage';
 import modal from './modal';
 import reservation from './reservation';
+import mapReel from './mapReel';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   schools: schoolsReducer,
   propsNearSchools: propertiesNearSchoolsReducer,
   modal,
-  reservation
+  reservation,
+  mapReel
 });
 
 let enhancer;
