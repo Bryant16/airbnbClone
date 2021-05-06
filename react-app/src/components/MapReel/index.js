@@ -1,15 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
 import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
+import { SetReelElement } from '../../store/mapReel';
 
 export default function MapReel ({ center, listings }) {
+  const dispatch = useDispatch();
   const [showPrivate, setShowPrivate] = useState(false);
 
   const togglePrivate = () => setShowPrivate(p => !p);
+
+  const reelRef = useRef(null);
+
+  useEffect(() => {
+    dispatch(SetReelElement(reelRef.current));
+  }, [dispatch]);
+
   return (
     <div className='listingMapContainer'>
-      <div className='listingMapContainer_listings'>
+      <div
+        ref={reelRef}
+        className='listingMapContainer_listings'
+      >
         {listings.length
           ? (
             <button
