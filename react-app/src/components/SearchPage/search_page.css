@@ -24,7 +24,7 @@
 }
 
 .listingMapContainer__googlemap {
-  transition: width 0.4s;
+  flex-grow: 1;
 }
 
 .listingMapContainer_listings {

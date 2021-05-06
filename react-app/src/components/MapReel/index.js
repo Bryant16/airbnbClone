@@ -71,9 +71,6 @@ export default function MapReel ({ listings }) {
       </div>
       <div
         className='listingMapContainer__googlemap'
-        style={{
-          width: `${100 - sliderWidth}vw`
-        }}
       >
         <div className='button map-expand' />
         <GoogleMap
