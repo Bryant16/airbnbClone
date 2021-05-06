@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 
 import { getPropertiesNearSchools } from '../../store/listingsBySchools';
 import GoogleMap from '../GoogleMap';
-import SearchResultListing from '../SearchResultListing';
+import SearchResultListing from '../SearchPage/SearchResultListing';
 import './propsBySchool.css';
 
 const ListingsNearSchools = () => {

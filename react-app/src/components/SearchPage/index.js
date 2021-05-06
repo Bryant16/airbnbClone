@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import GoogleMap from './GoogleMap';
+import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
 import './search_page.css';
 

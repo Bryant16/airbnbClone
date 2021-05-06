@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import Stars from './Stars';
+import Stars from '../Stars';
 import { useSelector } from 'react-redux';
 
 const SearchResultListing = ({ listing }) => {
