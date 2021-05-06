@@ -11,7 +11,6 @@ import ProfilePage from './components/ProfilePage';
 import LocationPage from './components/LocationPage';
 import SchoolListings from './components/HomePage/index';
 import EditReservation from './components/EditReservation';
-import PropertyPage from './components/propertyPage/index';
 import PropertyReviewPage from './components/PropertyReviewPage';
 import ListingsNearSchools from './components/PropsBySchools/index';
 import { Restore } from './store/session';
@@ -39,9 +38,6 @@ export default function App () {
         </Route>
         <Route path='/properties/:propertyId/reviews/new'>
           <PropertyReviewPage />
-        </Route>
-        <Route path='/properties/:propertyId'>
-          <PropertyPage />
         </Route>
         <Route path='/locations/:location' exact>
           <LocationPage />
