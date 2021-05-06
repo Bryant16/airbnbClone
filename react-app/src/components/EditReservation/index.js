@@ -13,6 +13,8 @@ export default function EditReservation () {
 
   const loaded = useSelector(state => state.reservation.loaded);
   const propertyDetails = useSelector(state => state.reservation.property);
+  const user = useSelector(state => state.session.user);
+  const sessionLoaded = useSelector(state => state.session.loaded);
   const success = useSelector(state => state.reservation.success);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export default function EditReservation () {
   }, [dispatch, propertyId, dateRange]);
 
   if (success) return <Redirect to='/users/me' />;
+  if (sessionLoaded && !user) return <Redirect to='/' />;
 
   return loaded
     ? (
