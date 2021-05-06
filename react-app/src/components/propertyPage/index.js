@@ -47,7 +47,7 @@ export default function PropertyPage () {
           </div>
           <div className='review_text'>
             {reviews.length
-              ? reviews.slice(0, numReviews).map(r => <ReviewDisplay key={r.id} review={r} />)
+              ? reviews.slice(0, numReviews).map((r, idx) => <ReviewDisplay key={idx} review={r} />)
               : null}
             {(reviews.length && reviews.length > 5)
               ? (
