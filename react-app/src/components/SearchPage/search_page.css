@@ -1,3 +1,26 @@
+:root {
+  --belowNavBar: calc(100vh - 145px);
+}
+
+.property-return {
+  padding: .3em;
+  position: absolute;
+  background-color: unset;
+  width: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+}
+
+.property-return:hover {
+  color: var(--good-pink);
+}
+
 .div__container {
   display: flex;
   height: stretch;
@@ -7,27 +30,42 @@
 }
 
 .listingProperty.slider {
-  position: relative;
+  position: absolute;
   overflow: hidden;
   display: flex;
-  transition:
-    width 0.4s,
-    left 0.4s;
+  transition: all 0.5s;
+}
+
+.listingMapContainer_property {
+  position: relative;
+  width: 100%;
+  height: var(--belowNavBar);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 25px 0px;
 }
 
 .listingMapContainer {
-  height: calc(100vh - 145px);
+  position: relative;
+  display: flex;
+  height: var(--belowNavBar);
   overflow: hidden;
   width: 100vw;
   background-color: white;
-  display: flex;
 }
 
 .listingMapContainer__googlemap {
-  flex-grow: 1;
+  position: absolute;
+  right: 0;
+  height: var(--belowNavBar);
+  transition: all 0.5s;
 }
 
 .listingMapContainer_listings {
+  height: var(--belowNavBar);
   padding: 5vh 10px 0 10px;
   min-width: 40vw;
   max-width: 40vw;

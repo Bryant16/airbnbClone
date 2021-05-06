@@ -3,18 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
-import { SetReelElement } from '../../store/mapReel';
+import PropertyPage from '../propertyPage';
+import { SetReelElement, ShowListings, ShowProperty } from '../../store/mapReel';
+import { unload } from '../../store/propertyPage';
 
 export default function MapReel ({ listings }) {
   const dispatch = useDispatch();
 
   const reelMode = useSelector(state => state.mapReel.mode);
+  const property = useSelector(state => state.property.details);
 
   const [showPrivate, setShowPrivate] = useState(false);
   const [left, setLeft] = useState('0vw');
-  const [sliderWidth, setSliderWidth] = useState(40);
+  const [sliderWidth, setSliderWidth] = useState('40vw');
+  const [mapWidth, setMapWidth] = useState('60vw');
 
   const togglePrivate = () => setShowPrivate(p => !p);
+
+  const onReturn = () => dispatch(unload());
 
   const reelRef = useRef(null);
 
@@ -25,13 +31,20 @@ export default function MapReel ({ listings }) {
   useEffect(() => {
     if (reelMode === 'listings') {
       setLeft('0vw');
-      setSliderWidth(40);
+      setMapWidth('60vw');
+      setSliderWidth('40vw');
     }
     if (reelMode === 'property') {
       setLeft('-40vw');
-      setSliderWidth(70);
+      setMapWidth('30vw');
+      setSliderWidth('110vw');
     }
   }, [reelMode]);
+
+  useEffect(() => {
+    if (property) dispatch(ShowProperty());
+    if (!property) dispatch(ShowListings());
+  }, [dispatch, property]);
 
   return (
     <div className='listingMapContainer'>
@@ -39,7 +52,9 @@ export default function MapReel ({ listings }) {
         className='listingProperty slider'
         style={{
           left,
-          width: `${sliderWidth}vw`
+          width: sliderWidth,
+          minWidth: sliderWidth,
+          maxWidth: sliderWidth
         }}
       >
         <div
@@ -66,13 +81,23 @@ export default function MapReel ({ listings }) {
             ))}
         </div>
         <div className='listingMapContainer_property'>
-          <h1>Placeholder</h1>
+          <button
+            className='property-return'
+            onClick={onReturn}
+          >
+            <i className='fas fa-chevron-left' />Back
+          </button>
+          <PropertyPage />
         </div>
       </div>
       <div
         className='listingMapContainer__googlemap'
+        style={{
+          width: mapWidth,
+          maxWidth: mapWidth,
+          minWidth: mapWidth
+        }}
       >
-        <div className='button map-expand' />
         <GoogleMap
           searchResults={listings}
         />
