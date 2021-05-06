@@ -2,7 +2,7 @@ import GoogleMapReact from 'google-map-react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { focusListing } from '../../store/search';
+import { setFocusId } from '../../store/search';
 import { SetMapCenter } from '../../store/mapReel';
 
 import './map.css';
@@ -13,7 +13,7 @@ const Pin = ({ searchResult }) => {
   const reelElement = useSelector(state => state.mapReel.reelElement);
 
   const clickPinHandler = () => {
-    dispatch(focusListing(searchResult.id));
+    dispatch(setFocusId(searchResult.id));
     let { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
     top -= 145;
     reelElement.scrollTo({ top, behavior: 'smooth' });
@@ -41,7 +41,13 @@ const Pin = ({ searchResult }) => {
 };
 
 const GoogleMap = ({ searchResults }) => {
+  const dispatch = useDispatch();
   const center = useSelector(state => state.mapReel.mapCenter);
+
+  const handleMapChange = ({ center: newCenter }) => {
+    if (!Object.deepEq(center, newCenter)) dispatch(SetMapCenter(newCenter));
+  };
+
   return (
     <div className='map'>
       {!center && 'loading....'}
@@ -55,6 +61,7 @@ const GoogleMap = ({ searchResults }) => {
             center={center}
             zoom={10}
             defaultZoom={10}
+            onChange={handleMapChange}
           >
             {searchResults &&
               searchResults.map((result) => (
