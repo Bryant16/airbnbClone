@@ -1,24 +1,16 @@
-.singleproperty_container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 25px;
-    font-family: 'Roboto';
-}
-
-.singleproperty_container img {
-    width: 40vw;
-    /* height: 60vh; */
-    margin-right: 3em;
-    border-radius: 1em;
-}
-
 .singleproperty_container_address {
     align-self: flex-start;
     
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+#property-page-image {
+    width: 40vw;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .detailReservationContainer {
@@ -117,8 +109,9 @@
 }
 
 .pic_reservation_container{
-    display: inline-flex;
+    display: flex;
     height: 37em;
-    width: 75em;
-    /* align-self:center; */
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
 }
