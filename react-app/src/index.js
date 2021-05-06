@@ -17,6 +17,20 @@ String.prototype.toTitleCase = function () {
     .join(' ');
 };
 
+Object.deepEq = function ($, _) {
+  if (!$ || !_ || typeof $ !== 'object' || typeof _ !== 'object') return false;
+  const [$$, __] = [$, _].map(Object.values);
+  if ($$.length !== __.length) return false;
+  for (const $_ in $$) {
+    if (
+      (typeof $$[+$_] !== typeof __[+$_]) ||
+      (typeof $$[+$_] !== 'object' && $$[+$_] !== __[+$_]) ||
+      (typeof $$[+$_] === 'object' && !Object.deepEq($$[+$_], __[+$_]))
+    ) return false;
+  }
+  return true;
+};
+
 const store = createStore();
 
 if (process.env.NODE_ENV !== 'production') {
