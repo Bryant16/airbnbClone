@@ -6,6 +6,15 @@
   overflow: hidden;
 }
 
+.listingProperty.slider {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  transition:
+    width 0.4s,
+    left 0.4s;
+}
+
 .listingMapContainer {
   height: calc(100vh - 145px);
   overflow: hidden;
@@ -15,17 +24,15 @@
 }
 
 .listingMapContainer__googlemap {
-  width: 60vw;
-  position: relative;
+  transition: width 0.4s;
 }
 
 .listingMapContainer_listings {
-  /* border: 2px solid red; */
-  margin-right: 8px;
-  padding-top: 5vh;
-  margin-left: 2vw;
-  width: 40vw;
+  padding: 5vh 10px 0 10px;
+  min-width: 40vw;
+  max-width: 40vw;
   overflow-y: auto;
+  border-right: 1px solid darkgrey;
 }
 
 div.div__listings_property {
@@ -51,10 +58,6 @@ div.div__listings_property {
   div.div__listings_info h2 {
     font-size: 1.2em;
   }
-}
-
-.listingMapContainer__googlemap {
-  z-index: 1;
 }
 
 .button__filter {
