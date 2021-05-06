@@ -41,8 +41,9 @@ def create_property():
     return jsonify({'success': False})
 
 @property_routes.route('/<int:property_id>/booked/')
-@login_required
 def already_booked(property_id):
+  if not current_user.is_authenticated:
+    return {"dates": None}
   property = Property.query.get(property_id)
 
   if not property:
