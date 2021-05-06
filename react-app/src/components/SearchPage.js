@@ -39,6 +39,7 @@ export default function SearchPage () {
               ))}
           </div>
           <div className='listingMapContainer__googlemap'>
+            <div className='button map-expand' />
             {searchLocation &&
               <GoogleMap
                 locationObj={searchLocation}

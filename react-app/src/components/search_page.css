@@ -15,10 +15,8 @@
 }
 
 .listingMapContainer__googlemap {
-  bottom: 0;
-  left: 47vw;
-  width: 100%;
-  align-items: baseline;
+  width: 60vw;
+  position: relative;
 }
 
 .listingMapContainer_listings {
@@ -26,9 +24,10 @@
   margin-right: 8px;
   padding-top: 5vh;
   margin-left: 2vw;
-  min-width: 40vw;
+  width: 40vw;
   overflow-y: auto;
 }
+
 div.div__listings_property {
   display: flex;
   flex-direction: row;
@@ -41,12 +40,13 @@ div.div__listings_property {
   color: rgb(24, 24, 24);
 }
 
-@media screen and (max-width: 850px) {
+.button.map-expand {
+  display: none;
+}
+
+@media screen and (max-width: 1355px) {
   div.div__listings_property {
     flex-direction: column;
-  }
-  .img__listing_coverphoto {
-    transform: scale(0.9);
   }
   div.div__listings_info h2 {
     font-size: 1.2em;
@@ -54,9 +54,6 @@ div.div__listings_property {
 }
 
 .listingMapContainer__googlemap {
-  /* width: 55vw; */
-  /* right: 0;
-  top: 0; */
   z-index: 1;
 }
 
@@ -64,9 +61,6 @@ div.div__listings_property {
   width: 5em;
 }
 
-.div__coverphoto {
-  /* flex-grow: 4; */
-}
 .img__listing_coverphoto {
   width: 15em;
   height: 10em;
@@ -126,4 +120,8 @@ div.div__listing-active {
   border-bottom: 1px dotted #ff3a5c;
   box-shadow: 0em 0.3em 0.3em rgba(155, 155, 155, 0.2);
   /* border-right: 1px dotted #ff3a5c; */
+}
+
+.button.map-expand {
+
 }

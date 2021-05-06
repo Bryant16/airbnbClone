@@ -29,7 +29,7 @@ div.pin {
   padding: 3px;
   position: relative;
   white-space: nowrap;
-  max-width: 4vw;
+  width: 60px;
 }
 
 @media screen and (min-width: 400px) {

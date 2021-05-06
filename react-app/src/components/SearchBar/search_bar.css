@@ -41,7 +41,7 @@
   }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 800px) {
   #div__search_bar {
     flex-direction: column;
     border-radius: 2em;
