@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Modal from './components/Modal';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import SearchPage from './components/SearchPage';
+import MapReel from './components/MapReel';
 import NewProperty from './components/NewProperty';
 import ProfilePage from './components/ProfilePage';
 import LocationPage from './components/LocationPage';
@@ -31,7 +31,7 @@ export default function App () {
           <ProfilePage />
         </Route>
         <Route path='/search' exact>
-          <SearchPage />
+          <MapReel />
         </Route>
         <Route path='/properties/new' exact>
           <NewProperty />

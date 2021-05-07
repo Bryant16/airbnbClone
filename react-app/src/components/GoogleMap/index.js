@@ -2,20 +2,18 @@ import GoogleMapReact from 'google-map-react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFocusId } from '../../store/search';
-import { SetMapCenter } from '../../store/mapReel';
+import { SetMapCenter, setFocusId } from '../../store/mapReel';
 
 import './map.css';
 
 const Pin = ({ searchResult }) => {
   const dispatch = useDispatch();
-  const focusId = useSelector((state) => state.search.focusId);
+  const focusId = useSelector((state) => state.mapReel.focusId);
   const reelElement = useSelector(state => state.mapReel.reelElement);
 
   const clickPinHandler = () => {
     dispatch(setFocusId(searchResult.id));
-    let { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
-    top -= 145;
+    const { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
     reelElement.scrollTo({ top, behavior: 'smooth' });
     const pinPosition = { lng: searchResult.longitude, lat: searchResult.latitude };
     dispatch(SetMapCenter(pinPosition));

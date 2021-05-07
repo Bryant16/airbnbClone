@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
 import PropertyPage from '../propertyPage';
-import { SetReelElement, ShowListings, ShowProperty } from '../../store/mapReel';
-import { unload } from '../../store/propertyPage';
+import { SetReelElement, ShowListings, ShowProperty, UnloadMapReel } from '../../store/mapReel';
+import { UnloadPropertyPage } from '../../store/propertyPage';
 
-export default function MapReel ({ listings }) {
+import './searchPage.css';
+
+export default function MapReel () {
   const dispatch = useDispatch();
 
   const reelMode = useSelector(state => state.mapReel.mode);
+  const listings = useSelector(state => state.mapReel.listings);
   const property = useSelector(state => state.property.details);
 
   const [showPrivate, setShowPrivate] = useState(false);
@@ -20,13 +23,9 @@ export default function MapReel ({ listings }) {
 
   const togglePrivate = () => setShowPrivate(p => !p);
 
-  const onReturn = () => dispatch(unload());
+  const onReturn = () => dispatch(UnloadPropertyPage());
 
   const reelRef = useRef(null);
-
-  useEffect(() => {
-    dispatch(SetReelElement(reelRef.current));
-  }, [dispatch]);
 
   useEffect(() => {
     if (reelMode === 'listings') {
@@ -46,7 +45,16 @@ export default function MapReel ({ listings }) {
     if (!property) dispatch(ShowListings());
   }, [dispatch, property]);
 
-  return (
+  useEffect(() => () => {
+    dispatch(UnloadMapReel());
+    dispatch(UnloadPropertyPage());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(SetReelElement(reelRef.current));
+  });
+
+  return listings && (
     <div className='listingMapContainer'>
       <div
         className='listingProperty slider'

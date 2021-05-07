@@ -6,7 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
 import dateFormat from 'dateformat';
 
-import { search } from '../../store/search';
+import { search } from '../../store/mapReel';
 
 import './react_date_range.css';
 import './search_bar.css';

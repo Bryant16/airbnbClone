@@ -2,10 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import propertyPageReducer from './propertyPage';
-import searchReducer from './search';
 import profilePageReducer from './profilePage';
-import reelReducer from './reel';
-import propertiesNearSchoolsReducer from './listingsBySchools';
+import reel from './reel';
 import schoolsReducer from './homepage';
 import modal from './modal';
 import reservation from './reservation';
@@ -14,11 +12,9 @@ import mapReel from './mapReel';
 const rootReducer = combineReducers({
   session: sessionReducer,
   property: propertyPageReducer,
-  search: searchReducer,
   profile: profilePageReducer,
-  reel: reelReducer,
   schools: schoolsReducer,
-  propsNearSchools: propertiesNearSchoolsReducer,
+  reel,
   modal,
   reservation,
   mapReel

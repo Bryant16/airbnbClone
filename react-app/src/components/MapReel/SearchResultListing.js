@@ -1,22 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import Stars from '../Stars';
-import { SetMapCenter } from '../../store/mapReel';
-import { setFocusId } from '../../store/search';
+import { SetMapCenter, setFocusId } from '../../store/mapReel';
 import { getPage, getReviews, GetBooked } from '../../store/propertyPage';
 
 const SearchResultListing = ({ listing }) => {
   const dispatch = useDispatch();
 
-  const focusId = useSelector(state => state.search.focusId);
+  const focusId = useSelector(state => state.mapReel.focusId);
   const reelElement = useSelector(state => state.mapReel.reelElement);
 
   const listingClick = () => {
     const listingCoords = { lng: listing.longitude, lat: listing.latitude };
     dispatch(SetMapCenter(listingCoords));
     dispatch(setFocusId(listing.id));
-    let { offsetTop: top } = document.getElementById(`listing_${listing.id}`);
-    top -= 145;
+    const { offsetTop: top } = document.getElementById(`listing_${listing.id}`);
     reelElement.scrollTo({ top, behavior: 'smooth' });
     dispatch(getPage(listing.id));
     dispatch(getReviews(listing.id));
