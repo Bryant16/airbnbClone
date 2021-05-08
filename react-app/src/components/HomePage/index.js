@@ -29,7 +29,7 @@ export default function SchoolListings () {
               {schools.slice(0, 5).map((school) => {
                 return (
                   <div className='school_buttons' key={nanoid()}>
-                    <Link to={`/school/${school.id}/${school.name}`}>
+                    <Link to={`/schools/${school.id}/${school.name}`}>
                       <img
                         className='schoolLogoImage'
                         src={school.logo_url}
@@ -43,7 +43,7 @@ export default function SchoolListings () {
             <div className='school_button_container_2'>
               {schools.slice(5, 10).map((school) => (
                 <div className='school_buttons' key={nanoid()}>
-                  <Link to={`/school/${school.id}/${school.name}`}>
+                  <Link to={`/schools/${school.id}/${school.name}`}>
                     <img
                       className='schoolLogoImage'
                       src={school.logo_url}

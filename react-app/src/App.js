@@ -42,7 +42,7 @@ export default function App () {
         <Route path='/locations/:location' exact>
           <LocationPage />
         </Route>
-        <Route path='/school/:schoolId/:schoolName'>
+        <Route path='/schools/:schoolId/:schoolName'>
           <ListingsNearSchools />
         </Route>
         <Route path='/reservations/:propertyId/:dateRange/edit' exact>
