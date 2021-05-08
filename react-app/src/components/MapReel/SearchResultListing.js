@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Stars from '../Stars';
 import { SetMapCenter, setFocusId } from '../../store/mapReel';
 import { getPage, getReviews, GetBooked } from '../../store/propertyPage';
+import { useQuerySelector } from '../../utils/hooks';
 
 const SearchResultListing = ({ listing }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const SearchResultListing = ({ listing }) => {
     const listingCoords = { lng: listing.longitude, lat: listing.latitude };
     dispatch(SetMapCenter(listingCoords));
     dispatch(setFocusId(listing.id));
-    const { offsetTop: top } = document.getElementById(`listing_${listing.id}`);
+    const { offsetTop: top } = useQuerySelector(`#listing_${listing.id}`);
     reelElement.scrollTo({ top, behavior: 'smooth' });
     dispatch(getPage(listing.id));
     dispatch(getReviews(listing.id));

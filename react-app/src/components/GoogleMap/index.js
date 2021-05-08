@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SetMapCenter, setFocusId } from '../../store/mapReel';
+import { useQuerySelector } from '../../utils/hooks';
 
 import './map.css';
 
@@ -13,7 +14,7 @@ const Pin = ({ searchResult }) => {
 
   const clickPinHandler = () => {
     dispatch(setFocusId(searchResult.id));
-    const { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
+    const { offsetTop: top } = useQuerySelector(`#listing_${searchResult.id}`);
     reelElement.scrollTo({ top, behavior: 'smooth' });
     const pinPosition = { lng: searchResult.longitude, lat: searchResult.latitude };
     dispatch(SetMapCenter(pinPosition));

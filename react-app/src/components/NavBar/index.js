@@ -6,6 +6,7 @@ import { BsGrid3X3GapFill } from 'react-icons/bs';
 
 import SearchBar from '../SearchBar';
 import UserMenu from './UserMenu';
+import { useEventListener } from '../../utils/hooks';
 
 import logo from '../../collegeLogo.png';
 import './NavBar.css';
@@ -17,13 +18,15 @@ const NavBar = () => {
 
   const buttonRef = useRef(null);
 
+  const [addEventListener, removeEventListener] = useEventListener(document);
+
   const show = () => setShowMenu(true);
 
   const hide = () => setShowMenu(false);
 
   useEffect(() => {
-    if (showMenu) document.addEventListener('click', hide);
-    return () => document.removeEventListener('click', hide);
+    if (showMenu) addEventListener('click', hide);
+    return () => removeEventListener('click', hide);
   }, [showMenu]);
 
   return (
