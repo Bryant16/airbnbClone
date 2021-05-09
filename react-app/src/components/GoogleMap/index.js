@@ -12,9 +12,11 @@ const Pin = ({ searchResult }) => {
   const focusId = useSelector((state) => state.mapReel.focusId);
   const reelElement = useSelector(state => state.mapReel.reelElement);
 
+  const listing = useQuerySelector(`#listing_${searchResult.id}`);
+
   const clickPinHandler = () => {
     dispatch(setFocusId(searchResult.id));
-    const { offsetTop: top } = useQuerySelector(`#listing_${searchResult.id}`);
+    const { offsetTop: top } = listing;
     reelElement.scrollTo({ top, behavior: 'smooth' });
     const pinPosition = { lng: searchResult.longitude, lat: searchResult.latitude };
     dispatch(SetMapCenter(pinPosition));

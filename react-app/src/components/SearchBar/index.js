@@ -22,7 +22,10 @@ export default function SearchBar () {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const [addEventListener, removeEventListener] = useEventListener(document);
+  const [
+    { click: addClick },
+    { click: removeClick }
+  ] = useEventListener(document);
 
   const selectionRange = {
     startDate,
@@ -68,9 +71,9 @@ export default function SearchBar () {
   const hideDatePicker = () => setShowDates(false);
 
   useEffect(() => {
-    if (showDates) addEventListener('click', hideDatePicker);
-    return () => removeEventListener('click', hideDatePicker);
-  });
+    if (showDates) addClick(hideDatePicker);
+    return () => removeClick(hideDatePicker);
+  }, [addClick, removeClick, showDates]);
 
   return (
     <>

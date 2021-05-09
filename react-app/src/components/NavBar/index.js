@@ -18,16 +18,19 @@ const NavBar = () => {
 
   const buttonRef = useRef(null);
 
-  const [addEventListener, removeEventListener] = useEventListener(document);
+  const [
+    { click: addClick },
+    { click: removeClick }
+  ] = useEventListener(document);
 
   const show = () => setShowMenu(true);
 
   const hide = () => setShowMenu(false);
 
   useEffect(() => {
-    if (showMenu) addEventListener('click', hide);
-    return () => removeEventListener('click', hide);
-  }, [showMenu]);
+    if (showMenu) addClick(hide);
+    return () => removeClick(hide);
+  }, [showMenu, addClick, removeClick]);
 
   return (
     <div className='div__transparent_bg'>
