@@ -12,6 +12,13 @@ const UNLOAD = 'mapReel/unload';
 
 const FOCUSID = 'mapReel/FOCUSID';
 
+const LOCATION = 'mapReel/LOCATION';
+
+const SetSearchLocation = searchLocation => ({
+  type: LOCATION,
+  searchLocation
+});
+
 export const ShowListings = () => ({
   type: LISTINGS
 });
@@ -68,19 +75,21 @@ export const search = ({ searchLocation, guestNumber, startDate, endDate }) => a
   const { properties, center } = await res.json();
   dispatch(EnumerateMapReel(properties));
   dispatch(SetMapCenter(center));
+  dispatch(SetSearchLocation(searchLocation));
 };
 
 const initialState = {
   mode: 'listings',
   reelElement: null,
   mapCenter: null,
-  listings: null
+  listings: null,
+  searchLocation: null
 };
 
 export default function reducer (
   // eslint-disable-next-line default-param-last
   state = initialState,
-  { type, reelElement, mapCenter, listings, focusId }
+  { type, reelElement, mapCenter, listings, searchLocation, focusId }
 ) {
   switch (type) {
     case LISTINGS:
@@ -93,6 +102,8 @@ export default function reducer (
       return { ...state, mapCenter };
     case ENUMERATE:
       return { ...state, listings };
+    case LOCATION:
+      return { ...state, searchLocation };
     case FOCUSID:
       return { ...state, focusId };
     case UNLOAD:
