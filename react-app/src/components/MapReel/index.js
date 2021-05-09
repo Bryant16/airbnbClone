@@ -1,12 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
 import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
 import PropertyPage from '../propertyPage';
-import { SetReelElement, ShowListings, ShowProperty, UnloadMapReel } from '../../store/mapReel';
 import { UnloadPropertyPage } from '../../store/propertyPage';
+import {
+  getPropertiesNearSchools,
+  SetSearchLocation,
+  SetReelElement,
+  ShowListings,
+  ShowProperty,
+  UnloadMapReel
+} from '../../store/mapReel';
 
 import './searchPage.css';
 
@@ -17,6 +25,13 @@ export default function MapReel () {
   const listings = useSelector(state => state.mapReel.listings);
   const property = useSelector(state => state.property.details);
   const searchLocation = useSelector(state => state.mapReel.searchLocation);
+
+  const { schoolId, schoolName } = useParams();
+
+  useEffect(() => {
+    if (schoolId) dispatch(getPropertiesNearSchools(schoolId));
+    if (schoolName) dispatch(SetSearchLocation(schoolName));
+  }, [dispatch, schoolId]);
 
   const [showPrivate, setShowPrivate] = useState(false);
   const [left, setLeft] = useState('0vw');

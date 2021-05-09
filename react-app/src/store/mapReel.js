@@ -14,7 +14,7 @@ const FOCUSID = 'mapReel/FOCUSID';
 
 const LOCATION = 'mapReel/LOCATION';
 
-const SetSearchLocation = searchLocation => ({
+export const SetSearchLocation = searchLocation => ({
   type: LOCATION,
   searchLocation
 });
