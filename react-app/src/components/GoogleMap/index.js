@@ -2,6 +2,7 @@ import GoogleMapReact from 'google-map-react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SetMapCenter, setFocusId } from '../../store/mapReel';
+import { useQuerySelector } from '../../utils/hooks';
 
 import './map.css';
 
@@ -10,9 +11,11 @@ const Pin = ({ searchResult }) => {
   const focusId = useSelector(state => state.mapReel.focusId);
   const reelElement = useSelector(state => state.mapReel.reelElement);
 
+  const listing = useQuerySelector(`#listing_${searchResult.id}`);
+
   const clickPinHandler = () => {
     dispatch(setFocusId(searchResult.id));
-    const { offsetTop: top } = document.getElementById(`listing_${searchResult.id}`);
+    const { offsetTop: top } = listing;
     reelElement.scrollTo({ top, behavior: 'smooth' });
     const pinPosition = { lng: searchResult.longitude, lat: searchResult.latitude };
     dispatch(SetMapCenter(pinPosition));

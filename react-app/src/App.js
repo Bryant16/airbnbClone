@@ -12,7 +12,6 @@ import LocationPage from './components/LocationPage';
 import SchoolListings from './components/HomePage/index';
 import EditReservation from './components/EditReservation';
 import PropertyReviewPage from './components/PropertyReviewPage';
-import ListingsNearSchools from './components/PropsBySchools/index';
 import { Restore } from './store/session';
 
 export default function App () {
@@ -42,8 +41,8 @@ export default function App () {
         <Route path='/locations/:location' exact>
           <LocationPage />
         </Route>
-        <Route path='/school/:schoolId/:schoolName'>
-          <ListingsNearSchools />
+        <Route path='/schools/:schoolId/:schoolName'>
+          <MapReel />
         </Route>
         <Route path='/reservations/:propertyId/:dateRange/edit' exact>
           <EditReservation />

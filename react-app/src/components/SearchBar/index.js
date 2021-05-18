@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { DateRangePicker } from 'react-date-range';
 import { FaSearch } from 'react-icons/fa';
-import { Helmet } from 'react-helmet';
 import dateFormat from 'dateformat';
 
 import { search } from '../../store/mapReel';
+import { useEventListener } from '../../utils/hooks';
 
 import './react_date_range.css';
 import './search_bar.css';
@@ -22,6 +22,10 @@ export default function SearchBar () {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const [
+    { click: addClick },
+    { click: removeClick }
+  ] = useEventListener(document);
 
   const selectionRange = {
     startDate,
@@ -64,11 +68,15 @@ export default function SearchBar () {
     history.push('/search');
   };
 
+  const hideDatePicker = () => setShowDates(false);
+
+  useEffect(() => {
+    if (showDates) addClick(hideDatePicker);
+    return () => removeClick(hideDatePicker);
+  }, [addClick, removeClick, showDates]);
+
   return (
     <>
-      <Helmet>
-        <title>{searchLocation}</title>
-      </Helmet>
       <form onSubmit={handleSubmit}>
         <div id='div__search_bar'>
           <div className='div__search_section'>
@@ -104,7 +112,6 @@ export default function SearchBar () {
           <div className='div__search_section'>
             <label>Guests</label>
             <br />
-
             <input
               className='div__guests-width'
               type='number'
@@ -121,7 +128,10 @@ export default function SearchBar () {
         </div>
       </form>
       {showDates && (
-        <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+        <DateRangePicker
+          ranges={[selectionRange]}
+          onChange={handleSelect}
+        />
       )}
     </>
   );

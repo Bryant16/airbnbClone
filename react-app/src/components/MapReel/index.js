@@ -1,11 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import GoogleMap from '../GoogleMap';
 import SearchResultListing from './SearchResultListing';
 import PropertyPage from '../propertyPage';
-import { SetReelElement, ShowListings, ShowProperty, UnloadMapReel } from '../../store/mapReel';
 import { UnloadPropertyPage } from '../../store/propertyPage';
+import {
+  getPropertiesNearSchools,
+  SetSearchLocation,
+  SetReelElement,
+  ShowListings,
+  ShowProperty,
+  UnloadMapReel
+} from '../../store/mapReel';
 
 import './searchPage.css';
 
@@ -15,6 +24,14 @@ export default function MapReel () {
   const reelMode = useSelector(state => state.mapReel.mode);
   const listings = useSelector(state => state.mapReel.listings);
   const property = useSelector(state => state.property.details);
+  const searchLocation = useSelector(state => state.mapReel.searchLocation);
+
+  const { schoolId, schoolName } = useParams();
+
+  useEffect(() => {
+    if (schoolId) dispatch(getPropertiesNearSchools(schoolId));
+    if (schoolName) dispatch(SetSearchLocation(schoolName));
+  }, [dispatch, schoolId]);
 
   const [showPrivate, setShowPrivate] = useState(false);
   const [left, setLeft] = useState('0vw');
@@ -55,61 +72,68 @@ export default function MapReel () {
   });
 
   return listings && (
-    <div className='listingMapContainer'>
-      <div
-        className='listingProperty slider'
-        style={{
-          left,
-          width: sliderWidth,
-          minWidth: sliderWidth,
-          maxWidth: sliderWidth
-        }}
-      >
+    <>
+      <Helmet>
+        <title>
+          {searchLocation}
+        </title>
+      </Helmet>
+      <div className='listingMapContainer'>
         <div
-          ref={reelRef}
-          className='listingMapContainer_listings'
+          className='listingProperty slider'
+          style={{
+            left,
+            width: sliderWidth,
+            minWidth: sliderWidth,
+            maxWidth: sliderWidth
+          }}
         >
-          {listings.length
-            ? (
-              <button
-                className='button__filter'
-                onClick={togglePrivate}
-                style={{
-                  backgroundColor: showPrivate === true ? 'lightgrey' : 'white'
-                }}
-              >
-                Private
-              </button>
-              )
-            : <h1>Sorry, no listings in this area.</h1>}
-          {listings
-            .filter((result) => ((showPrivate === result.private) || !showPrivate))
-            .map((result, idx) => (
-              <SearchResultListing key={idx} listing={result} />
-            ))}
-        </div>
-        <div className='listingMapContainer_property'>
-          <button
-            className='property-return'
-            onClick={onReturn}
+          <div
+            ref={reelRef}
+            className='listingMapContainer_listings'
           >
-            <i className='fas fa-chevron-left' />Back
-          </button>
-          <PropertyPage />
+            {listings.length
+              ? (
+                <button
+                  className='button__filter'
+                  onClick={togglePrivate}
+                  style={{
+                    backgroundColor: showPrivate === true ? 'lightgrey' : 'white'
+                  }}
+                >
+                  Private
+                </button>
+                )
+              : <h1>Sorry, no listings in this area.</h1>}
+            {listings
+              .filter((result) => ((showPrivate === result.private) || !showPrivate))
+              .map((result, idx) => (
+                <SearchResultListing key={idx} listing={result} />
+              ))}
+          </div>
+          <div className='listingMapContainer_property'>
+            <button
+              className='property-return'
+              onClick={onReturn}
+            >
+              <i className='fas fa-chevron-left' />Back
+            </button>
+            <PropertyPage />
+          </div>
+        </div>
+        <div
+          className='listingMapContainer__googlemap'
+          style={{
+            width: mapWidth,
+            maxWidth: mapWidth,
+            minWidth: mapWidth
+          }}
+        >
+          <GoogleMap
+            searchResults={listings}
+          />
         </div>
       </div>
-      <div
-        className='listingMapContainer__googlemap'
-        style={{
-          width: mapWidth,
-          maxWidth: mapWidth,
-          minWidth: mapWidth
-        }}
-      >
-        <GoogleMap
-          searchResults={listings}
-        />
-      </div>
-    </div>
+    </>
   );
 }
