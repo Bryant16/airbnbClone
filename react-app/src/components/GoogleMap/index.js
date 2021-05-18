@@ -1,5 +1,4 @@
 import GoogleMapReact from 'google-map-react';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SetMapCenter, setFocusId } from '../../store/mapReel';
@@ -8,7 +7,7 @@ import './map.css';
 
 const Pin = ({ searchResult }) => {
   const dispatch = useDispatch();
-  const focusId = useSelector((state) => state.mapReel.focusId);
+  const focusId = useSelector(state => state.mapReel.focusId);
   const reelElement = useSelector(state => state.mapReel.reelElement);
 
   const clickPinHandler = () => {
@@ -62,9 +61,9 @@ const GoogleMap = ({ searchResults }) => {
             onChange={handleMapChange}
           >
             {searchResults &&
-              searchResults.map((result) => (
+              searchResults.map((result, idx) => (
                 <Pin
-                  key={nanoid()}
+                  key={idx}
                   lat={result.latitude}
                   lng={result.longitude}
                   searchResult={result}
