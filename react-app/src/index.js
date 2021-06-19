@@ -36,6 +36,7 @@ const store = createStore();
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
+  window.dispatch = store.dispatch;
 }
 
 function Root () {
