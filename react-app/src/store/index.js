@@ -1,25 +1,25 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import sessionReducer from './session';
-import propertyPageReducer from './propertyPage';
-import searchReducer from './search';
-import profilePageReducer from './profilePage';
-import reelReducer from './reel';
-import propertiesNearSchoolsReducer from './listingsBySchools';
-import schoolsReducer from './homepage';
+import session from './session';
+import property from './propertyPage';
+import search from './search';
+import profile from './profilePage';
+import reel from './reel';
+import propsNearSchools from './listingsBySchools';
+import schools from './homepage';
 import modal from './modal';
 import reservation from './reservation';
 import mapReel from './mapReel';
 import errors from './errors';
 
 const rootReducer = combineReducers({
-  session: sessionReducer,
-  property: propertyPageReducer,
-  search: searchReducer,
-  profile: profilePageReducer,
-  reel: reelReducer,
-  schools: schoolsReducer,
-  propsNearSchools: propertiesNearSchoolsReducer,
+  session,
+  property,
+  search,
+  profile,
+  reel,
+  schools,
+  propsNearSchools,
   modal,
   reservation,
   mapReel,
