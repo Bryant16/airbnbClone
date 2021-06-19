@@ -36,6 +36,67 @@ input:focus {
   outline: none;
 }
 
+.error-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ff3a5c;
+  transition: all 0.35s;
+}
+
+.error-bar.grow {
+  height: 100px;
+}
+
+.error-bar.shrink {
+  height: 0px;
+}
+
+.error-bar.shrink .errors-body {
+  height: 0px;
+}
+
+.error-bar.grow .errors-body {
+  height: 100px;
+}
+
+.errors-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  margin-left: 50px;
+  overflow-y: auto;
+}
+
+.error-content {
+  padding: 5px 0;
+}
+
+.errors-close {
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  font-size: 40px;
+  font-weight: bolder;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: unset;
+}
+
+.errors-close:hover {
+  box-shadow: 0px 0px 10px white;
+}
+
 /* Hide scrollbar */
 *::-webkit-scrollbar { /* Chrome */
   display: none;
