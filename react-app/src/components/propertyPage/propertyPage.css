@@ -28,7 +28,6 @@
 }
 
 .singleproperty_container_review_container {
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -78,7 +77,6 @@
 
 .bar_progress {
   background-color: black;
-
 }
 
 .stars_reviews {
@@ -91,6 +89,7 @@
 .stars_reviews p {
   padding-left: 1em;
 }
+
 #review_text {
   font-size: .5em !important;
   margin-top: 0;
@@ -103,6 +102,7 @@
   border-radius: 1em;
   outline:none;
 }
+
 #show_more_button:hover {
   background-color: rgb(243, 240, 240);
 }
