@@ -29,7 +29,8 @@ const Pin = ({ searchResult }) => {
             ? {
                 color: '#ff3a5c',
                 fontWeight: '700',
-                border: '1px solid #ff3a5c'
+                border: '1px solid #ff3a5c',
+                zIndex: 999
               }
             : null
         }
@@ -56,7 +57,6 @@ const GoogleMap = ({ searchResults }) => {
             bootstrapURLKeys={{
               key: process.env.REACT_APP_API_KEY
             }}
-            // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
             center={center}
             zoom={10}
             defaultZoom={10}
