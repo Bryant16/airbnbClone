@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 
 import { popSignup } from '../../store/modal';
 import { LogIn } from '../../store/session';
@@ -46,8 +45,8 @@ const LoginForm = () => {
         {errors.length
           ? (
             <div>
-              {errors.map((error) => (
-                <div key={nanoid()}>
+              {errors.map((error, idx) => (
+                <div key={idx}>
                   {error}
                 </div>
               ))}

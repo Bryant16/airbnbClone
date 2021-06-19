@@ -1,5 +1,4 @@
 import GoogleMapReact from 'google-map-react';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setFocusId } from '../../store/search';
@@ -64,9 +63,9 @@ const GoogleMap = ({ searchResults }) => {
             onChange={handleMapChange}
           >
             {searchResults &&
-              searchResults.map((result) => (
+              searchResults.map((result, idx) => (
                 <Pin
-                  key={nanoid()}
+                  key={idx}
                   lat={result.latitude}
                   lng={result.longitude}
                   searchResult={result}
