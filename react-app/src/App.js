@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import Modal from './components/Modal';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
@@ -24,7 +23,6 @@ export default function App () {
 
   return (
     <>
-      <Modal />
       <NavBar />
       <Switch>
         <Route path='/users/:userId' exact>
