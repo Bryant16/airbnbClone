@@ -4,6 +4,11 @@ html {
   width: 100%;
 }
 
+.main-site-size-controller {
+  height: 100vh;
+  width: 100%;
+}
+
 :root {
   --good-pink: #ff3a5c;
 }
@@ -29,4 +34,14 @@ a {
 
 input:focus {
   outline: none;
+}
+
+/* Hide scrollbar */
+*::-webkit-scrollbar { /* Chrome */
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

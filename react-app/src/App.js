@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
+import Wrapper from './components/Wrapper';
 import SearchPage from './components/SearchPage';
 import NewProperty from './components/NewProperty';
 import ProfilePage from './components/ProfilePage';
@@ -22,8 +21,7 @@ export default function App () {
   }, [dispatch]);
 
   return (
-    <>
-      <NavBar />
+    <Wrapper>
       <Switch>
         <Route path='/users/:userId' exact>
           <ProfilePage />
@@ -50,7 +48,6 @@ export default function App () {
           <SchoolListings />
         </Route>
       </Switch>
-      <Footer />
-    </>
+    </Wrapper>
   );
 }
