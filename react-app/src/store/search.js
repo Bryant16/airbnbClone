@@ -34,6 +34,14 @@ export const search = ({ searchLocation, guestNumber, startDate, endDate }) => a
   }
 };
 
+export const getPropertiesNearSchools = id => async dispatch => {
+  const res = await window.fetch(`/api/schools/${id}`);
+  if (res.ok) {
+    const { center, properties } = await res.json();
+    dispatch(setSearch(properties, center));
+  }
+};
+
 export default function searchReducer (
 // eslint-disable-next-line default-param-last
   state = { properties: null, location: null, focusId: null },
