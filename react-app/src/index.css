@@ -5,6 +5,7 @@ html {
 }
 
 .main-site-size-controller {
+  position: relative;
   height: 100vh;
   width: 100%;
 }
@@ -42,23 +43,15 @@ input:focus {
   align-items: center;
   justify-content: space-between;
   background-color: #ff3a5c;
+  height: min-content;
+}
+
+.error-bar, .error-bar * {
   transition: all 0.35s;
 }
 
-.error-bar.grow {
-  height: 100px;
-}
-
-.error-bar.shrink {
-  height: 0px;
-}
-
-.error-bar.shrink .errors-body {
-  height: 0px;
-}
-
-.error-bar.grow .errors-body {
-  height: 100px;
+.errors-body {
+  height: min-content;
 }
 
 .errors-body {
@@ -69,28 +62,32 @@ input:focus {
   color: white;
   font-size: larger;
   font-weight: bolder;
-  margin-left: 50px;
+  margin-left: 90px;
   overflow-y: auto;
 }
 
 .error-content {
-  padding: 5px 0;
-}
-
-.errors-close {
-  margin-right: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   height: 50px;
-  width: 50px;
-  font-size: 40px;
+}
+
+.errors-close {
+  margin-right: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bolder;
-  border-radius: 50%;
   cursor: pointer;
   color: white;
   border: none;
   background-color: unset;
+  border-radius: 50%;
+  font-size: 40px;
+  height: 45px;
+  width: 45px;
 }
 
 .errors-close:hover {
