@@ -1,3 +1,5 @@
+import { SetCurrentErrors } from './errors';
+
 const SEARCHRESULTS = 'search/SEARCHRESULTS';
 const FOCUSID = 'search/FOCUSID';
 
@@ -7,7 +9,10 @@ const setSearch = (properties, center) => ({
   center
 });
 
-export const setFocusId = focusId => ({ type: FOCUSID, focusId });
+export const setFocusId = focusId => ({
+  type: FOCUSID,
+  focusId
+});
 
 export const search = ({ searchLocation, guestNumber, startDate, endDate }) => async dispatch => {
   const res = await window.fetch(
@@ -21,8 +26,12 @@ export const search = ({ searchLocation, guestNumber, startDate, endDate }) => a
     endDate
   }`
   );
-  const { properties, center } = await res.json();
-  dispatch(setSearch(properties, center));
+  try {
+    const { properties, center } = await res.json();
+    dispatch(setSearch(properties, center));
+  } catch (_) {
+    dispatch(SetCurrentErrors(['Sorry, something went wrong. Please refresh the page and try again.']));
+  }
 };
 
 export default function searchReducer (
