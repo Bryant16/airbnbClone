@@ -14,6 +14,7 @@ from .api.location_routes import location_routes
 from .api.reservation_routes import reservation_routes
 from .api.homepage_routes import homepage_routes
 from .api.review_routes import review_routes
+from .socket import socketio
 
 from .seeds import seed_commands
 
@@ -45,6 +46,7 @@ app.register_blueprint(homepage_routes, url_prefix='/api/schools')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 db.init_app(app)
 Migrate(app, db)
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -83,3 +85,6 @@ def react_root(path):
   if path == 'favicon.ico':
     return app.send_static_file('favicon.ico')
   return app.send_static_file('index.html')
+
+if __name__ == '__main__':
+  socketio.run(app)
