@@ -2,6 +2,8 @@ from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="CollegeBnB")
 
 def find_coordinates(location):
-  geolocation = geolocator.geocode(location)
-  response = {"latitude":geolocation.latitude, "longitude":geolocation.longitude}
-  return response
+  try:
+    geolocation = geolocator.geocode(location)
+    return {"latitude":geolocation.latitude, "longitude":geolocation.longitude}
+  except:
+    return None
