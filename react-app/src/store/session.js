@@ -8,33 +8,41 @@ const setSession = (user = null) => ({
 });
 
 export const LogIn = (email, password) => async dispatch => {
-  const loginResponse = await window.fetch('/api/auth/login', {
+  const res = await window.fetch('/api/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email, password })
   });
-  const { user } = await loginResponse.json();
-  if (!user.errors) {
-    dispatch(setSession(user));
-    dispatch(AfterEffect());
-  } else dispatch(SetCurrentErrors(user.errors));
+  try {
+    const { user, errors } = await res.json();
+    if (user) {
+      dispatch(setSession(user));
+      dispatch(AfterEffect());
+    } else dispatch(SetCurrentErrors(errors));
+  } catch (_) {
+    dispatch(SetCurrentErrors(['Sorry, something went wrong. Please refresh the page and try again.']));
+  }
 };
 
 export const SignUp = (username, email, password) => async dispatch => {
-  const signupResponse = await window.fetch('/api/auth/signup', {
+  const res = await window.fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ username, email, password })
   });
-  const { user } = await signupResponse.json();
-  if (!user.errors) {
-    dispatch(setSession(user));
-    dispatch(AfterEffect());
-  } else dispatch(SetCurrentErrors(user.errors));
+  try {
+    const { user, errors } = await res.json();
+    if (user) {
+      dispatch(setSession(user));
+      dispatch(AfterEffect());
+    } else dispatch(SetCurrentErrors(errors));
+  } catch (_) {
+    dispatch(SetCurrentErrors(['Sorry, something went wrong. Please refresh the page and try again.']));
+  }
 };
 
 export const LogOut = () => async dispatch => {
@@ -44,9 +52,13 @@ export const LogOut = () => async dispatch => {
 
 export const Restore = () => async dispatch => {
   const restoreResponse = await window.fetch('/api/auth/');
-  const { user } = await restoreResponse.json();
-  if (!user.errors) dispatch(setSession(user));
-  else dispatch(setSession());
+  try {
+    const { user } = await restoreResponse.json();
+    if (user) dispatch(setSession(user));
+    else dispatch(setSession());
+  } catch (_) {
+    dispatch(SetCurrentErrors(['Sorry, something went wrong. Please refresh the page and try again.']));
+  }
 };
 
 export default function sessionReducer (
