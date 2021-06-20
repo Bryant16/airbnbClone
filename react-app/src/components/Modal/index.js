@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from '../auth/LoginForm';
 import SignupForm from '../auth/SignUpForm';
 import { teardown } from '../../store/modal';
+import { ClearCurrentErrors } from '../../store/errors';
 
 import './modal.css';
 
@@ -18,6 +19,7 @@ export default function Modal () {
 
   const onClose = () => {
     dispatch(teardown());
+    dispatch(ClearCurrentErrors());
     user && after && after();
   };
 
