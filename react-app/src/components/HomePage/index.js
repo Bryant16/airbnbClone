@@ -16,31 +16,16 @@ export default function SchoolListings () {
   }, [dispatch]);
 
   return (
-    <>
-      <div className='homepage_container'>
-        <div className='div__home_container'>
-          <Helmet>
-            <title>CollegeBnB</title>
-          </Helmet>
+    <div className='homepage_container'>
+      <div className='div__home_container'>
+        <Helmet>
+          <title>CollegeBnB</title>
+        </Helmet>
 
-          <div className='div__school_container'>
-            <div className='school_button_container_1'>
-              {schools.slice(0, 5).map((school, idx) => {
-                return (
-                  <div className='school_buttons' key={idx}>
-                    <Link to={`/school/${school.id}/${school.name}`}>
-                      <img
-                        className='schoolLogoImage'
-                        src={school.logo_url}
-                        alt='schoolImage'
-                      />
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-            <div className='school_button_container_2'>
-              {schools.slice(5, 10).map((school, idx) => (
+        <div className='div__school_container'>
+          <div className='school_button_container_1'>
+            {schools.slice(0, 5).map((school, idx) => {
+              return (
                 <div className='school_buttons' key={idx}>
                   <Link to={`/school/${school.id}/${school.name}`}>
                     <img
@@ -50,11 +35,24 @@ export default function SchoolListings () {
                     />
                   </Link>
                 </div>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+          <div className='school_button_container_2'>
+            {schools.slice(5, 10).map((school, idx) => (
+              <div className='school_buttons' key={idx}>
+                <Link to={`/school/${school.id}/${school.name}`}>
+                  <img
+                    className='schoolLogoImage'
+                    src={school.logo_url}
+                    alt='schoolImage'
+                  />
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
