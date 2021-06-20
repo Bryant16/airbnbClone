@@ -65,9 +65,12 @@
 }
 
 .school_buttons {
+  width: 100px;
+  height: 100px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  margin: 10px;
+  text-align: center;
 }
 .school_button_container_1,
 .school_button_container_2 {
