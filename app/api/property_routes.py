@@ -9,7 +9,7 @@ property_routes = Blueprint('property', __name__)
 @property_routes.route('/<int:id>')
 def soloProperty(id):
     soloProp = Property.query.get(id)
-    return jsonify(soloProp.to_dict)
+    return soloProp.to_dict
 
 
 @property_routes.route('/', methods=['POST'])
