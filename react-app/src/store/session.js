@@ -1,6 +1,11 @@
+import { SetCurrentErrors } from './errors';
+import { AfterEffect } from './modal';
+
 const USER = 'session/USER';
 
-const setSession = (user = null) => ({ type: USER, user });
+const setSession = (user = null) => ({
+  type: USER, user
+});
 
 export const LogIn = (email, password) => async dispatch => {
   const loginResponse = await window.fetch('/api/auth/login', {
@@ -11,12 +16,10 @@ export const LogIn = (email, password) => async dispatch => {
     body: JSON.stringify({ email, password })
   });
   const { user } = await loginResponse.json();
-  if (!user.errors) dispatch(setSession(user));
-  else {
-    const outErr = new Error();
-    outErr.errors = [...user.errors];
-    throw outErr;
-  }
+  if (!user.errors) {
+    dispatch(setSession(user));
+    dispatch(AfterEffect());
+  } else dispatch(SetCurrentErrors(user.errors));
 };
 
 export const SignUp = (username, email, password) => async dispatch => {
@@ -28,12 +31,10 @@ export const SignUp = (username, email, password) => async dispatch => {
     body: JSON.stringify({ username, email, password })
   });
   const { user } = await signupResponse.json();
-  if (!user.errors) dispatch(setSession(user));
-  else {
-    const outErr = new Error();
-    outErr.errors = [...user.errors];
-    throw outErr;
-  }
+  if (!user.errors) {
+    dispatch(setSession(user));
+    dispatch(AfterEffect());
+  } else dispatch(SetCurrentErrors(user.errors));
 };
 
 export const LogOut = () => async dispatch => {
@@ -45,7 +46,7 @@ export const Restore = () => async dispatch => {
   const restoreResponse = await window.fetch('/api/auth/');
   const { user } = await restoreResponse.json();
   if (!user.errors) dispatch(setSession(user));
-  else dispatch(setSession(null));
+  else dispatch(setSession());
 };
 
 export default function sessionReducer (

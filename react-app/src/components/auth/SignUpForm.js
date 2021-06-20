@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { SetCurrentErrors, ClearCurrentErrors } from '../../store/errors';
 
 import { popLogin } from '../../store/modal';
 import { SignUp, LogIn } from '../../store/session';
@@ -14,15 +15,13 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [errors, setErrors] = useState([]);
 
   const onSignUp = (e) => {
     e.preventDefault();
+    dispatch(ClearCurrentErrors());
     if (password === repeatPassword) {
-      dispatch(SignUp(username, email, password))
-        .then(() => after && after())
-        .catch(err => setErrors(err.errors || []));
-    } else setErrors(['Passwords must match.']);
+      dispatch(SignUp(username, email, password));
+    } else dispatch(SetCurrentErrors(['Passwords do not match']));
   };
 
   const demoLogin = () => {
@@ -51,17 +50,6 @@ const SignUpForm = () => {
   return (
     <div className='div__container_form signup'>
       <form className='form__container_div' onSubmit={onSignUp}>
-        {errors.length
-          ? (
-            <div>
-              {errors.map((error, idx) => (
-                <div key={idx}>
-                  {error}
-                </div>
-              ))}
-            </div>
-            )
-          : null}
         <div className='userName__container'>
           <input
             type='text'

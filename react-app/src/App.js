@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import Wrapper from './components/Wrapper';
 import SearchPage from './components/SearchPage';
 import NewProperty from './components/NewProperty';
 import ProfilePage from './components/ProfilePage';
@@ -21,33 +20,31 @@ export default function App () {
   }, [dispatch]);
 
   return (
-    <Wrapper>
-      <Switch>
-        <Route path='/users/:userId' exact>
-          <ProfilePage />
-        </Route>
-        <Route path='/search' exact>
-          <SearchPage />
-        </Route>
-        <Route path='/properties/new' exact>
-          <NewProperty />
-        </Route>
-        <Route path='/properties/:propertyId/reviews/new'>
-          <PropertyReviewPage />
-        </Route>
-        <Route path='/locations/:location' exact>
-          <LocationPage />
-        </Route>
-        <Route path='/school/:schoolId/:schoolName'>
-          <ListingsNearSchools />
-        </Route>
-        <Route path='/reservations/:propertyId/:dateRange/edit' exact>
-          <EditReservation />
-        </Route>
-        <Route path='/' exact>
-          <SchoolListings />
-        </Route>
-      </Switch>
-    </Wrapper>
+    <Switch>
+      <Route path='/users/:userId' exact>
+        <ProfilePage />
+      </Route>
+      <Route path='/search' exact>
+        <SearchPage />
+      </Route>
+      <Route path='/properties/new' exact>
+        <NewProperty />
+      </Route>
+      <Route path='/properties/:propertyId/reviews/new'>
+        <PropertyReviewPage />
+      </Route>
+      <Route path='/locations/:location' exact>
+        <LocationPage />
+      </Route>
+      <Route path='/school/:schoolId/:schoolName'>
+        <ListingsNearSchools />
+      </Route>
+      <Route path='/reservations/:propertyId/:dateRange/edit' exact>
+        <EditReservation />
+      </Route>
+      <Route path='/' exact>
+        <SchoolListings />
+      </Route>
+    </Switch>
   );
 }
