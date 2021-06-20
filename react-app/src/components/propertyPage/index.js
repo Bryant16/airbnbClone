@@ -1,23 +1,33 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
 import RatingBar from './RatingBar';
+import { getPage } from '../../store/propertyPage';
 
 import './propertyPage.css';
 
 const categories = ['Accuracy', 'Check-in', 'Cleanliness', 'Communication', 'Location', 'Value'];
 
 export default function PropertyPage () {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
   const details = useSelector(state => state.property.details);
   const reviews = useSelector(state => state.property.reviews);
+
   const [numReviews, setNumReviews] = useState(5);
 
   const handleExpandReview = () => numReviews > 5
     ? setNumReviews(5)
     : setNumReviews(reviews.length);
+
+  useEffect(() => {
+    dispatch(getPage(id));
+  }, [dispatch, id]);
 
   return (details && (
     <>

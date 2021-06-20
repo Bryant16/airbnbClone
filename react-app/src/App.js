@@ -30,6 +30,9 @@ export default function App () {
       <Route path='/properties/new' exact>
         <NewProperty />
       </Route>
+      <Route path='/properties/:id(\\d+)/'>
+        <SearchPage />
+      </Route>
       <Route path='/properties/:propertyId/reviews/new'>
         <PropertyReviewPage />
       </Route>
