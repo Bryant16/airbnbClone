@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SetCurrentErrors } from '../../store/errors';
@@ -10,8 +11,15 @@ export default function Error () {
 
   const onClose = () => dispatch(SetCurrentErrors([]));
 
+  useEffect(() => {
+    const globalClick = () => dispatch(SetCurrentErrors([]));
+    length && document.addEventListener('click', globalClick);
+    return () => document.removeEventListener('click', globalClick);
+  }, [dispatch, length]);
+
   return (
     <div
+      onClick={e => e.stopPropagation()}
       className='error-bar'
       style={{
         height: length * 50
