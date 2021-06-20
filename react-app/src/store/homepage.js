@@ -13,14 +13,11 @@ export const getSchools = () => async dispatch => {
   }
 };
 
-const schoolsReducer = (state = [], action) => {
+export default function reducer (state = { schools: [] }, action) {
   switch (action.type) {
-    case LOAD: {
-      return action.schools;
-    }
+    case LOAD:
+      return { schools: action.schools };
     default:
       return state;
   }
-};
-
-export default schoolsReducer;
+}

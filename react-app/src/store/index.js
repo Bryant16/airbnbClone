@@ -6,7 +6,7 @@ import search from './search';
 import profile from './profilePage';
 import reel from './reel';
 import propsNearSchools from './listingsBySchools';
-import schools from './homepage';
+import homepage from './homepage';
 import modal from './modal';
 import reservation from './reservation';
 import mapReel from './mapReel';
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   search,
   profile,
   reel,
-  schools,
+  homepage,
   propsNearSchools,
   modal,
   reservation,

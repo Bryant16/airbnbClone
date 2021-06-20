@@ -9,7 +9,7 @@ import './homePage.css';
 
 export default function SchoolListings () {
   const dispatch = useDispatch();
-  const schools = useSelector((state) => state.schools);
+  const schools = useSelector((state) => state.homepage.schools);
 
   useEffect(() => {
     dispatch(getSchools());
@@ -21,7 +21,6 @@ export default function SchoolListings () {
         <Helmet>
           <title>CollegeBnB</title>
         </Helmet>
-
         <div className='div__school_container'>
           <div className='school_button_container_1'>
             {schools.slice(0, 5).map((school, idx) => (
@@ -30,7 +29,7 @@ export default function SchoolListings () {
                   <img
                     className='schoolLogoImage'
                     src={school.logo_url}
-                    alt='schoolImage'
+                    alt={school.name}
                   />
                 </Link>
               </div>
