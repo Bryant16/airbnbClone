@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { SetCurrentErrors } from '../../store/errors';
@@ -9,15 +8,7 @@ export default function Error () {
   const currentErrors = useSelector(state => state.errors.current);
   const { length } = currentErrors;
 
-  const [grow, setGrow] = useState(false);
-
   const onClose = () => dispatch(SetCurrentErrors([]));
-
-  useEffect(() => {
-    setGrow(!!length);
-  }, [length]);
-
-  console.log(length, grow);
 
   return (
     <div
