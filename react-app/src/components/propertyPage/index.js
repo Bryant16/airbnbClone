@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
 import RatingBar from './RatingBar';
-import { getPage } from '../../store/propertyPage';
+import { SetMapCenter } from '../../store/mapReel';
 
 import './propertyPage.css';
 
@@ -14,10 +13,10 @@ const categories = ['Accuracy', 'Check-in', 'Cleanliness', 'Communication', 'Loc
 
 export default function PropertyPage () {
   const dispatch = useDispatch();
-  const { id } = useParams();
 
   const details = useSelector(state => state.property.details);
   const reviews = useSelector(state => state.property.reviews);
+  const center = useSelector(state => state.search.center);
 
   const [numReviews, setNumReviews] = useState(5);
 
@@ -26,8 +25,12 @@ export default function PropertyPage () {
     : setNumReviews(reviews.length);
 
   useEffect(() => {
-    dispatch(getPage(id));
-  }, [dispatch, id]);
+    if (details) {
+      if (!center || !Object.deepEq(center, { lng: details.longitude, lat: details.latitude })) {
+        dispatch(SetMapCenter({ lng: details.longitude, lat: details.latitude }));
+      }
+    }
+  }, [dispatch, details, center]);
 
   return (details && (
     <>
@@ -44,7 +47,6 @@ export default function PropertyPage () {
       <div className='detailReservationContainer'>
         <div className='singleproperty_container_propertyInfo' />
       </div>
-
       {details.rating && (
         <div className='singleproperty_container_review_container'>
           <div className='stars_reviews'>

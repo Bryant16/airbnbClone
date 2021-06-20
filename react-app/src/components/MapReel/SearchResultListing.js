@@ -1,9 +1,9 @@
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Stars from '../Stars';
 import { SetMapCenter } from '../../store/mapReel';
 import { setFocusId } from '../../store/search';
-import { getPage, getReviews, GetBooked } from '../../store/propertyPage';
 
 const SearchResultListing = ({ listing }) => {
   const dispatch = useDispatch();
@@ -18,9 +18,6 @@ const SearchResultListing = ({ listing }) => {
     let { offsetTop: top } = document.getElementById(`listing_${listing.id}`);
     top -= 145;
     reelElement.scrollTo({ top, behavior: 'smooth' });
-    dispatch(getPage(listing.id));
-    dispatch(getReviews(listing.id));
-    dispatch(GetBooked(listing.id));
   };
 
   return (
@@ -60,6 +57,12 @@ const SearchResultListing = ({ listing }) => {
           </span>
           / night
         </div>
+        <Link
+          className='listing-details'
+          to={`/properties/${listing.id}`}
+        >
+          {'Details >'}
+        </Link>
       </div>
     </div>
   );
