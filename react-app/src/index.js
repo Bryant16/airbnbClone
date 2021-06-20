@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 
-import Wrapper from './components/Wrapper';
 import App from './App';
+import Wrapper from './components/Wrapper';
 import Modal from './components/Modal';
+import Socket from './components/Socket';
 import createStore from './store';
 import { setMooring } from './store/modal';
 import './index.css';
@@ -60,6 +61,7 @@ function Root () {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <Socket />
       <BrowserRouter>
         <Root />
       </BrowserRouter>

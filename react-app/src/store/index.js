@@ -10,6 +10,7 @@ import modal from './modal';
 import reservation from './reservation';
 import mapReel from './mapReel';
 import errors from './errors';
+import socket from './socket';
 
 const rootReducer = combineReducers({
   session,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   modal,
   reservation,
   mapReel,
-  errors
+  errors,
+  socket
 });
 
 let enhancer;
