@@ -14,7 +14,7 @@ from .api.location_routes import location_routes
 from .api.reservation_routes import reservation_routes
 from .api.homepage_routes import homepage_routes
 from .api.review_routes import review_routes
-from .socket import socketio
+from .socket import socketio, messages
 
 from .seeds import seed_commands
 
