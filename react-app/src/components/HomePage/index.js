@@ -43,7 +43,7 @@ export default function SchoolListings () {
                   <img
                     className='schoolLogoImage'
                     src={school.logo_url}
-                    alt='schoolImage'
+                    alt={school.name}
                   />
                 </Link>
               </div>
