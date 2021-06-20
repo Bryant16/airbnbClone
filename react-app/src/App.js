@@ -9,7 +9,6 @@ import LocationPage from './components/LocationPage';
 import SchoolListings from './components/HomePage/index';
 import EditReservation from './components/EditReservation';
 import PropertyReviewPage from './components/PropertyReviewPage';
-import ListingsNearSchools from './components/PropsBySchools/index';
 import { Restore } from './store/session';
 
 export default function App () {
@@ -30,7 +29,7 @@ export default function App () {
       <Route path='/properties/new' exact>
         <NewProperty />
       </Route>
-      <Route path='/properties/:id(\\d+)/'>
+      <Route path='/properties/:propertyId'>
         <SearchPage />
       </Route>
       <Route path='/properties/:propertyId/reviews/new'>
@@ -40,7 +39,7 @@ export default function App () {
         <LocationPage />
       </Route>
       <Route path='/school/:schoolId/:schoolName'>
-        <ListingsNearSchools />
+        <SearchPage />
       </Route>
       <Route path='/reservations/:propertyId/:dateRange/edit' exact>
         <EditReservation />
