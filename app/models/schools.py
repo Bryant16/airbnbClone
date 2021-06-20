@@ -16,7 +16,6 @@ class School(db.Model):
   secondary=schools_properties)
 
 
-  @property
   def to_dict(self):
     return {
       "id": self.id,

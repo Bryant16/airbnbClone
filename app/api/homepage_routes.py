@@ -7,7 +7,7 @@ homepage_routes = Blueprint('/schools', __name__)
 
 @homepage_routes.route('')
 def schoolsListings():
-    schools = [s.to_dict for s in School.query.all()]
+    schools = [s.to_dict() for s in School.query.all()]
     random.shuffle(schools)
     return { "schools": schools }
 
@@ -17,7 +17,7 @@ def propertiesNearSchool(id):
     school_longitude = school.longitude
     school_latitude = school.latitude
     properties_near_schools = Property.query.filter(Property.longitude.between(school_longitude - 2, school_longitude + 2), Property.latitude.between(school_latitude - 2, school_latitude + 2)).all()
-    property_locations = [location.to_dict for location in properties_near_schools]
+    property_locations = [location.to_dict() for location in properties_near_schools]
     return {
       "center": {
         "lng": school.longitude,

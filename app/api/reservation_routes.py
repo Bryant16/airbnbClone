@@ -54,7 +54,7 @@ def fetch_reservation(property_id, date_range):
     return {"property": None}
 
   return {
-    "property": property.to_dict,
+    "property": property.to_dict(),
     "dateRange": reservations[0].date_range
   }
 
@@ -64,7 +64,7 @@ def edit_reservation(property_id, date_range):
   property = Property.query.get(property_id)
   if not property:
     return {"success": True}
-  
+
   reservations = list(
     filter(
       lambda x: (x.property_id == property_id) and (x.date_range == date_range),
