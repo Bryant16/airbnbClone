@@ -11,7 +11,7 @@ class Reservation(db.Model):
   listing = db.relationship("Property")
   user = db.relationship("User")
 
-  @property
+
   def to_dict(self):
     return {
       "id": self.id,
@@ -22,8 +22,8 @@ class Reservation(db.Model):
 
   def to_summary(self):
     return {
-      **self.to_dict,
+      **self.to_dict(),
       'date_range': self.date_range,
-      'city': self.listing.to_dict['city'],
-      'property_photo_url': self.listing.to_dict['coverphoto_url']
+      'city': self.listing.city,
+      'property_photo_url': self.listing.cover_photo.URL
     }

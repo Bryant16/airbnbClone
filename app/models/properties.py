@@ -23,7 +23,9 @@ class Property(db.Model):
   check_in = db.Column(db.Integer, nullable=False)
   check_out = db.Column(db.Integer, nullable=False)
   guest_spots = db.Column(db.Integer, nullable=False)
+
   user = db.relationship("User")
+  cover_photo = db.relationship("Image", backref='property')
   reservations = db.relationship("Reservation")
   photos = db.relationship("Image", secondary=properties_images)
   reviews = db.relationship("Review")
@@ -49,7 +51,7 @@ class Property(db.Model):
       "overall_value": "{:12.1f}".format(sum(overall_value)/(len(overall_value)) if overall_value else 1),
       }
 
-  @property
+
   def to_dict(self):
     tied_image = Image.query.get(self.coverphoto_id)
     return {
@@ -69,12 +71,12 @@ class Property(db.Model):
       "check_in": self.check_in,
       "check_out": self.check_out,
       "guest_spots": self.guest_spots,
-      "reservations": [reservation.to_dict for reservation in self.reservations],
+      "reservations": [reservation.to_dict() for reservation in self.reservations],
       'reviews': [review.to_dict() for review in self.reviews],
       "rating": self.rating
     }
 
-  @property
+
   def to_summary(self):
     tied_image = Image.query.get(self.coverphoto_id)
     return {

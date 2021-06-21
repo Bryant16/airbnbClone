@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 
-import './index.css';
+import Wrapper from './components/Wrapper';
 import App from './App';
+import Modal from './components/Modal';
 import createStore from './store';
 import { setMooring } from './store/modal';
+import './index.css';
 
 // eslint-disable-next-line no-extend-native
 String.prototype.toTitleCase = function () {
@@ -35,6 +37,7 @@ const store = createStore();
 
 if (process.env.NODE_ENV !== 'production') {
   window.store = store;
+  window.dispatch = store.dispatch;
 }
 
 function Root () {
@@ -46,10 +49,11 @@ function Root () {
   }, [dispatch]);
 
   return (
-    <>
+    <Wrapper>
+      <Modal />
       <App />
       <div ref={mooringRef} className='modalMooring' />
-    </>
+    </Wrapper>
   );
 }
 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 
 import { popSignup } from '../../store/modal';
 import { LogIn } from '../../store/session';
@@ -11,15 +10,12 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const after = useSelector(state => state.modal.after);
 
-  const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onLogin = (e) => {
     e.preventDefault();
-    dispatch(LogIn(email, password))
-      .then(() => after && after())
-      .catch(err => setErrors(err.errors || []));
+    dispatch(LogIn(email, password));
   };
 
   const switchForm = () => dispatch(popSignup());
@@ -43,17 +39,6 @@ const LoginForm = () => {
         className='form__container_div'
         onSubmit={onLogin}
       >
-        {errors.length
-          ? (
-            <div>
-              {errors.map((error) => (
-                <div key={nanoid()}>
-                  {error}
-                </div>
-              ))}
-            </div>
-            )
-          : null}
         <div className='login__email'>
           <input
             name='email'

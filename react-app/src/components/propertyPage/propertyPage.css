@@ -1,117 +1,117 @@
 .singleproperty_container_address {
-    align-self: flex-start;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  align-self: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 #property-page-image {
-    width: 40vw;
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 10px;
+  width: 40vw;
+  height: 50vh;
+  max-height: 540px;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .detailReservationContainer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-.singleproperty_container_reservation{
-    /* flex-grow: 1; */
-    /* position: fixed; */
-    /* box-sizing: border-box; */
-    display: inline-flex;
-    border: 1px solid black;
-    border-radius: 1em;
-    padding: 1em;
+.singleproperty_container_reservation {
+  display: inline-flex;
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 1em;
 }
 
-.singleproperty_container_review_container{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 1em;
-    border-top: 1px solid lightgray;
-    padding-top: 3em;
+.singleproperty_container_review_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 1em;
+  border-top: 1px solid lightgray;
+  padding-top: 3em;
 }
 
-.singleproperty_container_single_review{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    
+.singleproperty_container_single_review {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
 }
 
-.singleproperty_review_stats{
-    display: flex;
-    flex-direction: column;
+.singleproperty_review_stats {
+  display: flex;
+  flex-direction: column;
 }
 
-.review_categories{
-    display: flex;
-    flex-direction: row;
+.review_categories {
+  display: flex;
+  flex-direction: row;
 }
 .review_categories div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 7.25em;
-    margin-right: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 7.25em;
+  margin-right: 10px;
 }
 .singleproperty_review_usertext {
-    display: flex;
-    flex-direction: column;
-    font-size: 2em;
-    width: fit-content;
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+  width: fit-content;
 }
 
 .bar {
-    display: flex;
-    width: 100%;
-    height: .5em;
-    background-color: lightgray;
-    border: .5px solid black;
+  display: flex;
+  width: 100%;
+  height: .5em;
+  background-color: lightgray;
+  border: .5px solid black;
 }
 
 .bar_progress {
-    background-color: black;
-   
+  background-color: black;
 }
 
-.stars_reviews{
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 2em;
+.stars_reviews {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 2em;
 }
 
 .stars_reviews p {
-    padding-left: 1em;
-}
-#review_text{
-    font-size: .5em !important;
-    margin-top: 0;
+  padding-left: 1em;
 }
 
-#show_more_button{
-    background-color:white ;
-    font-weight: bold;
-    padding: 1.3em;
-    border-radius: 1em;
-    outline:none;
-}
-#show_more_button:hover{
-    background-color: rgb(243, 240, 240);
+#review_text {
+  font-size: .5em !important;
+  margin-top: 0;
 }
 
-.pic_reservation_container{
-    display: flex;
-    height: 37em;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
+#show_more_button {
+  background-color:white ;
+  font-weight: bold;
+  padding: 1.3em;
+  border-radius: 1em;
+  outline:none;
+}
+
+#show_more_button:hover {
+  background-color: rgb(243, 240, 240);
+}
+
+.pic_reservation_container {
+  display: flex;
+  height: 50vh;
+  max-height: 540px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }

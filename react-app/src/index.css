@@ -4,6 +4,12 @@ html {
   width: 100%;
 }
 
+.main-site-size-controller {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
 :root {
   --good-pink: #ff3a5c;
 }
@@ -29,4 +35,71 @@ a {
 
 input:focus {
   outline: none;
+}
+
+.error-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ff3a5c;
+  height: min-content;
+}
+
+.error-bar, .error-bar * {
+  transition: all 0.35s;
+}
+
+.errors-body {
+  height: min-content;
+}
+
+.errors-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  margin-left: 90px;
+  overflow-y: auto;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+}
+
+.errors-close {
+  margin-right: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: unset;
+  border-radius: 50%;
+  font-size: 40px;
+  height: 45px;
+  width: 45px;
+}
+
+.errors-close:hover {
+  box-shadow: 0px 0px 10px white;
+}
+
+/* Hide scrollbar */
+*::-webkit-scrollbar { /* Chrome */
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

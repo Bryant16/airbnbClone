@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
 import { FaStar } from 'react-icons/fa';
 
 export default function RadioSelector ({ label, count, checked, onChange }) {
@@ -12,9 +11,9 @@ export default function RadioSelector ({ label, count, checked, onChange }) {
         <label>{label}</label>
       </div>
       <div className='stars_and_input'>
-        {[...Array(5)].map((star, i) => {
+        {[...Array(5)].map((_, i) => {
           return (
-            <label key={nanoid()}>
+            <label key={i}>
               <input
                 type='radio'
                 value={i + 1}

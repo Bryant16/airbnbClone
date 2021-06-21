@@ -1,5 +1,4 @@
 import GoogleMapReact from 'google-map-react';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setFocusId } from '../../store/search';
@@ -30,7 +29,8 @@ const Pin = ({ searchResult }) => {
             ? {
                 color: '#ff3a5c',
                 fontWeight: '700',
-                border: '1px solid #ff3a5c'
+                border: '1px solid #ff3a5c',
+                zIndex: 999
               }
             : null
         }
@@ -57,16 +57,15 @@ const GoogleMap = ({ searchResults }) => {
             bootstrapURLKeys={{
               key: process.env.REACT_APP_API_KEY
             }}
-            // defaultCenter={{ lat: 40.7128, lng: -74.006 }}
             center={center}
             zoom={10}
             defaultZoom={10}
             onChange={handleMapChange}
           >
             {searchResults &&
-              searchResults.map((result) => (
+              searchResults.map((result, idx) => (
                 <Pin
-                  key={nanoid()}
+                  key={idx}
                   lat={result.latitude}
                   lng={result.longitude}
                   searchResult={result}

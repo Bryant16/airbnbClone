@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import GoogleMap from '../GoogleMap';
@@ -9,9 +10,11 @@ import { unload } from '../../store/propertyPage';
 
 export default function MapReel ({ listings }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const reelMode = useSelector(state => state.mapReel.mode);
   const property = useSelector(state => state.property.details);
+  const searchLoaded = useSelector(state => state.search.loaded);
 
   const [showPrivate, setShowPrivate] = useState(false);
   const [left, setLeft] = useState('0vw');
@@ -20,7 +23,15 @@ export default function MapReel ({ listings }) {
 
   const togglePrivate = () => setShowPrivate(p => !p);
 
-  const onReturn = () => dispatch(unload());
+  const onReturn = () => {
+    if (searchLoaded) {
+      history.goBack();
+      dispatch(unload());
+    } else {
+      history.push('/');
+      dispatch(unload());
+    }
+  };
 
   const reelRef = useRef(null);
 

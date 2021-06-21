@@ -1,23 +1,36 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Reservation from '../Reservation';
 import ReviewDisplay from '../ReviewDisplay';
 import Stars from '../Stars';
 import RatingBar from './RatingBar';
+import { SetMapCenter } from '../../store/mapReel';
 
 import './propertyPage.css';
 
 const categories = ['Accuracy', 'Check-in', 'Cleanliness', 'Communication', 'Location', 'Value'];
 
 export default function PropertyPage () {
+  const dispatch = useDispatch();
+
   const details = useSelector(state => state.property.details);
   const reviews = useSelector(state => state.property.reviews);
+  const center = useSelector(state => state.search.center);
+
   const [numReviews, setNumReviews] = useState(5);
 
   const handleExpandReview = () => numReviews > 5
     ? setNumReviews(5)
     : setNumReviews(reviews.length);
+
+  useEffect(() => {
+    if (details) {
+      if (!center || !Object.deepEq(center, { lng: details.longitude, lat: details.latitude })) {
+        dispatch(SetMapCenter({ lng: details.longitude, lat: details.latitude }));
+      }
+    }
+  }, [dispatch, details, center]);
 
   return (details && (
     <>
@@ -34,7 +47,6 @@ export default function PropertyPage () {
       <div className='detailReservationContainer'>
         <div className='singleproperty_container_propertyInfo' />
       </div>
-
       {details.rating && (
         <div className='singleproperty_container_review_container'>
           <div className='stars_reviews'>
