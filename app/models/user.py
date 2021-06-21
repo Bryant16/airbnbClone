@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
   def to_owner(self):
     return {
       **self.to_dict(),
-      "properties": [prop.to_summary for prop in self.properties]
+      "properties": [prop.to_summary() for prop in self.properties]
     }
 
   def to_guest(self):
